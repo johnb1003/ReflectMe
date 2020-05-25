@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>ReflectMe Login</title>
+        <title>Login</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" href="./login.css">
         <!-- Latest compiled and minified CSS -->
@@ -17,6 +17,14 @@
 
         <div class="heading">
             <h1 class="title">ReflectMe</h1>
+            <form id="login">
+                    <label for="email">Email:</label><br>
+                    <input type="text" id="email" name="email"><br>
+                    <label for="password">Password:</label><br>
+                    <input type="text" id="password" name="password"><br>
+                    <p>Password must contain only letters and numbers and have 5-20 characters</p>
+                    <input type="submit" value="Submit" id="submitButton">
+            </form>
         </div>
 
     </body>
