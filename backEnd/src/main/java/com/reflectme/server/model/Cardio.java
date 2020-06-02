@@ -3,10 +3,7 @@ package com.reflectme.server.model;
 import org.postgresql.util.PGInterval;
 
 import javax.persistence.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "Cardio")

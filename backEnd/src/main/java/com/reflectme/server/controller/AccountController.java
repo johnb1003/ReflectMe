@@ -6,16 +6,12 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import com.reflectme.server.model.AccountLogin;
+import com.reflectme.server.model.FullAccount;
+import com.reflectme.server.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.reflectme.server.exception.ResourceNotFoundException;
 import com.reflectme.server.model.Account;
@@ -28,22 +24,31 @@ public class AccountController {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Autowired
+    private AccountService accountService;
+
     @GetMapping("/accounts")
     public List<Account> getAllEmployees() {
         return accountRepository.findAll();
     }
 
-    @GetMapping("/accounts/{userID}")
-    public ResponseEntity<Account> getAccountById(@PathVariable(value = "userID") Long userID)
+    @GetMapping("/accounts/{email}")
+    public ResponseEntity<Account> getAccountByEmail(@PathVariable(value = "email") String email)
             throws ResourceNotFoundException {
-        Account account = accountRepository.findById(userID).orElseThrow(() ->
-                new ResourceNotFoundException("Account not found for this id :: " + userID));
+        Account account = accountRepository.getAccountByEmail(email).orElseThrow(() ->
+                new ResourceNotFoundException("Account not found for this email: " + email));
         return ResponseEntity.ok().body(account);
     }
 
-    @PostMapping("/accounts")
-    public Account createAccount(@Valid @RequestBody Account account) {
-        return accountRepository.save(account);
+    @PostMapping("/accounts/signup")
+    public ResponseEntity<Account> createAccount(@Valid @RequestBody FullAccount fullAccount) {
+        return ResponseEntity.ok(accountService.createAccount(fullAccount));
+    }
+
+    @GetMapping("/accounts/login")
+    public ResponseEntity<Account> verifyLogin(@Valid @RequestBody AccountLogin login)
+            throws ResourceNotFoundException {
+        return ResponseEntity.ok(accountService.verifyLogin(login));
     }
 
     @PutMapping("/accounts/{userID}")

@@ -88,7 +88,7 @@ $(document).ready(function() {
 
         // Check lname validity
         let lname = $('#signup-lname');
-        if(!validName(fname.val())) {
+        if(!validName(lname.val())) {
             $('#invalid-lname').css('display', 'block');
             valid = false;
         }
@@ -118,7 +118,7 @@ $(document).ready(function() {
             
         // Check if confirmation password matches  
         let confirmationPassword = $('#signup-confirm-password');
-        if(confirmationPassword != password) {
+        if(confirmationPassword.val() != password.val()) {
             $('#confirm-password-error-message').css('display', 'block');
             valid = false;
         }

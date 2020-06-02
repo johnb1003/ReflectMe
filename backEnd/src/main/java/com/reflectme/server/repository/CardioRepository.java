@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.reflectme.server.model.Cardio;
 
 @Repository
-public interface CardioRepository extends JpaRepository<Cardio, Long>{
+public interface CardioRepository extends JpaRepository<Cardio, Long>, CardioRepositoryCustom{
 
 }

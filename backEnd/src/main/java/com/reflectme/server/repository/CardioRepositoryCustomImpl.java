@@ -27,6 +27,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
                 "order by c.date";
 
         Query query = entityManager.createNativeQuery(queryString, Cardio.class);
+        query.setParameter("id", Long.toString(id));
 
         cardioList = new ArrayList<Cardio>(query.getResultList());
 

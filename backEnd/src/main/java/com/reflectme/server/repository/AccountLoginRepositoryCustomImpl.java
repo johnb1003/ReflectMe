@@ -2,36 +2,34 @@ package com.reflectme.server.repository;
 
 import com.reflectme.server.JPAUtil;
 import com.reflectme.server.model.Account;
-import com.reflectme.server.model.Cardio;
-import org.springframework.stereotype.Repository;
+import com.reflectme.server.model.AccountLogin;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.Optional;
 
-@Repository
-public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
+public class AccountLoginRepositoryCustomImpl implements AccountLoginRepositoryCustom{
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public Optional<Account> getAccountByEmail(String email) {
+    public Optional<AccountLogin> getLogin(String email) {
         entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
         String queryString = "select * " +
-                             "from Account a " +
-                             "where a.email = :email";
+                "from AccountLogin al " +
+                "where al.email = :email";
 
         Query query = entityManager.createNativeQuery(queryString, Account.class);
         query.setParameter("email", email);
 
-        Optional<Account> account = Optional.ofNullable((Account)query.getSingleResult());
+        Optional<AccountLogin> login = Optional.ofNullable((AccountLogin)query.getSingleResult());
 
         entityManager.close();
 
-        return account;
+        return login;
     }
 }
