@@ -10,5 +10,5 @@ public interface AccountRepositoryCustom {
     @Query(value = "select * " +
             "from Account a " +
             "where a.email = :email", nativeQuery = true)
-    public Optional<Account> getAccountByEmail(String email);
+    public Account getAccountByEmail(String email);
 }

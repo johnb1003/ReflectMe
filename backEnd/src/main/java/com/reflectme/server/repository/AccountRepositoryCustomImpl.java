@@ -17,7 +17,7 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     private EntityManager entityManager;
 
     @Override
-    public Optional<Account> getAccountByEmail(String email) {
+    public Account getAccountByEmail(String email) {
         entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
@@ -28,7 +28,8 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
         Query query = entityManager.createNativeQuery(queryString, Account.class);
         query.setParameter("email", email);
 
-        Optional<Account> account = Optional.ofNullable((Account)query.getSingleResult());
+        Account account = (Account)query.getResultList()
+                .stream().findFirst().orElse(null);
 
         entityManager.close();
 

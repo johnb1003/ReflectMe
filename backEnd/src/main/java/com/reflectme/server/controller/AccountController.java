@@ -3,6 +3,7 @@ package com.reflectme.server.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -35,18 +36,16 @@ public class AccountController {
     @GetMapping("/accounts/{email}")
     public ResponseEntity<Account> getAccountByEmail(@PathVariable(value = "email") String email)
             throws ResourceNotFoundException {
-        Account account = accountRepository.getAccountByEmail(email).orElseThrow(() ->
-                new ResourceNotFoundException("Account not found for this email: " + email));
-        return ResponseEntity.ok().body(account);
+        return accountService.getAccountByEmail(email);
     }
 
     @PostMapping("/accounts/signup")
-    public ResponseEntity<Account> createAccount(@Valid @RequestBody FullAccount fullAccount) {
-        return ResponseEntity.ok(accountService.createAccount(fullAccount));
+    public ResponseEntity createAccount(@Valid @RequestBody FullAccount fullAccount) {
+        return accountService.createAccount(fullAccount);
     }
 
     @GetMapping("/accounts/login")
-    public ResponseEntity<Account> verifyLogin(@Valid @RequestBody AccountLogin login)
+    public ResponseEntity verifyLogin(@Valid @RequestBody AccountLogin login)
             throws ResourceNotFoundException {
         return ResponseEntity.ok(accountService.verifyLogin(login));
     }

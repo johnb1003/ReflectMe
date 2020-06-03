@@ -9,10 +9,14 @@ import com.reflectme.server.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AccountService {
@@ -38,22 +42,38 @@ public class AccountService {
         this.accountLoginRepo = accountLoginRepo;
     }
 
-    public Account createAccount(FullAccount fullAccount) {
+    public ResponseEntity createAccount(FullAccount fullAccount) {
         AccountLogin encodedLogin = new AccountLogin(fullAccount.getLogin().getEmail(),
                 encoder.encode(fullAccount.getLogin().getPassword()));
         accountLoginRepo.save(encodedLogin);
-        return accountRepo.save(fullAccount.getAccount());
+        return Optional
+                .ofNullable(accountRepo.save(fullAccount.getAccount()))
+                .map( account -> ResponseEntity.ok().body(account) )
+                .orElseGet( () -> ResponseEntity.notFound().build());
     }
 
-    public Account verifyLogin(AccountLogin login) throws ResourceNotFoundException{
-        AccountLogin correctLogin = accountLoginRepo.getLogin(login.getEmail()).orElseThrow(() ->
-                new ResourceNotFoundException("Account not found for this email: " + login.getEmail()));
+    public ResponseEntity verifyLogin(AccountLogin login) throws ResourceNotFoundException{
+        AccountLogin correctLogin = accountLoginRepo.getLogin(login.getEmail());
+        if(correctLogin == null) {
+            // email not found
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Email not found");
+        }
 
         if(encoder.matches((CharSequence) correctLogin.getPassword(), login.getPassword())) {
-            return accountRepo.getAccountByEmail(login.getEmail()).get();
+            return Optional
+                    .ofNullable(accountRepo.getAccountByEmail(login.getEmail()))
+                    .map( account -> ResponseEntity.ok().body(account) )
+                    .orElseGet( () -> ResponseEntity.notFound().build() );
         }
         else {
-            return new Account();
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Incorrect password");
         }
+    }
+
+    public ResponseEntity getAccountByEmail(String email) {
+        return Optional
+                .ofNullable(accountRepo.getAccountByEmail(email))
+                .map( account -> ResponseEntity.ok().body(account) )
+                .orElseGet( () -> ResponseEntity.notFound().build() );
     }
 }

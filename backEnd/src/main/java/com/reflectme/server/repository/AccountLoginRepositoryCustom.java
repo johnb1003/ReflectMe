@@ -9,5 +9,5 @@ public interface AccountLoginRepositoryCustom {
     @Query(value = "select * " +
             "from AccountLogin al " +
             "where al.email = :email", nativeQuery = true)
-    public Optional<AccountLogin> getLogin(String email);
+    public AccountLogin getLogin(String email);
 }

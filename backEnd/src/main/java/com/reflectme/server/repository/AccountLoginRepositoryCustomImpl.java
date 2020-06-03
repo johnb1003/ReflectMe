@@ -15,7 +15,7 @@ public class AccountLoginRepositoryCustomImpl implements AccountLoginRepositoryC
     private EntityManager entityManager;
 
     @Override
-    public Optional<AccountLogin> getLogin(String email) {
+    public AccountLogin getLogin(String email) {
         entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
@@ -26,7 +26,8 @@ public class AccountLoginRepositoryCustomImpl implements AccountLoginRepositoryC
         Query query = entityManager.createNativeQuery(queryString, Account.class);
         query.setParameter("email", email);
 
-        Optional<AccountLogin> login = Optional.ofNullable((AccountLogin)query.getSingleResult());
+        AccountLogin login = (AccountLogin)query.getResultList()
+                .stream().findFirst().orElse(null);
 
         entityManager.close();
 
