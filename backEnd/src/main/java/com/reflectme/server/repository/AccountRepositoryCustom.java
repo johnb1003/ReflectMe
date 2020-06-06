@@ -1,9 +1,9 @@
 package com.reflectme.server.repository;
 
 import com.reflectme.server.model.Account;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-
-import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface AccountRepositoryCustom {
 
@@ -11,4 +11,20 @@ public interface AccountRepositoryCustom {
             "from Account a " +
             "where a.email = :email", nativeQuery = true)
     public Account getAccountByEmail(String email);
+
+    @Query(value = "select * " +
+            "from Account a " +
+            "where a.email = :email", nativeQuery = true)
+    public Account getFullAccountByEmail(String email);
+
+    @Query(value = "select a.password " +
+            "from Account a " +
+            "where a.email = :email", nativeQuery = true)
+    public String getPassword(String email);
+
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT INTO account (fname, lname, email, phonenum, password) " +
+            "VALUES(:fname, :lname, :email, :phonenum, :password)", nativeQuery = true)
+    public int saveAccount(String fname, String lname, String email, String phonenum, String password);
 }

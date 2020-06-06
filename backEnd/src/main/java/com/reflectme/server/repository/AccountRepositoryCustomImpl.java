@@ -3,7 +3,9 @@ package com.reflectme.server.repository;
 import com.reflectme.server.JPAUtil;
 import com.reflectme.server.model.Account;
 import com.reflectme.server.model.Cardio;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,6 +35,69 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
 
         entityManager.close();
 
+        return account.dropPassword();
+    }
+
+    @Override
+    public Account getFullAccountByEmail(String email) {
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String queryString = "select * " +
+                "from Account a " +
+                "where a.email = :email";
+
+        Query query = entityManager.createNativeQuery(queryString, Account.class);
+        query.setParameter("email", email);
+
+        Account account = (Account)query.getResultList()
+                .stream().findFirst().orElse(null);
+
+        entityManager.close();
+
         return account;
+    }
+
+    @Override
+    public String getPassword(String email) {
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String queryString = "select a.password " +
+                "from Account a " +
+                "where a.email = :email";
+
+        Query query = entityManager.createNativeQuery(queryString, String.class);
+        query.setParameter("email", email);
+
+        String password = (String)query.getResultList()
+                .stream().findFirst().orElse(null);
+
+        entityManager.close();
+
+        return password;
+    }
+
+    @Override
+    @Modifying
+    @Transactional
+    public int saveAccount(String fname, String lname, String email, String phonenum, String password) {
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String queryString = "INSERT INTO account (fname, lname, email, phonenum, password) " +
+                "VALUES(:fname, :lname, :email, :phonenum, :password)";
+
+        Query query = entityManager.createNativeQuery(queryString, Account.class);
+        query.setParameter("fname", fname);
+        query.setParameter("lname", lname);
+        query.setParameter("email", email);
+        query.setParameter("phonenum", phonenum);
+        query.setParameter("password", password);
+        int i = query.executeUpdate();
+
+        entityManager.close();
+
+        return i;
     }
 }

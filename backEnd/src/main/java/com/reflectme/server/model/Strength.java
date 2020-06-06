@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table(name = "Strength")
+@Table(name = "strength")
 public class Strength {
 
     @Id

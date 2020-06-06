@@ -14,38 +14,58 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table(name = "Account")
+@Table(name = "account")
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userID;
 
-    @Column(name = "fName", nullable=false)
-    private String fName;
+    @Column(name = "fname", nullable=false)
+    private String fname;
 
-    @Column(name = "lName", nullable=false)
-    private String lName;
+    @Column(name = "lname", nullable=false)
+    private String lname;
 
     @Column(name = "email", nullable=false)
     private String email;
 
-    @Column(name = "phoneNum", nullable=false)
-    private String phoneNum;
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "phonenum", nullable=false)
+    private String phonenum;
 
     public Account() {
 
     }
 
-    public Account(String fName, String lName, String email, String phoneNum) {
-        this.fName = fName;
-        this.lName = lName;
+    public Account(String fName, String lName, String email, String phoneNum, String password) {
+        this.fname = fName;
+        this.lname = lName;
         this.email = email;
-        this.phoneNum = phoneNum;
+        this.password = password;
+        this.phonenum = phoneNum;
+    }
+
+    public Account(String email, String password) {
+        this.fname = null;
+        this.lname = null;
+        this.email = email;
+        this.password = password;
+        this.phonenum = null;
+    }
+
+    public Account(String fName, String lName, String email, String phoneNum) {
+        this.fname = fName;
+        this.lname = lName;
+        this.email = email;
+        this.password = null;
+        this.phonenum = phoneNum;
     }
 
     public long getUserID() {
-        return this.getUserID();
+        return this.userID;
     }
 
     public void setUserID(long userID) {
@@ -53,34 +73,57 @@ public class Account {
     }
 
     public String getfName() {
-        return this.fName;
+        return this.fname;
     }
 
     public void setfName(String fName) {
-        this.fName = fName;
+        this.fname = fName;
     }
 
     public String getlName() {
-        return this.lName;
+        return this.lname;
     }
 
     public void setlName(String lName) {
-        this.lName = lName;
+        this.lname = lName;
     }
 
-    public String getemail() {
+    public String getEmail() {
         return this.email;
     }
 
-    public void setemail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getphoneNum() {
-        return this.phoneNum;
+    public String getPassword() {
+        return password;
     }
 
-    public void setphoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhoneNum() {
+        return this.phonenum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phonenum = phoneNum;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "fName='" + fname + '\'' +
+                ", lName='" + lname + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNum='" + "number" + '\'' +
+                '}';
+    }
+
+    public Account dropPassword() {
+        this.password = "";
+        return this;
     }
 }
