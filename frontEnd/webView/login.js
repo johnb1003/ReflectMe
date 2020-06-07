@@ -10,6 +10,16 @@ const nameRegEx = /^[a-zA-Z -']{1,30}$/;
 // Regex for phone number validation
 const phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
+class Account {
+    constructor (fname, lname, email, phoneNum, password) {
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.phoneNum = phoneNum;
+        this.password = password;
+    }
+}
+
 $(document).ready(function() {
 
     $('#login-button').click( () => {
@@ -61,8 +71,29 @@ $(document).ready(function() {
 
         if(authenticateSignup()) {
             // Send AJAX POST request to create new user
-            // Check for success
-            alert("Success");
+
+           // let data = JSON.stringify(new Account($('#signup-fname').val(), $('#signup-lname').val(), 
+            //            $('#signup-email').val(), $('#signup-phone').val(), $('#signup-password').val()));
+
+            $.ajax({
+                type: "POST",
+                url: "https://localhost:8080/api/v1/accounts/signup",
+                //data: data,
+                data: {
+                    "fname": $('#signup-fname').val(),
+                    "lname": $('#signup-lname').val(),
+                    "email": $('#signup-email').val(),
+                    "phoneNum": $('#signup-phone').val(),
+                    "password": $('#signup-password').val()
+                },
+                contentType: "application/json",
+                dataType: "json",
+                success: function(data){alert(data);},
+                failure: function(errMsg) {
+                    alert(errMsg);
+                }
+            });            
+
             cancelPopup();
         }
         else {

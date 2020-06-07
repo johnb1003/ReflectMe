@@ -23,13 +23,16 @@ import static com.reflectme.server.security.Constants.HEADER_STRING;
 import static com.reflectme.server.security.Constants.TOKEN_PREFIX;
 
 import com.auth0.jwt.JWT;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
 
-    public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
+    public JWTAuthenticationFilter(AuthenticationManager authenticationManager, String loginURL) {
         this.authenticationManager = authenticationManager;
+        this.setFilterProcessesUrl(loginURL);
     }
 
     @Override
@@ -58,7 +61,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String token = JWT.create()
                 .withSubject(((User) auth.getPrincipal()).getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .withExpiresAt(new Date(System.currentTimeMillis() + (long) EXPIRATION_TIME))
                 .sign(HMAC512(SECRET.getBytes()));
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
     }
