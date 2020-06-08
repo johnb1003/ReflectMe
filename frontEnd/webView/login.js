@@ -10,6 +10,8 @@ const nameRegEx = /^[a-zA-Z -']{1,30}$/;
 // Regex for phone number validation
 const phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
+const baseAPIURL = "https://reflectme.tech/api/v1";
+
 class Account {
     constructor (fname, lname, email, phoneNum, password) {
         this.fname = fname;
@@ -77,7 +79,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type: "POST",
-                url: "https://localhost:8080/api/v1/accounts/signup",
+                url: baseAPIURL+"/accounts/signup",
                 //data: data,
                 data: {
                     "fname": $('#signup-fname').val(),
