@@ -26,6 +26,11 @@ public class AccountController {
         return "It works!";
     }
 
+    @GetMapping("/index")
+    public String index() {
+        return "index";
+    }
+
     @PostMapping("/signup")
     public ResponseEntity createAccount(@Valid @RequestBody Account acc) {
         return accountService.createAccount(acc);
