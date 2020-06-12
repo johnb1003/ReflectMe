@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 
 import static com.reflectme.server.security.Constants.EXPIRATION_TIME;
 import static com.reflectme.server.security.Constants.SECRET;
@@ -41,6 +42,16 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         try {
             Account account = new ObjectMapper()
                     .readValue(req.getInputStream(), Account.class);
+
+            
+            // Print request headers
+            Enumeration headerNames = req.getHeaderNames();
+            while (headerNames.hasMoreElements()) {
+
+                String headerName = (String) headerNames.nextElement();
+
+                System.out.println(headerName + ": " + req.getHeader(headerName));
+            }
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
