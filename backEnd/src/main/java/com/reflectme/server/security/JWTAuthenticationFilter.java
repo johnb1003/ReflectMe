@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 
+import static com.reflectme.server.security.Secret.HMAC;
 import static com.reflectme.server.security.Constants.EXPIRATION_TIME;
-import static com.reflectme.server.security.Constants.SECRET;
 import static com.reflectme.server.security.Constants.HEADER_STRING;
 import static com.reflectme.server.security.Constants.TOKEN_PREFIX;
 
@@ -70,13 +70,13 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
 
-        System.out.println(SECRET);
+        System.out.println(HMAC);
         System.out.println(System.getenv("REFLECTME_HMAC_SECRET"));
 
         String token = JWT.create()
                 .withSubject(((User) auth.getPrincipal()).getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + (long) EXPIRATION_TIME))
-                .sign(HMAC512(SECRET.getBytes()));
+                .sign(HMAC512(HMAC.getBytes()));
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
     }
 }
