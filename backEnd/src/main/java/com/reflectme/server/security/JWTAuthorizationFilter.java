@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.reflectme.server.security.Secret.HMAC;
+import static com.reflectme.server.security.Constants.HMAC;
 import static com.reflectme.server.security.Constants.HEADER_STRING;
 import static com.reflectme.server.security.Constants.TOKEN_PREFIX;
 

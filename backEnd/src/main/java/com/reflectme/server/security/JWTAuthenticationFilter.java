@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 
-import static com.reflectme.server.security.Secret.HMAC;
+import static com.reflectme.server.security.Constants.HMAC;
 import static com.reflectme.server.security.Constants.EXPIRATION_TIME;
 import static com.reflectme.server.security.Constants.HEADER_STRING;
 import static com.reflectme.server.security.Constants.TOKEN_PREFIX;
