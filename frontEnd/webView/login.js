@@ -39,7 +39,23 @@ $(document).ready(function() {
         let valid = authenticateLogin();
 
         if(valid) {
-            alert("Login valid");
+            $.ajax({
+                type: "POST",
+                url: baseAPIURL+"/accounts/login",
+                data: JSON.stringify({
+                    //fName: $('#signup-fname').val(),
+                    //lName: $('#signup-lname').val(),
+                    email: $('#email').val(),
+                    //phoneNum: $('#signup-phone').val(),
+                    password: $('#password').val()
+                }),
+                contentType: "application/json",
+                dataType: "json",
+                success: function(data){alert(data);},
+                failure: function(errMsg) {
+                    alert(errMsg);
+                }
+            });
         }
         else {
             $('#login-error-message').css('display', 'block');
