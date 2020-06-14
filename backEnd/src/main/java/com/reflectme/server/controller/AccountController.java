@@ -12,7 +12,7 @@ import com.reflectme.server.model.Account;
 import com.reflectme.server.repository.AccountRepository;
 
 @RestController
-@RequestMapping(value = "/api/v1/accounts")
+@RequestMapping(value = "/v1/accounts")
 public class AccountController {
 
     @Autowired
