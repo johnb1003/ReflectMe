@@ -12,6 +12,8 @@ const phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
 const baseAPIURL = "https://reflectme.tech/api/v1";
 
+let JWTToken = "empty";
+
 class Account {
     constructor (fname, lname, email, phoneNum, password) {
         this.fname = fname;
@@ -41,16 +43,18 @@ $(document).ready(function() {
         if(valid) {
             loginAJAX()
             .then(data => {
-                console.log(data)
+                JWTToken = data;
+                console.log(data);
                 cancelPopup();
             })
               .catch(error => {
-                console.log(error)
+                console.log(error);
             })
         }
         else {
             $('#login-error-message').css('display', 'block');
         }
+        alert(JWTToken);
     })
 
     function loginAJAX() {
@@ -64,7 +68,7 @@ $(document).ready(function() {
                     email: $('#email').val(),
                     password: $('#password').val()
                 }),
-                success: function(data) {resolve(data);},
+                success: function(data, status, xhr) {resolve(xhr.getResponseHeader("Authorization"));},
                 failure: function(errMsg) {reject(data);}
             });
         })
