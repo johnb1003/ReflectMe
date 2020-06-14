@@ -49,7 +49,7 @@ $(document).ready(function() {
                 contentType: "application/json",
                 dataType: "json",
                 success: function(data) {alertFunc(data);},
-                failure: function(errMsg) {alertFunc(errMsg);}
+                failure: function(errMsg) {alertFunc(data);}
             });
             cancelPopup();
         }
@@ -59,7 +59,7 @@ $(document).ready(function() {
     })
 
     function alertFunc(response) {
-        alert(response);
+        console.log(response);
     }
 
     function authenticateLogin() {
