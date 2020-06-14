@@ -39,25 +39,36 @@ $(document).ready(function() {
         let valid = authenticateLogin();
 
         if(valid) {
-            $.ajax({
-                type: "POST",
-                url: baseAPIURL+"/accounts/login",
-                data: JSON.stringify({
-                    email: $('#email').val(),
-                    password: $('#password').val()
-                }),
-                contentType: "application/json",
-                dataType: "json",
-                async: false,
-                success: function(data) {alertFunc(data);},
-                failure: function(errMsg) {alertFunc(data);}
-            });
-            cancelPopup();
+            loginAJAX()
+            .then(data => {
+                console.log(data)
+                cancelPopup();
+            })
+              .catch(error => {
+                console.log(error)
+            })
         }
         else {
             $('#login-error-message').css('display', 'block');
         }
     })
+
+    async function loginAJAX() {
+        return new Promise ((resolve, reject) => {
+            $.ajax({
+                type: "POST",
+                url: baseAPIURL+"/accounts/login",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify({
+                    email: $('#email').val(),
+                    password: $('#password').val()
+                }),
+                success: function(data) {resolve(data);},
+                failure: function(errMsg) {reject(data);}
+            });
+        })
+    }
 
     function alertFunc(response) {
         console.log(response);
