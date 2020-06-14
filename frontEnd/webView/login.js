@@ -10,7 +10,7 @@ const nameRegEx = /^[a-zA-Z -']{1,30}$/;
 // Regex for phone number validation
 const phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
-const baseAPIURL = "https://reflectme.tech/api/v1";
+const baseAPIURL = "https://api.reflectme.tech/api/v1";
 
 class Account {
     constructor (fname, lname, email, phoneNum, password) {
