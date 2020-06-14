@@ -39,7 +39,7 @@ $(document).ready(function() {
         let valid = authenticateLogin();
 
         if(valid) {
-            $.ajax({
+            await $.ajax({
                 type: "POST",
                 url: baseAPIURL+"/accounts/login",
                 data: JSON.stringify({
