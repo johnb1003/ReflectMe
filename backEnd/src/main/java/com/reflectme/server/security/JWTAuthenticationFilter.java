@@ -43,7 +43,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             Account account = new ObjectMapper()
                     .readValue(req.getInputStream(), Account.class);
 
-            
+            /*
             // Print request headers
             Enumeration headerNames = req.getHeaderNames();
             while (headerNames.hasMoreElements()) {
@@ -52,6 +52,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
                 System.out.println(headerName + ": " + req.getHeader(headerName));
             }
+            */
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -69,9 +70,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             HttpServletResponse res,
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
-
-        System.out.println(HMAC);
-        System.out.println(System.getenv("REFLECTME_HMAC_SECRET"));
 
         String token = JWT.create()
                 .withSubject(((User) auth.getPrincipal()).getUsername())
