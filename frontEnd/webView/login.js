@@ -56,6 +56,7 @@ $(document).ready(function() {
                     alert(errMsg);
                 }
             });
+            cancelPopup();
         }
         else {
             $('#login-error-message').css('display', 'block');
@@ -63,17 +64,27 @@ $(document).ready(function() {
     })
 
     function authenticateLogin() {
+        let valid = true;
+
         const email = $('#email');
+        if(!validEmail(email.val())) {
+            $('#login-error-message').css('display', 'block');
+            valid = false;
+        }
+        else {
+            $('#login-error-message').css('display', 'none');
+        }
+
         const password = $('#password');
-        alert(email.val() + " " + password.val());
-
-        // AJAX REQUEST TO VALIDATE (EMAIL, PASSWORD)
-
-        // SUCCESS: GO TO HOME PAGE WITH CUSTOM DETAILS
-
-        // FAILURE: ALERT INVALID USERNAME / PASSWORD
-
-        cancelPopup();
+        if(!validPassword(password.val())) {
+            $('#login-error-message').css('display', 'block');
+            valid = false;
+        }
+        else {
+            $('#login-error-message').css('display', 'none');
+        }
+        
+        return valid;
     }
 
     $('#signup-button').click( () => {
