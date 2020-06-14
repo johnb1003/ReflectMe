@@ -39,7 +39,7 @@ $(document).ready(function() {
         let valid = authenticateLogin();
 
         if(valid) {
-            await $.ajax({
+            $.ajax({
                 type: "POST",
                 url: baseAPIURL+"/accounts/login",
                 data: JSON.stringify({
@@ -48,6 +48,7 @@ $(document).ready(function() {
                 }),
                 contentType: "application/json",
                 dataType: "json",
+                async: false,
                 success: function(data) {alertFunc(data);},
                 failure: function(errMsg) {alertFunc(data);}
             });
