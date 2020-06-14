@@ -82,11 +82,11 @@ $(document).ready(function() {
                 url: baseAPIURL+"/accounts/signup",
                 //data: data,
                 data: JSON.stringify({
-                    "fname": $('#signup-fname').val(),
-                    "lname": $('#signup-lname').val(),
-                    "email": $('#signup-email').val(),
-                    "phoneNum": $('#signup-phone').val(),
-                    "password": $('#signup-password').val()
+                    fname: $('#signup-fname').val(),
+                    lname: $('#signup-lname').val(),
+                    email: $('#signup-email').val(),
+                    phoneNum: $('#signup-phone').val(),
+                    password: $('#signup-password').val()
                 }),
                 contentType: "application/json",
                 dataType: "json",
