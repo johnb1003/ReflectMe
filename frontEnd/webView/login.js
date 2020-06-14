@@ -82,8 +82,8 @@ $(document).ready(function() {
                 url: baseAPIURL+"/accounts/signup",
                 //data: data,
                 data: JSON.stringify({
-                    fname: $('#signup-fname').val(),
-                    lname: $('#signup-lname').val(),
+                    fName: $('#signup-fname').val(),
+                    lName: $('#signup-lname').val(),
                     email: $('#signup-email').val(),
                     phoneNum: $('#signup-phone').val(),
                     password: $('#signup-password').val()
@@ -94,7 +94,7 @@ $(document).ready(function() {
                 failure: function(errMsg) {
                     alert(errMsg);
                 }
-            });            
+            });           
 
             cancelPopup();
         }
