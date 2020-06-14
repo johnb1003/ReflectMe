@@ -53,7 +53,7 @@ $(document).ready(function() {
         }
     })
 
-    async function loginAJAX() {
+    function loginAJAX() {
         return new Promise ((resolve, reject) => {
             $.ajax({
                 type: "POST",
