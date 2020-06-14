@@ -43,18 +43,13 @@ $(document).ready(function() {
                 type: "POST",
                 url: baseAPIURL+"/accounts/login",
                 data: JSON.stringify({
-                    //fName: $('#signup-fname').val(),
-                    //lName: $('#signup-lname').val(),
                     email: $('#email').val(),
-                    //phoneNum: $('#signup-phone').val(),
                     password: $('#password').val()
                 }),
                 contentType: "application/json",
                 dataType: "json",
-                success: function(data){alert(data);},
-                failure: function(errMsg) {
-                    alert(errMsg);
-                }
+                success: function(data) {alertFunc(data);},
+                failure: function(errMsg) {alertFunc(errMsg);}
             });
             cancelPopup();
         }
@@ -62,6 +57,10 @@ $(document).ready(function() {
             $('#login-error-message').css('display', 'block');
         }
     })
+
+    function alertFunc(response) {
+        alert(response);
+    }
 
     function authenticateLogin() {
         let valid = true;
@@ -83,7 +82,7 @@ $(document).ready(function() {
         else {
             $('#login-error-message').css('display', 'none');
         }
-        
+
         return valid;
     }
 
