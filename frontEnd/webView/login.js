@@ -41,15 +41,17 @@ $(document).ready(function() {
         let valid = authenticateLogin();
 
         if(valid) {
-            loginAJAX()
-            .then(data => {
-                JWTToken = data;
-                console.log(data);
-                cancelPopup();
-            })
-              .catch(error => {
-                console.log(error);
-            })
+            let loginResponse = loginAJAX();
+
+            loginResponse
+                .then(data => {
+                    JWTToken = data;
+                    cancelPopup();
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
         else {
             $('#login-error-message').css('display', 'block');
