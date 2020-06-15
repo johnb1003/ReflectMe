@@ -39,10 +39,10 @@ $(document).ready(function() {
         event.preventDefault();
 
         let valid = authenticateLogin();
-
+        console.log("Here");
         if(valid) {
             let loginResponse = loginAJAX();
-
+            console.log("Here 2");
             loginResponse
                 .then(data => {
                     JWTToken = data;
