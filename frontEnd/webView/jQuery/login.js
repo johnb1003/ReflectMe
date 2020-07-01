@@ -53,7 +53,6 @@ $(document).ready(function() {
         else {
             $('#login-error-message').css('display', 'block');
         }
-        alert(JWTToken);
     })
 
     async function loginAJAX() {
