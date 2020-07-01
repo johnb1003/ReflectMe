@@ -14,15 +14,26 @@ const baseAPIURL = "https://reflectme.tech/api/v1";
 
 let JWTToken = "empty";
 
-class Account {
-    constructor (fname, lname, email, phoneNum, password) {
-        this.fname = fname;
-        this.lname = lname;
-        this.email = email;
-        this.phoneNum = phoneNum;
-        this.password = password;
-    }
+function setCookie(key, value) {
+    document.cookie = key + "=" + value + ";";
 }
+
+function getCookie(key) {
+    let name = key + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let  cookie = decodedCookie.split(';');
+    for(let i = 0; i <cookie.length; i++) {
+      let c = cookie[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
+
 
 $(document).ready(function() {
 
@@ -43,7 +54,7 @@ $(document).ready(function() {
         if(valid) {
             loginAJAX()
                 .then(data => {
-                    alert(JWTToken);
+                    alert(getCookie("token"));
                     cancelPopup();
                 })
                 .catch(error => {
@@ -80,13 +91,12 @@ $(document).ready(function() {
                 email: $('#email').val(),
                 password: $('#password').val()
             }),
-            success: function(data, status, xhr){JWTToken = xhr.getResponseHeader('Authorization');},
+            success: function(data, status, xhr)    {
+                JWTToken = xhr.getResponseHeader('Authorization');
+                setCookie("token", JWTToken);
+            },
             failure: function(errMsg) {alert(errMsg);}
         });
-    }
-
-    function alertFunc(response) {
-        console.log(response);
     }
 
     function authenticateLogin() {
