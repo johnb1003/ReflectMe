@@ -79,7 +79,6 @@ $(document).ready(function() {
             type: "POST",
             url: baseAPIURL+"/accounts/login",
             contentType: "application/json",
-            dataType: "json",
             data: JSON.stringify({
                 email: $('#email').val(),
                 password: $('#password').val()
