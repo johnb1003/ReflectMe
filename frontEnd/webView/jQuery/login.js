@@ -41,9 +41,7 @@ $(document).ready(function() {
         let valid = authenticateLogin();
         console.log("Here");
         if(valid) {
-            let loginResponse = loginAJAX();
-            console.log("Here 2");
-            loginResponse
+            loginAJAX()
                 .then(data => {
                     JWTToken = data;
                     cancelPopup();
@@ -60,7 +58,7 @@ $(document).ready(function() {
         alert(JWTToken);
     })
 
-    function loginAJAX() {
+    async function loginAJAX() {
         /*
         return new Promise ((resolve, reject) => {
             $.ajax({
@@ -77,8 +75,7 @@ $(document).ready(function() {
             });
         })
         */
-
-        return $.ajax({
+        return loginReq = $.ajax({
             type: "POST",
             url: baseAPIURL+"/accounts/login",
             contentType: "application/json",
