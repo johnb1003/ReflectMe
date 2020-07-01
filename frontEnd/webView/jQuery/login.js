@@ -43,10 +43,8 @@ $(document).ready(function() {
         if(valid) {
             loginAJAX()
                 .then(data => {
-                    JWTToken = data;
-                    cancelPopup();
-                    console.log(data);
                     alert(JWTToken);
+                    cancelPopup();
                 })
                 .catch(error => {
                     console.log(error);
@@ -83,7 +81,7 @@ $(document).ready(function() {
                 email: $('#email').val(),
                 password: $('#password').val()
             }),
-            success: function(data){alert(data);},
+            success: function(data, status, xhr){JWTToken = xhr.getResponseHeader('Authorization');},
             failure: function(errMsg) {alert(errMsg);}
         });
     }
