@@ -56,7 +56,7 @@ $(document).ready(function() {
         else {
             $('#login-error-message').css('display', 'block');
         }
-        await alert(JWTToken);
+        alert(JWTToken);
     })
 
     function loginAJAX() {
@@ -124,7 +124,6 @@ $(document).ready(function() {
             $.ajax({
                 type: "POST",
                 url: baseAPIURL+"/accounts/signup",
-                //data: data,
                 data: JSON.stringify({
                     fName: $('#signup-fname').val(),
                     lName: $('#signup-lname').val(),
