@@ -48,6 +48,7 @@ $(document).ready(function() {
                     JWTToken = data;
                     cancelPopup();
                     console.log(data);
+                    alert(JWTToken);
                 })
                 .catch(error => {
                     console.log(error);
@@ -60,6 +61,7 @@ $(document).ready(function() {
     })
 
     function loginAJAX() {
+        /*
         return new Promise ((resolve, reject) => {
             $.ajax({
                 type: "POST",
@@ -74,6 +76,20 @@ $(document).ready(function() {
                 failure: function(errMsg) {reject(data);}
             });
         })
+        */
+
+        return $.ajax({
+            type: "POST",
+            url: baseAPIURL+"/accounts/login",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({
+                email: $('#email').val(),
+                password: $('#password').val()
+            }),
+            success: function(data){alert(data);},
+            failure: function(errMsg) {alert(errMsg);}
+        });
     }
 
     function alertFunc(response) {
