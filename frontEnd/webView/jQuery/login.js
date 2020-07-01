@@ -133,7 +133,7 @@ $(document).ready(function() {
                 }),
                 contentType: "application/json",
                 dataType: "json",
-                success: function(data){alert(data);},
+                success: function(data){alert(data.email);},
                 failure: function(errMsg) {
                     alert(errMsg);
                 }
