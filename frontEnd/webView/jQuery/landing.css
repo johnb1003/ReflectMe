@@ -1,31 +1,217 @@
-body {
-    height: 100%;
-}
+.content {
 
-.main {
-    background-image: url(https://xglas.eu/en/wp-content/uploads/2018/02/smart_mirror_display_01.jpg); 
-
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto;
-
-    padding-bottom: 41%;
 }
 
 .nav-bar {
-    background-color: rgb(255, 255, 255);
-    overflow: hidden;
-    width: 100%;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
+    color: rgb(40, 40, 40);
+    background-color: white;
+    margin-bottom: 0px;
 }
 
 .nav-bar header {
-    color: rgb(156, 235, 29);
-    font-size: 3em;
-    margin: 3px 50px;
+    color: rgb(40, 40, 40);
+}
+
+.main {
+    background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
+    margin-top: 0px;
+}
+
+.landing-email-form {
+    color: black;
+}
+
+.landing-error-message {
+    display: none;
+}
+
+/* PC format */
+@media screen and (min-width: 600px) {
+    body {
+        height: 100%;
+    }
+
+    .nav-bar {
+        overflow: hidden;
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .nav-bar header {
+        font-size: 3em;
+        margin: 0px 50px;
+    }
+
+    .tagline {
+        font-size: 1em;
+    }
+
+    .advertisement-1 {
+        font-size: 2em;
+        color: #94DF93;
+    }
+
+    .advertisement-2 {
+        font-size: 1.7em;
+        color: #8BDD96;
+    }
+
+    .input-bar {
+        width: 50%;
+        height: 30px; 
+    }
+
+    .landing-email-form {
+        margin-top: auto;
+    }
+
+    .landing-submit-button {
+        height: 30px;
+    }
+
+    .spacer {
+        padding: 3px;
+    }
+
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin: 1%;
+    }
+
+    .left-panel {
+        width: 50%;
+        height: auto;
+    }
+
+    .right-panel {
+        width: 50%;
+        text-align: center;
+    }
+
+    .slideshow {
+        width: 98%;
+        margin: 1%;
+        height: auto;
+        text-align: center;
+    }
+
+    .slide {
+        margin: 0%;
+        width: 100%;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .picture {
+        width: 50%;
+        height: 400px;
+    }
+
+    .slide-description {
+        width: 40%;
+    }
+
+    .slide-header {
+        font-size: 2em;
+    }
+
+    #set-goals-picture {
+        background-image: url("resources/set-goals-character.svg"), url("resources/set-goals-background.svg");
+        background-position: 45% 110%, center;
+        background-repeat: no-repeat, no-repeat;
+        background-size: auto, cover;
+    }
+
+    #set-goals-description {
+        font-size: 1.3em;
+    }
+
+    #see-goals-picture {
+        background-image: url("resources/see-goals-character.svg"), url("resources/see-goals-background.svg");
+        background-position: 74% 85%, center;
+        background-repeat: no-repeat, no-repeat;
+        background-size: auto, cover;
+    }
+
+    #see-goals-description {
+        font-size: 1.3em;
+    }
+
+    #achieve-goals-picture {
+        background-image: url("resources/achieve-goals-character.svg"), url("resources/achieve-goals-background.svg");
+        background-position: 20% 90%, center;
+        background-repeat: no-repeat, no-repeat;
+        background-size: auto, cover;
+    }
+
+    #achieve-goals-description {
+        font-size: 1.3em;
+    }
+
+    .bottom {
+        background-color: white;
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+}
+
+
+
+/***************************************/
+/***************************************/
+/***************************************/
+/***************************************/
+/***************************************/
+/***************************************/
+
+
+
+/* Mobile format */
+@media screen and (max-width: 600px) {
+    body {
+        height: 100%;
+    }
+
+    .nav-bar {
+        overflow: hidden;
+        width: 100%;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-bar header {
+        font-size: 3em;
+        margin: 3px 50px;
+    }
+
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin: 2%;
+    }
+
+    .left-panel {
+        width: 100%;
+        height: auto;
+    }
+
+    .right-panel {
+        width: 50%;
+        text-align: center;
+    }
 }

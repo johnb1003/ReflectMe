@@ -67,22 +67,7 @@ $(document).ready(function() {
     })
 
     async function loginAJAX() {
-        /*
-        return new Promise ((resolve, reject) => {
-            $.ajax({
-                type: "POST",
-                url: baseAPIURL+"/accounts/login",
-                contentType: "application/json",
-                dataType: "json",
-                data: JSON.stringify({
-                    email: $('#email').val(),
-                    password: $('#password').val()
-                }),
-                success: function(data, status, xhr) {resolve(xhr.getResponseHeader("Authorization"));},
-                failure: function(errMsg) {reject(data);}
-            });
-        })
-        */
+
         return loginReq = $.ajax({
             type: "POST",
             url: baseAPIURL+"/accounts/login",

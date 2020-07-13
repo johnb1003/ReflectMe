@@ -10,21 +10,55 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="login.js"></script>
+        <script type="text/javascript" src="landing.js"></script>
     </head>
 
     <body>
         <div class="content">
             <nav class="nav-bar">
-                <header>ReflectMe</header>
+                <header>ReflectMe Tech</header>
+                <p class="tagline">Set goals. See goals. Achieve goals.</p>
+                <div class="spacer"></div>
             </nav>
             <div class="main">
-                <form class="landing-email">
-                    <label for="landing-email">Email:</label><br>
-                    <p class="landing-error-message" id="invalid-email">Invalid email</p>
-                    <input type="email" id="landing-email" name="landing-email" placeholder="Email"><br>
-                    <input class="submit-button" type="submit" value="Submit" id="landing-submit-button">
-                </form>
+                <img class="left-panel" src="resources/smart-mirror.jpg"></img>
+                <div class="right-panel">
+                    <p class="advertisement-1">Start your journey today!</p>
+                    <p class="advertisement-2">Enter your email to signup or login.</p>
+                    <form class="landing-email-form">
+                        <p class="landing-error-message" id="invalid-email">Invalid email</p>
+                        <input class="input-bar" type="email" id="landing-email" name="landing-email" placeholder="Email">
+                        <input class="landing-submit-button" type="submit" value="Submit" id="landing-submit-button">
+                    </form>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="slideshow">
+                    <div class="slide" id="set-goals-slide">
+                        <div class="picture" id="set-goals-picture"></div>
+                        <div class="slide-description">
+                            <p class="slide-header">Set goals</p>
+                            <p id="set-goals-description">Enter personal goals and schedules into the ReflectMe Planner section of our website.</p>
+                            <p id="set-goals-description">** Add to description and process **</p>
+                        </div>
+                    </div>
+                    <div class="slide" id="see-goals-slide">
+                        <div class="slide-description">
+                            <p class="slide-header">See goals</p>
+                            <p id="see-goals-description">Goals entered in the ReflectMe Planner will be visualized and updated on your in-home smart mirror.</p>
+                            <p id="see-goals-description">** Add to description and process **</p>
+                        </div>
+                        <div class="picture" id="see-goals-picture"></div>
+                    </div>
+                    <div class="slide" id="achieve-goals-slide">
+                        <div class="picture" id="achieve-goals-picture"></div>
+                        <div class="slide-description">
+                            <p class="slide-header">Achieve goals</p>
+                            <p id="achieve-goals-description">Stay motivated with goal reminders on your mirror to reach heights you've never imagined!</p>
+                            <p id="achieve-goals-description">** Add to description and process **</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
