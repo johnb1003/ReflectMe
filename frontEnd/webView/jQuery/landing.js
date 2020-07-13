@@ -14,11 +14,12 @@ $(document).ready(function() {
 
         event.preventDefault();
         
-        console.log($('#landing-email'));
+        let email = $('#landing-email');
+        console.log(email);
 
-        if(validEmail($('#landing-email'))) {
+        if(validEmail(email)) {
             console.log("Here1")
-            if(emailExists($('#landing-email'))) {
+            if(emailExists(email)) {
                 console.log("Here2")
                 window.location.href = "login.html"
             }
