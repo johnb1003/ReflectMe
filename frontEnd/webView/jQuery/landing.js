@@ -15,7 +15,7 @@ $(document).ready(function() {
         event.preventDefault();
         
         let email = $('#landing-email');
-        console.log(email);
+        console.log(email.val());
 
         if(validEmail(email)) {
             console.log("Here1")
