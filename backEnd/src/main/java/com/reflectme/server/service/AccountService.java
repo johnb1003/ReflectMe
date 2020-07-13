@@ -89,7 +89,7 @@ public class AccountService {
 
     public String emailExists(Account acc) {
         Account response = accountRepo.getAccountByEmail(acc.getEmail());
-        if (response.getEmail() != null) {
+        if (response != null) {
             return "true";
         }
         else {
