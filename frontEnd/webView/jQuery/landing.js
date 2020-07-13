@@ -17,14 +17,18 @@ $(document).ready(function() {
         console.log($('#landing-email'));
 
         if(validEmail($('#landing-email'))) {
+            console.log("Here1")
             if(emailExists($('#landing-email'))) {
+                console.log("Here2")
                 window.location.href = "login.html"
             }
             else {
+                console.log("Here2")
                 window.location.href = "signup.html"
             }
         }
         else {
+            console.log("Here3")
             $('#landing-error-message').css('display', 'block');
         }
     })
