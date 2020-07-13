@@ -13,6 +13,8 @@ $(document).ready(function() {
     $('#landing-submit-button').click( () => {
 
         event.preventDefault();
+        
+        console.log($('#landing-email'));
 
         if(validEmail($('#landing-email'))) {
             if(emailExists($('#landing-email'))) {
