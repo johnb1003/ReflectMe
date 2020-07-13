@@ -30,7 +30,7 @@ $(document).ready(function() {
     })
 
     async function emailExists(email) {
-        emailReq = $.ajax({
+        await emailReq = $.ajax({
             type: "GET",
             url: baseAPIURL+"/accounts/email",
             contentType: "application/json",
