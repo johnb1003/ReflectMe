@@ -36,7 +36,15 @@ public class AccountController {
         return accountService.createAccount(acc);
     }
 
-    /*
+    @GetMapping("/email")
+    public String checkEmail(@Valid @RequestBody Account acc) {
+        return accountService.emailExists(acc);
+    }
+
+    public AccountService getAccountService() {
+        return accountService;
+    }
+/*
     @GetMapping("/login")
     public ResponseEntity verifyLogin(@Valid @RequestBody Account acc) throws ResourceNotFoundException {
         return accountService.verifyLogin(acc);
