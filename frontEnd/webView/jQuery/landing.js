@@ -14,8 +14,8 @@ $(document).ready(function() {
 
         event.preventDefault();
 
-        if(validEmail($('#email'))) {
-            if(emailExists($('#email'))) {
+        if(validEmail($('#landing-email'))) {
+            if(emailExists($('#landing-email'))) {
                 window.location.href = "login.html"
             }
             else {
