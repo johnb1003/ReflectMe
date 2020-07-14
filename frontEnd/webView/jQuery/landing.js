@@ -25,7 +25,7 @@ $(document).ready(function() {
                 type: "GET",
                 url: baseAPIURL+"/accounts/email",
                 contentType: "application/json",
-                dataType: "text",
+                processData: false,
                 data: JSON.stringify({
                     email: $('#landing-email').val(),
                     password: ""
