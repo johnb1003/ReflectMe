@@ -20,11 +20,11 @@ $(document).ready(function() {
         if(validEmail(email)) {
             console.log("Here1")
             if(emailExists(email)) {
-                console.log("Here2")
+                console.log("Here login")
                 window.location.href = "login.html"
             }
             else {
-                console.log("Here2")
+                console.log("Here signup")
                 window.location.href = "signup.html"
             }
         }
