@@ -23,7 +23,7 @@ $(document).ready(function() {
 
             emailReq = $.ajax({
                 type: "GET",
-                url: baseAPIURL+"/accounts/email",
+                url: baseAPIURL+"/accounts/index",
                 contentType: "application/json",
                 data: JSON.stringify({
                     email: $('#landing-email').val()
