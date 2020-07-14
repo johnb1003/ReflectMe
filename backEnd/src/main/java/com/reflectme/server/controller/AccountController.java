@@ -37,7 +37,7 @@ public class AccountController {
     }
 
     @GetMapping("/email")
-    public String checkEmail(@Valid @RequestBody Account acc) {
+    public String checkEmail(@Valid @RequestParam Account acc) {
         return accountService.emailExists(acc);
     }
 
