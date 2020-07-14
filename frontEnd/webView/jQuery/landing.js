@@ -32,6 +32,9 @@ $(document).ready(function() {
                     if(data == "true") {
                         exists = true;
                     }
+                    else {
+                        exists = false;
+                    }
                 },
                 failure: function(errMsg) {alert(errMsg);}
             });
@@ -42,7 +45,7 @@ $(document).ready(function() {
             }
             else {
                 console.log("Here signup")
-                window.location.href = "login.html"
+                //window.location.href = "signup.html"
             }
         }
         else {
