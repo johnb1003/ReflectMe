@@ -19,6 +19,10 @@ $(document).ready(function() {
 
         if(validEmail(landingEmail)) {
 
+            let exists = false;
+
+            setCookie("email", landingEmail)
+
             emailReq = $.get({
                 url: baseAPIURL+"/accounts/email",
                 contentType: "application/json",
@@ -28,26 +32,14 @@ $(document).ready(function() {
                 success: function(data, status, xhr)    {
                     alert(data)
                     if(data == "true") {
-                        var exists = true;
+                        window.location.href = "login.html";
                     }
                     else {
-                        var exists = false;
+                        window.location.href = "signup.html";
                     }
                 },
-                failure: function(errMsg) {
-                    alert(errMsg);
-                    return;
-                }
+                failure: function(errMsg) {alert(errMsg);}
             });
-            console.log(exists)
-            if(exists) {
-                console.log("Here login")
-                //window.location.href = "login.html"
-            }
-            else {
-                console.log("Here signup")
-                //window.location.href = "signup.html"
-            }
         }
         else {
             console.log("Here3")
