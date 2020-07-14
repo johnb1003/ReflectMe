@@ -1,0 +1,29 @@
+.nav-bar {
+    color: rgb(40, 40, 40);
+    background-color: white;
+    margin-bottom: 0px;
+}
+
+.nav-bar header {
+    color: rgb(40, 40, 40);
+}
+
+.password-criteria {
+    position: relative;
+    left: 0;
+    top: 0;
+    font-size: 10px;
+    text-align: left;
+    padding: 0px; 
+    margin: 5px 20px;
+}
+
+.signup-error-message {
+    color: rgb(219, 0, 0);
+    display: none;
+    font-size: 8px;
+}
+
+.submit-button {
+    margin-top: 12px;
+}
