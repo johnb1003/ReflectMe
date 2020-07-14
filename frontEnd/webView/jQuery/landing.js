@@ -23,17 +23,19 @@ $(document).ready(function() {
 
             emailReq = $.get({
                 url: baseAPIURL+"/accounts/email",
-                data: JSON.stringify({
+                contentType: "application/json",
+                data: {
                     email: $('#landing-email').val()
-                }),
-                function(data, status, xhr)    {
+                },
+                success: function(data, status, xhr)    {
                     if(data == "true") {
                         exists = true;
                     }
                     else {
                         exists = false;
                     }
-                }
+                },
+                failure: function(errMsg) {alert(errMsg);}
             });
 
             if(exists) {
