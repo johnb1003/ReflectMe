@@ -26,7 +26,8 @@ $(document).ready(function() {
                 url: baseAPIURL+"/accounts/email",
                 contentType: "application/json",
                 data: JSON.stringify({
-                    email: email
+                    email: $('#landing-email').val(),
+                    password: ""
                 }),
                 success: function(data, status, xhr)    {
                     if(data == "true") {
