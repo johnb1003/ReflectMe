@@ -22,7 +22,7 @@ $(document).ready(function() {
             let exists = false;
 
             emailReq = $.get({
-                url: baseAPIURL+"/accounts/email",,
+                url: baseAPIURL+"/accounts/email",
                 data: JSON.stringify({
                     email: $('#landing-email').val()
                 }),
