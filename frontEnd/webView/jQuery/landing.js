@@ -42,7 +42,7 @@ $(document).ready(function() {
             }
             else {
                 console.log("Here signup")
-                //window.location.href = "signup.html"
+                window.location.href = "login.html"
             }
         }
         else {
