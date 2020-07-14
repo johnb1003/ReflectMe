@@ -22,20 +22,18 @@ $(document).ready(function() {
             let exists = false;
 
             emailReq = $.get({
-                url: baseAPIURL+"/accounts/email",
-                contentType: "application/json",
+                url: baseAPIURL+"/accounts/email",,
                 data: JSON.stringify({
                     email: $('#landing-email').val()
                 }),
-                success: function(data, status, xhr)    {
+                function(data, status, xhr)    {
                     if(data == "true") {
                         exists = true;
                     }
                     else {
                         exists = false;
                     }
-                },
-                failure: function(errMsg) {alert(errMsg);}
+                }
             });
 
             if(exists) {
