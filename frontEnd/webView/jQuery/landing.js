@@ -14,10 +14,10 @@ $(document).ready(function() {
 
         event.preventDefault();
         
-        let email = $('#landing-email').val();
+        let landingEmail = $('#landing-email').val();
         //console.log(email);
 
-        if(validEmail(email)) {
+        if(validEmail(landingEmail)) {
 
             let exists = false;
 
