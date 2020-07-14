@@ -43,6 +43,7 @@ $(document).ready(function() {
                 email: email
             }),
             success: function(data, status, xhr)    {
+                console.log(data)
                 return data;
             },
             failure: function(errMsg) {alert(errMsg);}
