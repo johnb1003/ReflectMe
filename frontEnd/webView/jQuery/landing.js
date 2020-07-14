@@ -21,12 +21,11 @@ $(document).ready(function() {
 
             let exists = false;
 
-            emailReq = $.ajax({
-                type: "GET",
+            emailReq = $.get({
                 url: baseAPIURL+"/accounts/email",
                 contentType: "application/json",
                 data: JSON.stringify({
-                    email: encodeURI($('#landing-email').val())
+                    email: $('#landing-email').val()
                 }),
                 success: function(data, status, xhr)    {
                     if(data == "true") {
