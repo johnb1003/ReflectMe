@@ -1,94 +1,11 @@
-body {
-    justify-content: center;
-}
-
 .nav-bar {
-    background-color: rgb(65, 65, 65);
-    overflow: hidden;
-    width: 100%;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
+    color: rgb(40, 40, 40);
+    background-color: white;
+    margin-bottom: 0px;
 }
 
 .nav-bar header {
-    color: rgb(156, 235, 29);
-    font-size: 3em;
-    margin: 3px 50px;
-}
-
-.nav-header {
-    margin: 3px 40px;
-}
-
-.nav-buttons {
-    padding: 3px 10px;
-    margin: 3px 50px;
-}
-
-.nav-bar button {
-    float: right;
-    display: block;
-    margin: 12px;
-    border-radius: 30px;
-}
-
-.nav-bar button:hover {
-    background-color: rgb(25, 25, 77);
-    color: white;
-}
-
-.main {
-    z-index: 1;
-}
-
-.pop-up {
-    display: none;
-    z-index: 3;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    text-align: center;
-    transform: translate(-50%, -50%);
-    padding: 15px;
-    background-color: white;
-    border-radius: 10px;
-}
-
-.pop-up-background {
-    display: none;
-    z-index: 2;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: inherit;
-    background-color: rgb(0, 0, 0, .7)
-}
-
-.login {
-    display: none;
-}
-
-.signup {
-    display: none;
-}
-
-#cancel-button {
-    float: right;
-    border: none;
-    margin: -14px -14px 0px 0px;
-    background-color: white;
-    border-radius: 0px 10px 0px 0px;
-}
-
-#cancel-button:hover {
-    background-color: rgb(212, 212, 212);
+    color: rgb(40, 40, 40);
 }
 
 .password-criteria {
@@ -99,12 +16,6 @@ body {
     text-align: left;
     padding: 0px; 
     margin: 5px 20px;
-}
-
-.signup-error-message {
-    color: rgb(219, 0, 0);
-    display: none;
-    font-size: 8px;
 }
 
 #login-error-message {

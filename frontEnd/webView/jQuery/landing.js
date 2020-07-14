@@ -30,7 +30,6 @@ $(document).ready(function() {
                     email: $('#landing-email').val()
                 },
                 success: function(data, status, xhr)    {
-                    alert(data)
                     if(data == "true") {
                         window.location.href = "login.html";
                     }
