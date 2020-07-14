@@ -38,7 +38,7 @@ $(document).ready(function() {
                 },
                 failure: function(errMsg) {alert(errMsg);}
             });
-
+            console.log(exists)
             if(exists) {
                 console.log("Here login")
                 //window.location.href = "login.html"
