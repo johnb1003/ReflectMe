@@ -15,17 +15,34 @@ $(document).ready(function() {
         event.preventDefault();
         
         let email = $('#landing-email').val();
-        console.log(email);
+        //console.log(email);
 
         if(validEmail(email)) {
-            console.log("Here1")
-            if(emailExists(email)) {
+
+            let exists = false;
+
+            emailReq = $.ajax({
+                type: "GET",
+                url: baseAPIURL+"/accounts/email",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    email: email
+                }),
+                success: function(data, status, xhr)    {
+                    if(data == "true") {
+                        exists = true;
+                    }
+                },
+                failure: function(errMsg) {alert(errMsg);}
+            });
+
+            if(exists) {
                 console.log("Here login")
-                window.location.href = "login.html"
+                //window.location.href = "login.html"
             }
             else {
                 console.log("Here signup")
-                window.location.href = "signup.html"
+                //window.location.href = "signup.html"
             }
         }
         else {
@@ -33,36 +50,6 @@ $(document).ready(function() {
             $('#landing-error-message').css('display', 'block');
         }
     })
-
-    async function emailExists(email) {
-        emailReq = $.ajax({
-            type: "GET",
-            url: baseAPIURL+"/accounts/email",
-            contentType: "application/json",
-            data: JSON.stringify({
-                email: email
-            }),
-            success: function(data, status, xhr)    {
-                console.log(data)
-                return data;
-            },
-            failure: function(errMsg) {alert(errMsg);}
-        });
-        
-        await emailReq.
-            then(data => {
-                console.log(data);
-                if(data == "true") {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
 
     function validEmail(email) {
         if(email == '' || !emailRegEx.test(email)) {
