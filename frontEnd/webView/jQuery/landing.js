@@ -26,7 +26,7 @@ $(document).ready(function() {
                 url: baseAPIURL+"/accounts/index",
                 contentType: "application/json",
                 data: JSON.stringify({
-                    email: $('#landing-email').val()
+                    email: encodeURI($('#landing-email').val())
                 }),
                 success: function(data, status, xhr)    {
                     if(data == "true") {
