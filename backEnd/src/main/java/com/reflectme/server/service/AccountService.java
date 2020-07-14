@@ -87,8 +87,8 @@ public class AccountService {
                 .orElseGet( () -> ResponseEntity.notFound().build() );
     }
 
-    public String emailExists(Account acc) {
-        Account response = accountRepo.getAccountByEmail(acc.getEmail());
+    public String emailExists(String email) {
+        Account response = accountRepo.getAccountByEmail(email);
         if (response != null) {
             return "true";
         }
