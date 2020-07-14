@@ -19,8 +19,6 @@ $(document).ready(function() {
 
         if(validEmail(landingEmail)) {
 
-            let exists = false;
-
             emailReq = $.get({
                 url: baseAPIURL+"/accounts/email",
                 contentType: "application/json",
@@ -30,13 +28,16 @@ $(document).ready(function() {
                 success: function(data, status, xhr)    {
                     alert(data)
                     if(data == "true") {
-                        exists = true;
+                        var exists = true;
                     }
                     else {
-                        exists = false;
+                        var exists = false;
                     }
                 },
-                failure: function(errMsg) {alert(errMsg);}
+                failure: function(errMsg) {
+                    alert(errMsg);
+                    return;
+                }
             });
             console.log(exists)
             if(exists) {
