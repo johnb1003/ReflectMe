@@ -47,7 +47,7 @@ $(document).ready(function() {
             loginAJAX()
                 .then(data => {
                     alert(getCookie("token"));
-                    cancelPopup();
+                    window.location.href = "welcome.html";
                 })
                 .catch(error => {
                     console.log(error);

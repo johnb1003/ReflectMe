@@ -11,6 +11,8 @@ import com.reflectme.server.exception.ResourceNotFoundException;
 import com.reflectme.server.model.Account;
 import com.reflectme.server.repository.AccountRepository;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping(value = "/v1/accounts")
 public class AccountController {
@@ -39,6 +41,12 @@ public class AccountController {
     @GetMapping("/email")
     public String checkEmail(@RequestParam("email") String email) {
         return accountService.emailExists(email);
+    }
+
+    @GetMapping("/info")
+    public ResponseEntity getAccount(Principal principal) {
+        // HOW TO ACCESS ACCOUNT EMAIL FROM JWT
+        return accountService.getAccountByEmail(principal.getName());
     }
 
     public AccountService getAccountService() {
