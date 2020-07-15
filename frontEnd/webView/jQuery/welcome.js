@@ -1,3 +1,5 @@
+const baseAPIURL = "https://reflectme.tech/api/v1";
+
 var accountData;
 
 function setCookie(key, value) {
@@ -33,7 +35,7 @@ $(document).ready(function() {
         .then(data => {
             accountData = data;
             console.log(data);
-            $('#hello-name').text(data.email);
+            $('#hello-name').text(data.fName);
         })
         .catch(error => {
             console.log(error);

@@ -37,6 +37,12 @@ function getCookie(key) {
 
 $(document).ready(function() {
 
+
+    let setEmail = getCookie('email');
+    if(setEmail != "") {
+        $('#signup-email').val(setEmail);
+    }
+
     $('#signup-submit-button').click( () => {
 
         event.preventDefault();
