@@ -37,13 +37,6 @@ function getCookie(key) {
 
 $(document).ready(function() {
 
-    $('#signup-button').click( () => {
-        // Make popup visible and darken background
-        $('.pop-up').css('display', 'block');
-        $('.signup').css('display', 'block');
-        $('.pop-up-background').css('display', 'block');
-    })
-
     $('#signup-submit-button').click( () => {
 
         event.preventDefault();
@@ -66,13 +59,14 @@ $(document).ready(function() {
                 }),
                 contentType: "application/json",
                 dataType: "json",
-                success: function(data){alert(data.email);},
+                success: function(data){
+                    setCookie('email', data.email);
+                    window.location.href = "login.html";
+                },
                 failure: function(errMsg) {
                     alert(errMsg);
                 }
             });           
-
-            cancelPopup();
         }
         else {
             // Error message is shown

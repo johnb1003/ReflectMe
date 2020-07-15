@@ -33,6 +33,7 @@ $(document).ready(function() {
         .then(data => {
             accountData = data;
             console.log(data);
+            $('#hello-name').text(data.email);
         })
         .catch(error => {
             console.log(error);

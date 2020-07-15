@@ -36,6 +36,12 @@ function getCookie(key) {
 
 $(document).ready(function() {
 
+
+    let setEmail = getCookie('email');
+    if(setEmail != "") {
+        $('#email').val(setEmail);
+    }
+
     // Take in login form information
     $('#login-submit-button').click( () => {
 
