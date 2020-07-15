@@ -45,7 +45,7 @@ $(document).ready(function() {
     function accountAJAX() {
 
         return accReq = $.ajax({
-            type: "POST",
+            type: "GET",
             url: baseAPIURL+"/accounts/info",
             contentType: "application/json",
             headers: {'Authorization': JWToken},

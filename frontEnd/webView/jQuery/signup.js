@@ -40,6 +40,7 @@ $(document).ready(function() {
 
     let setEmail = getCookie('email');
     if(setEmail != "") {
+        console.log("Email found")
         $('#signup-email').val(setEmail);
     }
     else {
