@@ -35,7 +35,7 @@ $(document).ready(function() {
         .then(data => {
             accountData = data;
             console.log(data);
-            $('#hello-name').text(data.fName);
+            $('#hello-name').text("Hello " + data.fName + "!");
         })
         .catch(error => {
             console.log(error);

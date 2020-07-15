@@ -83,7 +83,7 @@ public class AccountService {
     public ResponseEntity getAccountByEmail(String email) {
         return Optional
                 .ofNullable(accountRepo.getAccountByEmail(email))
-                .map( account -> ResponseEntity.ok().body(account) )
+                .map( account -> ResponseEntity.ok().body(account.dropPassword()) )
                 .orElseGet( () -> ResponseEntity.notFound().build() );
     }
 
