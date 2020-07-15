@@ -42,6 +42,9 @@ $(document).ready(function() {
     if(setEmail != "") {
         $('#signup-email').val(setEmail);
     }
+    else {
+        console.log("No email found")
+    }
 
     $('#signup-submit-button').click( () => {
 

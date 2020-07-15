@@ -52,7 +52,6 @@ $(document).ready(function() {
         if(valid) {
             loginAJAX()
                 .then(data => {
-                    alert(getCookie("token"));
                     window.location.href = "welcome.html";
                 })
                 .catch(error => {
