@@ -36,13 +36,6 @@ function getCookie(key) {
 
 $(document).ready(function() {
 
-    $('#login-button').click( () => {
-        // Make popup visible and darken background
-        $('.pop-up').css('display', 'block');
-        $('.login').css('display', 'block');
-        $('.pop-up-background').css('display', 'block');
-    })
-
     // Take in login form information
     $('#login-submit-button').click( () => {
 
