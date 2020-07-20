@@ -40,7 +40,7 @@ $(document).ready(function() {
 
     let setEmail = getCookie('email');
     if(setEmail != "") {
-        console.log("No email found")
+        console.log("Eail found")
         $('#signup-email').val(setEmail);
     }
     else {
@@ -53,10 +53,7 @@ $(document).ready(function() {
 
         if(authenticateSignup()) {
             // Send AJAX POST request to create new user
-
-           // let data = JSON.stringify(new Account($('#signup-fname').val(), $('#signup-lname').val(), 
-            //            $('#signup-email').val(), $('#signup-phone').val(), $('#signup-password').val()));
-
+            console.log("Authenticated");
             $.ajax({
                 type: "POST",
                 url: baseAPIURL+"/accounts/signup",
@@ -97,6 +94,7 @@ $(document).ready(function() {
             valid = false;
         }
         else {
+            console.log("fname");
             $('#invalid-fname').css('display', 'none');
         }
 
@@ -108,6 +106,7 @@ $(document).ready(function() {
             valid = false;
         }
         else {
+            console.log("lname");
             $('#invalid-lname').css('display', 'none');
         }
 
@@ -119,6 +118,7 @@ $(document).ready(function() {
             valid = false;
         }
         else {
+            console.log("email");
             $('#invalid-email').css('display', 'none');
         }
 
@@ -130,6 +130,7 @@ $(document).ready(function() {
             valid = false;
         }
         else {
+            console.log("password");
             $('#invalid-password').css('display', 'none');
         }
             
@@ -141,18 +142,8 @@ $(document).ready(function() {
             valid = false;
         }
         else {
+            console.log("confirm pass");
             $('#confirm-password-error-message').css('display', 'none');
-        }
-
-        // Check phone validity
-        let phone = $('#signup-phone');
-        if(!validPhone(phone.val())) {
-            $('#invalid-phone').css('display', 'block');
-            $('#signup-phone').css('border', '1px solid red');
-            valid = false;
-        }
-        else {
-            $('#invalid-phone').css('display', 'none');
         }
 
         return valid;
@@ -175,13 +166,6 @@ $(document).ready(function() {
 
     function validPassword(password) {
         if(password == '' || !passwordRegEx.test(password)) {
-            return false;
-        }
-        return true;
-    }
-
-    function validPhone(phone) {
-        if(phone != '' && !phoneRegEx.test(phone)) {
             return false;
         }
         return true;

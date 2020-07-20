@@ -43,13 +43,15 @@ $(document).ready(function() {
     }
 
     // Take in login form information
-    $('.login-submit-button').click( () => {
+    $('#login-submit-button').click( () => {
 
+        console.log("here!!!!!!!!!!!");
         event.preventDefault();
 
         let valid = authenticateLogin();
 
         if(valid) {
+            console.log("Authenticated");
             loginAJAX()
                 .then(data => {
                     window.location.href = "welcome.html";
@@ -90,6 +92,7 @@ $(document).ready(function() {
             valid = false;
         }
         else {
+            console.log("email");
             $('.login-error-message').css('display', 'none');
         }
 
@@ -99,6 +102,7 @@ $(document).ready(function() {
             valid = false;
         }
         else {
+            console.log("password");
             $('.login-error-message').css('display', 'none');
         }
 

@@ -101,7 +101,7 @@
     }
     
     .login-error-message {
-        font-size: 2em;
+        font-size: 1.2em;
         color: rgb(219, 0, 0);
         display: none;
         text-align: right;
