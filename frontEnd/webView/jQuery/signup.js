@@ -99,8 +99,8 @@ $(document).ready(function() {
             valid = false;
         }
         else {
-            console.log("fname");
             $('#invalid-fname').css('display', 'none');
+            $('#signup-fname').css('border', 'none');
         }
 
         // Check lname validity
@@ -111,8 +111,8 @@ $(document).ready(function() {
             valid = false;
         }
         else {
-            console.log("lname");
             $('#invalid-lname').css('display', 'none');
+            $('#signup-lname').css('border', 'none');
         }
 
         // Check email validity
@@ -123,8 +123,8 @@ $(document).ready(function() {
             valid = false;
         }
         else {
-            console.log("email");
             $('#invalid-email').css('display', 'none');
+            $('#signup-email').css('border', 'none');
         }
 
         // Check password validity
@@ -135,8 +135,8 @@ $(document).ready(function() {
             valid = false;
         }
         else {
-            console.log("password");
             $('#invalid-password').css('display', 'none');
+            $('#signup-password').css('border', 'none');
         }
             
         // Check if confirmation password matches  
@@ -147,8 +147,8 @@ $(document).ready(function() {
             valid = false;
         }
         else {
-            console.log("confirm pass");
             $('#confirm-password-error-message').css('display', 'none');
+            $('#signup-confirm-password').css('border', 'none');
         }
 
         return valid;

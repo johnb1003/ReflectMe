@@ -51,13 +51,13 @@ $(document).ready(function() {
         let valid = authenticateLogin();
 
         if(valid) {
-            console.log("Authenticated");
+            $('.login-error-message').css('display', 'none');
             loginAJAX()
                 .then(data => {
                     window.location.href = "welcome.html";
                 })
                 .catch(error => {
-                    console.log(error);
+                    $('.login-error-message').css('display', 'block');
                 });
         }
         else {
