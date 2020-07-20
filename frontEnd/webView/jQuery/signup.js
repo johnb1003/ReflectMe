@@ -66,6 +66,11 @@ $(document).ready(function() {
                 }),
                 contentType: "application/json",
                 dataType: "json",
+                statusCode:{
+                    409: function() {
+                        alert("An account with this email already exists!");
+                    }
+                },
                 success: function(data){
                     setCookie('email', data.email);
                     window.location.href = "login.html";
