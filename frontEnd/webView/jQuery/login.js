@@ -43,7 +43,7 @@ $(document).ready(function() {
     }
 
     // Take in login form information
-    $('#login-submit-button').click( () => {
+    $('.login-submit-button').click( () => {
 
         event.preventDefault();
 
@@ -59,7 +59,7 @@ $(document).ready(function() {
                 });
         }
         else {
-            $('#login-error-message').css('display', 'block');
+            $('.login-error-message').css('display', 'block');
         }
     })
 
@@ -86,20 +86,20 @@ $(document).ready(function() {
 
         const email = $('#email');
         if(!validEmail(email.val())) {
-            $('#login-error-message').css('display', 'block');
+            $('.login-error-message').css('display', 'block');
             valid = false;
         }
         else {
-            $('#login-error-message').css('display', 'none');
+            $('.login-error-message').css('display', 'none');
         }
 
         const password = $('#password');
         if(!validPassword(password.val())) {
-            $('#login-error-message').css('display', 'block');
+            $('.login-error-message').css('display', 'block');
             valid = false;
         }
         else {
-            $('#login-error-message').css('display', 'none');
+            $('.login-error-message').css('display', 'none');
         }
 
         return valid;

@@ -40,7 +40,7 @@ $(document).ready(function() {
 
     let setEmail = getCookie('email');
     if(setEmail != "") {
-        console.log("Email found")
+        console.log("No email found")
         $('#signup-email').val(setEmail);
     }
     else {
@@ -93,6 +93,7 @@ $(document).ready(function() {
         let fname = $('#signup-fname');
         if(!validName(fname.val())) {
             $('#invalid-fname').css('display', 'block');
+            $('#signup-fname').css('border', '1px solid red');
             valid = false;
         }
         else {
@@ -103,6 +104,7 @@ $(document).ready(function() {
         let lname = $('#signup-lname');
         if(!validName(lname.val())) {
             $('#invalid-lname').css('display', 'block');
+            $('#signup-lname').css('border', '1px solid red');
             valid = false;
         }
         else {
@@ -113,6 +115,7 @@ $(document).ready(function() {
         let email = $('#signup-email');
         if(!validEmail(email.val())) {
             $('#invalid-email').css('display', 'block');
+            $('#signup-email').css('border', '1px solid red');
             valid = false;
         }
         else {
@@ -123,6 +126,7 @@ $(document).ready(function() {
         let password = $('#signup-password');
         if(!validPassword(password.val())) {
             $('#invalid-password').css('display', 'block');
+            $('#signup-password').css('border', '1px solid red');
             valid = false;
         }
         else {
@@ -131,8 +135,9 @@ $(document).ready(function() {
             
         // Check if confirmation password matches  
         let confirmationPassword = $('#signup-confirm-password');
-        if(confirmationPassword.val() != password.val()) {
+        if(confirmationPassword.val() != password.val() || confirmationPassword.val() == "") {
             $('#confirm-password-error-message').css('display', 'block');
+            $('#signup-confirm-password').css('border', '1px solid red');
             valid = false;
         }
         else {
@@ -143,6 +148,7 @@ $(document).ready(function() {
         let phone = $('#signup-phone');
         if(!validPhone(phone.val())) {
             $('#invalid-phone').css('display', 'block');
+            $('#signup-phone').css('border', '1px solid red');
             valid = false;
         }
         else {

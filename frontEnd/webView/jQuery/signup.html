@@ -21,39 +21,53 @@
                 <div class="spacer"></div>
             </nav>
             <div class="main">
-                <form class="signup-form">
-                    <div class="form-input">
-                        <div class="signup-personal-information">
-                            <label for="signup-fname">First Name:</label><br>
-                            <input type="text" id="signup-fname" name="signup-fname" placeholder="First name"><br>
-                            <p class="signup-error-message" id="invalid-fname">Must enter first name</p>
-                            <label for="signup-lname">Last Name:</label><br>
-                            <input type="text" id="signup-lname" name="signup-lname" placeholder="Last name"><br>
-                            <p class="signup-error-message" id="invalid-lname">Must enter last name</p>
-                            <label for="signup-phone">Phone Number (optional):</label><br>
-                            <input type="tel" id="signup-phone" name="signup-phone" placeholder="Phone number (optional)"><br>
-                            <p class="signup-error-message" id="invalid-phone">Must be blank or a valid number</p>
+                <div class="signup-container">
+                    <form class="signup-form">
+                        <div class="form-input">
+
+                            <div class="email-group">
+                                <label for="signup-email">Email:</label><br>
+                                <p class="signup-error-message" id="invalid-email">Invalid email</p>
+                                <input type="email" id="signup-email" name="signup-email" placeholder="Email"><br>
+                            </div>
+
+                            <div class="names-group">
+                                <div class="f-name-group">
+                                    <label for="signup-fname">First Name:</label>
+                                    <p class="signup-error-message" id="invalid-fname">Must enter first name</p>
+                                    <input type="text" id="signup-fname" name="signup-fname" placeholder="First name"><br>
+                                </div>
+                                <div class="l-name-group">
+                                    <label for="signup-lname">Last Name:</label>
+                                    <p class="signup-error-message" id="invalid-lname">Must enter last name</p>
+                                    <input type="text" id="signup-lname" name="signup-lname" placeholder="Last name"><br>
+                                </div>
+                            </div>
+
+                            <div class="password-group">
+                                <div class="pass-group">
+                                    <label for="signup-password">Password:</label>   
+                                    <p class="signup-error-message" id="invalid-password">Invalid password</p>                                   
+                                    <input type="password" id="signup-password" name="signup-password" placeholder="Password">
+                                </div>
+                                <div class="confirm-pass-group">
+                                    <label for="signup-confirm-password">Confirm password:</label>
+                                    <p class="signup-error-message" id="confirm-password-error-message">Password does not match</p>
+                                    <input type="password" id="signup-confirm-password" name="signup-confirm-password" placeholder="Confirm password"><br>
+                                </div>
+                            </div> 
+                            <p class="password-criteria">* Password must contain 5-20 alphanumerical characters</p>
+
                         </div>
-                        <div class="signup-account-information">
-                            <label for="signup-email">Email:</label><br>
-                            <input type="email" id="signup-email" name="signup-email" placeholder="Email"><br>
-                            <p class="signup-error-message" id="invalid-email">Invalid email</p>
-                            <label for="signup-password">Password:</label><br>        
-                            <input type="password" id="signup-password" name="signup-password" placeholder="Password"><br>
-                            <p class="signup-error-message" id="invalid-password">Invalid password</p>
-                            <ul class="password-criteria">
-                                <li>Only letters and numbers</li>
-                                <li>5-20 characters</li>
-                            </ul>
-                            <label for="signup-confirm-password">Confirm password:</label><br>
-                            <input type="password" id="signup-confirm-password" name="signup-confirm-password" placeholder="Confirm password"><br>
-                            <p class="signup-error-message" id="confirm-password-error-message">Password does not match</p>
+                        <input class="submit-button" type="submit" value="Submit" id="signup-submit-button">
+                        <div class="login-line">
+                            <p> Already have an account? </p>
+                            <a href="https://reflectme.tech/login.html">Login here</a>
                         </div>
+                    </form>
+                    <div class="signup-visual">
+                        <p>* VISUAL HERE *</p>
                     </div>
-                    <input class="submit-button" type="submit" value="Submit" id="signup-submit-button">
-                </form>
-                <div class="signup-visual">
-                    <p>* VISUAL HERE *</p>
                 </div>
             </div>
         </div>
