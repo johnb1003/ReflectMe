@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Planner</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="planner.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- jQueryUI library -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="planner.js"></script>
+    </head>
+
+    <body>
+        <div class="content">
+            <nav class="nav-bar">
+                <header>ReflectMe Tech</header>
+                <p class="tagline">Set goals. See goals. Achieve goals.</p>
+                <div class="spacer"></div>
+                <button class="nav-button" id="planner-button">Planner</button>
+                <button class="nav-button" id="tracker-button">Tracker</button>
+                <button class="nav-button" id="mirror-button">Mirror</button>
+                <button class="nav-button" id="account-button">Account</button>
+            </nav>
+            <div class="main">
+                <div class="schedule">
+                    <div class="calendar-planner-container">
+                        <div class="planner-container">
+                            <div class="planner-tabs">
+                                <button class="p-tab" id="cardio">Cardio</button>
+                                <button class="p-tab" id="strength">Strength</button>
+                                <button class="p-tab" id="misc">Misc.</button>
+                            </div>
+                            <div id="tab-bar-dark"></div>
+
+                            <div class="planner-input">
+                                <div class="planner-og" id="cardio-og">
+                                    <p class="planner-header">Cardio Event <br> Planner</p><br>
+                                    <p class="planner-description">Schedule new cardio events using the buttons below.</p><br>
+                                    <button class="schedule-button" id="cardio-day">Manage day events</button><br>
+                                    <p class="planner-sub-description">(Create or delete day events)</p><br>
+                                    <button class="schedule-button" id="cardio-week">Manage weekly schedule</button><br>
+                                    <p class="planner-sub-description">(Create or modify weekly shedule)</p>                                    
+                                </div>
+
+                                <div class="planner-og" id="strength-og">
+                                    <p class="planner-header">Strength Event <br> Planner</p><br>
+                                    <p class="planner-description">Schedule new strength events using the buttons below.</p><br>
+                                    <button class="schedule-button" id="strength-day">Manage day events</button><br>
+                                    <p class="planner-sub-description">(Create or delete day events)</p><br>
+                                    <button class="schedule-button" id="strength-week">Manage weekly schedule</button><br>
+                                    <p class="planner-sub-description">(Create or modify weekly shedule)</p>
+                                </div>
+
+                                <div class="planner-og" id="misc-og">
+                                    <p class="planner-header">Miscellaneous Event <br> Planner</p><br>
+                                    <p class="planner-description">Schedule new misc. events using the buttons below.</p><br>
+                                    <button class="schedule-button" id="misc-day">Manage day events</button><br>
+                                    <p class="planner-sub-description">(Create or delete day events)</p><br>
+                                    <button class="schedule-button" id="misc-week">Manage weekly schedule</button><br>
+                                    <p class="planner-sub-description">(Create or modify weekly shedule)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="calendar-container">
+                            <div class="calendar">
+                                <p>CALENDAR</p>
+                            </div>
+                        </div>
+                        <div class="extended-planner" id="cardio-day-extended">
+                            <div class="extended-header">
+                                <button class="back-to-calendar">&lt;&lt; Back to calender</button>
+                                <p>Cardio Day Planner</p>
+                                <div class="datepicker" id="cardio-datepicker"> </div>
+                                <p id="cardio-date-selected">Date selected: </p>
+                            </div>
+                        </div>
+                        <div class="extended-planner" id="cardio-week-extended">
+                            <div class="extended-header">
+                                <button class="back-to-calendar">&lt;&lt; Back to calender</button>
+                                <p>Cardio Week Planner</p>
+                            </div>
+                        </div>
+                        <div class="extended-planner" id="strength-day-extended">
+                            <div class="extended-header">
+                                <button class="back-to-calendar">&lt;&lt; Back to calender</button>
+                                <p>Strength Day Planner</p>
+                            </div>
+                        </div>
+                        <div class="extended-planner" id="strength-week-extended">
+                            <div class="extended-header">
+                                <button class="back-to-calendar">&lt;&lt; Back to calender</button>
+                                <p>Strength Week Planner</p>
+                            </div>
+                        </div>
+                        <div class="extended-planner" id="misc-day-extended">
+                            <div class="extended-header">
+                                <button class="back-to-calendar">&lt;&lt; Back to calender</button>
+                                <p>Misc. Day Planner</p>
+                            </div>
+                        </div>
+                        <div class="extended-planner" id="misc-week-extended">
+                            <div class="extended-header">
+                                <button class="back-to-calendar">&lt;&lt; Back to calender</button>
+                                <p>Misc. Week Planner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

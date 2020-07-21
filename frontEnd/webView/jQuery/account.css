@@ -8,11 +8,6 @@
     color: rgb(40, 40, 40);
 }
 
-#login-error-message {
-    color: rgb(219, 0, 0);
-    display: none;
-}
-
 /* PC format */
 @media screen and (min-width: 600px) {
 
