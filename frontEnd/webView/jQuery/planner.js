@@ -75,5 +75,25 @@ $(document).ready(function() {
         }
      });
 
-    $("#cardio-datepicker").datepicker('show');
+    $("#strength-datepicker").datepicker({
+        onSelect: function(dateText, inst) { 
+           var strengthDateAsString = dateText; //the first parameter of this function
+           var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
+
+           $('#strength-date-selected').text('Date selected: '+strengthDateAsString);
+        }
+     });
+
+    $("#strength-datepicker").datepicker('show');
+
+    $("#misc-datepicker").datepicker({
+        onSelect: function(dateText, inst) { 
+           var miscDateAsString = dateText; //the first parameter of this function
+           var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
+
+           $('#misc-date-selected').text('Date selected: '+miscDateAsString);
+        }
+     });
+
+    $("#misc-datepicker").datepicker('show');
 });

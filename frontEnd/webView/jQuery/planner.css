@@ -152,6 +152,7 @@
     }
 
     .extended-planner {
+        position: relative;
         display: none;
         background-image: linear-gradient(to top right, rgb(156, 156, 156), rgb(211, 211, 211));
         width: 77%;
@@ -160,6 +161,8 @@
     }
 
     .back-to-calendar {
-        
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 }
