@@ -17,10 +17,10 @@ public class Cardio {
     @Column(name = "date", nullable=true)
     private LocalDate date;
 
-    @Column(name = "dayOfWeek", nullable=false)
+    @Column(name = "dayofweek", nullable=false)
     private String dayofweek;
 
-    @Column(name = "cardioType", nullable=false)
+    @Column(name = "cardiotype", nullable=false)
     private String cardiotype;
 
     @Column(name = "distance", nullable=false)
