@@ -49,9 +49,7 @@ public class Cardio {
 
     public Long getuserid() { return new Long(this.userid); }
 
-    public void setuserid(long userID) {
-        this.userid = userid;
-    }
+    public void setuserid(long userid) { this.userid = userid; }
 
     public LocalDate getdate() {
         return this.date;
@@ -65,7 +63,7 @@ public class Cardio {
         return this.dayofweek;
     }
 
-    public void setdayofweek(String dayOfWeek) {
+    public void setdayofweek(String dayofweek) {
         this.dayofweek = dayofweek;
     }
 
@@ -73,7 +71,7 @@ public class Cardio {
         return this.cardiotype;
     }
 
-    public void setcardiotype(String cardioType) {
+    public void setcardiotype(String cardiotype) {
         this.cardiotype = cardiotype;
     }
 
