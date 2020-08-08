@@ -2,6 +2,7 @@ package com.reflectme.server.repository;
 
 import com.reflectme.server.JPAUtil;
 import com.reflectme.server.model.CardioWeek;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ public class CardioWeekRepositoryCustomImpl implements CardioWeekRepositoryCusto
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Modifying
     @Override
     public CardioWeek createWeek(long userID, boolean active, String name) {
         entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
