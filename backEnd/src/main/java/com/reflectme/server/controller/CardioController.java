@@ -33,9 +33,6 @@ public class CardioController {
     private CardioRepository CardioRepository;
 
     @Autowired
-    private CardioWeekRepository CardioWeekRepository;
-
-    @Autowired
     private CardioService CardioService;
 
     @PostMapping("/day")
