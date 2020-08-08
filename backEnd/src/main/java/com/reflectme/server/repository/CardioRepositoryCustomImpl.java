@@ -25,7 +25,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         String queryString = "INSERT INTO cardio_week(userID, active, name) " +
                 "VALUES(:userID, :active, :name)";
 
-        Query query = entityManager.createNativeQuery(queryString, Cardio.class);
+        Query query = entityManager.createNativeQuery(queryString, CardioWeek.class);
         query.setParameter("userID", week.getUserid());
         query.setParameter("active", week.getActive());
         query.setParameter("name", week.getName());
