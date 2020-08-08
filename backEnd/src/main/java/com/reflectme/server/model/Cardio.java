@@ -27,7 +27,7 @@ public class Cardio {
     private double distance;
 
     @Column(name = "time", nullable=true)
-    private PGInterval time;
+    private int time;
 
     @Column(name = "status", nullable=false)
     private String status;
@@ -36,7 +36,7 @@ public class Cardio {
 
     }
 
-    public Cardio(long userid, LocalDate date, String dayofweek, String cardiotype, double distance, PGInterval time, String status) {
+    public Cardio(long userid, LocalDate date, String dayofweek, String cardiotype, double distance, int time, String status) {
         this.userid = userid;
         this.date = date;
         this.dayofweek = dayofweek;
@@ -85,11 +85,11 @@ public class Cardio {
         this.distance = distance;
     }
 
-    public PGInterval gettime() {
+    public int gettime() {
         return this.time;
     }
 
-    public void settime(PGInterval time) {
+    public void settime(int time) {
         this.time = time;
     }
 
