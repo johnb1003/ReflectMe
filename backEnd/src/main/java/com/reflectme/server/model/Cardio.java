@@ -1,5 +1,6 @@
 package com.reflectme.server.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.postgresql.util.PGInterval;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class Cardio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userID;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date", nullable=true)
     private LocalDate date;
 
