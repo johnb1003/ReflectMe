@@ -36,11 +36,11 @@ public class Cardio {
 
     }
 
-    public Cardio(long userID, LocalDate date, String dayOfWeek, String cardioType, double distance, PGInterval time, String status) {
-        this.userid = userID;
+    public Cardio(long userid, LocalDate date, String dayofweek, String cardiotype, double distance, PGInterval time, String status) {
+        this.userid = userid;
         this.date = date;
-        this.dayofweek = dayOfWeek;
-        this.cardiotype = cardioType;
+        this.dayofweek = dayofweek;
+        this.cardiotype = cardiotype;
         this.distance = distance;
         this.time = time;
         this.status = status;
