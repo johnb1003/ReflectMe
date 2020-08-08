@@ -8,10 +8,6 @@ import java.util.ArrayList;
 
 public interface CardioRepositoryCustom {
 
-    @Query(value = "INSERT INTO cardio_week(userID, active, name) " +
-            "VALUES(:userID, :active, :name)", nativeQuery = true)
-    public CardioWeek createWeek(CardioWeek week);
-
     @Query(value = "select * " +
             "from Cardio c where c.userID = :id and status = \"completed\" " +
             "order by c.date", nativeQuery = true)
