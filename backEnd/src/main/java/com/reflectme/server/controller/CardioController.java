@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import com.reflectme.server.model.CardioWeek;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,10 +30,16 @@ public class CardioController {
     @Autowired
     private CardioRepository CardioRepository;
 
-    @PostMapping("")
+    @PostMapping("/day")
     public Cardio createCardio(@Valid @RequestBody Cardio cardioLog, Principal principal) {
         cardioLog.setuserid(Long.parseLong(principal.getName()));
         return CardioRepository.save(cardioLog);
+    }
+
+    @PostMapping("/week")
+    public CardioWeek createCardioWeek(@Valid @RequestBody CardioWeek cardioWeek, Principal principal) {
+        cardioWeek.setUserid(Long.parseLong(principal.getName()));
+        return CardioRepository.createWeek(cardioWeek);
     }
 
     @PutMapping("/{userID}")

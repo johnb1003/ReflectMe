@@ -1,7 +1,6 @@
 package com.reflectme.server.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.postgresql.util.PGInterval;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -32,11 +31,14 @@ public class Cardio {
     @Column(name = "status", nullable=false)
     private String status;
 
+    @Column(name = "weekid", nullable=true)
+    private String weekid;
+
     public Cardio() {
 
     }
 
-    public Cardio(long userid, LocalDate date, String dayofweek, String cardiotype, double distance, int time, String status) {
+    public Cardio(long userid, LocalDate date, String dayofweek, String cardiotype, double distance, int time, String status, long weekid) {
         this.userid = userid;
         this.date = date;
         this.dayofweek = dayofweek;
@@ -98,4 +100,8 @@ public class Cardio {
     public void setstatus(String status) {
         this.status = status;
     }
+
+    public String getweekid() { return weekid; }
+
+    public void setweekid(String weekid) { this.weekid = weekid; }
 }

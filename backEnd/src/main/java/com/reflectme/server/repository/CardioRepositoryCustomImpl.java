@@ -1,7 +1,9 @@
 package com.reflectme.server.repository;
 
 import com.reflectme.server.JPAUtil;
+import com.reflectme.server.model.Account;
 import com.reflectme.server.model.Cardio;
+import com.reflectme.server.model.CardioWeek;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -14,6 +16,27 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Override
+    public CardioWeek createWeek(CardioWeek week) {
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String queryString = "INSERT INTO cardio_week(userID, active, name) " +
+                "VALUES(:userID, :active, :name)";
+
+        Query query = entityManager.createNativeQuery(queryString, Cardio.class);
+        query.setParameter("userID", week.getUserid());
+        query.setParameter("active", week.getActive());
+        query.setParameter("name", week.getName());
+
+        CardioWeek newWeek = (CardioWeek)query.getResultList()
+                .stream().findFirst().orElse(null);
+
+        entityManager.close();
+
+        return newWeek;
+    }
 
     @Override
     public ArrayList<Cardio> getCompletedCardioListForUser(long id) {
