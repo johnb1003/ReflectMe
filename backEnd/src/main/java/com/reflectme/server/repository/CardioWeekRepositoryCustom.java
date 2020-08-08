@@ -7,6 +7,6 @@ public interface CardioWeekRepositoryCustom {
 
     @Query(value = "INSERT INTO cardio_week(userID, active, name) " +
             "VALUES(:userID, :active, :name)", nativeQuery = true)
-    public CardioWeek createWeek(CardioWeek week);
+    public CardioWeek createWeek(long userID, boolean active, String name);
 
 }

@@ -16,7 +16,7 @@ public class CardioWeekRepositoryCustomImpl implements CardioWeekRepositoryCusto
     private EntityManager entityManager;
 
     @Override
-    public CardioWeek createWeek(CardioWeek week) {
+    public CardioWeek createWeek(long userID, boolean active, String name) {
         entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
@@ -24,9 +24,9 @@ public class CardioWeekRepositoryCustomImpl implements CardioWeekRepositoryCusto
                 "VALUES(:userID, :active, :name)";
 
         Query query = entityManager.createNativeQuery(queryString, CardioWeek.class);
-        query.setParameter("userID", week.getUserid());
-        query.setParameter("active", week.getActive());
-        query.setParameter("name", week.getName());
+        query.setParameter("userID", userID);
+        query.setParameter("active", active);
+        query.setParameter("name", name);
 
         CardioWeek newWeek = (CardioWeek)query.getResultList()
                 .stream().findFirst().orElse(null);

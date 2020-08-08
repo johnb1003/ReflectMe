@@ -39,7 +39,8 @@ public class CardioService {
         ResponseEntity response;
         try {
             response = Optional
-                    .ofNullable(cardioWeekRepository.createWeek(cardioWeek))
+                    .ofNullable(cardioWeekRepository.createWeek(cardioWeek.getUserid(),
+                            cardioWeek.getActive(), cardioWeek.getName()))
                     .map(week -> ResponseEntity.ok().body(week))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
