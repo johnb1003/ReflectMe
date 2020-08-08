@@ -47,33 +47,33 @@ public class Cardio {
     }
 
 
-    public Long getUserID() { return new Long(this.userid); }
+    public Long getuserid() { return new Long(this.userid); }
 
-    public void setUserID(long userID) {
+    public void setuserid(long userID) {
         this.userid = userid;
     }
 
-    public LocalDate getDate() {
+    public LocalDate getdate() {
         return this.date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setdate(LocalDate date) {
         this.date = date;
     }
 
-    public String getdayOfWeek() {
+    public String getdayofweek() {
         return this.dayofweek;
     }
 
-    public void setdayOfWeek(String dayOfWeek) {
+    public void setdayofeek(String dayOfWeek) {
         this.dayofweek = dayofweek;
     }
 
-    public String getcardioType() {
+    public String getcardiotype() {
         return this.cardiotype;
     }
 
-    public void setcardioType(String cardioType) {
+    public void setcardiotype(String cardioType) {
         this.cardiotype = cardiotype;
     }
 
