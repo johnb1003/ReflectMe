@@ -47,7 +47,7 @@ public class Cardio {
     }
 
 
-    public Long getuserid() { return new Long(this.userid); }
+    public long getuserid() { return this.userid; }
 
     public void setuserid(long userid) { this.userid = userid; }
 

@@ -1,5 +1,6 @@
 package com.reflectme.server.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +30,8 @@ public class CardioController {
     private CardioRepository CardioRepository;
 
     @PostMapping("")
-    public Cardio createCardio(@Valid @RequestBody Cardio cardioLog) {
-        System.out.println(cardioLog.getdayofweek());
-        System.out.println(cardioLog.getdistance());
+    public Cardio createCardio(@Valid @RequestBody Cardio cardioLog, Principal principal) {
+        cardioLog.setuserid(Long.parseLong(principal.getName()));
         return CardioRepository.save(cardioLog);
     }
 
