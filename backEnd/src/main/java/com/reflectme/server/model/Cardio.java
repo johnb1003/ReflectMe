@@ -65,7 +65,7 @@ public class Cardio {
         return this.dayofweek;
     }
 
-    public void setdayofeek(String dayOfWeek) {
+    public void setdayofweek(String dayOfWeek) {
         this.dayofweek = dayofweek;
     }
 

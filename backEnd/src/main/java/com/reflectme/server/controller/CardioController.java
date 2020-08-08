@@ -39,9 +39,9 @@ public class CardioController {
         Cardio cardioLog = CardioRepository.findById(userID)
                 .orElseThrow(() -> new ResourceNotFoundException("Cardio log not found for this id :: " + userID));
 
-        cardioLog.setDate(cardioDetails.getDate());
-        cardioLog.setdayOfWeek(cardioDetails.getdayOfWeek());
-        cardioLog.setcardioType(cardioDetails.getcardioType());
+        cardioLog.setdate(cardioDetails.getdate());
+        cardioLog.setdayofweek(cardioDetails.getdayofweek());
+        cardioLog.setcardiotype(cardioDetails.getcardiotype());
         cardioLog.setdistance(cardioDetails.getdistance());
         cardioLog.settime(cardioDetails.gettime());
         cardioLog.setstatus(cardioDetails.getstatus());
