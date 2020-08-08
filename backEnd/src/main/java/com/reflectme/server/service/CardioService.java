@@ -1,37 +1,32 @@
 package com.reflectme.server.service;
 
-import com.reflectme.server.model.Account;
 import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.CardioWeek;
-import com.reflectme.server.repository.AccountRepository;
 import com.reflectme.server.repository.CardioRepository;
 import com.reflectme.server.repository.CardioWeekRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
 import java.util.Optional;
 
 @Service
 public class CardioService {
 
-    private CardioRepository cardioRepo;
-    private CardioWeekRepository cardioWeekRepo;
+    private CardioRepository cardioRepository;
+    private CardioWeekRepository cardioWeekRepository;
 
     @Autowired
-    public CardioService(CardioRepository cardioRepo, CardioWeekRepository cardioWeekRepo) {
-        this.cardioRepo = cardioRepo;
-        this.cardioWeekRepo = cardioWeekRepo;
+    public CardioService(CardioRepository cardioRepository, CardioWeekRepository cardioWeekRepository) {
+        this.cardioRepository = cardioRepository;
+        this.cardioWeekRepository = cardioWeekRepository;
     }
 
     public ResponseEntity createEvent(Cardio cardio) {
         try {
             return Optional
-                    .ofNullable(cardioRepo.save(cardio))
+                    .ofNullable(cardioRepository.save(cardio))
                     .map(cardioEvent -> ResponseEntity.ok().body(cardioEvent))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
@@ -44,7 +39,7 @@ public class CardioService {
         ResponseEntity response;
         try {
             response = Optional
-                    .ofNullable(cardioWeekRepo.createWeek(cardioWeek))
+                    .ofNullable(cardioWeekRepository.createWeek(cardioWeek))
                     .map(week -> ResponseEntity.ok().body(week))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }

@@ -1,8 +1,6 @@
 package com.reflectme.server.repository;
 
 import com.reflectme.server.JPAUtil;
-import com.reflectme.server.model.Account;
-import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.CardioWeek;
 import org.springframework.stereotype.Repository;
 
