@@ -5,6 +5,7 @@ import com.reflectme.server.model.CardioWeek;
 import com.reflectme.server.repository.CardioRepository;
 import com.reflectme.server.repository.CardioWeekRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ReactiveAdapterRegistry;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,8 @@ public class CardioService {
 
     public ResponseEntity createWeek(CardioWeek cardioWeek) {
         ResponseEntity response;
+        System.out.println(cardioWeek.getUserid()+", "+
+                cardioWeek.getActive()+", "+cardioWeek.getName());
         try {
             response = Optional
                     .ofNullable(cardioWeekRepository.createWeek(cardioWeek.getUserid(),
