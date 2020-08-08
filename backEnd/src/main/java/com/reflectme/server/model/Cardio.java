@@ -11,17 +11,17 @@ import java.time.LocalDate;
 public class Cardio {
 
     @Id
-    private long userID;
+    private long userid;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date", nullable=true)
     private LocalDate date;
 
     @Column(name = "dayOfWeek", nullable=false)
-    private String dayOfWeek;
+    private String dayofweek;
 
     @Column(name = "cardioType", nullable=false)
-    private String cardioType;
+    private String cardiotype;
 
     @Column(name = "distance", nullable=false)
     private double distance;
@@ -37,20 +37,20 @@ public class Cardio {
     }
 
     public Cardio(long userID, LocalDate date, String dayOfWeek, String cardioType, double distance, PGInterval time, String status) {
-        this.userID = userID;
+        this.userid = userID;
         this.date = date;
-        this.dayOfWeek = dayOfWeek;
-        this.cardioType = cardioType;
+        this.dayofweek = dayOfWeek;
+        this.cardiotype = cardioType;
         this.distance = distance;
         this.time = time;
         this.status = status;
     }
 
 
-    public Long getUserID() { return new Long(this.userID); }
+    public Long getUserID() { return new Long(this.userid); }
 
     public void setUserID(long userID) {
-        this.userID = userID;
+        this.userid = userid;
     }
 
     public LocalDate getDate() {
@@ -62,19 +62,19 @@ public class Cardio {
     }
 
     public String getdayOfWeek() {
-        return this.dayOfWeek;
+        return this.dayofweek;
     }
 
     public void setdayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
+        this.dayofweek = dayofweek;
     }
 
     public String getcardioType() {
-        return this.cardioType;
+        return this.cardiotype;
     }
 
     public void setcardioType(String cardioType) {
-        this.cardioType = cardioType;
+        this.cardiotype = cardiotype;
     }
 
     public double getdistance() {
