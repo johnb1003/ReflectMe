@@ -43,17 +43,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             Account account = new ObjectMapper()
                     .readValue(req.getInputStream(), Account.class);
 
-            /*
-            // Print request headers
-            Enumeration headerNames = req.getHeaderNames();
-            while (headerNames.hasMoreElements()) {
-
-                String headerName = (String) headerNames.nextElement();
-
-                System.out.println(headerName + ": " + req.getHeader(headerName));
-            }
-            */
-
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             account.getEmail(),

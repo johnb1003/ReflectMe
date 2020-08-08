@@ -22,31 +22,18 @@ import com.reflectme.server.model.Cardio;
 import com.reflectme.server.repository.CardioRepository;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/v1/cardio")
 public class CardioController {
 
     @Autowired
     private CardioRepository CardioRepository;
 
-    @GetMapping("/cardio")
-    public List<Cardio> getAllEmployees() {
-        return CardioRepository.findAll();
-    }
-
-    @GetMapping("/cardio/{userID}")
-    public ResponseEntity<Cardio> getCardioById(@PathVariable(value = "userID") Long userID)
-            throws ResourceNotFoundException {
-        Cardio cardioLog = CardioRepository.findById(userID).orElseThrow(() ->
-                new ResourceNotFoundException("Cardio logs not found for this id :: " + userID));
-        return ResponseEntity.ok().body(cardioLog);
-    }
-
-    @PostMapping("/cardio")
+    @PostMapping("/")
     public Cardio createCardio(@Valid @RequestBody Cardio cardioLog) {
         return CardioRepository.save(cardioLog);
     }
 
-    @PutMapping("/cardio/{userID}")
+    @PutMapping("/{userID}")
     public ResponseEntity<Cardio> updateCardio(@PathVariable(value = "userID") Long userID,
                                                  @Valid @RequestBody Cardio cardioDetails) throws ResourceNotFoundException {
         Cardio cardioLog = CardioRepository.findById(userID)
@@ -62,7 +49,7 @@ public class CardioController {
         return ResponseEntity.ok(updatedCardio);
     }
 
-    @DeleteMapping("/cardio/{userID}")
+    @DeleteMapping("/{userID}")
     public Map<String, Boolean> deleteCardio(@PathVariable(value = "userID") Long userID)
             throws ResourceNotFoundException {
         Cardio cardioLog = CardioRepository.findById(userID)

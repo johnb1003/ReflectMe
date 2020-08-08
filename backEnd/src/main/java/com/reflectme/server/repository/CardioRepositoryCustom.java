@@ -16,5 +16,4 @@ public interface CardioRepositoryCustom {
             "from Cardio c where c.userID = :id and status = \"scheduled\" " +
             "order by c.dayOfWeek", nativeQuery = true)
     public ArrayList<Cardio> getScheduledCardioListForUser(long id);
-
 }

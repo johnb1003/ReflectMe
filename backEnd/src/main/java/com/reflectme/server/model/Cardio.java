@@ -11,7 +11,6 @@ import java.time.LocalDate;
 public class Cardio {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userID;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -37,7 +36,8 @@ public class Cardio {
 
     }
 
-    public Cardio(LocalDate date, String dayOfWeek, String cardioType, double distance, PGInterval time, String status) {
+    public Cardio(long userID, LocalDate date, String dayOfWeek, String cardioType, double distance, PGInterval time, String status) {
+        this.userID = userID;
         this.date = date;
         this.dayOfWeek = dayOfWeek;
         this.cardioType = cardioType;

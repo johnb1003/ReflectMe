@@ -17,6 +17,16 @@ public interface AccountRepositoryCustom {
             "where a.email = :email", nativeQuery = true)
     public Account getFullAccountByEmail(String email);
 
+    @Query(value = "select * " +
+            "from Account a " +
+            "where a.userID = :id", nativeQuery = true)
+    public Account getAccountById(String id);
+
+    @Query(value = "select * " +
+            "from Account a " +
+            "where a.userID = :id", nativeQuery = true)
+    public Account getFullAccountById(String id);
+
     @Query(value = "select a.password " +
             "from Account a " +
             "where a.email = :email", nativeQuery = true)

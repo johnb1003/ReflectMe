@@ -59,6 +59,46 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     }
 
     @Override
+    public Account getAccountById(String id) {
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String queryString = "select * " +
+                "from Account a " +
+                "where a.userID = :id";
+
+        Query query = entityManager.createNativeQuery(queryString, Account.class);
+        query.setParameter("id", id);
+
+        Account account = (Account)query.getResultList()
+                .stream().findFirst().orElse(null);
+
+        entityManager.close();
+
+        return account.dropPassword();
+    }
+
+    @Override
+    public Account getFullAccountById(String id) {
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String queryString = "select * " +
+                "from Account a " +
+                "where a.userID = :id";
+
+        Query query = entityManager.createNativeQuery(queryString, Account.class);
+        query.setParameter("id", id);
+
+        Account account = (Account)query.getResultList()
+                .stream().findFirst().orElse(null);
+
+        entityManager.close();
+
+        return account;
+    }
+
+    @Override
     public String getPassword(String email) {
         entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
