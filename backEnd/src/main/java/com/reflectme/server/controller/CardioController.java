@@ -28,8 +28,10 @@ public class CardioController {
     @Autowired
     private CardioRepository CardioRepository;
 
-    @PostMapping("/")
+    @PostMapping("")
     public Cardio createCardio(@Valid @RequestBody Cardio cardioLog) {
+        System.out.println(cardioLog.getdayofweek());
+        System.out.println(cardioLog.getdistance());
         return CardioRepository.save(cardioLog);
     }
 
