@@ -17,7 +17,7 @@ public class Cardio {
     private LocalDate date;
 
     @Column(name = "dayofweek", nullable=false)
-    private String dayofweek;
+    private int dayofweek;
 
     @Column(name = "cardiotype", nullable=false)
     private String cardiotype;
@@ -38,7 +38,7 @@ public class Cardio {
 
     }
 
-    public Cardio(long userid, LocalDate date, String dayofweek, String cardiotype, double distance, int time, String status, long weekid) {
+    public Cardio(long userid, LocalDate date, int dayofweek, String cardiotype, double distance, int time, String status, long weekid) {
         this.userid = userid;
         this.date = date;
         this.dayofweek = dayofweek;
@@ -61,11 +61,11 @@ public class Cardio {
         this.date = date;
     }
 
-    public String getdayofweek() {
+    public int getdayofweek() {
         return this.dayofweek;
     }
 
-    public void setdayofweek(String dayofweek) {
+    public void setdayofweek(int dayofweek) {
         this.dayofweek = dayofweek;
     }
 
