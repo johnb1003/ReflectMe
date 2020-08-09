@@ -32,7 +32,7 @@ public class Cardio {
     private String status;
 
     @Column(name = "weekid", nullable=true)
-    private String weekid;
+    private long weekid;
 
     public Cardio() {
 
@@ -101,7 +101,7 @@ public class Cardio {
         this.status = status;
     }
 
-    public String getweekid() { return weekid; }
+    public long getweekid() { return weekid; }
 
-    public void setweekid(String weekid) { this.weekid = weekid; }
+    public void setweekid(long weekid) { this.weekid = weekid; }
 }
