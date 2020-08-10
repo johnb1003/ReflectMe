@@ -27,21 +27,21 @@ import com.reflectme.server.repository.CardioRepository;
 public class CardioController {
 
     @Autowired
-    private CardioRepository CardioRepository;
+    private CardioRepository cardioRepository;
 
     @Autowired
-    private CardioService CardioService;
+    private CardioService cardioService;
 
     @PostMapping("/event")
     public ResponseEntity createCardioEvent(@Valid @RequestBody Cardio cardioLog, Principal principal) {
         cardioLog.setuserid(Long.parseLong(principal.getName()));
-        return CardioService.createEvent(cardioLog);
+        return cardioService.createEvent(cardioLog);
     }
 
     @PutMapping("/{userID}")
     public ResponseEntity<Cardio> updateCardio(@PathVariable(value = "userID") Long userID,
                                                  @Valid @RequestBody Cardio cardioDetails) throws ResourceNotFoundException {
-        Cardio cardioLog = CardioRepository.findById(userID)
+        Cardio cardioLog = cardioRepository.findById(userID)
                 .orElseThrow(() -> new ResourceNotFoundException("Cardio log not found for this id :: " + userID));
 
         cardioLog.setdate(cardioDetails.getdate());
@@ -50,17 +50,17 @@ public class CardioController {
         cardioLog.setdistance(cardioDetails.getdistance());
         cardioLog.settime(cardioDetails.gettime());
         cardioLog.setstatus(cardioDetails.getstatus());
-        final Cardio updatedCardio = CardioRepository.save(cardioLog);
+        final Cardio updatedCardio = cardioRepository.save(cardioLog);
         return ResponseEntity.ok(updatedCardio);
     }
 
     @DeleteMapping("/{userID}")
     public Map<String, Boolean> deleteCardio(@PathVariable(value = "userID") Long userID)
             throws ResourceNotFoundException {
-        Cardio cardioLog = CardioRepository.findById(userID)
+        Cardio cardioLog = cardioRepository.findById(userID)
                 .orElseThrow(() -> new ResourceNotFoundException("Cardio log not found for this id :: " + userID));
 
-        CardioRepository.delete(cardioLog);
+        cardioRepository.delete(cardioLog);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;

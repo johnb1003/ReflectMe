@@ -27,7 +27,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
 
         String queryString = "INSERT INTO Cardio(userid, date, dayofweek, cardiotype, distance, " +
                 "time, status, weekid) "+
-                "VALUES(:userID, :date, :dayofweek, :cardiotype, :distance, " +
+                "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, " +
                 ":time, :status, :weekid) " +
                 "RETURNING *";
 
