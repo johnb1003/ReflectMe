@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public interface CardioRepositoryCustom {
 
-    @Query(value = "INSERT INTO Cardio(userid, date, dayofweek, cardiotype, distance, " +
-                           "time, status, weekid) " +
+    @Query(value = "INSERT INTO cardio(userid, date, dayofweek, cardiotype, distance, " +
+            "time, status, weekid) "+
             "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, " +
-                           ":time, :status, :weekid) " +
+            ":time, :status, :weekid) " +
             "RETURNING *")
     public Cardio createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
                               double distance, int time, String status, long weekid);
