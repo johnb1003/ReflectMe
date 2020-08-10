@@ -13,8 +13,8 @@ public interface CardioRepositoryCustom {
             "VALUES(:userID, :date, :dayofweek, :cardiotype, :distance, " +
                            ":time, :status, :weekid) " +
             "RETURNING *")
-    public Cardio createEvent(long userID, LocalDate date, int dayofweek, String cardiotype,
-                              double distance, int time, String status, long weekID);
+    public Cardio createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
+                              double distance, int time, String status, long weekid);
 
     @Query(value = "select * " +
             "from Cardio c where c.userID = :id and status = \"completed\" " +
