@@ -1,7 +1,6 @@
 package com.reflectme.server.repository;
 
 import com.reflectme.server.model.Cardio;
-import com.reflectme.server.model.CardioWeek;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.ArrayList;

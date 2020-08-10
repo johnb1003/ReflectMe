@@ -1,13 +1,13 @@
 package com.reflectme.server.repository;
 
-import com.reflectme.server.model.CardioWeek;
+import com.reflectme.server.model.Week;
 import org.springframework.data.jpa.repository.Query;
 
-public interface CardioWeekRepositoryCustom {
+public interface WeekRepositoryCustom {
 
     @Query(value = "INSERT INTO cardio_week(userID, active, name) " +
             "VALUES(:userID, :active, :name) " +
             "RETURNING *", nativeQuery = true)
-    public CardioWeek createWeek(long userID, boolean active, String name);
+    public Week createWeek(long userID, boolean active, String name);
 
 }

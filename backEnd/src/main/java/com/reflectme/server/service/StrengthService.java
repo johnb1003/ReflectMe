@@ -1,9 +1,9 @@
 package com.reflectme.server.service;
 
-import com.reflectme.server.model.Cardio;
-import com.reflectme.server.model.Week;
-import com.reflectme.server.repository.CardioRepository;
+import com.reflectme.server.model.Strength;
+import com.reflectme.server.repository.StrengthRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ReactiveAdapterRegistry;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,20 +11,20 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CardioService {
+public class StrengthService {
 
-    private CardioRepository cardioRepository;
+    private StrengthRepository StrengthRepository;
 
     @Autowired
-    public CardioService(CardioRepository cardioRepository) {
-        this.cardioRepository = cardioRepository;
+    public StrengthService(StrengthRepository StrengthRepository) {
+        this.StrengthRepository = StrengthRepository;
     }
 
-    public ResponseEntity createEvent(Cardio cardio) {
+    public ResponseEntity createEvent(Strength Strength) {
         try {
             return Optional
-                    .ofNullable(cardioRepository.save(cardio))
-                    .map(cardioEvent -> ResponseEntity.ok().body(cardioEvent))
+                    .ofNullable(StrengthRepository.save(Strength))
+                    .map(StrengthEvent -> ResponseEntity.ok().body(StrengthEvent))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
         catch (Exception e){
@@ -33,3 +33,4 @@ public class CardioService {
     }
 
 }
+

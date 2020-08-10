@@ -24,51 +24,46 @@ import com.reflectme.server.model.Strength;
 import com.reflectme.server.repository.StrengthRepository;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/v1/strength")
 public class StrengthController {
 
     @Autowired
-    private com.reflectme.server.repository.StrengthRepository StrengthRepository;
+    private StrengthRepository strengthRepository;
 
-    @GetMapping("/strength")
-    public List<Strength> getAllEmployees() {
-        return StrengthRepository.findAll();
-    }
-
-    @GetMapping("/strength/{userID}")
+    @GetMapping("/{userID}")
     public ResponseEntity<Strength> getStrengthById(@PathVariable(value = "userID") Long userID)
             throws ResourceNotFoundException {
-        Strength strengthLog = StrengthRepository.findById(userID).orElseThrow(() ->
+        Strength strengthLog = strengthRepository.findById(userID).orElseThrow(() ->
                 new ResourceNotFoundException("Strength logs not found for this id :: " + userID));
         return ResponseEntity.ok().body(strengthLog);
     }
 
-    @PostMapping("/strength")
+    @PostMapping("/event")
     public Strength createStrength(@Valid @RequestBody Strength strengthLog) {
-        return StrengthRepository.save(strengthLog);
+        return strengthRepository.save(strengthLog);
     }
 
-    @PutMapping("/strength/{userID}")
+    @PutMapping("/{userID}")
     public ResponseEntity<Strength> updateStrength(@PathVariable(value = "userID") Long userID,
                                                @Valid @RequestBody Strength StrengthDetails) throws ResourceNotFoundException {
-        Strength strengthLog = StrengthRepository.findById(userID)
+        Strength strengthLog = strengthRepository.findById(userID)
                 .orElseThrow(() -> new ResourceNotFoundException("Strength log not found for this id :: " + userID));
 
         strengthLog.setDate(StrengthDetails.getDate());
         strengthLog.setdayOfWeek(StrengthDetails.getdayOfWeek());
         strengthLog.setStrengthType(StrengthDetails.getStrengthType());
         strengthLog.setstatus(StrengthDetails.getstatus());
-        final Strength updatedStrength = StrengthRepository.save(strengthLog);
+        final Strength updatedStrength = strengthRepository.save(strengthLog);
         return ResponseEntity.ok(updatedStrength);
     }
 
-    @DeleteMapping("/strength/{userID}")
+    @DeleteMapping("/{userID}")
     public Map<String, Boolean> deleteStrength(@PathVariable(value = "userID") Long userID)
             throws ResourceNotFoundException {
-        Strength StrengthLog = StrengthRepository.findById(userID)
+        Strength StrengthLog = strengthRepository.findById(userID)
                 .orElseThrow(() -> new ResourceNotFoundException("Strength log not found for this id :: " + userID));
 
-        StrengthRepository.delete(StrengthLog);
+        strengthRepository.delete(StrengthLog);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;

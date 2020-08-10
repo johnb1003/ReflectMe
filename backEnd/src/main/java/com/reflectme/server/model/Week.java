@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "cardio_week")
-public class CardioWeek {
+public class Week {
 
     @Id
     private long weekid;
@@ -24,11 +24,11 @@ public class CardioWeek {
     @Column(name = "name", nullable = false)
     private String name;
 
-    public CardioWeek() {
+    public Week() {
 
     }
 
-    public CardioWeek(long weekid, long userid, boolean active, String name) {
+    public Week(long weekid, long userid, boolean active, String name) {
         this.weekid = weekid;
         this.userid = userid;
         this.active = active;

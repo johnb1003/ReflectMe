@@ -2,18 +2,15 @@ package com.reflectme.server.controller;
 
 import java.security.Principal;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
-import com.reflectme.server.model.CardioWeek;
-import com.reflectme.server.repository.CardioWeekRepository;
+import com.reflectme.server.model.Week;
 import com.reflectme.server.service.CardioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -39,12 +36,6 @@ public class CardioController {
     public ResponseEntity createCardioEvent(@Valid @RequestBody Cardio cardioLog, Principal principal) {
         cardioLog.setuserid(Long.parseLong(principal.getName()));
         return CardioService.createEvent(cardioLog);
-    }
-
-    @PostMapping("/week")
-    public ResponseEntity createCardioWeek(@Valid @RequestBody CardioWeek cardioWeek, Principal principal) {
-        cardioWeek.setUserid(Long.parseLong(principal.getName()));
-        return CardioService.createWeek(cardioWeek);
     }
 
     @PutMapping("/{userID}")
