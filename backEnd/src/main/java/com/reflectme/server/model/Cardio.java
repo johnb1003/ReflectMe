@@ -10,6 +10,9 @@ import java.time.LocalDate;
 public class Cardio {
 
     @Id
+    private long cardioid;
+
+    @Column(name="userid", nullable=false)
     private long userid;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -38,7 +41,8 @@ public class Cardio {
 
     }
 
-    public Cardio(long userid, LocalDate date, int dayofweek, String cardiotype, double distance, int time, String status, long weekid) {
+    public Cardio(long userid, LocalDate date, int dayofweek, String cardiotype,
+                  double distance, int time, String status, long weekid, long cardioid) {
         this.userid = userid;
         this.date = date;
         this.dayofweek = dayofweek;
@@ -46,6 +50,8 @@ public class Cardio {
         this.distance = distance;
         this.time = time;
         this.status = status;
+        this.weekid = weekid;
+        this.cardioid = cardioid;
     }
 
 
@@ -101,7 +107,11 @@ public class Cardio {
         this.status = status;
     }
 
-    public long getweekid() { return weekid; }
+    public long getweekid() { return this.weekid; }
 
     public void setweekid(long weekid) { this.weekid = weekid; }
+
+    public long getcardioid() { return cardioid; }
+
+    public void setcardioid(long cardioid) { this.cardioid = cardioid; }
 }
