@@ -1,12 +1,14 @@
 package com.reflectme.server.repository;
 
 import com.reflectme.server.JPAUtil;
+import com.reflectme.server.model.Account;
 import com.reflectme.server.model.Cardio;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Repository
@@ -14,6 +16,38 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Override
+    public Cardio createEvent(long userID, LocalDate date, int dayofweek, String cardioType,
+                              double distance, int time, String status, long weekID) {
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        ArrayList<Cardio> cardioList;
+
+        String queryString = "INSERT INTO Cardio(userid, date, dayofweek, cardiotype, distance, " +
+                "time, status, weekid) "+
+                "VALUES(:userID, :date, :dayofweek, :cardiotype, :distance, " +
+                ":time, :status, :weekid) " +
+                "RETURNING *";
+
+        Query query = entityManager.createNativeQuery(queryString, Cardio.class);
+        query.setParameter("userid", userID);
+        query.setParameter("date", date);
+        query.setParameter("dayofweek", dayofweek);
+        query.setParameter("cardiotype", cardioType);
+        query.setParameter("distance", distance);
+        query.setParameter("time", time);
+        query.setParameter("status", status);
+        query.setParameter("weekid", weekID);
+
+        Cardio cardio = (Cardio)query.getResultList()
+                .stream().findFirst().orElse(null);
+
+        entityManager.close();
+
+        return cardio;
+    }
 
     @Override
     public ArrayList<Cardio> getCompletedCardioListForUser(long id) {
