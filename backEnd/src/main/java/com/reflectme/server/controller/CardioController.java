@@ -32,7 +32,7 @@ public class CardioController {
     @Autowired
     private CardioService CardioService;
 
-    @PostMapping("/day")
+    @PostMapping("/event")
     public ResponseEntity createCardioEvent(@Valid @RequestBody Cardio cardioLog, Principal principal) {
         cardioLog.setuserid(Long.parseLong(principal.getName()));
         return CardioService.createEvent(cardioLog);

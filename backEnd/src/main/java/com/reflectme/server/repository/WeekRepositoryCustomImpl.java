@@ -39,4 +39,26 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
 
         return newWeek;
     }
+
+    @Modifying(clearAutomatically = true)
+    @Override
+    public Week deleteWeek(long weekID, long userID) {
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String queryString = "DELETE FROM weeks " +
+                "WHERE weekid=:weekID AND userID=:userID" +
+                "RETURNING *";
+
+        Query query = entityManager.createNativeQuery(queryString, Week.class);
+        query.setParameter("weekID", weekID);
+        query.setParameter("userID", userID);
+
+        Week deletedWeek = (Week)query.getResultList()
+                .stream().findFirst().orElse(null);
+
+        entityManager.close();
+
+        return deletedWeek;
+    }
 }
