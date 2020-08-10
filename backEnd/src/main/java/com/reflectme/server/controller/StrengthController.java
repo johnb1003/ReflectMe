@@ -42,20 +42,7 @@ public class StrengthController {
     public Strength createStrength(@Valid @RequestBody Strength strengthLog) {
         return strengthRepository.save(strengthLog);
     }
-
-    @PutMapping("/{userID}")
-    public ResponseEntity<Strength> updateStrength(@PathVariable(value = "userID") Long userID,
-                                               @Valid @RequestBody Strength StrengthDetails) throws ResourceNotFoundException {
-        Strength strengthLog = strengthRepository.findById(userID)
-                .orElseThrow(() -> new ResourceNotFoundException("Strength log not found for this id :: " + userID));
-
-        strengthLog.setDate(StrengthDetails.getDate());
-        strengthLog.setdayOfWeek(StrengthDetails.getdayOfWeek());
-        strengthLog.setStrengthType(StrengthDetails.getStrengthType());
-        strengthLog.setstatus(StrengthDetails.getstatus());
-        final Strength updatedStrength = strengthRepository.save(strengthLog);
-        return ResponseEntity.ok(updatedStrength);
-    }
+    
 
     @DeleteMapping("/{userID}")
     public Map<String, Boolean> deleteStrength(@PathVariable(value = "userID") Long userID)
