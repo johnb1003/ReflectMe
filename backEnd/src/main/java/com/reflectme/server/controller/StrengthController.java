@@ -1,5 +1,6 @@
 package com.reflectme.server.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,7 +8,9 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import com.reflectme.server.model.Strength;
+import com.reflectme.server.model.Strength;
 import com.reflectme.server.repository.StrengthRepository;
+import com.reflectme.server.service.StrengthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,6 +33,9 @@ public class StrengthController {
     @Autowired
     private StrengthRepository strengthRepository;
 
+    @Autowired
+    private StrengthService strengthService;
+
     @GetMapping("/{userID}")
     public ResponseEntity<Strength> getStrengthById(@PathVariable(value = "userID") Long userID)
             throws ResourceNotFoundException {
@@ -39,10 +45,11 @@ public class StrengthController {
     }
 
     @PostMapping("/event")
-    public Strength createStrength(@Valid @RequestBody Strength strengthLog) {
-        return strengthRepository.save(strengthLog);
+    public ResponseEntity createStrengthEvent(@Valid @RequestBody Strength strengthLog, Principal principal) {
+        strengthLog.setuserid(Long.parseLong(principal.getName()));
+        return strengthService.createEvent(strengthLog);
     }
-    
+
 
     @DeleteMapping("/{userID}")
     public Map<String, Boolean> deleteStrength(@PathVariable(value = "userID") Long userID)
