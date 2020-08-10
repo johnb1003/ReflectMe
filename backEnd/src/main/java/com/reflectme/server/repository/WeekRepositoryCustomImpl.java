@@ -23,7 +23,7 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
         entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
-        String queryString = "INSERT INTO cardio_week(userID, active, name) " +
+        String queryString = "INSERT INTO weeks(userID, active, name) " +
                 "VALUES(:userID, :active, :name) " +
                 "RETURNING *";
 
