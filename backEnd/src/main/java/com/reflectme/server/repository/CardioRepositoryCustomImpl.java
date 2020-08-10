@@ -18,7 +18,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     private EntityManager entityManager;
 
     @Override
-    public Cardio createEvent(long userID, LocalDate date, int dayofweek, String cardioType,
+    public Cardio createEvent(long userID, LocalDate date, int dayofweek, String cardiotype,
                               double distance, int time, String status, long weekID) {
         entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
@@ -35,7 +35,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         query.setParameter("userid", userID);
         query.setParameter("date", date);
         query.setParameter("dayofweek", dayofweek);
-        query.setParameter("cardiotype", cardioType);
+        query.setParameter("cardiotype", cardiotype);
         query.setParameter("distance", distance);
         query.setParameter("time", time);
         query.setParameter("status", status);
