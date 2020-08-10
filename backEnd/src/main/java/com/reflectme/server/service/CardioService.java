@@ -23,7 +23,9 @@ public class CardioService {
     public ResponseEntity createEvent(Cardio cardio) {
         try {
             return Optional
-                    .ofNullable(cardioRepository.save(cardio))
+                    .ofNullable(cardioRepository.createEvent(cardio.getuserid(),
+                            cardio.getdate(), cardio.getdayofweek(), cardio.getcardiotype(),
+                            cardio.getdistance(), cardio.gettime(), cardio.getstatus(), cardio.getweekid()))
                     .map(cardioEvent -> ResponseEntity.ok().body(cardioEvent))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
