@@ -49,14 +49,6 @@ public class Strength {
 
     public void setuserid(long userid) { this.userid = userid; }
 
-    public LocalDate getdate() {
-        return this.date;
-    }
-
-    public void setdate(LocalDate date) {
-        this.date = date;
-    }
-
     public int getdayofweek() {
         return this.dayofweek;
     }
