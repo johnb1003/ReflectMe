@@ -3,11 +3,14 @@ package com.reflectme.server.repository;
 import com.reflectme.server.JPAUtil;
 import com.reflectme.server.model.Account;
 import com.reflectme.server.model.Cardio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.Optional;
@@ -18,9 +21,13 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Autowired
+    private EntityManagerFactory emf;
+
     @Override
     public Account getAccountByEmail(String email) {
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager = emf.createEntityManager();
         entityManager.getTransaction().begin();
 
         String queryString = "select * " +
