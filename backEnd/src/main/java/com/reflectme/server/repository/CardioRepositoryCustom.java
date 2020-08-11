@@ -1,13 +1,17 @@
 package com.reflectme.server.repository;
 
 import com.reflectme.server.model.Cardio;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public interface CardioRepositoryCustom {
 
+    @Modifying
+    @Transactional
     @Query(value = "INSERT INTO cardio (userid, date, dayofweek, cardiotype, distance, " +
             "time, status, weekid) "+
             "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, " +
