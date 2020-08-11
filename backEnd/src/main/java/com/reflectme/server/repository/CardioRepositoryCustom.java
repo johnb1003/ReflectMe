@@ -16,7 +16,7 @@ public interface CardioRepositoryCustom {
             "time, status, weekid) "+
             "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, " +
             ":time, :status, :weekid)", nativeQuery = true)
-    public Cardio createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
+    public int createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
                               double distance, int time, String status, long weekid);
 
     @Query(value = "select * " +

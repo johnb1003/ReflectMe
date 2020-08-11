@@ -27,7 +27,7 @@ public class CardioService {
                     .ofNullable(cardioRepository.createEvent(cardio.getuserid(),
                             cardio.getdate(), cardio.getdayofweek(), cardio.getcardiotype(),
                             cardio.getdistance(), cardio.gettime(), cardio.getstatus(), cardio.getweekid()))
-                    .map(cardioEvent -> ResponseEntity.ok().body(cardioEvent))
+                    .map(cardioEvent -> ResponseEntity.ok().body(cardio))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
         catch (Exception e){

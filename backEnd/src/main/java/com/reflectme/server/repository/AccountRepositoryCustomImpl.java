@@ -134,10 +134,10 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
         query.setParameter("email", email);
         query.setParameter("phonenum", phonenum);
         query.setParameter("password", password);
-        int i = query.executeUpdate();
+        int rows = query.executeUpdate();
 
         entityManager.close();
 
-        return i;
+        return rows;
     }
 }
