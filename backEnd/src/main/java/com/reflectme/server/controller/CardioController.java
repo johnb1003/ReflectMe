@@ -34,6 +34,7 @@ public class CardioController {
 
     @PostMapping("/event")
     public ResponseEntity createCardioEvent(@Valid @RequestBody Cardio cardioLog, Principal principal) {
+        System.out.println("HERE CONTROLLER");
         cardioLog.setuserid(Long.parseLong(principal.getName()));
         return cardioService.createEvent(cardioLog);
     }
