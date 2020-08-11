@@ -36,8 +36,13 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         parameters.put("lifts", event.getlifts());
         parameters.put("weekid", event.getweekid());
 
-        Number result = simpleJdbcInsertStrength.executeAndReturnKey(parameters);
-        System.out.println("Generated id - " + result.longValue());
+        try {
+            Number result = simpleJdbcInsertStrength.executeAndReturnKey(parameters);
+            System.out.println("Generated id - " + result.longValue());
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
 
         entityManager.close();
 
