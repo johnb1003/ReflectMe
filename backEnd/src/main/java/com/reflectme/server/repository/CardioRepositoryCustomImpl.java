@@ -22,7 +22,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Modifying
     @Transactional
     @Override
-    public int createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
+    public Cardio createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
                               double distance, int time, String status, long weekid) {
         entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
@@ -42,11 +42,11 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         query.setParameter("status", status);
         query.setParameter("weekid", weekid);
 
-        int rows = query.executeUpdate();
+        Cardio cardio = (Cardio)query.getSingleResult();
 
         entityManager.close();
 
-        return rows;
+        return cardio;
     }
 
     @Override
