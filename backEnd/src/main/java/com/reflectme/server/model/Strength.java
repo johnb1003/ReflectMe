@@ -10,6 +10,9 @@ import java.time.LocalDate;
 public class Strength {
 
     @Id
+    private long strengthid;
+
+    @Column(name = "userid", nullable=false)
     private long userid;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -44,6 +47,9 @@ public class Strength {
         this.status = status;
     }
 
+    public long getstrengthid() { return strengthid; }
+
+    public void setstrengthid(long strengthid) { this.strengthid = strengthid; }
 
     public long getuserid() { return this.userid; }
 

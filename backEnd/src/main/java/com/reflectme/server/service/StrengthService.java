@@ -13,18 +13,18 @@ import java.util.Optional;
 @Service
 public class StrengthService {
 
-    private StrengthRepository StrengthRepository;
+    private StrengthRepository strengthRepository;
 
     @Autowired
     public StrengthService(StrengthRepository StrengthRepository) {
-        this.StrengthRepository = StrengthRepository;
+        this.strengthRepository = StrengthRepository;
     }
 
-    public ResponseEntity createEvent(Strength Strength) {
+    public ResponseEntity createEvent(Strength strength) {
         try {
             return Optional
-                    .ofNullable(StrengthRepository.save(Strength))
-                    .map(StrengthEvent -> ResponseEntity.ok().body(StrengthEvent))
+                    .ofNullable(strengthRepository.createEvent(strength))
+                    .map(strengthID -> ResponseEntity.ok().body(strength.setstrengthid(strengthID)))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
         catch (Exception e){
