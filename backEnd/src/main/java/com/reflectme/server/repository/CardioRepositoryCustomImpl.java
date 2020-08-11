@@ -30,8 +30,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         System.out.println("HERE REPO");
 
         String queryString = "INSERT INTO cardio (userid, date, dayofweek, cardiotype, distance, time, status, weekid) "+
-                "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, :time, :status, :weekid) " +
-                "RETURNING *";
+                "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, :time, :status, :weekid)";
 
         Query query = entityManager.createNativeQuery(queryString, Cardio.class);
         query.setParameter("userid", userid);
