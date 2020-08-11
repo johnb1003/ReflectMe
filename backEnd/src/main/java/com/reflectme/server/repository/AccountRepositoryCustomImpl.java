@@ -22,12 +22,12 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     private EntityManager entityManager;
 
     @Autowired
-    private EntityManagerFactory emf;
+    private LocalContainerEntityManagerFactoryBean emf;
 
     @Override
     public Account getAccountByEmail(String email) {
         //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        entityManager = emf.createEntityManager();
+        entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
         String queryString = "select * " +

@@ -7,6 +7,7 @@ import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver
 import org.springframework.instrument.classloading.ReflectiveLoadTimeWeaver;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -18,7 +19,22 @@ public class PersistenceConfig {
     DataSource dataSource;
 
     @Bean
-    public EntityManagerFactory emf(){
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        //JpaVendorAdapteradapter can be autowired as well if it's configured in application properties.
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setGenerateDdl(false);
+
+        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+        factory.setJpaVendorAdapter(vendorAdapter);
+        //Add package to scan for entities.
+        factory.setPackagesToScan("com.reflectme.server");
+        factory.setDataSource(dataSource);
+        return factory;
+    }
+
+    /*
+    @Bean
+    public EntityManagerFactory entityManagerFactory(){
         Properties properties = new Properties();
 
         System.out.print(System.getenv("DB_USER"));
@@ -40,4 +56,5 @@ public class PersistenceConfig {
         emf.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
         return emf.getObject();
     }
+     */
 }
