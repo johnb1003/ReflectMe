@@ -29,8 +29,8 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
 
         ArrayList<Cardio> cardioList;
 
-        String queryString = "INSERT INTO cardio (userid, date, dayofweek, cardiotype, distance, time, status, weekid) "+
-                "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, :time, :status, :weekid) " +
+        String queryString = "INSERT INTO Cardio (userid, date, dayofweek, cardiotype, distance, time, status, weekid) "+
+                "VALUES (:userid, :date, :dayofweek, :cardiotype, :distance, :time, :status, :weekid) " +
                 "RETURNING *";
 
         Query query = entityManager.createNativeQuery(queryString, Cardio.class);
