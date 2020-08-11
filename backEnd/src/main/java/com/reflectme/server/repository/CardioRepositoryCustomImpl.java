@@ -3,7 +3,9 @@ package com.reflectme.server.repository;
 import com.reflectme.server.JPAUtil;
 import com.reflectme.server.model.Account;
 import com.reflectme.server.model.Cardio;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,6 +19,8 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Modifying
+    @Transactional
     @Override
     public Cardio createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
                               double distance, int time, String status, long weekid) {
@@ -25,10 +29,8 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
 
         ArrayList<Cardio> cardioList;
 
-        String queryString = "INSERT INTO cardio (userid, date, dayofweek, cardiotype, distance, " +
-                "time, status, weekid) "+
-                "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, " +
-                ":time, :status, :weekid) " +
+        String queryString = "INSERT INTO cardio (userid, date, dayofweek, cardiotype, distance, time, status, weekid) "+
+                "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, :time, :status, :weekid) " +
                 "RETURNING *";
 
         Query query = entityManager.createNativeQuery(queryString, Cardio.class);
