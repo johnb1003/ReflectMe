@@ -5,6 +5,8 @@ import com.reflectme.server.model.Account;
 import com.reflectme.server.model.Cardio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Repository
 public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
@@ -25,21 +29,24 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Autowired
     private LocalContainerEntityManagerFactoryBean emf;
 
+    @Autowired
+    SimpleJdbcInsert simpleJdbcInsertCardio;
+
 
     @Modifying
     @Transactional
     @Override
-    public Cardio createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
+    public long createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
                               double distance, int time, String status, long weekid) {
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
-
 
         System.out.println("HERE REPO");
 
         String queryString = "INSERT INTO cardio (userid, date, dayofweek, cardiotype, distance, time, status, weekid) "+
                 "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, :time, :status, :weekid)";
 
+        /*
         Query query = entityManager.createNativeQuery(queryString, Cardio.class);
         query.setParameter("userid", userid);
         query.setParameter("date", date);
@@ -51,10 +58,24 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         query.setParameter("weekid", weekid);
 
         Cardio cardio = (Cardio)query.getSingleResult();
+         */
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("userid", userid);
+        parameters.put("date", date);
+        parameters.put("dayofweek", dayofweek);
+        parameters.put("cardiotype", cardiotype);
+        parameters.put("distance", distance);
+        parameters.put("time", time);
+        parameters.put("status", status);
+        parameters.put("weekid", weekid);
+
+        Number result = simpleJdbcInsertCardio.executeAndReturnKey(parameters);
+        System.out.println("Generated id - " + result.longValue());
 
         entityManager.close();
 
-        return cardio;
+        return result.longValue();
     }
 
 

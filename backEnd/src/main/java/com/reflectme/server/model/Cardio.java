@@ -113,5 +113,6 @@ public class Cardio {
 
     public long getcardioid() { return cardioid; }
 
-    public void setcardioid(long cardioid) { this.cardioid = cardioid; }
+    public Cardio setcardioid(long cardioid) { this.cardioid = cardioid;
+        return this;}
 }
