@@ -49,7 +49,8 @@ public class Strength {
 
     public long getstrengthid() { return strengthid; }
 
-    public void setstrengthid(long strengthid) { this.strengthid = strengthid; }
+    public Strength setstrengthid(long strengthid) { this.strengthid = strengthid;
+        return this;}
 
     public long getuserid() { return this.userid; }
 
