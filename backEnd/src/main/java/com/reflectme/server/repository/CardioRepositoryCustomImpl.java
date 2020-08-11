@@ -3,11 +3,14 @@ package com.reflectme.server.repository;
 import com.reflectme.server.JPAUtil;
 import com.reflectme.server.model.Account;
 import com.reflectme.server.model.Cardio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.time.LocalDate;
@@ -19,13 +22,18 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Autowired
+    private LocalContainerEntityManagerFactoryBean emf;
+
+
     @Modifying
     @Transactional
     @Override
     public Cardio createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
                               double distance, int time, String status, long weekid) {
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
+
 
         System.out.println("HERE REPO");
 
@@ -48,6 +56,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
 
         return cardio;
     }
+
 
     @Override
     public ArrayList<Cardio> getCompletedCardioListForUser(long id) {
