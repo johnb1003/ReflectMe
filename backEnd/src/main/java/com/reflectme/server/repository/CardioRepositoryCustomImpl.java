@@ -38,8 +38,6 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
-        System.out.println("HERE REPO");
-
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("userid", event.getuserid());
         parameters.put("date", event.getdate());

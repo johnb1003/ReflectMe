@@ -21,7 +21,6 @@ public class CardioService {
     }
 
     public ResponseEntity createEvent(Cardio cardio) {
-        System.out.println("HERE SERVICE");
         try {
             return Optional
                     .ofNullable(cardioRepository.createEvent(cardio))

@@ -40,4 +40,15 @@ public class PersistenceConfig {
                 .usingGeneratedKeyColumns("cardioid");
     }
 
+    @Bean
+    public SimpleJdbcInsert simpleJdbcInsertStrength(){
+        return new SimpleJdbcInsert(dataSource).withTableName("strength")
+                .usingGeneratedKeyColumns("strengthid");
+    }
+
+    @Bean
+    public SimpleJdbcInsert simpleJdbcInsertWeek(){
+        return new SimpleJdbcInsert(dataSource).withTableName("weeks")
+                .usingGeneratedKeyColumns("weekid");
+    }
 }

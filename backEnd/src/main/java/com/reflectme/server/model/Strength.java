@@ -49,6 +49,10 @@ public class Strength {
 
     public void setuserid(long userid) { this.userid = userid; }
 
+    public LocalDate getdate() { return date; }
+
+    public void setdate(LocalDate date) { this.date = date; }
+
     public int getdayofweek() {
         return this.dayofweek;
     }
@@ -69,7 +73,7 @@ public class Strength {
         return this.lifts;
     }
 
-    public void setlifts(double distance) {
+    public void setlifts(String lifts) {
         this.lifts = lifts;
     }
 
