@@ -43,12 +43,14 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         query.setParameter("status", status);
         query.setParameter("weekid", weekid);
 
-        Cardio cardio = (Cardio)query.getResultList()
-                .stream().findFirst().orElse(null);
+        //Cardio cardio = (Cardio)query.getResultList()
+        //        .stream().findFirst().orElse(null);
+
+        int rows = query.executeUpdate();
 
         entityManager.close();
 
-        return cardio;
+        return null;
     }
 
     @Override
