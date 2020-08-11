@@ -47,7 +47,8 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
 
     @Override
     public Account getFullAccountByEmail(String email) {
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager = emf.getObject().createEntityManager();
+        //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
         String queryString = "select * " +
@@ -67,7 +68,8 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
 
     @Override
     public Account getAccountById(String id) {
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager = emf.getObject().createEntityManager();
+        //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
         String queryString = "select * " +
@@ -87,7 +89,8 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
 
     @Override
     public Account getFullAccountById(String id) {
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager = emf.getObject().createEntityManager();
+        //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
         String queryString = "select * " +
@@ -107,7 +110,8 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
 
     @Override
     public String getPassword(String email) {
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager = emf.getObject().createEntityManager();
+        //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
         String queryString = "select a.password " +
@@ -129,7 +133,8 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     @Modifying
     @Transactional
     public int saveAccount(String fname, String lname, String email, String phonenum, String password) {
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager = emf.getObject().createEntityManager();
+        //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
         String queryString = "INSERT INTO account (fname, lname, email, phonenum, password) " +
