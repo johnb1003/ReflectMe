@@ -32,9 +32,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Autowired
     SimpleJdbcInsert simpleJdbcInsertCardio;
 
-
-    @Modifying
-    @Transactional
+    
     @Override
     public long createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
                               double distance, int time, String status, long weekid) {
