@@ -27,6 +27,8 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
+        Number result = null;
+
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("userid", event.getuserid());
         parameters.put("date", event.getdate());
@@ -37,7 +39,7 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         parameters.put("weekid", event.getweekid());
 
         try {
-            Number result = simpleJdbcInsertStrength.executeAndReturnKey(parameters);
+            result = simpleJdbcInsertStrength.executeAndReturnKey(parameters);
             System.out.println("Generated id - " + result.longValue());
         }
         catch (Exception e) {
