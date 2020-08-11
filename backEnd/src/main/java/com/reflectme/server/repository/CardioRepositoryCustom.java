@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface CardioRepositoryCustom {
 
-    @Query(value = "INSERT INTO cardio(userid, date, dayofweek, cardiotype, distance, " +
+    @Query(value = "INSERT INTO cardio (userid, date, dayofweek, cardiotype, distance, " +
             "time, status, weekid) "+
             "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, " +
             ":time, :status, :weekid) " +
