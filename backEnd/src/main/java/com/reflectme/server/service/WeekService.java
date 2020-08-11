@@ -27,9 +27,8 @@ public class WeekService {
                 week.getActive()+", "+week.getName());
         try {
             response = Optional
-                    .ofNullable(weekRepository.createWeek(week.getUserid(),
-                            week.getActive(), week.getName()))
-                    .map(newWeek -> ResponseEntity.ok().body(newWeek))
+                    .ofNullable(weekRepository.createWeek(week))
+                    .map(weekid -> ResponseEntity.ok().body(week.setWeekid(weekid)))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
         catch (Exception e){

@@ -2,13 +2,18 @@ package com.reflectme.server.repository;
 
 import com.reflectme.server.JPAUtil;
 import com.reflectme.server.model.Week;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.HashMap;
+import java.util.Map;
 
 @Repository
 public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
@@ -16,28 +21,35 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Transactional
-    @Modifying(clearAutomatically = true)
+    @Autowired
+    private LocalContainerEntityManagerFactoryBean emf;
+
+    @Autowired
+    SimpleJdbcInsert simpleJdbcInsertWeek;
+
     @Override
-    public Week createWeek(long userID, boolean active, String name) {
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+    public long createWeek(Week week) {
+        entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
-        String queryString = "INSERT INTO weeks(userID, active, name) " +
-                "VALUES(:userID, :active, :name) " +
-                "RETURNING *";
+        Number result = null;
 
-        Query query = entityManager.createNativeQuery(queryString, Week.class);
-        query.setParameter("userID", userID);
-        query.setParameter("active", active);
-        query.setParameter("name", name);
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("userid", week.getUserid());
+        parameters.put("active", week.getActive());
+        parameters.put("name", week.getName());
 
-        Week newWeek = (Week)query.getResultList()
-                .stream().findFirst().orElse(null);
+        try {
+            result = simpleJdbcInsertWeek.executeAndReturnKey(parameters);
+            System.out.println("Generated id - " + result.longValue());
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
 
         entityManager.close();
 
-        return newWeek;
+        return result.longValue();
     }
 
     @Modifying(clearAutomatically = true)

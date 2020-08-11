@@ -47,8 +47,9 @@ public class Week {
         return weekid;
     }
 
-    public void setWeekid(long weekid) {
+    public Week setWeekid(long weekid) {
         this.weekid = weekid;
+        return this;
     }
 
     public String getName() {

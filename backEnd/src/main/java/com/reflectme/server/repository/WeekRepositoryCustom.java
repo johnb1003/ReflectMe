@@ -5,10 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface WeekRepositoryCustom {
 
-    @Query(value = "INSERT INTO weeks(userID, active, name) " +
-            "VALUES(:userID, :active, :name) " +
-            "RETURNING *", nativeQuery = true)
-    public Week createWeek(long userID, boolean active, String name);
+    public long createWeek(Week week);
 
     @Query(value = "DELETE FROM weeks " +
             "WHERE weekid=:weekID AND userID=:userID" +
