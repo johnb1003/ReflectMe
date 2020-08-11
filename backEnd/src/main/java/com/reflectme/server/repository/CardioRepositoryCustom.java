@@ -11,8 +11,7 @@ import java.util.ArrayList;
 public interface CardioRepositoryCustom {
 
 
-    public long createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
-                              double distance, int time, String status, long weekid);
+    public long createEvent(Cardio event);
 
     @Query(value = "select * " +
             "from Cardio c where c.userID = :id and status = \"completed\" " +

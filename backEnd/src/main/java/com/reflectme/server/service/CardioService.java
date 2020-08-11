@@ -24,9 +24,7 @@ public class CardioService {
         System.out.println("HERE SERVICE");
         try {
             return Optional
-                    .ofNullable(cardioRepository.createEvent(cardio.getuserid(),
-                            cardio.getdate(), cardio.getdayofweek(), cardio.getcardiotype(),
-                            cardio.getdistance(), cardio.gettime(), cardio.getstatus(), cardio.getweekid()))
+                    .ofNullable(cardioRepository.createEvent(cardio))
                     .map(cardioEvent -> ResponseEntity.ok().body(cardio.setcardioid(cardioEvent)))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }

@@ -32,41 +32,23 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Autowired
     SimpleJdbcInsert simpleJdbcInsertCardio;
 
-    
+
     @Override
-    public long createEvent(long userid, LocalDate date, int dayofweek, String cardiotype,
-                              double distance, int time, String status, long weekid) {
+    public long createEvent(Cardio event) {
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
         System.out.println("HERE REPO");
 
-        String queryString = "INSERT INTO cardio (userid, date, dayofweek, cardiotype, distance, time, status, weekid) "+
-                "VALUES(:userid, :date, :dayofweek, :cardiotype, :distance, :time, :status, :weekid)";
-
-        /*
-        Query query = entityManager.createNativeQuery(queryString, Cardio.class);
-        query.setParameter("userid", userid);
-        query.setParameter("date", date);
-        query.setParameter("dayofweek", dayofweek);
-        query.setParameter("cardiotype", cardiotype);
-        query.setParameter("distance", distance);
-        query.setParameter("time", time);
-        query.setParameter("status", status);
-        query.setParameter("weekid", weekid);
-
-        Cardio cardio = (Cardio)query.getSingleResult();
-         */
-
         Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("userid", userid);
-        parameters.put("date", date);
-        parameters.put("dayofweek", dayofweek);
-        parameters.put("cardiotype", cardiotype);
-        parameters.put("distance", distance);
-        parameters.put("time", time);
-        parameters.put("status", status);
-        parameters.put("weekid", weekid);
+        parameters.put("userid", event.getuserid());
+        parameters.put("date", event.getdate());
+        parameters.put("dayofweek", event.getdayofweek());
+        parameters.put("cardiotype", event.getcardiotype());
+        parameters.put("distance", event.getdistance());
+        parameters.put("time", event.gettime());
+        parameters.put("status", event.getstatus());
+        parameters.put("weekid", event.getweekid());
 
         Number result = simpleJdbcInsertCardio.executeAndReturnKey(parameters);
         System.out.println("Generated id - " + result.longValue());
