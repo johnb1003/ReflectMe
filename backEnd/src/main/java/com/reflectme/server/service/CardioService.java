@@ -31,6 +31,7 @@ public class CardioService {
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
         catch (Exception e){
+            System.out.println(e.toString());
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Event could not be created.");
         }
     }
