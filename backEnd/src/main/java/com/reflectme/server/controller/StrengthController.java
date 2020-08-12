@@ -68,6 +68,8 @@ public class StrengthController {
         event.setuserid(Long.parseLong(principal.getName()));
         event.setdate(LocalDate.parse(date));
 
+        System.out.println("Here CONTROLLER");
+
         return strengthService.getMonthEvents(event);
     }
 }

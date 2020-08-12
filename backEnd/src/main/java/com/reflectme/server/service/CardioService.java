@@ -51,6 +51,7 @@ public class CardioService {
     }
 
     public ResponseEntity getMonthEvents(Cardio cardio) {
+        System.out.println("Here SERVICE");
         try {
             return Optional
                     .ofNullable(cardioRepository.getMonthEvents(cardio))

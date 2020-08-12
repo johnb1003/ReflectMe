@@ -107,6 +107,8 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
 
     @Override
     public ArrayList<Strength> getMonthEvents(Strength event) {
+        System.out.println("Here REPO");
+
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
