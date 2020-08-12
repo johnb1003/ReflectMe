@@ -47,7 +47,7 @@ public class Cardio {
     }
 
     public Cardio(long userid, LocalDate date, int dayofweek, String cardiotype,
-                  double distance, int time, String status, long weekid, long cardioid) {
+                  double distance, int time, String status, Long weekid, long cardioid) {
         this.userid = userid;
         this.date = date;
         this.dayofweek = dayofweek;
@@ -112,7 +112,7 @@ public class Cardio {
         this.status = status;
     }
 
-    public long getweekid() { return this.weekid.longValue(); }
+    public Long getweekid() { return this.weekid; }
 
     public void setweekid(Long weekid) {
         if(weekid != null) {

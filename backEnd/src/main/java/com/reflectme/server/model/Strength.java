@@ -43,7 +43,7 @@ public class Strength {
         this.userid = userid;
     }
 
-    public Strength(long userid, long strengthid, LocalDate date, int dayofweek, String strengthtype, String lifts, double distance, int time, String status, long weekid) {
+    public Strength(long userid, long strengthid, LocalDate date, int dayofweek, String strengthtype, String lifts, double distance, int time, String status, Long weekid) {
         this.userid = userid;
         this.strengthid = strengthid;
         this.date = date;
@@ -99,7 +99,7 @@ public class Strength {
         this.status = status;
     }
 
-    public long getweekid() { return weekid.longValue(); }
+    public Long getweekid() { return weekid; }
 
     public void setweekid(Long weekid) {
         if (weekid != null) {
