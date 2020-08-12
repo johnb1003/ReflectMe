@@ -6,5 +6,5 @@ public interface StrengthRepositoryCustom {
 
     public long createEvent(Strength event);
 
-    public boolean deleteEvent(long strengthid, long userid);
+    public boolean deleteEvent(Strength event);
 }

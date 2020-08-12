@@ -34,6 +34,11 @@ public class Strength {
     @Column(name = "weekid", nullable=true)
     private long weekid;
 
+    public Strength(long strengthid, long userid) {
+        this.strengthid = strengthid;
+        this.userid = userid;
+    }
+
     public Strength() {
 
     }

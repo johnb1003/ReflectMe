@@ -32,8 +32,8 @@ public class StrengthService {
         }
     }
 
-    public boolean deleteEvent(long strengthID, long userID) {
-        return strengthRepository.deleteEvent(strengthID, userID);
+    public boolean deleteEvent(Strength event) {
+        return strengthRepository.deleteEvent(event);
     }
 }
 

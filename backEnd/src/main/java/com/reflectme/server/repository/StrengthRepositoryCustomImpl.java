@@ -4,6 +4,9 @@ import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
@@ -24,7 +27,7 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     SimpleJdbcInsert simpleJdbcInsertStrength;
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
     public long createEvent(Strength event) {
@@ -56,20 +59,24 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     }
 
     @Override
-    public boolean deleteEvent(long strengthid, long userid) {
+    public boolean deleteEvent(Strength event) {
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
-        String sql = "DELETE FROM strength WHERE strengthid = :strengthid AND userid = :userid";
+        String sql = "DELETE FROM strength WHERE strengthid=:strengthid AND userid=:userid";
 
         int result = 0;
 
+        /*
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("strengthid", strengthid);
         parameters.put("userid", userid);
+         */
+
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
 
         try {
-            result = jdbcTemplate.update(sql, parameters);
+            result = namedParameterJdbcTemplate.update(sql, parameters);
         }
         catch (Exception e) {
             System.out.println(e.toString());
