@@ -37,4 +37,16 @@ public class CardioService {
     public boolean deleteEvent(Cardio event) {
         return cardioRepository.deleteEvent(event);
     }
+
+    public ResponseEntity getWeekEvents(Cardio cardio) {
+        try {
+            return Optional
+                    .ofNullable(cardioRepository.getWeekEvents(cardio))
+                    .map(cardioList -> ResponseEntity.ok().body(cardioList))
+                    .orElseGet(() -> ResponseEntity.notFound().build());
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Week events not found.");
+        }
+    }
 }

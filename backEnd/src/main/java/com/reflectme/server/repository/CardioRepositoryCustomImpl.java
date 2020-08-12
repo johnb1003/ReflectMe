@@ -6,6 +6,7 @@ import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -83,5 +84,29 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         entityManager.close();
 
         return result == 1;
+    }
+
+    @Override
+    public ArrayList<Cardio> getWeekEvents(Cardio event) {
+        entityManager = emf.getObject().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String sql = "SELECT * FROM cardio WHERE weekid=:weekid AND userid=:userid";
+
+        ArrayList<Cardio> result = null;
+
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
+
+        try {
+            result = new ArrayList<Cardio>(namedParameterJdbcTemplate.query(sql, parameters,
+                    new BeanPropertyRowMapper(Cardio.class)));
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result;
     }
 }
