@@ -13,14 +13,7 @@ import com.reflectme.server.repository.StrengthRepository;
 import com.reflectme.server.service.StrengthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.reflectme.server.exception.ResourceNotFoundException;
 import com.reflectme.server.model.Strength;
@@ -52,7 +45,7 @@ public class StrengthController {
 
 
     @DeleteMapping("/delete/{strengthID}")
-    public Map<String, Boolean> deleteStrength(@PathVariable(value = "strengthID") Long strengthID, Principal principal) {
+    public @ResponseBody Map<String, Boolean> deleteStrength(@PathVariable(value = "strengthID") Long strengthID, Principal principal) {
         long userID = Long.parseLong(principal.getName());
 
         Map<String, Boolean> response = new HashMap<>();
