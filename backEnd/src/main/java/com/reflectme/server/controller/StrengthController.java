@@ -45,7 +45,7 @@ public class StrengthController {
 
 
     @DeleteMapping("/delete/{strengthID}")
-    public @ResponseBody Map<String, Boolean> deleteStrength(@PathVariable(value = "strengthID") Long strengthID, Principal principal) {
+    public Map<String, Boolean> deleteStrength(@PathVariable(value = "strengthID") Long strengthID, Principal principal) {
         long userID = Long.parseLong(principal.getName());
 
         Map<String, Boolean> response = new HashMap<>();
