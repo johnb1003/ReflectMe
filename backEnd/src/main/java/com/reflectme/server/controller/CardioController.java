@@ -1,6 +1,7 @@
 package com.reflectme.server.controller;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,5 +55,14 @@ public class CardioController {
         event.setweekid(userID.longValue());
 
         return cardioService.getWeekEvents(event);
+    }
+
+    @GetMapping("/month/{date}")
+    public ResponseEntity<Strength> getWeekEvents(@PathVariable(value = "date")LocalDate date, Principal principal) {
+        Cardio event = new Cardio();
+        event.setuserid(Long.parseLong(principal.getName()));
+        event.setdate(date);
+
+        return cardioService.getMonthEvents(event);
     }
 }

@@ -12,4 +12,6 @@ public interface CardioRepositoryCustom {
     public boolean deleteEvent(Cardio event);
 
     public ArrayList<Cardio> getWeekEvents(Cardio event);
+
+    public ArrayList<Cardio> getMonthEvents(Cardio event);
 }

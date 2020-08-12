@@ -49,4 +49,16 @@ public class CardioService {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Week events not found.");
         }
     }
+
+    public ResponseEntity getMonthEvents(Cardio cardio) {
+        try {
+            return Optional
+                    .ofNullable(cardioRepository.getMonthEvents(cardio))
+                    .map(cardioList -> ResponseEntity.ok().body(cardioList))
+                    .orElseGet(() -> ResponseEntity.notFound().build());
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Month events not found.");
+        }
+    }
 }
