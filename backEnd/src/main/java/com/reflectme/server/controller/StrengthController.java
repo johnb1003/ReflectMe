@@ -44,13 +44,13 @@ public class StrengthController {
     }
 
 
-    @DeleteMapping("/delete/{strengthID}")
-    public Map<String, Boolean> deleteStrength(@PathVariable(value = "strengthID") Long strengthID, Principal principal) {
+    @DeleteMapping("/delete/{strengthid}")
+    public Map<String, Boolean> deleteStrength(@PathVariable(value = "strengthid") Long strengthid, Principal principal) {
         long userID = Long.parseLong(principal.getName());
 
         Map<String, Boolean> response = new HashMap<>();
 
-        boolean deleted = strengthService.deleteEvent(strengthID, userID);
+        boolean deleted = strengthService.deleteEvent(strengthid.longValue(), userID);
         if(deleted) {
             response.put("deleted: ", Boolean.TRUE);
         }
