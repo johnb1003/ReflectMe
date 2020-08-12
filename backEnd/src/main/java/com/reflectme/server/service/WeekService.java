@@ -1,5 +1,6 @@
 package com.reflectme.server.service;
 
+import com.reflectme.server.model.Strength;
 import com.reflectme.server.model.Week;
 import com.reflectme.server.repository.WeekRepository;
 import com.reflectme.server.repository.WeekRepository;
@@ -36,5 +37,9 @@ public class WeekService {
         }
 
         return response;
+    }
+
+    public boolean deleteEvent(Week event) {
+        return weekRepository.deleteEvent(event);
     }
 }

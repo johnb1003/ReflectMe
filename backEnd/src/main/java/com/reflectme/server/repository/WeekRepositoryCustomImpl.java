@@ -1,9 +1,13 @@
 package com.reflectme.server.repository;
 
 import com.reflectme.server.JPAUtil;
+import com.reflectme.server.model.Strength;
 import com.reflectme.server.model.Week;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -26,6 +30,9 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
 
     @Autowired
     SimpleJdbcInsert simpleJdbcInsertWeek;
+
+    @Autowired
+    NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
     public long createWeek(Week week) {
@@ -52,25 +59,26 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
         return result.longValue();
     }
 
-    @Modifying(clearAutomatically = true)
     @Override
-    public Week deleteWeek(long weekID, long userID) {
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+    public boolean deleteEvent(Week event) {
+        entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
-        String queryString = "DELETE FROM weeks " +
-                "WHERE weekid=:weekID AND userID=:userID" +
-                "RETURNING *";
+        String sql = "DELETE FROM weeks WHERE weekid=:weekid AND userid=:userid";
 
-        Query query = entityManager.createNativeQuery(queryString, Week.class);
-        query.setParameter("weekID", weekID);
-        query.setParameter("userID", userID);
+        int result = 0;
 
-        Week deletedWeek = (Week)query.getResultList()
-                .stream().findFirst().orElse(null);
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
+
+        try {
+            result = namedParameterJdbcTemplate.update(sql, parameters);
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
 
         entityManager.close();
 
-        return deletedWeek;
+        return result == 1;
     }
 }

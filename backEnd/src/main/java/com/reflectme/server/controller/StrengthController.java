@@ -51,10 +51,10 @@ public class StrengthController {
         Strength event = new Strength(strengthid.longValue(), Long.parseLong(principal.getName()));
         boolean deleted = strengthService.deleteEvent(event);
         if(deleted) {
-            response.put("deleted: ", Boolean.TRUE);
+            response.put("deleted", Boolean.TRUE);
         }
         else {
-            response.put("deleted: ", Boolean.FALSE);
+            response.put("deleted", Boolean.FALSE);
         }
         return response;
     }

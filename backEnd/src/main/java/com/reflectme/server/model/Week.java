@@ -28,6 +28,11 @@ public class Week {
 
     }
 
+    public Week(long weekid, long userid) {
+        this.weekid = weekid;
+        this.userid = userid;
+    }
+
     public Week(long weekid, long userid, boolean active, String name) {
         this.weekid = weekid;
         this.userid = userid;

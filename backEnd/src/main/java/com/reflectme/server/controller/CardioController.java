@@ -44,10 +44,10 @@ public class CardioController {
         Cardio event = new Cardio(cardioid.longValue(), Long.parseLong(principal.getName()));
         boolean deleted = cardioService.deleteEvent(event);
         if(deleted) {
-            response.put("deleted: ", Boolean.TRUE);
+            response.put("deleted", Boolean.TRUE);
         }
         else {
-            response.put("deleted: ", Boolean.FALSE);
+            response.put("deleted", Boolean.FALSE);
         }
         return response;
     }
