@@ -58,10 +58,10 @@ public class CardioController {
     }
 
     @GetMapping("/month/{date}")
-    public ResponseEntity<Strength> getWeekEvents(@PathVariable(value = "date")LocalDate date, Principal principal) {
+    public ResponseEntity<Strength> getWeekEvents(@PathVariable(value = "date")String date, Principal principal) {
         Cardio event = new Cardio();
         event.setuserid(Long.parseLong(principal.getName()));
-        event.setdate(date);
+        event.setdate(LocalDate.parse(date));
 
         return cardioService.getMonthEvents(event);
     }
