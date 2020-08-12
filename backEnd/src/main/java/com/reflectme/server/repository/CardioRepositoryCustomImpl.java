@@ -67,7 +67,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
-        String sql = "DELETE FROM strength WHERE cardioid=:cardioid AND userid=:userid";
+        String sql = "DELETE FROM cardio WHERE cardioid=:cardioid AND userid=:userid";
 
         int result = 0;
 
