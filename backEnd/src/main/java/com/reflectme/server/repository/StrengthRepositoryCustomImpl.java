@@ -56,16 +56,17 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     }
 
     @Override
-    public boolean deleteEvent(long id) {
+    public boolean deleteEvent(long strengthid, long userid) {
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
-        String sql = "DELETE FROM strength WHERE strengthid = :id";
+        String sql = "DELETE FROM strength WHERE strengthid = :strengthid AND userid = :userid";
 
         int result = 0;
 
         Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("id", id);
+        parameters.put("strengthid", strengthid);
+        parameters.put("userid", userid);
 
         try {
             result = jdbcTemplate.update(sql, parameters);

@@ -45,20 +45,19 @@ public class StrengthController {
     }
 
     @PostMapping("/event")
-    public ResponseEntity createStrengthEvent(@Valid @RequestBody Strength strengthLog, Principal principal) {
-        strengthLog.setuserid(Long.parseLong(principal.getName()));
-        return strengthService.createEvent(strengthLog);
+    public ResponseEntity createStrengthEvent(@Valid @RequestBody Strength strength, Principal principal) {
+        strength.setuserid(Long.parseLong(principal.getName()));
+        return strengthService.createEvent(strength);
     }
 
 
-    @DeleteMapping("/{userID}")
-    public Map<String, Boolean> deleteStrength(@PathVariable(value = "userID") Long userID)
-            throws ResourceNotFoundException {
-        Strength StrengthLog = strengthRepository.findById(userID)
-                .orElseThrow(() -> new ResourceNotFoundException("Strength log not found for this id: " + userID));
+    @DeleteMapping("/delete/{strengthID}")
+    public Map<String, Boolean> deleteStrength(@PathVariable(value = "strengthID") Long strengthID, Principal principal) {
+        long userID = Long.parseLong(principal.getName());
 
-        boolean deleted = strengthRepository.deleteEvent(userID);
         Map<String, Boolean> response = new HashMap<>();
+
+        boolean deleted = strengthService.deleteEvent(strengthID, userID);
         if(deleted) {
             response.put("deleted: ", Boolean.TRUE);
         }
