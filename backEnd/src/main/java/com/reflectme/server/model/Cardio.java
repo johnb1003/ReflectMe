@@ -29,7 +29,7 @@ public class Cardio {
     private double distance;
 
     @Column(name = "time", nullable=true)
-    private int time;
+    private Integer time;
 
     @Column(name = "status", nullable=false)
     private String status;
@@ -47,7 +47,7 @@ public class Cardio {
     }
 
     public Cardio(long userid, LocalDate date, int dayofweek, String cardiotype,
-                  double distance, int time, String status, Long weekid, long cardioid) {
+                  double distance, Integer time, String status, Long weekid, long cardioid) {
         this.userid = userid;
         this.date = date;
         this.dayofweek = dayofweek;
@@ -96,11 +96,11 @@ public class Cardio {
         this.distance = distance;
     }
 
-    public int gettime() {
+    public Integer gettime() {
         return this.time;
     }
 
-    public void settime(int time) {
+    public void settime(Integer time) {
         this.time = time;
     }
 
