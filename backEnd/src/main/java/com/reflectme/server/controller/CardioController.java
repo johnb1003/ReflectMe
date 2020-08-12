@@ -7,13 +7,11 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import com.reflectme.server.model.Strength;
 import com.reflectme.server.service.CardioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.reflectme.server.exception.ResourceNotFoundException;
 import com.reflectme.server.model.Cardio;
 import com.reflectme.server.repository.CardioRepository;
 
@@ -49,7 +47,7 @@ public class CardioController {
     }
 
     @GetMapping("/week/{weekid}")
-    public ResponseEntity<Strength> getWeekEvents(@PathVariable(value = "weekid") Long userID, Principal principal) {
+    public ResponseEntity<Cardio> getWeekEvents(@PathVariable(value = "weekid") Long userID, Principal principal) {
         Cardio event = new Cardio();
         event.setuserid(Long.parseLong(principal.getName()));
         event.setweekid(userID.longValue());
@@ -58,7 +56,7 @@ public class CardioController {
     }
 
     @GetMapping("/month/{date}")
-    public ResponseEntity<Strength> getWeekEvents(@PathVariable(value = "date")String date, Principal principal) {
+    public ResponseEntity<Cardio> getWeekEvents(@PathVariable(value = "date")String date, Principal principal) {
         Cardio event = new Cardio();
         event.setuserid(Long.parseLong(principal.getName()));
         event.setdate(LocalDate.parse(date));

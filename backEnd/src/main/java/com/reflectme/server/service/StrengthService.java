@@ -1,5 +1,6 @@
 package com.reflectme.server.service;
 
+import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
 import com.reflectme.server.repository.StrengthRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +36,27 @@ public class StrengthService {
         return strengthRepository.deleteEvent(event);
     }
 
-    public ResponseEntity getWeekEvents(Strength strength) {
+    public ResponseEntity getWeekEvents(Strength event) {
         try {
             return Optional
-                    .ofNullable(strengthRepository.getWeekEvents(strength))
+                    .ofNullable(strengthRepository.getWeekEvents(event))
                     .map(strengthList -> ResponseEntity.ok().body(strengthList))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
         catch (Exception e){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Week events not found.");
+        }
+    }
+
+    public ResponseEntity getMonthEvents(Strength event) {
+        try {
+            return Optional
+                    .ofNullable(strengthRepository.getMonthEvents(event))
+                    .map(strengthList -> ResponseEntity.ok().body(strengthList))
+                    .orElseGet(() -> ResponseEntity.notFound().build());
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Month events not found.");
         }
     }
 }

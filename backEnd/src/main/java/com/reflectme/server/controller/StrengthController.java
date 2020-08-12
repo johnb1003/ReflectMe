@@ -1,12 +1,14 @@
 package com.reflectme.server.controller;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
+import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
 import com.reflectme.server.model.Strength;
 import com.reflectme.server.repository.StrengthRepository;
@@ -58,5 +60,14 @@ public class StrengthController {
         event.setweekid(userID.longValue());
 
         return strengthService.getWeekEvents(event);
+    }
+
+    @GetMapping("/month/{date}")
+    public ResponseEntity<Strength> getWeekEvents(@PathVariable(value = "date")String date, Principal principal) {
+        Strength event = new Strength();
+        event.setuserid(Long.parseLong(principal.getName()));
+        event.setdate(LocalDate.parse(date));
+
+        return strengthService.getMonthEvents(event);
     }
 }
