@@ -115,12 +115,7 @@ public class Cardio {
     public Long getweekid() { return this.weekid; }
 
     public void setweekid(Long weekid) {
-        if(weekid != null) {
-            this.weekid = new Long(weekid);
-        }
-        else {
-            this.weekid = new Long(-1);
-        }
+        this.weekid = weekid;
     }
 
     public long getcardioid() { return cardioid; }
