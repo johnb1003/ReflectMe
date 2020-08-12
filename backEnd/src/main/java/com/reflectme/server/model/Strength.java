@@ -43,13 +43,15 @@ public class Strength {
         this.userid = userid;
     }
 
-    public Strength(long userid, LocalDate date, int dayofweek, String strengthtype, String lifts, double distance, int time, String status, long weekid) {
+    public Strength(long userid, long strengthid, LocalDate date, int dayofweek, String strengthtype, String lifts, double distance, int time, String status, long weekid) {
         this.userid = userid;
+        this.strengthid = strengthid;
         this.date = date;
         this.dayofweek = dayofweek;
         this.strengthtype = strengthtype;
         this.lifts = lifts;
         this.status = status;
+        this.weekid = weekid;
     }
 
     public long getstrengthid() { return strengthid; }
