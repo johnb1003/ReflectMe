@@ -3,9 +3,13 @@ package com.reflectme.server.repository;
 import com.reflectme.server.JPAUtil;
 import com.reflectme.server.model.Account;
 import com.reflectme.server.model.Cardio;
+import com.reflectme.server.model.Strength;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -32,6 +36,8 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Autowired
     SimpleJdbcInsert simpleJdbcInsertCardio;
 
+    @Autowired
+    NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
     public long createEvent(Cardio event) {
@@ -54,5 +60,28 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         entityManager.close();
 
         return result.longValue();
+    }
+
+    @Override
+    public boolean deleteEvent(Cardio event) {
+        entityManager = emf.getObject().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String sql = "DELETE FROM strength WHERE cardioid=:cardioid AND userid=:userid";
+
+        int result = 0;
+
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
+
+        try {
+            result = namedParameterJdbcTemplate.update(sql, parameters);
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result == 1;
     }
 }

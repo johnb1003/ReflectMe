@@ -41,6 +41,11 @@ public class Cardio {
 
     }
 
+    public Cardio(long cardioid, long userid) {
+        this.cardioid = cardioid;
+        this.userid = userid;
+    }
+
     public Cardio(long userid, LocalDate date, int dayofweek, String cardiotype,
                   double distance, int time, String status, long weekid, long cardioid) {
         this.userid = userid;

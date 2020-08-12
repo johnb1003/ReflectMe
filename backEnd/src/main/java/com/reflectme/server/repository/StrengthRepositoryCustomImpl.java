@@ -67,12 +67,6 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
 
         int result = 0;
 
-        /*
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("strengthid", strengthid);
-        parameters.put("userid", userid);
-         */
-
         SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
 
         try {

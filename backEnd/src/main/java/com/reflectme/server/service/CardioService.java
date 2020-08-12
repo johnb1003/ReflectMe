@@ -1,6 +1,7 @@
 package com.reflectme.server.service;
 
 import com.reflectme.server.model.Cardio;
+import com.reflectme.server.model.Strength;
 import com.reflectme.server.model.Week;
 import com.reflectme.server.repository.CardioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,4 +34,7 @@ public class CardioService {
         }
     }
 
+    public boolean deleteEvent(Cardio event) {
+        return cardioRepository.deleteEvent(event);
+    }
 }

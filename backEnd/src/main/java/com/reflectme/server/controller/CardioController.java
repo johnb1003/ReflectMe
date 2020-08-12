@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import com.reflectme.server.model.Week;
 import com.reflectme.server.service.CardioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +37,21 @@ public class CardioController {
         return cardioService.createEvent(cardioLog);
     }
 
+    @DeleteMapping("/delete/{cardioid}")
+    public Map<String, Boolean> deleteCardio(@PathVariable(value = "cardioid") Long cardioid, Principal principal) {
+        Map<String, Boolean> response = new HashMap<>();
+
+        Cardio event = new Cardio(cardioid.longValue(), Long.parseLong(principal.getName()));
+        boolean deleted = cardioService.deleteEvent(event);
+        if(deleted) {
+            response.put("deleted: ", Boolean.TRUE);
+        }
+        else {
+            response.put("deleted: ", Boolean.FALSE);
+        }
+        return response;
+    }
+
     @PutMapping("/{userID}")
     public ResponseEntity<Cardio> updateCardio(@PathVariable(value = "userID") Long userID,
                                                  @Valid @RequestBody Cardio cardioDetails) throws ResourceNotFoundException {
@@ -52,17 +66,5 @@ public class CardioController {
         cardioLog.setstatus(cardioDetails.getstatus());
         final Cardio updatedCardio = cardioRepository.save(cardioLog);
         return ResponseEntity.ok(updatedCardio);
-    }
-
-    @DeleteMapping("/{userID}")
-    public Map<String, Boolean> deleteCardio(@PathVariable(value = "userID") Long userID)
-            throws ResourceNotFoundException {
-        Cardio cardioLog = cardioRepository.findById(userID)
-                .orElseThrow(() -> new ResourceNotFoundException("Cardio log not found for this id :: " + userID));
-
-        cardioRepository.delete(cardioLog);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-        return response;
     }
 }

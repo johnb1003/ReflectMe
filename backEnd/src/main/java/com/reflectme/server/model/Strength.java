@@ -34,13 +34,13 @@ public class Strength {
     @Column(name = "weekid", nullable=true)
     private long weekid;
 
+    public Strength() {
+
+    }
+
     public Strength(long strengthid, long userid) {
         this.strengthid = strengthid;
         this.userid = userid;
-    }
-
-    public Strength() {
-
     }
 
     public Strength(long userid, LocalDate date, int dayofweek, String strengthtype, String lifts, double distance, int time, String status, long weekid) {
