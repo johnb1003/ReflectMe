@@ -3,6 +3,7 @@ package com.reflectme.server.repository;
 import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -94,7 +95,8 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
 
         try {
-            result = new ArrayList<Strength>(namedParameterJdbcTemplate.queryForList(sql, parameters, Strength.class));
+            result = new ArrayList<Strength>(namedParameterJdbcTemplate.query(sql, parameters,
+                    new BeanPropertyRowMapper(Strength.class)));
         }
         catch (Exception e) {
             System.out.println(e.toString());
