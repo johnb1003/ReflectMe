@@ -87,7 +87,7 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
-        String sql = "SSELECT * FROM strength WHERE weekid=:weekid AND userid=:userid";
+        String sql = "SELECT * FROM strength WHERE weekid=:weekid AND userid=:userid";
 
         ArrayList<Strength> result = null;
 
