@@ -32,7 +32,7 @@ public class Strength {
     private String status;
 
     @Column(name = "weekid", nullable=true)
-    private long weekid;
+    private Long weekid;
 
     public Strength() {
 
@@ -99,8 +99,9 @@ public class Strength {
         this.status = status;
     }
 
-    public long getweekid() { return weekid; }
+    public long getweekid() { return weekid.longValue(); }
 
-    public void setweekid(long weekid) { this.weekid = weekid; }
+    public void setweekid(Long weekid) {
+        this.weekid = weekid; }
 }
 

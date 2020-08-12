@@ -35,7 +35,7 @@ public class Cardio {
     private String status;
 
     @Column(name = "weekid", nullable=true)
-    private long weekid;
+    private Long weekid;
 
     public Cardio() {
 
@@ -112,9 +112,9 @@ public class Cardio {
         this.status = status;
     }
 
-    public long getweekid() { return this.weekid; }
+    public long getweekid() { return this.weekid.longValue(); }
 
-    public void setweekid(long weekid) { this.weekid = weekid; }
+    public void setweekid(Long weekid) { this.weekid = weekid; }
 
     public long getcardioid() { return cardioid; }
 
