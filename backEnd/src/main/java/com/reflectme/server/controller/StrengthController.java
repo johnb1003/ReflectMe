@@ -29,14 +29,6 @@ public class StrengthController {
     @Autowired
     private StrengthService strengthService;
 
-    @GetMapping("/{userID}")
-    public ResponseEntity<Strength> getStrengthById(@PathVariable(value = "userID") Long userID)
-            throws ResourceNotFoundException {
-        Strength strengthLog = strengthRepository.findById(userID).orElseThrow(() ->
-                new ResourceNotFoundException("Strength logs not found for this id :: " + userID));
-        return ResponseEntity.ok().body(strengthLog);
-    }
-
     @PostMapping("/event")
     public ResponseEntity createStrengthEvent(@Valid @RequestBody Strength strength, Principal principal) {
         strength.setuserid(Long.parseLong(principal.getName()));
@@ -57,5 +49,14 @@ public class StrengthController {
             response.put("deleted", Boolean.FALSE);
         }
         return response;
+    }
+
+    @GetMapping("/week/{weekid}")
+    public ResponseEntity<Strength> getWeekEvents(@PathVariable(value = "weekid") Long userID, Principal principal) {
+        Strength event = new Strength();
+        event.setuserid(Long.parseLong(principal.getName()));
+        event.setweekid(userID.longValue());
+
+        return strengthService.getWeekEvents(event);
     }
 }

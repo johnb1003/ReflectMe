@@ -12,6 +12,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,5 +80,28 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         entityManager.close();
 
         return result == 1;
+    }
+
+    @Override
+    public ArrayList<Strength> getWeekEvents(Strength event) {
+        entityManager = emf.getObject().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String sql = "SSELECT * FROM strength WHERE weekid=:weekid AND userid=:userid";
+
+        ArrayList<Strength> result = null;
+
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
+
+        try {
+            result = new ArrayList<Strength>(namedParameterJdbcTemplate.queryForList(sql, parameters, Strength.class));
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result;
     }
 }

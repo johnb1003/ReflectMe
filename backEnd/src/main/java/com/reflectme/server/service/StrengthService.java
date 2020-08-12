@@ -34,5 +34,17 @@ public class StrengthService {
     public boolean deleteEvent(Strength event) {
         return strengthRepository.deleteEvent(event);
     }
+
+    public ResponseEntity getWeekEvents(Strength strength) {
+        try {
+            return Optional
+                    .ofNullable(strengthRepository.getWeekEvents(strength))
+                    .map(strengthList -> ResponseEntity.ok().body(strengthList))
+                    .orElseGet(() -> ResponseEntity.notFound().build());
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Week events not found.");
+        }
+    }
 }
 
