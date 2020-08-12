@@ -102,6 +102,11 @@ public class Strength {
     public long getweekid() { return weekid.longValue(); }
 
     public void setweekid(Long weekid) {
-        this.weekid = weekid; }
+        if (weekid != null) {
+            this.weekid = new Long(weekid);
+        } else {
+            this.weekid = new Long(-1);
+        }
+    }
 }
 
