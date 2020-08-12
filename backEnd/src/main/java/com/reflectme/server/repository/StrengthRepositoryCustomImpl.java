@@ -3,6 +3,7 @@ package com.reflectme.server.repository;
 import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
@@ -21,6 +22,9 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
 
     @Autowired
     SimpleJdbcInsert simpleJdbcInsertStrength;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     @Override
     public long createEvent(Strength event) {
@@ -49,5 +53,29 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         entityManager.close();
 
         return result.longValue();
+    }
+
+    @Override
+    public boolean deleteEvent(long id) {
+        entityManager = emf.getObject().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String sql = "DELETE FROM strength WHERE strengthid = :id";
+
+        int result = 0;
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("id", id);
+
+        try {
+            result = jdbcTemplate.update(sql, parameters);
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result == 1;
     }
 }

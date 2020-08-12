@@ -55,46 +55,4 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
 
         return result.longValue();
     }
-
-
-    @Override
-    public ArrayList<Cardio> getCompletedCardioListForUser(long id) {
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        entityManager.getTransaction().begin();
-
-        ArrayList<Cardio> cardioList;
-
-        String queryString = "select * " +
-                "from Cardio c where c.userID = :id and status = \"completed\" " +
-                "order by c.date";
-
-        Query query = entityManager.createNativeQuery(queryString, Cardio.class);
-        query.setParameter("id", Long.toString(id));
-
-        cardioList = new ArrayList<Cardio>(query.getResultList());
-
-        entityManager.close();
-
-        return cardioList;
-    }
-
-    @Override
-    public ArrayList<Cardio> getScheduledCardioListForUser(long id) {
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        entityManager.getTransaction().begin();
-
-        ArrayList<Cardio> cardioList;
-
-        String queryString = "select * " +
-                "from Cardio c where c.userID = :id and status = \"scheduled\" " +
-                "order by c.dayOfWeek";
-
-        Query query = entityManager.createNativeQuery(queryString, Cardio.class);
-
-        cardioList = new ArrayList<Cardio>(query.getResultList());
-
-        entityManager.close();
-
-        return cardioList;
-    }
 }

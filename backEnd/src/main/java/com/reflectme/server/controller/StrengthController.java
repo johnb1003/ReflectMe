@@ -55,11 +55,16 @@ public class StrengthController {
     public Map<String, Boolean> deleteStrength(@PathVariable(value = "userID") Long userID)
             throws ResourceNotFoundException {
         Strength StrengthLog = strengthRepository.findById(userID)
-                .orElseThrow(() -> new ResourceNotFoundException("Strength log not found for this id :: " + userID));
+                .orElseThrow(() -> new ResourceNotFoundException("Strength log not found for this id: " + userID));
 
-        strengthRepository.delete(StrengthLog);
+        boolean deleted = strengthRepository.deleteEvent(userID);
         Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
+        if(deleted) {
+            response.put("deleted: ", Boolean.TRUE);
+        }
+        else {
+            response.put("deleted: ", Boolean.FALSE);
+        }
         return response;
     }
 }
