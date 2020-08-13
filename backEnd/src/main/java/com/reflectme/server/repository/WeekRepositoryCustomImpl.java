@@ -86,22 +86,21 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
     }
 
     @Override
-    public ArrayList<Long> getUserWeeks(long userid) {
+    public ArrayList<Week> getUserWeeks(long userid) {
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
-        ArrayList<Long> result = null;
+        ArrayList<Week> result = null;
 
-        String sql = "SELECT weekid FROM weeks WHERE userid=:userid ORDER BY weekid ASC";
+        String sql = "SELECT * FROM weeks WHERE userid=:userid ORDER BY weekid ASC";
 
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("userid", userid);
 
         try {
             System.out.println("HERE 3");
-            result = new ArrayList<Long>(namedParameterJdbcTemplate.queryForList(sql, parameters,
-                    Long.class));
-            System.out.println("HERE 4");
+            result = new ArrayList<Week>(namedParameterJdbcTemplate.query(sql, parameters,
+                    new BeanPropertyRowMapper(Week.class)));
         }
         catch (Exception e) {
             System.out.println(e.toString());

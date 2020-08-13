@@ -12,5 +12,5 @@ public interface WeekRepositoryCustom {
 
     public boolean deleteEvent(Week event);
 
-    public ArrayList<Long> getUserWeeks(long userid);
+    public ArrayList<Week> getUserWeeks(long userid);
 }

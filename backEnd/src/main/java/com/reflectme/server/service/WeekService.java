@@ -68,7 +68,7 @@ public class WeekService {
 
         try {
             System.out.println("HERE 1");
-            ArrayList<Long> weekIDs = weekRepository.getUserWeeks(userid);
+            ArrayList<Week> weeks = weekRepository.getUserWeeks(userid);
 
             ArrayList<Cardio> cardios = cardioRepository.getAllWeekEvents(userid);
             ArrayList<Strength> strengths = strengthRepository.getAllWeekEvents(userid);
@@ -77,12 +77,15 @@ public class WeekService {
             boolean strengthEvent = false;
 
             System.out.println("HERE 5");
-            for(int i=0; i<weekIDs.size(); i++) {
-                long currID = weekIDs.get(i).longValue();
+            for(int i=0; i<weeks.size(); i++) {
+                Week currWeek = weeks.get(i);
+                long currID = currWeek.getWeekid();
                 ObjectNode currWeekNode = objectMapper.createObjectNode();
                 cardioEvent = false;
                 strengthEvent = false;
                 currWeekNode.put("weekID", currID);
+                currWeekNode.put("weekName", currWeek.getName());
+                currWeekNode.put("active", currWeek.getActive());
                 ArrayNode cardioArrNode = currWeekNode.putArray("cardio");
                 ArrayNode strengthArrNode = currWeekNode.putArray("strength");
 
