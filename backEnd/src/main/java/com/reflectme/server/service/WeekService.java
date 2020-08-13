@@ -30,10 +30,12 @@ public class WeekService {
     private ObjectMapper objectMapper;
 
     @Autowired
-    public WeekService(WeekRepository weekRepository, CardioRepository cardioRepository, StrengthRepository strengthRepository) {
+    public WeekService(WeekRepository weekRepository, CardioRepository cardioRepository,
+                       StrengthRepository strengthRepository, ObjectMapper objectMapper) {
         this.weekRepository = weekRepository;
         this.cardioRepository = cardioRepository;
         this.strengthRepository = strengthRepository;
+        this.objectMapper = objectMapper;
     }
 
     public ResponseEntity createWeek(Week week) {
