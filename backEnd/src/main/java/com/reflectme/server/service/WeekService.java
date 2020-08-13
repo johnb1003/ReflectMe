@@ -73,6 +73,7 @@ public class WeekService {
             ArrayList<Cardio> cardios = cardioRepository.getAllWeekEvents(userid);
             ArrayList<Strength> strengths = strengthRepository.getAllWeekEvents(userid);
 
+            System.out.println("HERE 5");
             for(int i=0; i<weekIDs.size(); i++) {
                 long currID = weekIDs.get(i).longValue();
                 ObjectNode currWeekNode = objectMapper.createObjectNode();
@@ -105,7 +106,8 @@ public class WeekService {
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
         catch (Exception e){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Week could not be created.");
+            System.out.println(e.toString());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Weeks could not be fetched.");
         }
 
         return response;
