@@ -13,5 +13,7 @@ public interface CardioRepositoryCustom {
 
     public ArrayList<Cardio> getWeekEvents(Cardio event);
 
+    public ArrayList<Cardio> getAllWeekEvents(long userid);
+
     public ArrayList<Cardio> getMonthEvents(Cardio event);
 }

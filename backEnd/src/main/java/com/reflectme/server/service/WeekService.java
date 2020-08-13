@@ -70,22 +70,30 @@ public class WeekService {
             System.out.println("HERE 1");
             ArrayList<Long> weekIDs = weekRepository.getUserWeeks(userid);
 
+            ArrayList<Cardio> cardios = cardioRepository.getAllWeekEvents(userid);
+            ArrayList<Strength> strengths = strengthRepository.getAllWeekEvents(userid);
+
             for(int i=0; i<weekIDs.size(); i++) {
                 long currID = weekIDs.get(i).longValue();
                 ObjectNode currWeekNode = objectMapper.createObjectNode();
+                ArrayList<Cardio> weekCardios = new ArrayList<Cardio>();
+                ArrayList<Strength> weekStrengths = new ArrayList<Strength>();
 
-                Cardio cardio = new Cardio();
-                cardio.setuserid(userid);
-                cardio.setweekid(currID);
-                ArrayList<Cardio> cardios = cardioRepository.getWeekEvents(cardio);
+                while(cardios.get(0).getweekid().longValue() == currID) {
+                    weekCardios.add(cardios.remove(0));
+                }
 
-                Strength strength = new Strength();
-                strength.setuserid(userid);
-                strength.setweekid(currID);
-                ArrayList<Strength> strengths = strengthRepository.getWeekEvents(strength);
+                if(!weekCardios.isEmpty()) {
+                    currWeekNode.put("cardio", cardios.toString());
+                }
 
-                currWeekNode.put("cardio", cardios.toString());
-                currWeekNode.put("strength", strengths.toString());
+                while(strengths.get(0).getweekid().longValue() == currID) {
+                    weekStrengths.add(strengths.remove(0));
+                }
+
+                if(!weekStrengths.isEmpty()) {
+                    currWeekNode.put("strength", strengths.toString());
+                }
                 weeksNode.put(""+currID, currWeekNode.toPrettyString());
             }
 

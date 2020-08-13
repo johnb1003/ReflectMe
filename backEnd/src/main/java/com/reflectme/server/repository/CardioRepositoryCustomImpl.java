@@ -91,11 +91,35 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
-        String sql = "SELECT * FROM cardio WHERE weekid=:weekid AND userid=:userid";
+        String sql = "SELECT * FROM cardio WHERE weekid=:weekid AND userid=:userid ORDER BY weekid";
 
         ArrayList<Cardio> result = null;
 
         SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
+
+        try {
+            result = new ArrayList<Cardio>(namedParameterJdbcTemplate.query(sql, parameters,
+                    new BeanPropertyRowMapper(Cardio.class)));
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result;
+    }
+
+    @Override
+    public ArrayList<Cardio> getAllWeekEvents(long userid) {
+        entityManager = emf.getObject().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String sql = "SELECT * FROM cardio WHERE weekid IS NOT NULL AND userid=:userid ORDER BY weekid ASC";
+
+        ArrayList<Cardio> result = null;
+
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(Long.class);
 
         try {
             result = new ArrayList<Cardio>(namedParameterJdbcTemplate.query(sql, parameters,

@@ -1,5 +1,6 @@
 package com.reflectme.server.repository;
 
+import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -106,6 +107,30 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     }
 
     @Override
+    public ArrayList<Strength> getAllWeekEvents(long userid) {
+        entityManager = emf.getObject().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String sql = "SELECT * FROM strength WHERE weekid IS NOT NULL AND userid=:userid ORDER BY weekid ASC";
+
+        ArrayList<Strength> result = null;
+
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(Long.class);
+
+        try {
+            result = new ArrayList<Strength>(namedParameterJdbcTemplate.query(sql, parameters,
+                    new BeanPropertyRowMapper(Strength.class)));
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result;
+    }
+
+    @Override
     public ArrayList<Strength> getMonthEvents(Strength event) {
         System.out.println("Here REPO");
 
@@ -115,7 +140,7 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         String sql = "SELECT * from strength " +
                 "where (date_part('year', date)=date_part('year', :date) " +
                 "AND date_part('month', date)=date_part('month', :date)) " +
-                "AND userid=:userid";
+                "AND userid=:userid ORDER BY weekid ASC";
 
         ArrayList<Strength> result = null;
 

@@ -13,5 +13,7 @@ public interface StrengthRepositoryCustom {
 
     public ArrayList<Strength> getWeekEvents(Strength event);
 
+    public ArrayList<Strength> getAllWeekEvents(long userid);
+
     public ArrayList<Strength> getMonthEvents(Strength event);
 }

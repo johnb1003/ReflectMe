@@ -92,7 +92,7 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
 
         ArrayList<Long> result = null;
 
-        String sql = "SELECT weekid FROM weeks WHERE userid=:userid";
+        String sql = "SELECT weekid FROM weeks WHERE userid=:userid ORDER BY weekid ASC";
 
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("userid", userid);
