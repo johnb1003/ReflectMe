@@ -73,18 +73,24 @@ public class WeekService {
             ArrayList<Cardio> cardios = cardioRepository.getAllWeekEvents(userid);
             ArrayList<Strength> strengths = strengthRepository.getAllWeekEvents(userid);
 
+            boolean cardioEvent = false;
+            boolean strengthEvent = false;
+
             System.out.println("HERE 5");
             for(int i=0; i<weekIDs.size(); i++) {
                 long currID = weekIDs.get(i).longValue();
                 ObjectNode currWeekNode = objectMapper.createObjectNode();
                 ArrayList<Cardio> weekCardios = new ArrayList<Cardio>();
                 ArrayList<Strength> weekStrengths = new ArrayList<Strength>();
+                cardioEvent = false;
+                strengthEvent = false;
 
                 while(!cardios.isEmpty() && cardios.get(0).getweekid().longValue() == currID) {
                     weekCardios.add(cardios.remove(0));
                 }
 
                 if(!weekCardios.isEmpty()) {
+                    cardioEvent = true;
                     currWeekNode.put("cardio", cardios.toString());
                 }
 
@@ -93,9 +99,13 @@ public class WeekService {
                 }
 
                 if(!weekStrengths.isEmpty()) {
+                    strengthEvent = true;
                     currWeekNode.put("strength", strengths.toString());
                 }
-                weeksNode.put(""+currID, currWeekNode.toPrettyString());
+
+                if(cardioEvent || strengthEvent) {
+                    weeksNode.put("" + currID, currWeekNode.toPrettyString());
+                }
             }
 
             System.out.println("HERE 2");
