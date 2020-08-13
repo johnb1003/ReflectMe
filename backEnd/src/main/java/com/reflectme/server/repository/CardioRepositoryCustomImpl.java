@@ -119,7 +119,8 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
 
         ArrayList<Cardio> result = null;
 
-        SqlParameterSource parameters = new BeanPropertySqlParameterSource(Long.class);
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("userid", userid);
 
         try {
             result = new ArrayList<Cardio>(namedParameterJdbcTemplate.query(sql, parameters,

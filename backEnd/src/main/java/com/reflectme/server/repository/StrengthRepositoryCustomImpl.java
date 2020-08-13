@@ -115,7 +115,8 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
 
         ArrayList<Strength> result = null;
 
-        SqlParameterSource parameters = new BeanPropertySqlParameterSource(Long.class);
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("userid", userid);
 
         try {
             result = new ArrayList<Strength>(namedParameterJdbcTemplate.query(sql, parameters,
