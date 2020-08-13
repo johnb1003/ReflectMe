@@ -1,6 +1,7 @@
 package com.reflectme.server.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
@@ -93,8 +94,10 @@ public class WeekService {
                 }
 
                 if(!weekCardios.isEmpty()) {
+                    //ArrayNode cardioArrNode = currWeekNode.putArray("cardio");
+                    //cardioArrNode.add();
                     cardioEvent = true;
-                    currWeekNode.put("cardio", cardios.toString());
+                    currWeekNode.put("cardio", weekCardios.toString());
                 }
 
                 while(!strengths.isEmpty() && strengths.get(0).getweekid().longValue() == currID) {
@@ -103,11 +106,11 @@ public class WeekService {
 
                 if(!weekStrengths.isEmpty()) {
                     strengthEvent = true;
-                    currWeekNode.put("strength", strengths.toString());
+                    currWeekNode.put("strength", weekStrengths.toString());
                 }
 
                 if(cardioEvent || strengthEvent) {
-                    weeksNode.put("" + currID, currWeekNode.toPrettyString());
+                    weeksNode.set("" + currID, currWeekNode);
                 }
             }
 
