@@ -1,7 +1,12 @@
 package com.reflectme.server.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
 import com.reflectme.server.model.Week;
+import com.reflectme.server.repository.CardioRepository;
+import com.reflectme.server.repository.StrengthRepository;
 import com.reflectme.server.repository.WeekRepository;
 import com.reflectme.server.repository.WeekRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -17,9 +23,17 @@ public class WeekService {
 
     private WeekRepository weekRepository;
 
+    private CardioRepository cardioRepository;
+
+    private StrengthRepository strengthRepository;
+
+    private ObjectMapper objectMapper;
+
     @Autowired
-    public WeekService(WeekRepository weekRepository) {
+    public WeekService(WeekRepository weekRepository, CardioRepository cardioRepository, StrengthRepository strengthRepository) {
         this.weekRepository = weekRepository;
+        this.cardioRepository = cardioRepository;
+        this.strengthRepository = strengthRepository;
     }
 
     public ResponseEntity createWeek(Week week) {
@@ -41,5 +55,46 @@ public class WeekService {
 
     public boolean deleteEvent(Week event) {
         return weekRepository.deleteEvent(event);
+    }
+
+    public ResponseEntity getUserWeeks(long userid) {
+        ResponseEntity response;
+
+        ObjectNode weeksNode = objectMapper.createObjectNode();
+
+        ArrayList<Cardio> cardioSet;
+        ArrayList<Strength> strengthSet;
+        try {
+            ArrayList<Long> weekIDs = weekRepository.getUserWeeks(userid);
+
+            for(int i=0; i<weekIDs.size(); i++) {
+                long currID = weekIDs.get(i).longValue();
+                ObjectNode currWeekNode = objectMapper.createObjectNode();
+
+                Cardio cardio = new Cardio();
+                cardio.setuserid(userid);
+                cardio.setweekid(currID);
+                ArrayList<Cardio> cardios = cardioRepository.getWeekEvents(cardio);
+
+                Strength strength = new Strength();
+                strength.setuserid(userid);
+                strength.setweekid(currID);
+                ArrayList<Strength> strengths = strengthRepository.getWeekEvents(strength);
+
+                currWeekNode.put("cardio", cardios.toString());
+                currWeekNode.put("strength", strengths.toString());
+                weeksNode.put(""+currID, currWeekNode.toPrettyString());
+            }
+
+            response = Optional
+                    .ofNullable(weeksNode)
+                    .map(data -> ResponseEntity.ok().body(weeksNode))
+                    .orElseGet(() -> ResponseEntity.notFound().build());
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Week could not be created.");
+        }
+
+        return response;
     }
 }

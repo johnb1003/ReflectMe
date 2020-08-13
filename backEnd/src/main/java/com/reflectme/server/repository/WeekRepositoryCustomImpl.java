@@ -1,10 +1,12 @@
 package com.reflectme.server.repository;
 
 import com.reflectme.server.JPAUtil;
+import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
 import com.reflectme.server.model.Week;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -80,5 +83,30 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
         entityManager.close();
 
         return result == 1;
+    }
+
+    @Override
+    public ArrayList<Long> getUserWeeks(long userid) {
+        entityManager = emf.getObject().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        ArrayList<Long> result = null;
+
+        String sql = "SELECT weekid FROM weeks WHERE userid=:userid";
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("userid", userid);
+
+        try {
+            result = new ArrayList<Long>(namedParameterJdbcTemplate.query(sql, parameters,
+                    new BeanPropertyRowMapper(Long.class)));
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result;
     }
 }

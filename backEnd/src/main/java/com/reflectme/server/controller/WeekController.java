@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import com.reflectme.server.model.Strength;
 import com.reflectme.server.model.Week;
 import com.reflectme.server.repository.WeekRepository;
 import com.reflectme.server.service.WeekService;
@@ -46,5 +47,11 @@ public class WeekController {
             response.put("deleted", Boolean.FALSE);
         }
         return response;
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<Week> getUserWeeks(Principal principal) {
+
+        return weekService.getUserWeeks(Long.parseLong(principal.getName()));
     }
 }

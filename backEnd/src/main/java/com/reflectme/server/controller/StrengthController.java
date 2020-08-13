@@ -54,10 +54,10 @@ public class StrengthController {
     }
 
     @GetMapping("/week/{weekid}")
-    public ResponseEntity<Strength> getWeekEvents(@PathVariable(value = "weekid") Long userID, Principal principal) {
+    public ResponseEntity<Strength> getWeekEvents(@PathVariable(value = "weekid") Long weekid, Principal principal) {
         Strength event = new Strength();
         event.setuserid(Long.parseLong(principal.getName()));
-        event.setweekid(userID.longValue());
+        event.setweekid(weekid.longValue());
 
         return strengthService.getWeekEvents(event);
     }
