@@ -98,8 +98,10 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
         parameters.put("userid", userid);
 
         try {
+            System.out.println("HERE 3");
             result = new ArrayList<Long>(namedParameterJdbcTemplate.query(sql, parameters,
                     new BeanPropertyRowMapper(Long.class)));
+            System.out.println("HERE 4");
         }
         catch (Exception e) {
             System.out.println(e.toString());
