@@ -93,6 +93,7 @@ public class WeekService {
 
                 while(!cardios.isEmpty() && cardios.get(0).getweekid().longValue() == currID) {
                     cardioArrNode.addPOJO(cardios.remove(0));
+                    cardioEvent = true;
                     //weekCardios.add(cardios.remove(0));
                 }
 
@@ -104,7 +105,8 @@ public class WeekService {
                 }
 
                 while(!strengths.isEmpty() && strengths.get(0).getweekid().longValue() == currID) {
-                    cardioArrNode.addPOJO(strengths.remove(0));
+                    strengthArrNode.addPOJO(strengths.remove(0));
+                    strengthEvent = true;
                     //weekStrengths.add(strengths.remove(0));
                 }
 
