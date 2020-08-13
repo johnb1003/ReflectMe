@@ -61,6 +61,6 @@ public class CardioController {
         event.setuserid(Long.parseLong(principal.getName()));
         event.setdate(LocalDate.parse(date));
 
-        return cardioService.getMonthEvents(event);
+        return cardioService.getMonthEvents(Long.parseLong(principal.getName()), LocalDate.parse(date));
     }
 }

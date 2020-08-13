@@ -70,6 +70,6 @@ public class StrengthController {
 
         System.out.println("Here CONTROLLER");
 
-        return strengthService.getMonthEvents(event);
+        return strengthService.getMonthEvents(Long.parseLong(principal.getName()), LocalDate.parse(date));
     }
 }
