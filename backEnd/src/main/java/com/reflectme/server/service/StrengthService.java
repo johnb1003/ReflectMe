@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -48,11 +49,11 @@ public class StrengthService {
         }
     }
 
-    public ResponseEntity getMonthEvents(Strength event) {
+    public ResponseEntity getMonthEvents(long userid, LocalDate date) {
         try {
             return Optional
-                    .ofNullable(strengthRepository.getMonthEvents(event))
-                    .map(strengthList -> ResponseEntity.ok().body(strengthList))
+                    .ofNullable(strengthRepository.getMonthEvents(userid, date))
+                    .map(list -> ResponseEntity.ok().body(list))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
         catch (Exception e){

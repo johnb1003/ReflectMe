@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -50,12 +51,11 @@ public class CardioService {
         }
     }
 
-    public ResponseEntity getMonthEvents(Cardio cardio) {
-        System.out.println("Here SERVICE");
+    public ResponseEntity getMonthEvents(long userid, LocalDate date) {
         try {
             return Optional
-                    .ofNullable(cardioRepository.getMonthEvents(cardio))
-                    .map(cardioList -> ResponseEntity.ok().body(cardioList))
+                    .ofNullable(cardioRepository.getMonthEvents(userid, date))
+                    .map(list -> ResponseEntity.ok().body(list))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
         catch (Exception e){
