@@ -64,18 +64,14 @@ public class WeekService {
         ResponseEntity response;
 
         ObjectNode weeksNode = objectMapper.createObjectNode();
+        ArrayNode weeksArrNode = weeksNode.putArray("weeks");
 
-        ArrayList<Cardio> cardioSet;
-        ArrayList<Strength> strengthSet;
         try {
             System.out.println("HERE 1");
             ArrayList<Long> weekIDs = weekRepository.getUserWeeks(userid);
 
             ArrayList<Cardio> cardios = cardioRepository.getAllWeekEvents(userid);
             ArrayList<Strength> strengths = strengthRepository.getAllWeekEvents(userid);
-
-            ArrayList<Cardio> weekCardios = new ArrayList<Cardio>();
-            ArrayList<Strength> weekStrengths = new ArrayList<Strength>();
 
             boolean cardioEvent = false;
             boolean strengthEvent = false;
@@ -84,39 +80,24 @@ public class WeekService {
             for(int i=0; i<weekIDs.size(); i++) {
                 long currID = weekIDs.get(i).longValue();
                 ObjectNode currWeekNode = objectMapper.createObjectNode();
-                weekCardios.clear();
-                weekStrengths.clear();
                 cardioEvent = false;
                 strengthEvent = false;
+                currWeekNode.put("weekID", currID);
                 ArrayNode cardioArrNode = currWeekNode.putArray("cardio");
                 ArrayNode strengthArrNode = currWeekNode.putArray("strength");
 
                 while(!cardios.isEmpty() && cardios.get(0).getweekid().longValue() == currID) {
                     cardioArrNode.addPOJO(cardios.remove(0));
                     cardioEvent = true;
-                    //weekCardios.add(cardios.remove(0));
-                }
-
-                if(!weekCardios.isEmpty()) {
-                    //ArrayNode cardioArrNode = currWeekNode.putArray("cardio");
-                    //cardioArrNode.add();
-                    cardioEvent = true;
-                    //currWeekNode.put("cardio", weekCardios.toString());
                 }
 
                 while(!strengths.isEmpty() && strengths.get(0).getweekid().longValue() == currID) {
                     strengthArrNode.addPOJO(strengths.remove(0));
                     strengthEvent = true;
-                    //weekStrengths.add(strengths.remove(0));
-                }
-
-                if(!weekStrengths.isEmpty()) {
-                    strengthEvent = true;
-                    //currWeekNode.put("strength", weekStrengths.toString());
                 }
 
                 if(cardioEvent || strengthEvent) {
-                    weeksNode.set("" + currID, currWeekNode);
+                    weeksArrNode.add(currWeekNode);
                 }
             }
 
