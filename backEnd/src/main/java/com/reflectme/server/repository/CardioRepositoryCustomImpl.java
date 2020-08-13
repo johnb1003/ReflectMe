@@ -136,18 +136,21 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     }
 
     @Override
-    public ArrayList<Cardio> getMonthEvents(Cardio event) {
+    public ArrayList<Cardio> getMonthEvents(long userid, LocalDate date) {
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
         String sql = "SELECT * from cardio " +
-                "where (date_part('year', date)=date_part('year', :date) " +
+                "where userid=:userid AND weekid IS NULL " +
+                "AND (date_part('year', date)=date_part('year', :date) " +
                 "AND date_part('month', date)=date_part('month', :date)) " +
-                "AND userid=:userid";
+                "ORDER BY date ASC";
 
         ArrayList<Cardio> result = null;
 
-        SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("userid", userid);
+        parameters.put("date", date);
 
         try {
             result = new ArrayList<Cardio>(namedParameterJdbcTemplate.query(sql, parameters,

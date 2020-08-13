@@ -49,7 +49,6 @@ public class StrengthService {
     }
 
     public ResponseEntity getMonthEvents(Strength event) {
-        System.out.println("Here SERVICE");
         try {
             return Optional
                     .ofNullable(strengthRepository.getMonthEvents(event))

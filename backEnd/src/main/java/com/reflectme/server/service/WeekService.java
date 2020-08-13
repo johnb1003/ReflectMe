@@ -9,9 +9,7 @@ import com.reflectme.server.model.Week;
 import com.reflectme.server.repository.CardioRepository;
 import com.reflectme.server.repository.StrengthRepository;
 import com.reflectme.server.repository.WeekRepository;
-import com.reflectme.server.repository.WeekRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ReactiveAdapterRegistry;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -67,7 +65,6 @@ public class WeekService {
         ArrayNode weeksArrNode = weeksNode.putArray("weeks");
 
         try {
-            System.out.println("HERE 1");
             ArrayList<Week> weeks = weekRepository.getUserWeeks(userid);
 
             ArrayList<Cardio> cardios = cardioRepository.getAllWeekEvents(userid);
@@ -76,7 +73,6 @@ public class WeekService {
             boolean cardioEvent = false;
             boolean strengthEvent = false;
 
-            System.out.println("HERE 5");
             for(int i=0; i<weeks.size(); i++) {
                 Week currWeek = weeks.get(i);
                 long currID = currWeek.getWeekid();
@@ -103,8 +99,6 @@ public class WeekService {
                     weeksArrNode.add(currWeekNode);
                 }
             }
-
-            System.out.println("HERE 2");
 
             response = Optional
                     .ofNullable(weeksNode)

@@ -3,6 +3,7 @@ package com.reflectme.server.repository;
 import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public interface StrengthRepositoryCustom {
@@ -15,5 +16,5 @@ public interface StrengthRepositoryCustom {
 
     public ArrayList<Strength> getAllWeekEvents(long userid);
 
-    public ArrayList<Strength> getMonthEvents(Strength event);
+    public ArrayList<Strength> getMonthEvents(long userid, LocalDate date);
 }

@@ -52,10 +52,4 @@ public class AccountController {
     public AccountService getAccountService() {
         return accountService;
     }
-/*
-    @GetMapping("/login")
-    public ResponseEntity verifyLogin(@Valid @RequestBody Account acc) throws ResourceNotFoundException {
-        return accountService.verifyLogin(acc);
-    }
-    */
 }

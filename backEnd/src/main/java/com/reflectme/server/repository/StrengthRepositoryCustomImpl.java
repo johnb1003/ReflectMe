@@ -12,6 +12,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -132,20 +133,22 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     }
 
     @Override
-    public ArrayList<Strength> getMonthEvents(Strength event) {
-        System.out.println("Here REPO");
+    public ArrayList<Strength> getMonthEvents(long userid, LocalDate date) {
 
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();
 
         String sql = "SELECT * from strength " +
-                "where (date_part('year', date)=date_part('year', :date) " +
+                "where userid=:userid AND weekid IS NULL " +
+                "AND (date_part('year', date)=date_part('year', :date) " +
                 "AND date_part('month', date)=date_part('month', :date)) " +
-                "AND userid=:userid ORDER BY weekid ASC";
+                "ORDER BY date ASC";
 
         ArrayList<Strength> result = null;
 
-        SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("userid", userid);
+        parameters.put("date", date);
 
         try {
             result = new ArrayList<Strength>(namedParameterJdbcTemplate.query(sql, parameters,
