@@ -67,6 +67,7 @@ public class WeekService {
         ArrayList<Cardio> cardioSet;
         ArrayList<Strength> strengthSet;
         try {
+            System.out.println("HERE 1");
             ArrayList<Long> weekIDs = weekRepository.getUserWeeks(userid);
 
             for(int i=0; i<weekIDs.size(); i++) {
@@ -87,6 +88,8 @@ public class WeekService {
                 currWeekNode.put("strength", strengths.toString());
                 weeksNode.put(""+currID, currWeekNode.toPrettyString());
             }
+
+            System.out.println("HERE 2");
 
             response = Optional
                     .ofNullable(weeksNode)
