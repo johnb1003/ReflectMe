@@ -88,25 +88,29 @@ public class WeekService {
                 weekStrengths.clear();
                 cardioEvent = false;
                 strengthEvent = false;
+                ArrayNode cardioArrNode = currWeekNode.putArray("cardio");
+                ArrayNode strengthArrNode = currWeekNode.putArray("strength");
 
                 while(!cardios.isEmpty() && cardios.get(0).getweekid().longValue() == currID) {
-                    weekCardios.add(cardios.remove(0));
+                    cardioArrNode.addPOJO(cardios.remove(0));
+                    //weekCardios.add(cardios.remove(0));
                 }
 
                 if(!weekCardios.isEmpty()) {
                     //ArrayNode cardioArrNode = currWeekNode.putArray("cardio");
                     //cardioArrNode.add();
                     cardioEvent = true;
-                    currWeekNode.put("cardio", weekCardios.toString());
+                    //currWeekNode.put("cardio", weekCardios.toString());
                 }
 
                 while(!strengths.isEmpty() && strengths.get(0).getweekid().longValue() == currID) {
-                    weekStrengths.add(strengths.remove(0));
+                    cardioArrNode.addPOJO(strengths.remove(0));
+                    //weekStrengths.add(strengths.remove(0));
                 }
 
                 if(!weekStrengths.isEmpty()) {
                     strengthEvent = true;
-                    currWeekNode.put("strength", weekStrengths.toString());
+                    //currWeekNode.put("strength", weekStrengths.toString());
                 }
 
                 if(cardioEvent || strengthEvent) {
