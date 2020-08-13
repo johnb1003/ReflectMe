@@ -80,7 +80,7 @@ public class WeekService {
                 ArrayList<Cardio> weekCardios = new ArrayList<Cardio>();
                 ArrayList<Strength> weekStrengths = new ArrayList<Strength>();
 
-                while(cardios.get(0).getweekid().longValue() == currID) {
+                while(!cardios.isEmpty() && cardios.get(0).getweekid().longValue() == currID) {
                     weekCardios.add(cardios.remove(0));
                 }
 
@@ -88,7 +88,7 @@ public class WeekService {
                     currWeekNode.put("cardio", cardios.toString());
                 }
 
-                while(strengths.get(0).getweekid().longValue() == currID) {
+                while(!strengths.isEmpty() && strengths.get(0).getweekid().longValue() == currID) {
                     weekStrengths.add(strengths.remove(0));
                 }
 
