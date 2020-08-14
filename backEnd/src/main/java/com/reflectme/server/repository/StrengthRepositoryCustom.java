@@ -10,6 +10,8 @@ public interface StrengthRepositoryCustom {
 
     public long createEvent(Strength event);
 
+    public boolean updateEvent(Strength event);
+
     public boolean deleteEvent(Strength event);
 
     public ArrayList<Strength> getWeekEvents(Strength event);

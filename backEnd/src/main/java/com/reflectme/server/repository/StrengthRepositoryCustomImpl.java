@@ -61,6 +61,32 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     }
 
     @Override
+    public boolean updateEvent(Strength event) {
+        entityManager = emf.getObject().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String sql = "UPDATE strength " +
+                "SET date=:date, dayofweek=:dayofweek, strengthtype=:strengthtype, " +
+                "status=:status, lifts=:lifts, weekid=:weekid " +
+                "WHERE strengthid=:strengthid";
+
+        int result = 0;
+
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
+
+        try {
+            result = namedParameterJdbcTemplate.update(sql, parameters);
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result == 1;
+    }
+
+    @Override
     public boolean deleteEvent(Strength event) {
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();

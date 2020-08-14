@@ -93,6 +93,22 @@ public class EventsController {
         return cardioService.createEvent(cardioLog);
     }
 
+    @PatchMapping("/cardio")
+    public Map<String, Boolean> updateCardioEvent(@Valid @RequestBody Cardio cardio, Principal principal) {
+        cardio.setuserid(Long.parseLong(principal.getName()));
+
+        Map<String, Boolean> response = new HashMap<>();
+
+        boolean updated = cardioService.updateEvent(cardio);
+        if(updated) {
+            response.put("updated", Boolean.TRUE);
+        }
+        else {
+            response.put("updated", Boolean.FALSE);
+        }
+        return response;
+    }
+
     @DeleteMapping("/cardio/{cardioid}")
     public Map<String, Boolean> deleteCardio(@PathVariable(value = "cardioid") Long cardioid, Principal principal) {
         Map<String, Boolean> response = new HashMap<>();
@@ -120,6 +136,21 @@ public class EventsController {
         return strengthService.createEvent(strength);
     }
 
+    @PatchMapping("/strength")
+    public Map<String, Boolean> updateStrengthEvent(@Valid @RequestBody Strength strength, Principal principal) {
+        strength.setuserid(Long.parseLong(principal.getName()));
+
+        Map<String, Boolean> response = new HashMap<>();
+
+        boolean updated = strengthService.updateEvent(strength);
+        if(updated) {
+            response.put("updated", Boolean.TRUE);
+        }
+        else {
+            response.put("updated", Boolean.FALSE);
+        }
+        return response;
+    }
 
     @DeleteMapping("/strength/{strengthid}")
     public Map<String, Boolean> deleteStrength(@PathVariable(value = "strengthid") Long strengthid, Principal principal) {

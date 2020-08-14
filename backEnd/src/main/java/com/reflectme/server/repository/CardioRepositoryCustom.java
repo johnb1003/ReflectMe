@@ -10,6 +10,8 @@ public interface CardioRepositoryCustom {
 
     public long createEvent(Cardio event);
 
+    public boolean updateEvent(Cardio event);
+
     public boolean deleteEvent(Cardio event);
 
     public ArrayList<Cardio> getWeekEvents(Cardio event);

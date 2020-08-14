@@ -35,8 +35,24 @@ public class CardioService {
         }
     }
 
+    public boolean updateEvent(Cardio event) {
+        try {
+            return cardioRepository.updateEvent(event);
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+            return false;
+        }
+    }
+
     public boolean deleteEvent(Cardio event) {
-        return cardioRepository.deleteEvent(event);
+        try {
+            return cardioRepository.deleteEvent(event);
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+            return false;
+        }
     }
 
     public ResponseEntity getWeekEvents(Cardio cardio) {

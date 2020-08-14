@@ -64,6 +64,32 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     }
 
     @Override
+    public boolean updateEvent(Cardio event) {
+        entityManager = emf.getObject().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        String sql = "UPDATE cardio " +
+                "SET date=:date, dayofweek=:dayofweek, cardiotype=:cardiotype, " +
+                "daistance=:distance, time=:time, status=:status, weekid=:weekid " +
+                "WHERE cardioid=:cardioid";
+
+        int result = 0;
+
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(event);
+
+        try {
+            result = namedParameterJdbcTemplate.update(sql, parameters);
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result == 1;
+    }
+
+    @Override
     public boolean deleteEvent(Cardio event) {
         entityManager = emf.getObject().createEntityManager();
         entityManager.getTransaction().begin();

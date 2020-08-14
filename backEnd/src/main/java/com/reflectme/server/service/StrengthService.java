@@ -33,8 +33,24 @@ public class StrengthService {
         }
     }
 
+    public boolean updateEvent(Strength event) {
+        try {
+            return strengthRepository.updateEvent(event);
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+            return false;
+        }
+    }
+
     public boolean deleteEvent(Strength event) {
-        return strengthRepository.deleteEvent(event);
+        try {
+            return strengthRepository.deleteEvent(event);
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+            return false;
+        }
     }
 
     public ResponseEntity getWeekEvents(Strength event) {
