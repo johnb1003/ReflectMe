@@ -70,7 +70,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
 
         String sql = "UPDATE cardio " +
                 "SET date=:date, dayofweek=:dayofweek, cardiotype=:cardiotype, " +
-                "daistance=:distance, time=:time, status=:status, weekid=:weekid " +
+                "distance=:distance, time=:time, status=:status, weekid=:weekid " +
                 "WHERE cardioid=:cardioid";
 
         int result = 0;
