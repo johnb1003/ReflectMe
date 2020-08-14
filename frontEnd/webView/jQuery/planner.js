@@ -421,7 +421,12 @@ async function getCurrentMonthData(myDate) {
     if(myDate == null) {
         myDate = new Date();
     }
-    let dateString = myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-01';
+    let myYear = myDate.getFullYear();
+    let myMonth = myDate.getMonth()+1;
+    if((''+myMonth).length == 1) {
+        myMonth = '0'+myMonth;
+    }
+    let dateString = myYear+'-'+myMonth+'-01';
     return monthDataReq = $.ajax({
         type: "GET",
         url: baseAPIURL+'/events/month/'+dateString,
@@ -439,7 +444,7 @@ let monthData;
 getCurrentMonthData(null)
         .then(data => {
             monthData = data;
-            alert(monthData);
+            alert(JSON.stringify(monthData));
         })
         .catch(error => {
             console.log(error);
@@ -465,7 +470,7 @@ let weekData;
 getWeekData(null)
         .then(data => {
             weekData = data;
-            alert(weekData);
+            alert(JSON.stringify(weekData));
         })
         .catch(error => {
             console.log(error);
