@@ -147,4 +147,10 @@ public class EventsController {
 
         return eventsService.getMonthEvents(Long.parseLong(principal.getName()), LocalDate.parse(date));
     }
+
+    @GetMapping("/all/{date}")
+    public ResponseEntity getAllMonthEvents(@PathVariable(value = "date")String date, Principal principal) {
+
+        return eventsService.getAllMonthEvents(Long.parseLong(principal.getName()), LocalDate.parse(date));
+    }
 }
