@@ -421,7 +421,7 @@ async function getCurrentMonthData(myDate) {
     if(myDate == null) {
         myDate = new Date();
     }
-    let dateString = myDate.getFullYear()+'-'+myDate.getDate()+'-01';
+    let dateString = myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-01';
     return monthDataReq = $.ajax({
         type: "GET",
         url: baseAPIURL+'/events/month/'+dateString,
