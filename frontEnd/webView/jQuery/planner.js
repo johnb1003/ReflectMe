@@ -233,6 +233,8 @@ function getCookie(key) {
 	return "";
 }
 
+let JWToken = getCookie("token");
+
 function dayClickFunction(weekDay, month, dateNum, suffix, year) {
     $('.pop-up').css('display', 'flex');
     $('#corner-week-day').text(weekDay+',');
@@ -414,6 +416,48 @@ function processType() {
     }
 }
 
+// Load user Month data
+async function getCurrentMonthData(date) {
+    if(date == null) {
+        date = new Date();
+    }
+    let dateString = date.getFullYear()+'-'+date.getDate()+'-01';
+    return monthDataReq = $.ajax({
+        type: "GET",
+        url: baseAPIURL+'/events/month/'+dateString,
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        success: function(data, status, xhr)    {
+            return data;
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}
+
+let monthData = getAllMonthData(null);
+alert(monthData);
+
+// Load user Week data
+async function getWeekData(date) {
+    return weekDataReq = $.ajax({
+        type: "GET",
+        url: baseAPIURL+'/events/weeks',
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        success: function(data, status, xhr)    {
+            return data;
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}
+
+let weekData = getWeekData(null);
+alert(weekData);
+
 $(document).ready(function() {
 
     $('#new-event-button').click( () => {
@@ -509,9 +553,44 @@ $(document).ready(function() {
     
     // Submit past("Completed") or future("Scheduled") day event
     $('.active-submit-button').click( () => {
+        let urlEndPoint = "";
+        let dayEvent = {};
+
+        if(clickedType.includes('cardio')) {
+            urlEndPoint = "/cardio";
+            dayEvent.cardioType = $('.event-title').text();
+            dayEvent.distance = parseFloat($('#cardio-distance-big').val()+'.'+$('#cardio-distance-small').val());
+            if(calendar.dateTense != 'future') {
+                // Duration
+                //day.time = 
+                alert('future');
+            }
+        }
+        else if(clickedType.includes('strength')) {
+            urlEndPoint = "/strength";
+        }
+        else {
+            urlEndPoint = "/misc";
+        }
+
         // Check calendar.dateTense
+
         // Get appropriate data
         // Send post ajax
         // Bring back to updated day schedule view
     });
 });
+
+function createDayEventAJAX(endPoint, eventData) {
+    return dayEventReq = $.ajax({
+        type: "POST",
+        url: baseAPIURL+endPoint,
+        contentType: "application/json",
+        data: JSON.stringify(eventData),
+        success: function(data, status, xhr)    {
+            JWTToken = xhr.getResponseHeader('Authorization');
+            setCookie("token", JWTToken);
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}

@@ -48,8 +48,7 @@ public class EventsController {
     @Autowired
     private EventsService eventsService;
 
-
-
+    
     /***********************************
             WEEK EVENT HANDLERS
      **********************************/
@@ -75,6 +74,7 @@ public class EventsController {
         return response;
     }
 
+    // Return JSON of all user Weeks and corresponding events
     @GetMapping("/weeks")
     public ResponseEntity<Week> getUserWeeks(Principal principal) {
 
