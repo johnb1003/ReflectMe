@@ -50,7 +50,7 @@ public class EventsService {
 
         ObjectNode scheduledEventsNode = objectMapper.createObjectNode();
         ObjectNode completedEventsNode = objectMapper.createObjectNode();
-        
+
         ArrayNode scheduledCardioEventArrNode = scheduledEventsNode.putArray("cardio");
         ArrayNode scheduledStrengthEventArrNode = scheduledEventsNode.putArray("strength");
         ArrayNode completedCardioEventArrNode = completedEventsNode.putArray("cardio");
@@ -120,8 +120,8 @@ public class EventsService {
             }
 
             return Optional
-                    .ofNullable(eventsNode)
-                    .map(list -> ResponseEntity.ok().body(eventsNode))
+                    .ofNullable(allNode)
+                    .map(list -> ResponseEntity.ok().body(allNode))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
         catch (Exception e){
