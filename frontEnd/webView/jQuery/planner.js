@@ -435,9 +435,16 @@ async function getCurrentMonthData(myDate) {
         failure: function(errMsg) {alert(errMsg);}
     });
 }
+let monthData;
+getCurrentMonthData(null)
+        .then(data => {
+            monthData = data;
+            alert(monthData);
+        })
+        .catch(error => {
+            console.log(error);
+    });
 
-let monthData = getCurrentMonthData(null);
-alert(monthData);
 
 // Load user Week data
 async function getWeekData(date) {
@@ -454,9 +461,15 @@ async function getWeekData(date) {
         failure: function(errMsg) {alert(errMsg);}
     });
 }
-
-let weekData = getWeekData(null);
-alert(weekData);
+let weekData;
+getWeekData(null)
+        .then(data => {
+            weekData = data;
+            alert(weekData);
+        })
+        .catch(error => {
+            console.log(error);
+    });
 
 $(document).ready(function() {
 
