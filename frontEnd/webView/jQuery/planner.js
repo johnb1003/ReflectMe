@@ -417,11 +417,11 @@ function processType() {
 }
 
 // Load user Month data
-async function getCurrentMonthData(date) {
-    if(date == null) {
-        date = new Date();
+async function getCurrentMonthData(myDate) {
+    if(myDate == null) {
+        myDate = new Date();
     }
-    let dateString = date.getFullYear()+'-'+date.getDate()+'-01';
+    let dateString = myDate.getFullYear()+'-'+myDate.getDate()+'-01';
     return monthDataReq = $.ajax({
         type: "GET",
         url: baseAPIURL+'/events/month/'+dateString,
@@ -436,7 +436,7 @@ async function getCurrentMonthData(date) {
     });
 }
 
-let monthData = getAllMonthData(null);
+let monthData = getCurrentMonthData(null);
 alert(monthData);
 
 // Load user Week data
