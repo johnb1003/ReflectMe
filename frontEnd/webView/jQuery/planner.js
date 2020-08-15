@@ -510,7 +510,7 @@ function displayWeeks(weeks) {
 }
 
 $(document).ready(function() {
-    displayWeeks();
+    //displayWeeks();
 
     $('#new-event-button').click( () => {
         $('.existing-events').css('display', 'none');
