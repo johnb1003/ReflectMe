@@ -694,11 +694,11 @@
         text-align: center;
     }
 
-    #cardio-row {
+    .cardio-row {
         background-color: rgba(100, 100, 100, 0.5);
     }
 
-    #strength-row {
+    .strength-row {
         background-color: rgba(100, 100, 100, 0.5);
     }
 
