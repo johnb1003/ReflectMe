@@ -55,10 +55,12 @@ public class WeekService {
         return response;
     }
 
+    @Transactional
     public boolean deleteEvent(Week event) {
         return weekRepository.deleteEvent(event);
     }
 
+    @Transactional
     public ResponseEntity getUserWeeks(long userid) {
         ResponseEntity response;
 
