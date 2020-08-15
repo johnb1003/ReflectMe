@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -38,8 +37,6 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    @Modifying
-    @Transactional
     @Override
     public long createWeek(Week week) {
         entityManager = emf.getObject().createEntityManager();
@@ -65,8 +62,6 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
         return result.longValue();
     }
 
-    @Modifying
-    @Transactional
     @Override
     public boolean deleteEvent(Week event) {
         entityManager = emf.getObject().createEntityManager();

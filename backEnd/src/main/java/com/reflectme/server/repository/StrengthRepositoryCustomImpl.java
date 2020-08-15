@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,8 +35,6 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    @Modifying
-    @Transactional
     @Override
     public long createEvent(Strength event) {
         entityManager = emf.getObject().createEntityManager();
@@ -67,8 +64,6 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         return result.longValue();
     }
 
-    @Modifying
-    @Transactional
     @Override
     public boolean updateEvent(Strength event) {
         entityManager = emf.getObject().createEntityManager();
@@ -95,8 +90,6 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         return result == 1;
     }
 
-    @Modifying
-    @Transactional
     @Override
     public boolean deleteEvent(Strength event) {
         entityManager = emf.getObject().createEntityManager();

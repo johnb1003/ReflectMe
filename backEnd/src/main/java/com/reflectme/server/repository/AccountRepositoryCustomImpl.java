@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -130,8 +129,6 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     }
 
     @Override
-    @Modifying
-    @Transactional
     public int saveAccount(String fname, String lname, String email, String phonenum, String password) {
         entityManager = emf.getObject().createEntityManager();
         //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();

@@ -14,7 +14,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -40,8 +39,6 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    @Modifying
-    @Transactional
     @Override
     public long createEvent(Cardio event) {
         entityManager = emf.getObject().createEntityManager();
@@ -65,8 +62,6 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         return result.longValue();
     }
 
-    @Modifying
-    @Transactional
     @Override
     public boolean updateEvent(Cardio event) {
         entityManager = emf.getObject().createEntityManager();
@@ -93,8 +88,6 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
         return result == 1;
     }
 
-    @Modifying
-    @Transactional
     @Override
     public boolean deleteEvent(Cardio event) {
         entityManager = emf.getObject().createEntityManager();
