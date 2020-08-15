@@ -3,6 +3,7 @@ package com.reflectme.server.repository;
 import com.reflectme.server.model.Cardio;
 import com.reflectme.server.model.Strength;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-@Transactional
+
 @Repository
 public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
 
@@ -35,6 +36,8 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    @Modifying
+    @Transactional
     @Override
     public long createEvent(Strength event) {
         entityManager = emf.getObject().createEntityManager();
@@ -64,6 +67,8 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         return result.longValue();
     }
 
+    @Modifying
+    @Transactional
     @Override
     public boolean updateEvent(Strength event) {
         entityManager = emf.getObject().createEntityManager();
@@ -90,6 +95,8 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         return result == 1;
     }
 
+    @Modifying
+    @Transactional
     @Override
     public boolean deleteEvent(Strength event) {
         entityManager = emf.getObject().createEntityManager();

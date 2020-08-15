@@ -23,7 +23,6 @@ import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.util.Optional;
 
-@Transactional
 @Service
 public class AccountService {
 

@@ -15,7 +15,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.Optional;
 
-@Transactional
 @Repository
 public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
 

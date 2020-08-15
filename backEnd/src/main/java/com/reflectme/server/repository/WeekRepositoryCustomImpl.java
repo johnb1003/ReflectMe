@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-@Transactional
+
 @Repository
 public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
 
@@ -38,6 +38,8 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    @Modifying
+    @Transactional
     @Override
     public long createWeek(Week week) {
         entityManager = emf.getObject().createEntityManager();
@@ -63,6 +65,8 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
         return result.longValue();
     }
 
+    @Modifying
+    @Transactional
     @Override
     public boolean deleteEvent(Week event) {
         entityManager = emf.getObject().createEntityManager();

@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Optional;
 
-@Transactional
 @Service
 public class WeekService {
 
