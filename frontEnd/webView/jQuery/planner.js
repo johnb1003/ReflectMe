@@ -550,7 +550,7 @@ function displayStrengthMonthData(strengthArr) {
 }
 
 function getDate(dateString) {
-    let dateNum = dateString.substring(dateString.length - 1);
+    let dateNum = dateString.substring(dateString.length - 2);
     if(dateNum.charAt(0) == '0') {
         dateNum = dateString.substring(1);
     }
