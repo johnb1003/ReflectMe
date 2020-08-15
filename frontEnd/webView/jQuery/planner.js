@@ -523,12 +523,13 @@ function displayWeeks(weeks) {
         showWeeksHTML += '<button class="delete-week-button" id="'+element.weekID+'">Del</button> </div> </div>'
     });
 
-    $('.show-weeks-container').html(showWeeksHTML);
+    $('.show-weeks-container').append(showWeeksHTML);
 }
 
 function displayCardioMonthData(cardioArr) {
     let cardioEventsHTML = '';
     cardioArr.forEach(element => {
+        cardioEventsHTML = '';
         cardioEventsHTML += '<div class="day-event-row cardio-row" id="week-'+element.weekID+'">';
         cardioEventsHTML += '<p class="day-event-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
         cardioEventsHTML += '<p class="day-event-cardio-distance">'+element.distance+'</p>';
@@ -540,6 +541,7 @@ function displayCardioMonthData(cardioArr) {
 function displayStrengthMonthData(strengthArr) {
     let strengthEventsHTML = '';
     strengthArr.forEach(element => {
+        strengthEventsHTML = '';
         strengthEventsHTML += '<div class="day-event-row strength-row" id="week-'+element.weekID+'">';
         strengthEventsHTML += '<p class="day-event-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
         strengthEventsHTML += '</div>'
