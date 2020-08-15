@@ -79,7 +79,7 @@ class Calendar {
     }
     
     renderMonth() {
-        getCurrentMonthData(this.selectedDate)
+        getCurrentMonthData(this.shownDate)
             .then(data => {
                 monthData = data;
                 console.log(JSON.stringify(monthData));
@@ -102,8 +102,6 @@ class Calendar {
             $('.grid-container').css('padding-top', '.3em');
             $('.grid-container').css('padding-bottom', '.3em');
         }
-        
-        let monthDataReady = (monthData != null);
         
         let calendarHTML = '';
         
