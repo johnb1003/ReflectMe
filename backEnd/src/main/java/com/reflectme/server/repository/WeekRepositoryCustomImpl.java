@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+@Transactional
 @Repository
 public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
 
