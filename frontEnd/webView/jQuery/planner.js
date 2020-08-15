@@ -432,10 +432,11 @@ function processType() {
 // Load user Month data
 async function getCurrentMonthData(myDate) {
     if(myDate == null) {
-        myDate = new Date();
+        currDate = new Date();
+        myDate = [currDate.getFullYear(), currDate.getMonth(), currDate.getDate()];
     }
-    let myYear = myDate.getFullYear();
-    let myMonth = myDate.getMonth()+1;
+    let myYear = myDate[0];
+    let myMonth = myDate[1]+1;
     if((''+myMonth).length == 1) {
         myMonth = '0'+myMonth;
     }
