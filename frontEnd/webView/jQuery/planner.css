@@ -697,7 +697,8 @@
         overflow: hidden;
         height: 1.5em;
         max-height: 2em;
-        margin-top: .8em;
+        margin-top: 1em;
+        margin-right: .1em;
         text-align: center;
     }
 
