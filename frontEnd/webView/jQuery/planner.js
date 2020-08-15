@@ -114,7 +114,7 @@ class Calendar {
 
             else if(i >=  this.firstDay && i < this.numDays + this.firstDay) {  
                 let dateNum = i-this.firstDay+1;
-                calendarHTML += '<div class="day-block active-day" id="'+dateNum+'"><p>'+dateNum+'</p>';
+                calendarHTML += '<div class="day-block active-day" id="'+dateNum+'"><p class="date-number">'+dateNum+'</p>';
                 calendarHTML += '<div class="day-event-container" id="event-'+dateNum+'"></div>';
                 calendarHTML += '</div>';
             }
