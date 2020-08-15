@@ -681,7 +681,7 @@
 
     .day-event-container {
         width: 100%;
-        overflow: hidden;
+        overflow: scroll;
     }
 
     .day-event-row {
