@@ -688,8 +688,18 @@
     .day-event-row {
         width: 100%;
         overflow: hidden;
-        height: 2em;
+        height: 1.5em;
         max-height: 2em;
+        margin: 0;
+        text-align: center;
+    }
+
+    #cardio-row {
+        background-color: rgba(100, 100, 100, 0.5);
+    }
+
+    #strength-row {
+        background-color: rgba(100, 100, 100, 0.5);
     }
 
     .schedule {
