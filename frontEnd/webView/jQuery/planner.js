@@ -442,13 +442,13 @@ async function getCurrentMonthData(myDate) {
 }
 let monthData;
 getCurrentMonthData(null)
-        .then(data => {
-            monthData = data;
-            alert(JSON.stringify(monthData));
-        })
-        .catch(error => {
-            console.log(error);
-    });
+    .then(data => {
+        monthData = data;
+        console.log(JSON.stringify(monthData));
+    })
+    .catch(error => {
+        console.log(error);
+});
 
 
 // Load user Week data
@@ -461,6 +461,7 @@ async function getWeekData(date) {
             'Authorization': 'Bearer ' + JWToken
         },
         success: function(data, status, xhr)    {
+            displayWeeks(data.weeks);
             return data;
         },
         failure: function(errMsg) {alert(errMsg);}
@@ -468,15 +469,48 @@ async function getWeekData(date) {
 }
 let weekData;
 getWeekData(null)
-        .then(data => {
-            weekData = data;
-            alert(JSON.stringify(weekData));
-        })
-        .catch(error => {
-            console.log(error);
+    .then(data => {
+        weekData = data.weeks;
+        console.log(JSON.stringify(weekData));
+    })
+    .catch(error => {
+        console.log(error);
+});
+
+/*
+////////////////////////
+////EXAMPLE WEEK ROW////
+////////////////////////
+<div class="week-row">
+    <div class="week-display-check">
+        <input type="checkbox" id="week-1" name="week-1" value="week-1" checked>
+    </div>
+    <p class="week-name">Week Name</p>
+    <div class="week-buttons">
+        <button class="edit-week-button">Ed.</button>
+        <button class="delete-week-button">Del</button>
+    </div>
+</div>
+*/
+function displayWeeks(weeks) {
+    let showWeeksHTML = '';
+    let checked = '';
+    weeks.forEach(element => {
+        checked = '';
+        if(element.active) {
+            checked = 'checked';
+        }
+        showWeeksHTML += '<div class="week-row"> <div class="week-display-check"> <input type="checkbox" id="'+element.weekID+'"'+checked+'></div>';
+        showWeeksHTML += '<p class="week-name">'+element.weekName+'</p> <div class="week-buttons">'; 
+        showWeeksHTML += '<button class="edit-week-button" id="'+element.weekID+'">Ed.</button>';
+        showWeeksHTML += '<button class="delete-week-button" id="'+element.weekID+'">Del</button> </div> </div>'
     });
 
+    $('.show-weeks-container').html(showWeeksHTML);
+}
+
 $(document).ready(function() {
+    displayWeeks();
 
     $('#new-event-button').click( () => {
         $('.existing-events').css('display', 'none');
