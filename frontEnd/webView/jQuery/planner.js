@@ -79,6 +79,16 @@ class Calendar {
     }
     
     renderMonth() {
+        getCurrentMonthData(this.selectedDate)
+            .then(data => {
+                monthData = data;
+                console.log(JSON.stringify(monthData));
+            })
+            .catch(error => {
+                console.log(error);
+        });
+    
+
         $('#month-year').text(months[this.shownDate[1]] + ' ' + this.shownDate[0]);
 
         
@@ -93,6 +103,7 @@ class Calendar {
             $('.grid-container').css('padding-bottom', '.3em');
         }
         
+        let monthDataReady = (monthData != null);
         
         let calendarHTML = '';
         
@@ -103,7 +114,9 @@ class Calendar {
 
             else if(i >=  this.firstDay && i < this.numDays + this.firstDay) {  
                 let dateNum = i-this.firstDay+1;
-                calendarHTML += '<div class="day-block active-day" id="'+dateNum+'">'+dateNum+'</div>';
+                calendarHTML += '<div class="day-block active-day" id="'+dateNum+'"><p>'+dateNum+'</p>';
+                calendarHTML += '<div class="day-event-container" id="event-'+dateNum+'"></div>';
+                calendarHTML += '</div>';
             }
             else {
                 //calendarHTML += '<div class="noclick">&nbsp;</div>';
@@ -435,6 +448,8 @@ async function getCurrentMonthData(myDate) {
             'Authorization': 'Bearer ' + JWToken
         },
         success: function(data, status, xhr)    {
+            displayCardioMonthData(data.cardio);
+            displayStrengthMonthData(data.strength);
             return data;
         },
         failure: function(errMsg) {alert(errMsg);}
@@ -500,13 +515,43 @@ function displayWeeks(weeks) {
         if(element.active) {
             checked = 'checked';
         }
-        showWeeksHTML += '<div class="week-row"> <div class="week-display-check"> <input type="checkbox" id="'+element.weekID+'"'+checked+'></div>';
+        showWeeksHTML += '<div class="week-row" id="week-'+element.weekID+'"> <div class="week-display-check"> '
+        showWeeksHTML += '<input type="checkbox" id="'+element.weekID+'"'+checked+'></div>';
         showWeeksHTML += '<p class="week-name">'+element.weekName+'</p> <div class="week-buttons">'; 
         showWeeksHTML += '<button class="edit-week-button" id="'+element.weekID+'">Ed.</button>';
         showWeeksHTML += '<button class="delete-week-button" id="'+element.weekID+'">Del</button> </div> </div>'
     });
 
     $('.show-weeks-container').html(showWeeksHTML);
+}
+
+function displayCardioMonthData(cardioArr) {
+    let cardioEventsHTML = '';
+    cardioArr.forEach(element => {
+        cardioEventsHTML += '<div class="day-event-row cardio-row" id="week-'+element.weekID+'">';
+        cardioEventsHTML += '<p class="day-event-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
+        cardioEventsHTML += '<p class="day-event-cardio-distance">'+element.distance+'</p>';
+        cardioEventsHTML += '</div>'
+        $('#event-'+getDate(element.date)).append(cardioEventsHTML);
+    });
+}
+
+function displayStrengthMonthData(strengthArr) {
+    let strengthEventsHTML = '';
+    strengthArr.forEach(element => {
+        strengthEventsHTML += '<div class="day-event-row strength-row" id="week-'+element.weekID+'">';
+        strengthEventsHTML += '<p class="day-event-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
+        strengthEventsHTML += '</div>'
+        $('#event-'+getDate(element.date)).append(strengthEventsHTML);
+    });
+}
+
+function getDate(dateString) {
+    let dateNum = dateString.substring(dateString.length - 1);
+    if(dateNum.charAt(0) == '0') {
+        dateNum = dateString.substring(1);
+    }
+    return dateNum;
 }
 
 $(document).ready(function() {

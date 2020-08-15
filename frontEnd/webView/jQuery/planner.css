@@ -679,6 +679,18 @@
         background-color: #8BDD96;
     }
 
+    .day-event-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .day-event-row {
+        width: 100%;
+        overflow: hidden;
+        height: 2em;
+        max-height: 2em;
+    }
+
     .schedule {
         width: 100%;
         height: auto;
