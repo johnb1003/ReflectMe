@@ -632,17 +632,82 @@ function updateWeeks() {
 
 /*
 ////////////////////////////////////////////////////////////////////////
-///////////////        AJAX UPDATE EVENTS DATA           ///////////////
+///////////////        AJAX CREATE EVENTS DATA           ///////////////
 ////////////////////////////////////////////////////////////////////////
 */
 
-// Load user Month data
-async function updateWeekObject(weekObject) {
+async function createWeekObject(weekObject) {
     let weekData = {
         'weekid': weekObject.weekID,
         'active': !weekObject.active,
         'name': weekObject.weekName
     }
+    let weekUpdateReq = $.ajax({
+        type: "POST",
+        url: baseAPIURL+'/events/week',
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        data: JSON.stringify(weekData),
+        success: function(data, status, xhr)    {
+            if(data.updated == true) {
+                console.log("Week successfully created");
+                updateWeeks();
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}
+
+async function createCardioObject(cardioObject) {
+    let cardioUpdateReq = $.ajax({
+        type: "POST",
+        url: baseAPIURL+'/events/cardio',
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        data: JSON.stringify(cardioObject),
+        success: function(data, status, xhr)    {
+            getAllMonthData();
+            console.log("Event Created");
+            return true;
+        },
+        failure: function(errMsg) {alert(errMsg); return false;}
+    });
+}
+
+async function createStrengthObject(strengthObject) {
+    let strengthUpdateReq = $.ajax({
+        type: "POST",
+        url: baseAPIURL+'/events/strength',
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        data: JSON.stringify(strengthObject),
+        success: function(data, status, xhr)    {
+            getAllMonthData();
+            console.log("Event Created");
+            return true;
+        },
+        failure: function(errMsg) {alert(errMsg); return false;}
+    });
+}
+
+
+/*
+////////////////////////////////////////////////////////////////////////
+///////////////        AJAX UPDATE EVENTS DATA           ///////////////
+////////////////////////////////////////////////////////////////////////
+*/
+
+async function updateWeekObject(weekObject) {
     let weekUpdateReq = $.ajax({
         type: "PATCH",
         url: baseAPIURL+'/events/week',
@@ -650,7 +715,7 @@ async function updateWeekObject(weekObject) {
         headers: {
             'Authorization': 'Bearer ' + JWToken
         },
-        data: JSON.stringify(weekData),
+        data: JSON.stringify(weekObject),
         success: function(data, status, xhr)    {
             if(data.updated == true) {
                 console.log("Update Successful");
@@ -664,6 +729,116 @@ async function updateWeekObject(weekObject) {
         failure: function(errMsg) {alert(errMsg);}
     });
 }
+
+async function updateCardioObject(cardioObject) {
+    let cardioUpdateReq = $.ajax({
+        type: "PATCH",
+        url: baseAPIURL+'/events/cardio',
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        data: JSON.stringify(cardioObject),
+        success: function(data, status, xhr)    {
+            if(data.updated == true) {
+                console.log("Update Successful");
+                getCurrentMonthData();
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}
+
+async function updateStrengthObject(strengthObject) {
+    let strengthUpdateReq = $.ajax({
+        type: "PATCH",
+        url: baseAPIURL+'/events/strength',
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        data: JSON.stringify(strengthObject),
+        success: function(data, status, xhr)    {
+            if(data.updated == true) {
+                console.log("Update Successful");
+                getCurrentMonthData();
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}
+
+
+/*
+////////////////////////////////////////////////////////////////////////
+///////////////        AJAX DELETE EVENTS DATA           ///////////////
+////////////////////////////////////////////////////////////////////////
+*/
+
+async function deleteWeekObject(weekid) {
+    let weekUpdateReq = $.ajax({
+        type: "DELETE",
+        url: baseAPIURL+'/events/week'+weekid,
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        success: function(data, status, xhr)    {
+            if(data.deleted == true) {
+                console.log("Delete Successful");
+                updateWeeks();
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}
+
+async function deleteCardioObject(cardioid) {
+    let cardioUpdateReq = $.ajax({
+        type: "DELETE",
+        url: baseAPIURL+'/events/cardio'+cardioid,
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        success: function(data, status, xhr)    {
+            getAllMonthData();
+            console.log("Event Deleted");
+            return true;
+        },
+        failure: function(errMsg) {alert(errMsg); return false;}
+    });
+}
+
+async function deleteStrengthObject(strengthid) {
+    let strengthUpdateReq = $.ajax({
+        type: "DELETE",
+        url: baseAPIURL+'/events/strength'+strengthid,
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        success: function(data, status, xhr)    {
+            getAllMonthData();
+            console.log("Event Deleted");
+            return true;
+        },
+        failure: function(errMsg) {alert(errMsg); return false;}
+    });
+}
+
 
 
 /*
