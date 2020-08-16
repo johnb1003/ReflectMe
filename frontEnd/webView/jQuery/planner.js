@@ -657,27 +657,26 @@ function displayWeeks(weeks) {
         showWeeksHTML += '<p class="week-name">'+element.weekName+'</p> <div class="week-buttons">'; 
         showWeeksHTML += '<button class="edit-week-button" id="'+element.weekID+'">Ed.</button>';
         showWeeksHTML += '<button class="delete-week-button" id="'+element.weekID+'">Del</button> </div> </div>'
-        
-        $('#week-check-'+element.weekID).change( (e) => {
-            console.log("Here");
-            console.log("Here: "+$(e.target).attr('id'));
-            let currWeekID = $(e.target).attr('id');
-            let weeksArr = allMonthData.weeks;
-            weeksArr.forEach(element => {
-                if(element.weekID == parseInt(currWeekID)) {
-                    element.active = $('#'+currWeekID+' .week-checkbox').is(':checked');
-                    if(!updateWeekObject(element)) {
-                        // Error updating
-                        element.active = !$('#'+currWeekID+' .week-checkbox').is(':checked');
-                        $('#'+currWeekID+' .week-checkbox').prop( "checked", $('#'+currWeekID+' .week-checkbox').is(':checked'));
-                    }
-                }
-            });
-        });
-        
     });
 
     $('.show-weeks-container').append(showWeeksHTML);
+
+    $('.week-checkbox').change( (e) => {
+        console.log("Here");
+        console.log("Here: "+$(e.target).attr('id'));
+        let currWeekID = $(e.target).attr('id');
+        let weeksArr = allMonthData.weeks;
+        weeksArr.forEach(element => {
+            if(element.weekID == parseInt(currWeekID)) {
+                element.active = $('#'+currWeekID+' .week-checkbox').is(':checked');
+                if(!updateWeekObject(element)) {
+                    // Error updating
+                    element.active = !$('#'+currWeekID+' .week-checkbox').is(':checked');
+                    $('#'+currWeekID+' .week-checkbox').prop( "checked", $('#'+currWeekID+' .week-checkbox').is(':checked'));
+                }
+            }
+        });
+    });
 }
 
 function displayCardioMonthData(cardioArr) {
@@ -726,6 +725,7 @@ $(document).ready(function() {
     });
 
     // Side bar show specific week events (on calendar) buttons
+    /*
     $('.week-checkbox').change( (e) => {
         console.log("Here: "+$(e.target).attr('id'));
         let currWeekID = $(e.target).attr('id');
@@ -741,6 +741,7 @@ $(document).ready(function() {
             }
         });
     });
+    */
 
     $('#new-event-button').click( () => {
         $('.existing-events').css('display', 'none');
