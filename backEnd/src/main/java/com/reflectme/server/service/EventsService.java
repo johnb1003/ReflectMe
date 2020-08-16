@@ -141,7 +141,15 @@ public class EventsService {
                 }
             }
 
-            monthsNode.set(date.getYear()+"-"+(date.getMonthValue()+1)+"-01", monthNode);
+            String month = "";
+            int monthVal = date.getMonthValue();
+            if(monthVal < 10) {
+                month = ""+monthVal;
+            }
+            else {
+                month = "0"+monthVal;
+            }
+            monthsNode.set(date.getYear()+"-"+month+"-01", monthNode);
 
             return Optional
                     .ofNullable(allNode)
