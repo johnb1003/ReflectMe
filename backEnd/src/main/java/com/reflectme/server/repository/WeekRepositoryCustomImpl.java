@@ -66,7 +66,7 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
         entityManager = emf.getObject().createEntityManager();
         //entityManager.getTransaction().begin();
 
-        String sql = "UPDATE week " +
+        String sql = "UPDATE weeks " +
                 "SET active=:active, name=:name " +
                 "WHERE weekid=:weekid AND userid=:userid";
 

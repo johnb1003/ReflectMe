@@ -629,6 +629,8 @@ async function updateWeekObject(weekObject) {
         data: JSON.stringify(weekData),
         success: function(data, status, xhr)    {
             if(data.updated == true) {
+                console.log("Update Successful");
+                
                 calendar.render();
                 return true;
             }
@@ -658,7 +660,7 @@ function displayWeeks(weeks) {
             checked = 'checked';
         }
         showWeeksHTML += '<div class="week-row" id="week-'+element.weekID+'"> <div class="week-display-check"> '
-        showWeeksHTML += '<input type="checkbox" class="week-checkbox" id="'+element.weekID+'" '+checked+'></div>';
+        showWeeksHTML += '<input type="checkbox" class="week-checkbox" id="week-check-'+element.weekID+'" '+checked+'></div>';
         showWeeksHTML += '<p class="week-name">'+element.weekName+'</p> <div class="week-buttons">'; 
         showWeeksHTML += '<button class="edit-week-button" id="'+element.weekID+'">Ed.</button>';
         showWeeksHTML += '<button class="delete-week-button" id="'+element.weekID+'">Del</button> </div> </div>'
@@ -672,12 +674,12 @@ function displayWeeks(weeks) {
         let currWeekID = $(e.target).attr('id');
         let weeksArr = allMonthData.weeks;
         weeksArr.forEach(element => {
-            if(element.weekID == parseInt(currWeekID)) {
-                element.active = $('#'+currWeekID+' .week-checkbox').is(':checked');
-                if(!updateWeekObject(element)) {
-                    // Error updating
-                    element.active = !$('#'+currWeekID+' .week-checkbox').is(':checked');
-                    $('#'+currWeekID+' .week-checkbox').prop( "checked", $('#'+currWeekID+' .week-checkbox').is(':checked'));
+            if(element.weekID == parseInt(currWeekID.substring(11))) {
+                if(updateWeekObject(element)) {
+                    element.active = $('#'+currWeekID).is(':checked');
+                }
+                else {
+                    $('#'+currWeekID).prop( "checked", $('#'+currWeekID).is(':checked'));
                 }
             }
         });
