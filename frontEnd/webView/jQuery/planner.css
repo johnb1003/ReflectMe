@@ -708,8 +708,7 @@
     .day-event-title {
         margin: 0 auto;
         padding: 0 auto;
-        display: table-cell;
-        vertical-align: middle;
+        line-height: 1.1em;
     }
 
     .cardio-row {
