@@ -605,6 +605,22 @@ function addToAllMonthData(dateString, data) {
     allMonthData['months'][dateString] = data;
 }
 
+function updateWeeks() {
+    let newWeeksReq = $.ajax({
+        type: "GET",
+        url: baseAPIURL+'/events/weeks',
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        success: function(data, status, xhr)    {
+            allMonthData.weeks = data;
+            calendar.render(); 
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}
+
 
 /*
 ////////////////////////////////////////////////////////////////////////
@@ -619,7 +635,7 @@ async function updateWeekObject(weekObject) {
         'active': weekObject.active,
         'name': weekObject.weekName
     }
-    weekUpdateReq = $.ajax({
+    let weekUpdateReq = $.ajax({
         type: "PATCH",
         url: baseAPIURL+'/events/week',
         contentType: "application/json",
@@ -630,8 +646,7 @@ async function updateWeekObject(weekObject) {
         success: function(data, status, xhr)    {
             if(data.updated == true) {
                 console.log("Update Successful");
-                
-                calendar.render();
+                updateWeeks();
                 return true;
             }
             else {
