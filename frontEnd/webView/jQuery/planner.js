@@ -201,10 +201,13 @@ class Calendar {
         $('.grid-container').html(calendarHTML);
         
         $('.active-day').click((e) => {
-            let idNum = $(e.target).attr("id").substring(6);
-            console.log(idNum);
-            if(idNum == undefined) {
-                idNum = $(e.target).parent().attr("id").substring(6);
+            let idNum = null;
+            if($(e.target).attr("id") == undefined) {
+                idNum = $(e.target).parent().parent().attr("id").substring(6);
+                console.log(idNum);
+            }
+            else {
+                idNum = $(e.target).attr("id").substring(6);
                 console.log(idNum);
             }
             this.newSelectedDate(this.shownDate[0], this.shownDate[1], idNum);
