@@ -143,7 +143,7 @@ public class EventsService {
 
             String month = "";
             int monthVal = date.getMonthValue();
-            if(monthVal <= 10) {
+            if(monthVal >= 10) {
                 month = ""+monthVal;
             }
             else {
