@@ -203,7 +203,7 @@ class Calendar {
         $('.active-day').click((e) => {
             let idNum = null;
             if($(e.target).attr("id") == undefined) {
-                idNum = $(e.target).parent().parent().attr("id").substring(6);
+                idNum = $(e.target).parent().attr("id").substring(6);
                 console.log(idNum);
             }
             else if($(e.target).attr("id").length > 2) {
@@ -747,7 +747,7 @@ async function updateCardioObject(cardioObject) {
         success: function(data, status, xhr)    {
             if(data.updated == true) {
                 console.log("Update Successful");
-                getCurrentMonthData();
+                getAllMonthData();
                 return true;
             }
             else {
@@ -770,7 +770,7 @@ async function updateStrengthObject(strengthObject) {
         success: function(data, status, xhr)    {
             if(data.updated == true) {
                 console.log("Update Successful");
-                getCurrentMonthData();
+                getAllMonthData();
                 return true;
             }
             else {
