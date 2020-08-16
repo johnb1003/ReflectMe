@@ -124,8 +124,8 @@ class Calendar {
                 calendarHTML += '<div class="day-block active-day" id="'+dateNum+'"><p class="date-number">'+dateNum+'</p>';
                 calendarHTML += '<div class="day-event-container" id="event-'+dateNum+'">';
                 if(dataArrived) {
-                    if((""+(i-this.firstDay)) in currMonthData) {
-                        let dateEvents = currMonthData[(""+(i-this.firstDay))];
+                    if((""+dateNum) in currMonthData) {
+                        let dateEvents = currMonthData[(""+dateNum)];
                         let cardioEvents = dateEvents['cardio'];
                         let strengthEvents = dateEvents['strength'];
 
