@@ -719,7 +719,6 @@ $(document).ready(function() {
                     element.active = !$('#'+currWeekID+' .week-checkbox').is(':checked');
                     $('#'+currWeekID+' .week-checkbox').prop( "checked", $('#'+currWeekID+' .week-checkbox').is(':checked'));
                 }
-                break;
             }
         });
     });

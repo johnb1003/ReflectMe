@@ -517,6 +517,10 @@
         display: none;
     }
 
+    #show-misc-label {
+        display: none;
+    }
+
     .currently-showing {
         text-align: left;
     }
