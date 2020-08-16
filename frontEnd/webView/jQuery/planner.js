@@ -504,7 +504,7 @@ function processType() {
 
 // Load user Month data
 async function allMonthDataAJAX() {
-    let dateString = calendar.getDateString;
+    let dateString = calendar.getFirstDayDateString();
     return monthDataReq = $.ajax({
         type: "GET",
         url: baseAPIURL+'/events/all/'+dateString,
