@@ -12,6 +12,9 @@ const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 
 const daySuffix = ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
 
+let showCardio = true;
+let showStrength = true;
+
 let selectedDayType = 'cardio-day-type';
 let clickedType = 'cardio-day-type';
 
@@ -99,7 +102,7 @@ class Calendar {
             if(this.shownDate[1] > this.today.getMonth()) {
                 futureMonth = true;
             }
-            else if(this.shownDate[1] == this.today.getMonth()) {
+            else if(this.shownDate[1]+1 == this.today.getMonth()) {
                 currentMonth = true;
             }
         }
@@ -140,19 +143,22 @@ class Calendar {
                         let strengthEvents = dateEvents['strength'];
 
                         // IF SHOW CARDIO IS CHECKED
-                        cardioEvents.forEach(element => {
-                            calendarHTML += '<div class="day-event-row cardio-row" id="week-'+element.weekID+'">';
-                            calendarHTML += '<p class="day-event-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
-                            calendarHTML += '<p class="day-event-cardio-distance">'+element.distance+'</p>';
-                            calendarHTML += '</div>';
-                        });
-
+                        if(showCardio) {
+                            cardioEvents.forEach(element => {
+                                calendarHTML += '<div class="day-event-row cardio-row" id="week-'+element.weekID+'">';
+                                calendarHTML += '<p class="day-event-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
+                                calendarHTML += '<p class="day-event-cardio-distance">'+element.distance+'</p>';
+                                calendarHTML += '</div>';
+                            });
+                        }
                         // IF SHOW STRENGTH IS CHECKED
-                        strengthEvents.forEach(element => {
-                            calendarHTML += '<div class="day-event-row strength-row" id="week-'+element.weekID+'">';
-                            calendarHTML += '<p class="day-event-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
-                            calendarHTML += '</div>';
-                        });
+                        if(showStrength) {
+                            strengthEvents.forEach(element => {
+                                calendarHTML += '<div class="day-event-row strength-row" id="week-'+element.weekID+'">';
+                                calendarHTML += '<p class="day-event-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
+                                calendarHTML += '</div>';
+                            });
+                        }
                     }
                     if(futureMonth || (currentMonth && dateNum >= this.today.getDate)) {
                         let weeksArr = allMonthData.weeks;
@@ -162,19 +168,26 @@ class Calendar {
                                 let cardioWeekEvents = currWeek['cardio'];
                                 let strengthWeekEvents = currWeek['strength'];
                                 // IF SHOW CARDIO IS CHECKED
-                                cardioWeekEvents.forEach(element => {
-                                    calendarHTML += '<div class="day-event-row cardio-row" id="week-'+element.weekID+'">';
-                                    calendarHTML += '<p class="day-event-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
-                                    calendarHTML += '<p class="day-event-cardio-distance">'+element.distance+'</p>';
-                                    calendarHTML += '</div>';
-                                });
-
+                                if(showCardio) {
+                                    cardioWeekEvents.forEach(element => {
+                                        if(i%7 == element.dayofweek) {
+                                            calendarHTML += '<div class="day-event-row cardio-row" id="week-'+element.weekID+'">';
+                                            calendarHTML += '<p class="day-event-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
+                                            calendarHTML += '<p class="day-event-cardio-distance">'+element.distance+'</p>';
+                                            calendarHTML += '</div>';
+                                        }
+                                    });
+                                }
                                 // IF SHOW STRENGTH IS CHECKED
-                                strengthWeekEvents.forEach(element => {
-                                    calendarHTML += '<div class="day-event-row strength-row" id="week-'+element.weekID+'">';
-                                    calendarHTML += '<p class="day-event-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
-                                    calendarHTML += '</div>';
-                                });
+                                if(showStrength) {
+                                    strengthWeekEvents.forEach(element => {
+                                        if(i%7 == element.dayofweek) {
+                                            calendarHTML += '<div class="day-event-row strength-row" id="week-'+element.weekID+'">';
+                                            calendarHTML += '<p class="day-event-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
+                                            calendarHTML += '</div>';
+                                        }
+                                    });
+                                }
                             }
                         });
                     }
@@ -680,6 +693,16 @@ function getDate(dateString) {
 
 $(document).ready(function() {
     calendar.init();
+
+    $('#show-cardio').change( () => {
+        showCardio = $('#show-cardio').is(':checked');
+        calendar.render();
+    });
+
+    $('#show-strength').change( () => {
+        showStrength = $('#show-strength').is(':checked');
+        calendar.render();
+    });
 
     $('#new-event-button').click( () => {
         $('.existing-events').css('display', 'none');
