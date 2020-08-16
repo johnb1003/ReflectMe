@@ -710,7 +710,7 @@ async function createStrengthObject(strengthObject) {
 async function updateWeekObject(weekObject) {
     let weekData = {
         'weekid': weekObject.weekID,
-        'active': weekObject.active,
+        'active': !weekObject.active,
         'name': weekObject.weekName
     }
     let weekUpdateReq = $.ajax({
