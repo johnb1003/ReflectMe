@@ -653,12 +653,13 @@ function displayWeeks(weeks) {
             checked = 'checked';
         }
         showWeeksHTML += '<div class="week-row" id="week-'+element.weekID+'"> <div class="week-display-check"> '
-        showWeeksHTML += '<input type="checkbox" class="week-checkbox" id="'+element.weekID+'" '+checked+'></div>';
+        showWeeksHTML += '<input type="checkbox" class="week-checkbox" id="week-check-'+element.weekID+'" '+checked+'></div>';
         showWeeksHTML += '<p class="week-name">'+element.weekName+'</p> <div class="week-buttons">'; 
         showWeeksHTML += '<button class="edit-week-button" id="'+element.weekID+'">Ed.</button>';
         showWeeksHTML += '<button class="delete-week-button" id="'+element.weekID+'">Del</button> </div> </div>'
         
-        $('#'+element.weekID+'.week-checkbox').change( (e) => {
+        $('#week-check-'+element.weekID).change( (e) => {
+            console.log("Here");
             console.log("Here: "+$(e.target).attr('id'));
             let currWeekID = $(e.target).attr('id');
             let weeksArr = allMonthData.weeks;
