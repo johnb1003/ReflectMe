@@ -124,6 +124,7 @@ class Calendar {
         
         $('.active-day').click((e) => {
             let idNum = $(e.target).attr("id");
+            console.log(idNum);
             this.newSelectedDate(this.shownDate[0], this.shownDate[1], idNum);
             let weekDay = new Date(this.shownDate[0], this.shownDate[1], idNum).getDay();
             let suffix = daySuffix[idNum % 10];
@@ -556,7 +557,7 @@ function getDate(dateString) {
 }
 
 $(document).ready(function() {
-    //displayWeeks();
+    calendar.init();
 
     $('#new-event-button').click( () => {
         $('.existing-events').css('display', 'none');
@@ -570,8 +571,6 @@ $(document).ready(function() {
 		$('.calendar-container').css('display', 'block');
 		currentExtended = "";
     })
-
-     calendar.init();
     
     $('#pop-up-background').click( (e) => {
         if($(e.target).attr('class') == 'pop-up') {
