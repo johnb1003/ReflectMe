@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoField;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -47,22 +48,17 @@ public class EventsService {
 
         ObjectNode allNode = objectMapper.createObjectNode();
 
-        ObjectNode eventsNode = objectMapper.createObjectNode();
+        ObjectNode monthsNode = objectMapper.createObjectNode();
 
-        ObjectNode scheduledEventsNode = objectMapper.createObjectNode();
-        ObjectNode completedEventsNode = objectMapper.createObjectNode();
-
-        ArrayNode scheduledCardioEventArrNode = scheduledEventsNode.putArray("cardio");
-        ArrayNode scheduledStrengthEventArrNode = scheduledEventsNode.putArray("strength");
-        ArrayNode completedCardioEventArrNode = completedEventsNode.putArray("cardio");
-        ArrayNode completedStrengthEventArrNode = completedEventsNode.putArray("strength");
+        //ArrayNode scheduledCardioEventArrNode = scheduledEventsNode.putArray("cardio");
+        //ArrayNode scheduledStrengthEventArrNode = scheduledEventsNode.putArray("strength");
+        //ArrayNode completedCardioEventArrNode = completedEventsNode.putArray("cardio");
+        //ArrayNode completedStrengthEventArrNode = completedEventsNode.putArray("strength");
 
         ArrayNode weeksArrNode = objectMapper.createArrayNode();
 
+        allNode.set("months", monthsNode);
         allNode.set("weeks", weeksArrNode);
-        allNode.set("events", eventsNode);
-        eventsNode.set("scheduled", scheduledEventsNode);
-        eventsNode.set("completed", completedEventsNode);
 
         try {
             ArrayList<Week> weeks = weekRepository.getUserWeeks(userID);
@@ -101,24 +97,50 @@ public class EventsService {
             }
 
             ArrayList<Cardio> cardioEvents = cardioRepository.getMonthEvents(userID, date);
-            while(!cardioEvents.isEmpty()) {
-                if(cardioEvents.get(0).getstatus().toLowerCase().equals("scheduled")) {
-                    scheduledCardioEventArrNode.addPOJO(cardioEvents.remove(0));
+            ArrayList<Strength> strengthEvents = strengthRepository.getMonthEvents(userID, date);
+
+            boolean hasEvent = false;
+
+            ObjectNode monthNode = objectMapper.createObjectNode();
+
+            ArrayNode cardioArrNode = null;
+            ArrayNode strengthArrNode = null;
+
+            ObjectNode dateNode = null;
+
+            for(int i=1; i<=31; i++) {
+                hasEvent = false;
+                while(!cardioEvents.isEmpty() &&
+                        cardioEvents.get(0).getdate().get(ChronoField.DAY_OF_MONTH) == i) {
+                    if(!hasEvent) {
+                        dateNode = objectMapper.createObjectNode();
+                        cardioArrNode = objectMapper.createArrayNode();
+                        strengthArrNode = objectMapper.createArrayNode();
+                        dateNode.set("cardio", cardioArrNode);
+                        dateNode.set("strength", strengthArrNode);
+                        hasEvent = true;
+                    }
+                    cardioArrNode.addPOJO(cardioEvents.get(0));
                 }
-                else if(cardioEvents.get(0).getstatus().toLowerCase().equals("completed")) {
-                    completedCardioEventArrNode.addPOJO(cardioEvents.remove(0));
+
+                while(!strengthEvents.isEmpty() &&
+                        strengthEvents.get(0).getdate().get(ChronoField.DAY_OF_MONTH) == i) {
+                    if(!hasEvent) {
+                        dateNode = objectMapper.createObjectNode();
+                        cardioArrNode = objectMapper.createArrayNode();
+                        strengthArrNode = objectMapper.createArrayNode();
+                        dateNode.set("cardio", cardioArrNode);
+                        dateNode.set("strength", strengthArrNode);
+                    }
+                    strengthArrNode.addPOJO(strengthEvents.get(0));
+                }
+
+                if(hasEvent) {
+                    monthNode.set(""+date.getDayOfMonth(), dateNode);
                 }
             }
 
-            ArrayList<Strength> strengthEvents = strengthRepository.getMonthEvents(userID, date);
-            while(!strengthEvents.isEmpty()) {
-                if(strengthEvents.get(0).getstatus().toLowerCase().equals("scheduled")) {
-                    scheduledStrengthEventArrNode.addPOJO(strengthEvents.remove(0));
-                }
-                else if(strengthEvents.get(0).getstatus().toLowerCase().equals("completed")) {
-                    completedStrengthEventArrNode.addPOJO(strengthEvents.remove(0));
-                }
-            }
+            monthsNode.set(date.getYear()+"-"+(date.getMonthValue()+1)+"-01", monthNode);
 
             return Optional
                     .ofNullable(allNode)
