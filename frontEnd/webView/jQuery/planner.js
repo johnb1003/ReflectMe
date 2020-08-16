@@ -125,6 +125,10 @@ class Calendar {
         $('.active-day').click((e) => {
             let idNum = $(e.target).attr("id");
             console.log(idNum);
+            if(idNum == undefined) {
+                idNum = $(e.target).parent().attr("id");
+                console.log(idNum);
+            }
             this.newSelectedDate(this.shownDate[0], this.shownDate[1], idNum);
             let weekDay = new Date(this.shownDate[0], this.shownDate[1], idNum).getDay();
             let suffix = daySuffix[idNum % 10];
