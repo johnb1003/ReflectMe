@@ -617,7 +617,7 @@ async function updateWeekObject(weekObject) {
     let weekData = {
         'weekid': weekObject.weekID,
         'active': weekObject.active,
-        'name': weekObject.name
+        'name': weekObject.weekName
     }
     weekUpdateReq = $.ajax({
         type: "PATCH",
@@ -679,7 +679,7 @@ function displayWeeks(weeks) {
                     element.active = $('#'+currWeekID).is(':checked');
                 }
                 else {
-                    $('#'+currWeekID).prop( "checked", $('#'+currWeekID).is(':checked'));
+                    $('#'+currWeekID).prop( "checked", !$('#'+currWeekID).is(':checked'));
                 }
             }
         });
