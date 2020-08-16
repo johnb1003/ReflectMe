@@ -256,14 +256,19 @@ class Calendar {
     }
 
     getFirstDayDateString() {
-        let year = this.selectedDate[0];
+        let year = ''+this.selectedDate[0];
         let month = ''+(this.selectedDate[1] + 1);
+
+        console.log(year+'-'+month);
     
         if (month.length < 2) {
             month = '0' + month;
         }
 
-        return [year, month, '01'].join('-');
+        let stringDate = [year, month, '01'].join('-');
+        console.log(stringDate);
+
+        return stringDate;
     }
 }
 
