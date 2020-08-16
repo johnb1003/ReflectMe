@@ -17,6 +17,14 @@ let clickedType = 'cardio-day-type';
 
 let eventType = 'Cardio';
 
+
+
+/*
+////////////////////////////////////////////////////////////////////////
+////////////////              CALENDAR CLASS            ////////////////
+////////////////////////////////////////////////////////////////////////
+*/
+
 class Calendar {
     constructor(dayClickFunction) {
         this.dayClickFunction = dayClickFunction
@@ -71,6 +79,9 @@ class Calendar {
         this.nextMonth();
         this.numDays = new Date(this.shownDate[0], this.shownDate[1], 0).getDate();
         this.prevMonth();
+        if(allMonthData != null && !(this.getFirstDayDateString() in allMonthData.months)) {
+            getCurrentMonthData();
+        }
     }
     
     render() {
@@ -79,15 +90,6 @@ class Calendar {
     }
     
     renderMonth() {
-        getCurrentMonthData(this.shownDate)
-            .then(data => {
-                monthData = data;
-                console.log(JSON.stringify(monthData));
-            })
-            .catch(error => {
-                console.log(error);
-        });
-    
 
         $('#month-year').text(months[this.shownDate[1]] + ' ' + this.shownDate[0]);
 
@@ -104,6 +106,13 @@ class Calendar {
         }
         
         let calendarHTML = '';
+
+        let dataArrived = false;
+        let currMonthData = null;
+        if(allMonthData != null && (this.getFirstDayDateString() in allMonthData.months)) {
+            dataArrived = true;
+            currMonthData = allMonthData.months[this.getFirstDayDateString()];
+        }
         
         for(let i=0; i<42; i++) {
             if(i < this.firstDay) {
@@ -113,8 +122,28 @@ class Calendar {
             else if(i >=  this.firstDay && i < this.numDays + this.firstDay) {  
                 let dateNum = i-this.firstDay+1;
                 calendarHTML += '<div class="day-block active-day" id="'+dateNum+'"><p class="date-number">'+dateNum+'</p>';
-                calendarHTML += '<div class="day-event-container" id="event-'+dateNum+'"></div>';
-                calendarHTML += '</div>';
+                calendarHTML += '<div class="day-event-container" id="event-'+dateNum+'">';
+                if(dataArrived) {
+                    if((""+i) in currMonthData) {
+                        let dateEvents = currMonthData[(""+i)];
+                        let cardioEvents = dateEvents['cardio'];
+                        let strengthEvents = dateEvents['strength'];
+
+                        cardioEvents.forEach(element => {
+                            calendarHTML += '<div class="day-event-row cardio-row" id="week-'+element.weekID+'">';
+                            calendarHTML += '<p class="day-event-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
+                            calendarHTML += '<p class="day-event-cardio-distance">'+element.distance+'</p>';
+                            calendarHTML += '</div>'
+                        });
+
+                        strengthEvents.forEach(element => {
+                            calendarHTML += '<div class="day-event-row strength-row" id="week-'+element.weekID+'">';
+                            calendarHTML += '<p class="day-event-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
+                            calendarHTML += '</div>'
+                        });
+                    }
+                }
+                calendarHTML += '</div></div>';
             }
             else {
                 //calendarHTML += '<div class="noclick">&nbsp;</div>';
@@ -225,9 +254,27 @@ class Calendar {
             return [weekDay, this.selectedDate[1], this.selectedDate[2]]
         }
     }
+
+    getFirstDayDateString() {
+        let year = this.selectedDate[0];
+        let month = ''+(this.selectedDate[1] + 1);
+    
+        if (month.length < 2) {
+            month = '0' + month;
+        }
+
+        return [year, month, '01'].join('-');
+    }
 }
 
 let calendar = new Calendar(dayClickFunction);
+
+
+/*
+////////////////////////////////////////////////////////////////////////
+////////////////    COOKIE METHODS TO SAVE USER DATA    ////////////////
+////////////////////////////////////////////////////////////////////////
+*/
 
 function setCookie(key, value) {
 	document.cookie = key + "=" + value + ";";
@@ -251,6 +298,8 @@ function getCookie(key) {
 
 let JWToken = getCookie("token");
 
+
+// Method to call when a day in the calendar view is clicked
 function dayClickFunction(weekDay, month, dateNum, suffix, year) {
     $('.pop-up').css('display', 'flex');
     $('#corner-week-day').text(weekDay+',');
@@ -265,6 +314,14 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
 
 
 }
+
+
+/*
+////////////////////////////////////////////////////////////////////////
+////////////////  DISPLAY DATA IN DAY EVENT SCHEDULER   ////////////////
+////////////////////////////////////////////////////////////////////////
+*/
+
 
 function getLiftSchedule() {
     let checkedLifts = $('.lift-type-pair input[type=checkbox]:checked');
@@ -432,18 +489,51 @@ function processType() {
     }
 }
 
+
+/*
+////////////////////////////////////////////////////////////////////////
+////////////////        AJAX LOAD EVENTS DATA           ////////////////
+////////////////////////////////////////////////////////////////////////
+*/
+
+
 // Load user Month data
-async function getCurrentMonthData(myDate) {
-    if(myDate == null) {
-        currDate = new Date();
-        myDate = [currDate.getFullYear(), currDate.getMonth(), currDate.getDate()];
-    }
-    let myYear = myDate[0];
-    let myMonth = myDate[1]+1;
-    if((''+myMonth).length == 1) {
-        myMonth = '0'+myMonth;
-    }
-    let dateString = myYear+'-'+myMonth+'-01';
+async function allMonthDataAJAX() {
+    let dateString = calendar.getDateString;
+    return monthDataReq = $.ajax({
+        type: "GET",
+        url: baseAPIURL+'/events/all/'+dateString,
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        success: function(data, status, xhr)    {
+            return data;
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}
+
+let allMonthData;
+function getAllMonthData() {
+    allMonthDataAJAX()
+        .then(data => {
+            allMonthData = data;
+            displayWeeks(allMonthData.weeks);
+            calendar.render();
+            console.log(JSON.stringify(monthData));
+        })
+        .catch(error => {
+            console.log(error);
+        }
+    );
+}
+
+getAllMonthData();
+
+// Load user Month data
+async function getCurrentMonthData() {
+    let dateString = calendar.getFirstDayDateString();
     return monthDataReq = $.ajax({
         type: "GET",
         url: baseAPIURL+'/events/month/'+dateString,
@@ -452,24 +542,19 @@ async function getCurrentMonthData(myDate) {
             'Authorization': 'Bearer ' + JWToken
         },
         success: function(data, status, xhr)    {
-            displayCardioMonthData(data.cardio);
-            displayStrengthMonthData(data.strength);
+            addToAllMonthData(dateString, data);
+            calendar.render()
             return data;
         },
         failure: function(errMsg) {alert(errMsg);}
     });
 }
-let monthData;
-getCurrentMonthData(null)
-    .then(data => {
-        monthData = data;
-        console.log(JSON.stringify(monthData));
-    })
-    .catch(error => {
-        console.log(error);
-});
 
+function addToAllMonthData(dateString, data) {
+    allMonthData['months'][dateString] = data;
+}
 
+/*
 // Load user Week data
 async function getWeekData(date) {
     return weekDataReq = $.ajax({
@@ -495,22 +580,17 @@ getWeekData(null)
     .catch(error => {
         console.log(error);
 });
+*/
+
 
 /*
-////////////////////////
-////EXAMPLE WEEK ROW////
-////////////////////////
-<div class="week-row">
-    <div class="week-display-check">
-        <input type="checkbox" id="week-1" name="week-1" value="week-1" checked>
-    </div>
-    <p class="week-name">Week Name</p>
-    <div class="week-buttons">
-        <button class="edit-week-button">Ed.</button>
-        <button class="delete-week-button">Del</button>
-    </div>
-</div>
+////////////////////////////////////////////////////////////////////////
+////////////////          DISPLAY EVENTS DATA           ////////////////
+/////////////       IN WEEKS SECTION AND ON CALENDAR           /////////
+////////////////////////////////////////////////////////////////////////
 */
+
+
 function displayWeeks(weeks) {
     let showWeeksHTML = '';
     let checked = '';
