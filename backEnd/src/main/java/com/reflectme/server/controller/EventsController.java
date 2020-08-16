@@ -59,6 +59,22 @@ public class EventsController {
         return weekService.createWeek(week);
     }
 
+    @PatchMapping("/week")
+    public Map<String, Boolean> updateWeek(@Valid @RequestBody Week week, Principal principal) {
+        week.setUserid(Long.parseLong(principal.getName()));
+
+        Map<String, Boolean> response = new HashMap<>();
+
+        boolean updated = weekService.updateWeek(week);
+        if(updated) {
+            response.put("updated", Boolean.TRUE);
+        }
+        else {
+            response.put("updated", Boolean.FALSE);
+        }
+        return response;
+    }
+
     @DeleteMapping("/week/{weekid}")
     public Map<String, Boolean> deleteWeek(@PathVariable(value = "weekid") Long weekid, Principal principal) {
         Map<String, Boolean> response = new HashMap<>();
@@ -88,9 +104,9 @@ public class EventsController {
      **********************************/
 
     @PostMapping("/cardio")
-    public ResponseEntity createCardioEvent(@Valid @RequestBody Cardio cardioLog, Principal principal) {
-        cardioLog.setuserid(Long.parseLong(principal.getName()));
-        return cardioService.createEvent(cardioLog);
+    public ResponseEntity createCardioEvent(@Valid @RequestBody Cardio cardio, Principal principal) {
+        cardio.setuserid(Long.parseLong(principal.getName()));
+        return cardioService.createEvent(cardio);
     }
 
     @PatchMapping("/cardio")

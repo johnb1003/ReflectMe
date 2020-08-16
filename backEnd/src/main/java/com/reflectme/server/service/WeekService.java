@@ -54,6 +54,16 @@ public class WeekService {
         return response;
     }
 
+    public boolean updateWeek(Week week) {
+        try {
+            return weekRepository.updateWeek(week);
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+            return false;
+        }
+    }
+
     public boolean deleteEvent(Week event) {
         return weekRepository.deleteEvent(event);
     }

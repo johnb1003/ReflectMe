@@ -51,7 +51,6 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
 
         try {
             result = simpleJdbcInsertWeek.executeAndReturnKey(parameters);
-            System.out.println("Generated id - " + result.longValue());
         }
         catch (Exception e) {
             System.out.println(e.toString());
@@ -60,6 +59,31 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
         entityManager.close();
 
         return result.longValue();
+    }
+
+    @Override
+    public boolean updateWeek(Week week) {
+        entityManager = emf.getObject().createEntityManager();
+        //entityManager.getTransaction().begin();
+
+        String sql = "UPDATE week " +
+                "SET active=:active, name=:name " +
+                "WHERE weekid=:weekid AND userid=:userid";
+
+        int result = 0;
+
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(week);
+
+        try {
+            result = namedParameterJdbcTemplate.update(sql, parameters);
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result == 1;
     }
 
     @Override

@@ -605,33 +605,35 @@ function addToAllMonthData(dateString, data) {
     allMonthData['months'][dateString] = data;
 }
 
+
 /*
-// Load user Week data
-async function getWeekData(date) {
-    return weekDataReq = $.ajax({
-        type: "GET",
-        url: baseAPIURL+'/events/weeks',
+////////////////////////////////////////////////////////////////////////
+///////////////        AJAX UPDATE EVENTS DATA           ///////////////
+////////////////////////////////////////////////////////////////////////
+*/
+
+// Load user Month data
+async function updateWeekObject(weekObject) {
+    weekUpdateReq = $.ajax({
+        type: "PATCH",
+        url: baseAPIURL+'/events/week',
         contentType: "application/json",
         headers: {
             'Authorization': 'Bearer ' + JWToken
         },
+        data: weekObject,
         success: function(data, status, xhr)    {
-            displayWeeks(data.weeks);
-            return data;
+            if(data.updated == true) {
+                calendar.render();
+                return true;
+            }
+            else {
+                return false;
+            }
         },
         failure: function(errMsg) {alert(errMsg);}
     });
 }
-let weekData;
-getWeekData(null)
-    .then(data => {
-        weekData = data.weeks;
-        console.log(JSON.stringify(weekData));
-    })
-    .catch(error => {
-        console.log(error);
-});
-*/
 
 
 /*
@@ -651,7 +653,7 @@ function displayWeeks(weeks) {
             checked = 'checked';
         }
         showWeeksHTML += '<div class="week-row" id="week-'+element.weekID+'"> <div class="week-display-check"> '
-        showWeeksHTML += '<input type="checkbox" id="'+element.weekID+'"'+checked+'></div>';
+        showWeeksHTML += '<input type="checkbox" class="week-checkbox" id="'+element.weekID+'"'+checked+'></div>';
         showWeeksHTML += '<p class="week-name">'+element.weekName+'</p> <div class="week-buttons">'; 
         showWeeksHTML += '<button class="edit-week-button" id="'+element.weekID+'">Ed.</button>';
         showWeeksHTML += '<button class="delete-week-button" id="'+element.weekID+'">Del</button> </div> </div>'
@@ -694,6 +696,7 @@ function getDate(dateString) {
 $(document).ready(function() {
     calendar.init();
 
+    // Side bar show event type (on calendar) buttons
     $('#show-cardio').change( () => {
         showCardio = $('#show-cardio').is(':checked');
         calendar.render();
@@ -702,6 +705,23 @@ $(document).ready(function() {
     $('#show-strength').change( () => {
         showStrength = $('#show-strength').is(':checked');
         calendar.render();
+    });
+
+    // Side bar show specific week events (on calendar) buttons
+    $('.week-checkbox').change( (e) => {
+        let currWeekID = $(e.target).attr('id');
+        let weeksArr = allMonthData.weeks;
+        weeksArr.forEach(element => {
+            if(element.weekID == parseInt(currWeekID)) {
+                element.active = $('#'+currWeekID+' .week-checkbox').is(':checked');
+                if(!updateWeekObject(element)) {
+                    // Error updating
+                    element.active = !$('#'+currWeekID+' .week-checkbox').is(':checked');
+                    $('#'+currWeekID+' .week-checkbox').prop( "checked", $('#'+currWeekID+' .week-checkbox').is(':checked'));
+                }
+                break;
+            }
+        });
     });
 
     $('#new-event-button').click( () => {
@@ -715,7 +735,7 @@ $(document).ready(function() {
 		$('#'+currentExtended).css('display', 'none');
 		$('.calendar-container').css('display', 'block');
 		currentExtended = "";
-    })
+    });
     
     $('#pop-up-background').click( (e) => {
         if($(e.target).attr('class') == 'pop-up') {

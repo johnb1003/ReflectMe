@@ -10,6 +10,8 @@ public interface WeekRepositoryCustom {
 
     public long createWeek(Week week);
 
+    public boolean updateWeek(Week week);
+
     public boolean deleteEvent(Week event);
 
     public ArrayList<Week> getUserWeeks(long userid);

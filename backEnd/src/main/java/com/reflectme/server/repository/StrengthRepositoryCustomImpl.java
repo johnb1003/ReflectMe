@@ -72,7 +72,7 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
         String sql = "UPDATE strength " +
                 "SET date=:date, dayofweek=:dayofweek, strengthtype=:strengthtype, " +
                 "status=:status, lifts=:lifts, weekid=:weekid " +
-                "WHERE strengthid=:strengthid";
+                "WHERE strengthid=:strengthid AND userid=:userid";
 
         int result = 0;
 

@@ -275,6 +275,7 @@
       
     #misc-day-type {
         border-radius: 0 3px 3px 0;
+        display: none;
     }
       
     #misc-day-type-input {
@@ -510,6 +511,10 @@
         width: 100%;
         padding: 0 .5em;
         font-size: 1.5em;
+    }
+
+    #show-misc {
+        display: none;
     }
 
     .currently-showing {
