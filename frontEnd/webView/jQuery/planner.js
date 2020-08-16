@@ -102,7 +102,7 @@ class Calendar {
             if(this.shownDate[1] > this.today.getMonth()) {
                 futureMonth = true;
             }
-            else if(this.shownDate[1]+1 == this.today.getMonth()) {
+            else if(this.shownDate[1] == this.today.getMonth()) {
                 currentMonth = true;
             }
         }
@@ -160,7 +160,7 @@ class Calendar {
                             });
                         }
                     }
-                    if(futureMonth || (currentMonth && dateNum >= this.today.getDate)) {
+                    if(futureMonth || (currentMonth && (dateNum >= this.today.getDate()))) {
                         let weeksArr = allMonthData.weeks;
                     
                         weeksArr.forEach(currWeek => {
