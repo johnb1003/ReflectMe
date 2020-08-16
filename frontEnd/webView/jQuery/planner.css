@@ -649,7 +649,7 @@
         background-color: rgb(218, 218, 218);
         text-align: left;
         padding: .1em 0 0 .2em;
-        overflow: hidden;
+        overflow: scroll;
     }
       
     .noclick {
