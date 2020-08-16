@@ -256,8 +256,8 @@ class Calendar {
     }
 
     getFirstDayDateString() {
-        let year = ''+this.selectedDate[0];
-        let month = ''+(this.selectedDate[1] + 1);
+        let year = ''+this.shownDate[0];
+        let month = ''+(this.shownDate[1] + 1);
 
         console.log(year+'-'+month);
     
@@ -525,7 +525,7 @@ function getAllMonthData() {
             allMonthData = data;
             displayWeeks(allMonthData.weeks);
             calendar.render();
-            console.log(JSON.stringify(monthData));
+            //console.log(JSON.stringify(allMonthData));
         })
         .catch(error => {
             console.log(error);
