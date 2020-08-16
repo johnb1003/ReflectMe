@@ -676,7 +676,9 @@ function displayWeeks(weeks) {
         weeksArr.forEach(element => {
             if(element.weekID == parseInt(currWeekID.substring(11))) {
                 if(updateWeekObject(element)) {
+                    console.log($('#'+currWeekID).is(':checked'));
                     element.active = $('#'+currWeekID).is(':checked');
+                    console.log('active: '+element.active);
                 }
                 else {
                     $('#'+currWeekID).prop( "checked", !$('#'+currWeekID).is(':checked'));
