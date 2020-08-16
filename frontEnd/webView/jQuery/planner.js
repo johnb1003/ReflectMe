@@ -258,15 +258,12 @@ class Calendar {
     getFirstDayDateString() {
         let year = ''+this.shownDate[0];
         let month = ''+(this.shownDate[1] + 1);
-
-        console.log(year+'-'+month);
     
         if (month.length < 2) {
             month = '0' + month;
         }
 
         let stringDate = [year, month, '01'].join('-');
-        console.log(stringDate);
 
         return stringDate;
     }
@@ -525,7 +522,7 @@ function getAllMonthData() {
             allMonthData = data;
             displayWeeks(allMonthData.weeks);
             calendar.render();
-            //console.log(JSON.stringify(allMonthData));
+            console.log(JSON.stringify(allMonthData));
         })
         .catch(error => {
             console.log(error);
