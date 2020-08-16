@@ -27,7 +27,7 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     public Account getAccountByEmail(String email) {
         //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String queryString = "select * " +
                              "from Account a " +
@@ -48,7 +48,7 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     public Account getFullAccountByEmail(String email) {
         entityManager = emf.getObject().createEntityManager();
         //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String queryString = "select * " +
                 "from Account a " +
@@ -69,7 +69,7 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     public Account getAccountById(String id) {
         entityManager = emf.getObject().createEntityManager();
         //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String queryString = "select * " +
                 "from Account a " +
@@ -90,7 +90,7 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     public Account getFullAccountById(String id) {
         entityManager = emf.getObject().createEntityManager();
         //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String queryString = "select * " +
                 "from Account a " +
@@ -111,7 +111,7 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     public String getPassword(String email) {
         entityManager = emf.getObject().createEntityManager();
         //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String queryString = "select a.password " +
                 "from Account a " +
@@ -132,7 +132,7 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     public int saveAccount(String fname, String lname, String email, String phonenum, String password) {
         entityManager = emf.getObject().createEntityManager();
         //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String queryString = "INSERT INTO account (fname, lname, email, phonenum, password) " +
                 "VALUES(:fname, :lname, :email, :phonenum, :password)";

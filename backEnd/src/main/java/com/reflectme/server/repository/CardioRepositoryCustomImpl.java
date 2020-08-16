@@ -42,7 +42,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Override
     public long createEvent(Cardio event) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("userid", event.getuserid());
@@ -65,7 +65,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Override
     public boolean updateEvent(Cardio event) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String sql = "UPDATE cardio " +
                 "SET date=:date, dayofweek=:dayofweek, cardiotype=:cardiotype, " +
@@ -91,7 +91,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Override
     public boolean deleteEvent(Cardio event) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String sql = "DELETE FROM cardio WHERE cardioid=:cardioid AND userid=:userid";
 
@@ -114,7 +114,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Override
     public ArrayList<Cardio> getWeekEvents(Cardio event) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String sql = "SELECT * FROM cardio WHERE weekid=:weekid AND userid=:userid ORDER BY weekid";
 
@@ -138,7 +138,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Override
     public ArrayList<Cardio> getAllWeekEvents(long userid) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String sql = "SELECT * FROM cardio WHERE weekid IS NOT NULL AND userid=:userid ORDER BY weekid ASC";
 
@@ -163,7 +163,7 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
     @Override
     public ArrayList<Cardio> getMonthEvents(long userid, LocalDate date) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String sql = "SELECT * from cardio " +
                 "where userid=:userid AND weekid IS NULL " +

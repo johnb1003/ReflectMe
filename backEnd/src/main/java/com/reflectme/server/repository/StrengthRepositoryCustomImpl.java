@@ -38,7 +38,7 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     @Override
     public long createEvent(Strength event) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         Number result = null;
 
@@ -67,7 +67,7 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     @Override
     public boolean updateEvent(Strength event) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String sql = "UPDATE strength " +
                 "SET date=:date, dayofweek=:dayofweek, strengthtype=:strengthtype, " +
@@ -93,7 +93,7 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     @Override
     public boolean deleteEvent(Strength event) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String sql = "DELETE FROM strength WHERE strengthid=:strengthid AND userid=:userid";
 
@@ -116,7 +116,7 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     @Override
     public ArrayList<Strength> getWeekEvents(Strength event) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String sql = "SELECT * FROM strength WHERE weekid=:weekid AND userid=:userid";
 
@@ -140,7 +140,7 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     @Override
     public ArrayList<Strength> getAllWeekEvents(long userid) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String sql = "SELECT * FROM strength WHERE weekid IS NOT NULL AND userid=:userid ORDER BY weekid ASC";
 
@@ -166,7 +166,7 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
     public ArrayList<Strength> getMonthEvents(long userid, LocalDate date) {
 
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String sql = "SELECT * from strength " +
                 "where userid=:userid AND weekid IS NULL " +

@@ -40,7 +40,7 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
     @Override
     public long createWeek(Week week) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         Number result = null;
 
@@ -65,7 +65,7 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
     @Override
     public boolean deleteEvent(Week event) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         String sql = "DELETE FROM weeks WHERE weekid=:weekid AND userid=:userid";
 
@@ -88,7 +88,7 @@ public class WeekRepositoryCustomImpl implements WeekRepositoryCustom {
     @Override
     public ArrayList<Week> getUserWeeks(long userid) {
         entityManager = emf.getObject().createEntityManager();
-        entityManager.getTransaction().begin();
+        //entityManager.getTransaction().begin();
 
         ArrayList<Week> result = null;
 
