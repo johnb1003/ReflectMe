@@ -124,7 +124,7 @@ class Calendar {
                 calendarHTML += '<div class="day-block active-day" id="'+dateNum+'"><p class="date-number">'+dateNum+'</p>';
                 calendarHTML += '<div class="day-event-container" id="event-'+dateNum+'">';
                 if(dataArrived) {
-                    if((""+i) in currMonthData) {
+                    if((""+(i+this.firstDay)) in currMonthData) {
                         let dateEvents = currMonthData[(""+i)];
                         let cardioEvents = dateEvents['cardio'];
                         let strengthEvents = dateEvents['strength'];
@@ -522,7 +522,7 @@ function getAllMonthData() {
             allMonthData = data;
             displayWeeks(allMonthData.weeks);
             calendar.render();
-            console.log(JSON.stringify(allMonthData));
+            //console.log(JSON.stringify(allMonthData));
         })
         .catch(error => {
             console.log(error);
