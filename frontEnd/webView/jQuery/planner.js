@@ -614,6 +614,11 @@ function addToAllMonthData(dateString, data) {
 
 // Load user Month data
 async function updateWeekObject(weekObject) {
+    let weekData = {
+        'weekid': weekObject.weekID,
+        'active': weekObject.active,
+        'name': weekObject.name
+    }
     weekUpdateReq = $.ajax({
         type: "PATCH",
         url: baseAPIURL+'/events/week',
@@ -621,7 +626,7 @@ async function updateWeekObject(weekObject) {
         headers: {
             'Authorization': 'Bearer ' + JWToken
         },
-        data: weekObject,
+        data: weekData,
         success: function(data, status, xhr)    {
             if(data.updated == true) {
                 calendar.render();
