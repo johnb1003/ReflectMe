@@ -207,6 +207,7 @@ class Calendar {
                 console.log(idNum);
             }
             else {
+                console.log($(e.target).attr("id"));
                 idNum = $(e.target).attr("id").substring(6);
                 console.log(idNum);
             }
