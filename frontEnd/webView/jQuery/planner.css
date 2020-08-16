@@ -699,9 +699,9 @@
     .day-event-row {
         width: 95%;
         overflow: hidden;
-        height: 1.5em;
+        height: 1.2em;
         max-height: 2em;
-        margin: 0 auto .6em auto;
+        margin: 0 auto .4em auto;
         text-align: center;
     }
 
