@@ -120,7 +120,7 @@ public class EventsService {
                         dateNode.set("strength", strengthArrNode);
                         hasEvent = true;
                     }
-                    cardioArrNode.addPOJO(cardioEvents.get(0));
+                    cardioArrNode.addPOJO(cardioEvents.remove(0));
                 }
 
                 while(!strengthEvents.isEmpty() &&
@@ -132,7 +132,7 @@ public class EventsService {
                         dateNode.set("cardio", cardioArrNode);
                         dateNode.set("strength", strengthArrNode);
                     }
-                    strengthArrNode.addPOJO(strengthEvents.get(0));
+                    strengthArrNode.addPOJO(strengthEvents.remove(0));
                 }
 
                 if(hasEvent) {
