@@ -204,7 +204,7 @@ class Calendar {
             let idNum = $(e.target).attr("id").substring(6);
             console.log(idNum);
             if(idNum == undefined) {
-                idNum = $(e.target).parent().parent().attr("id").substring(6);
+                idNum = $(e.target).parent().attr("id").substring(6);
                 console.log(idNum);
             }
             this.newSelectedDate(this.shownDate[0], this.shownDate[1], idNum);
