@@ -657,6 +657,7 @@ function displayWeeks(weeks) {
         showWeeksHTML += '<p class="week-name">'+element.weekName+'</p> <div class="week-buttons">'; 
         showWeeksHTML += '<button class="edit-week-button" id="'+element.weekID+'">Ed.</button>';
         showWeeksHTML += '<button class="delete-week-button" id="'+element.weekID+'">Del</button> </div> </div>'
+        /*
         $('#'+element.weekID+' .week-checkbox').change( (e) => {
             console.log("Here: "+$(e.target).attr('id'));
             let currWeekID = $(e.target).attr('id');
@@ -672,6 +673,7 @@ function displayWeeks(weeks) {
                 }
             });
         });
+        */
     });
 
     $('.show-weeks-container').append(showWeeksHTML);
@@ -723,8 +725,7 @@ $(document).ready(function() {
     });
 
     // Side bar show specific week events (on calendar) buttons
-    /*
-    $('.week-display-check input[type=checkbox]').change( (e) => {
+    $('.week-checkbox').click( (e) => {
         console.log("Here: "+$(e.target).attr('id'));
         let currWeekID = $(e.target).attr('id');
         let weeksArr = allMonthData.weeks;
@@ -739,7 +740,6 @@ $(document).ready(function() {
             }
         });
     });
-    */
 
     $('#new-event-button').click( () => {
         $('.existing-events').css('display', 'none');
