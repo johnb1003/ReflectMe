@@ -131,12 +131,13 @@ public class EventsService {
                         strengthArrNode = objectMapper.createArrayNode();
                         dateNode.set("cardio", cardioArrNode);
                         dateNode.set("strength", strengthArrNode);
+                        hasEvent = true;
                     }
                     strengthArrNode.addPOJO(strengthEvents.remove(0));
                 }
 
                 if(hasEvent) {
-                    monthNode.set(""+date.getDayOfMonth(), dateNode);
+                    monthNode.set(""+i, dateNode);
                 }
             }
 
