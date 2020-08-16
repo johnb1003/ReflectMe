@@ -204,6 +204,9 @@ class Calendar {
             let idNum = null;
             if($(e.target).attr("id") == undefined) {
                 idNum = $(e.target).parent().attr("id").substring(6);
+                if(idNum.length > 2) {
+                    idNum = $(e.target).parent().parent().attr("id").substring(6);
+                }
                 console.log(idNum);
             }
             else if($(e.target).attr("id").length > 2) {
