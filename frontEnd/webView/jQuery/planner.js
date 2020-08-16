@@ -614,7 +614,7 @@ function updateWeeks() {
             'Authorization': 'Bearer ' + JWToken
         },
         success: function(data, status, xhr)    {
-            allMonthData.weeks = data;
+            allMonthData.weeks = data.weeks;
             calendar.render(); 
         },
         failure: function(errMsg) {alert(errMsg);}
