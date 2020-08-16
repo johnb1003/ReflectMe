@@ -50,11 +50,6 @@ public class EventsService {
 
         ObjectNode monthsNode = objectMapper.createObjectNode();
 
-        //ArrayNode scheduledCardioEventArrNode = scheduledEventsNode.putArray("cardio");
-        //ArrayNode scheduledStrengthEventArrNode = scheduledEventsNode.putArray("strength");
-        //ArrayNode completedCardioEventArrNode = completedEventsNode.putArray("cardio");
-        //ArrayNode completedStrengthEventArrNode = completedEventsNode.putArray("strength");
-
         ArrayNode weeksArrNode = objectMapper.createArrayNode();
 
         allNode.set("months", monthsNode);
@@ -163,24 +158,68 @@ public class EventsService {
 
     public ResponseEntity getMonthEvents(long userID, LocalDate date) {
 
-        ObjectNode eventsNode = objectMapper.createObjectNode();
-        ArrayNode cardioArrNode = eventsNode.putArray("cardio");
-        ArrayNode strengthArrNode = eventsNode.putArray("strength");
-
         try {
-            ArrayList<Cardio> cardio = cardioRepository.getMonthEvents(userID, date);
-            while(!cardio.isEmpty()) {
-                cardioArrNode.addPOJO(cardio.remove(0));
+            ArrayList<Cardio> cardioEvents = cardioRepository.getMonthEvents(userID, date);
+            ArrayList<Strength> strengthEvents = strengthRepository.getMonthEvents(userID, date);
+
+            boolean hasEvent = false;
+
+            ObjectNode monthNode = objectMapper.createObjectNode();
+
+            ArrayNode cardioArrNode = null;
+            ArrayNode strengthArrNode = null;
+
+            ObjectNode dateNode = null;
+
+            for(int i=1; i<=31; i++) {
+                hasEvent = false;
+                while(!cardioEvents.isEmpty() &&
+                        cardioEvents.get(0).getdate().get(ChronoField.DAY_OF_MONTH) == i) {
+                    if(!hasEvent) {
+                        dateNode = objectMapper.createObjectNode();
+                        cardioArrNode = objectMapper.createArrayNode();
+                        strengthArrNode = objectMapper.createArrayNode();
+                        dateNode.set("cardio", cardioArrNode);
+                        dateNode.set("strength", strengthArrNode);
+                        hasEvent = true;
+                    }
+                    cardioArrNode.addPOJO(cardioEvents.remove(0));
+                }
+
+                while(!strengthEvents.isEmpty() &&
+                        strengthEvents.get(0).getdate().get(ChronoField.DAY_OF_MONTH) == i) {
+                    if(!hasEvent) {
+                        dateNode = objectMapper.createObjectNode();
+                        cardioArrNode = objectMapper.createArrayNode();
+                        strengthArrNode = objectMapper.createArrayNode();
+                        dateNode.set("cardio", cardioArrNode);
+                        dateNode.set("strength", strengthArrNode);
+                        hasEvent = true;
+                    }
+                    strengthArrNode.addPOJO(strengthEvents.remove(0));
+                }
+
+                if(hasEvent) {
+                    monthNode.set(""+i, dateNode);
+                }
             }
 
-            ArrayList<Strength> strength = strengthRepository.getMonthEvents(userID, date);
-            while(!strength.isEmpty()) {
-                strengthArrNode.addPOJO(strength.remove(0));
+            /*
+            String month = "";
+            int monthVal = date.getMonthValue();
+            if(monthVal >= 10) {
+                month = ""+monthVal;
             }
+            else {
+                month = "0"+monthVal;
+            }
+            monthsNode.set(date.getYear()+"-"+month+"-01", monthNode);
+
+            */
 
             return Optional
-                    .ofNullable(eventsNode)
-                    .map(list -> ResponseEntity.ok().body(eventsNode))
+                    .ofNullable(monthNode)
+                    .map(list -> ResponseEntity.ok().body(monthNode))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }
         catch (Exception e){
