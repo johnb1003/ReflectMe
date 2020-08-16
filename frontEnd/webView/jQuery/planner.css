@@ -699,10 +699,14 @@
     .day-event-row {
         width: 95%;
         overflow: hidden;
-        height: 1.2em;
+        height: 1.3em;
         max-height: 2em;
         margin: 0 auto .4em auto;
         text-align: center;
+    }
+
+    .day-event-title {
+        margin: 0 auto;
     }
 
     .cardio-row {
