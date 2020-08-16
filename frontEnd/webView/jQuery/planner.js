@@ -18,6 +18,70 @@ let clickedType = 'cardio-day-type';
 let eventType = 'Cardio';
 
 
+/*
+////////////////////////////////////////////////////////////////////////
+////////////////        AJAX LOAD EVENTS DATA           ////////////////
+////////////////////////////////////////////////////////////////////////
+*/
+
+
+// Load user Month data
+async function allMonthDataAJAX() {
+    let dateString = calendar.getDateString;
+    return monthDataReq = $.ajax({
+        type: "GET",
+        url: baseAPIURL+'/events/all/'+dateString,
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        success: function(data, status, xhr)    {
+            return data;
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}
+
+let allMonthData;
+function getAllMonthData() {
+    allMonthDataAJAX()
+        .then(data => {
+            allMonthData = data;
+            displayWeeks(allMonthData.weeks);
+            calendar.render();
+            console.log(JSON.stringify(monthData));
+        })
+        .catch(error => {
+            console.log(error);
+        }
+    );
+}
+
+getAllMonthData();
+
+// Load user Month data
+async function getCurrentMonthData() {
+    let dateString = calendar.getFirstDayDateString();
+    return monthDataReq = $.ajax({
+        type: "GET",
+        url: baseAPIURL+'/events/month/'+dateString,
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        success: function(data, status, xhr)    {
+            addToAllMonthData(dateString, data);
+            calendar.render()
+            return data;
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}
+
+function addToAllMonthData(dateString, data) {
+    allMonthData['months'][dateString] = data;
+}
+
 
 /*
 ////////////////////////////////////////////////////////////////////////
@@ -487,71 +551,6 @@ function processType() {
     else {
         // eventType = 'Misc.';
     }
-}
-
-
-/*
-////////////////////////////////////////////////////////////////////////
-////////////////        AJAX LOAD EVENTS DATA           ////////////////
-////////////////////////////////////////////////////////////////////////
-*/
-
-
-// Load user Month data
-async function allMonthDataAJAX() {
-    let dateString = calendar.getDateString;
-    return monthDataReq = $.ajax({
-        type: "GET",
-        url: baseAPIURL+'/events/all/'+dateString,
-        contentType: "application/json",
-        headers: {
-            'Authorization': 'Bearer ' + JWToken
-        },
-        success: function(data, status, xhr)    {
-            return data;
-        },
-        failure: function(errMsg) {alert(errMsg);}
-    });
-}
-
-let allMonthData;
-function getAllMonthData() {
-    allMonthDataAJAX()
-        .then(data => {
-            allMonthData = data;
-            displayWeeks(allMonthData.weeks);
-            calendar.render();
-            console.log(JSON.stringify(monthData));
-        })
-        .catch(error => {
-            console.log(error);
-        }
-    );
-}
-
-getAllMonthData();
-
-// Load user Month data
-async function getCurrentMonthData() {
-    let dateString = calendar.getFirstDayDateString();
-    return monthDataReq = $.ajax({
-        type: "GET",
-        url: baseAPIURL+'/events/month/'+dateString,
-        contentType: "application/json",
-        headers: {
-            'Authorization': 'Bearer ' + JWToken
-        },
-        success: function(data, status, xhr)    {
-            addToAllMonthData(dateString, data);
-            calendar.render()
-            return data;
-        },
-        failure: function(errMsg) {alert(errMsg);}
-    });
-}
-
-function addToAllMonthData(dateString, data) {
-    allMonthData['months'][dateString] = data;
 }
 
 /*
