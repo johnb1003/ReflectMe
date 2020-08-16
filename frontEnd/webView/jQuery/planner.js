@@ -545,6 +545,7 @@ async function getCurrentMonthData() {
         success: function(data, status, xhr)    {
             addToAllMonthData(dateString, data);
             calendar.render()
+            console.log(allMonthData);
             return data;
         },
         failure: function(errMsg) {alert(errMsg);}
