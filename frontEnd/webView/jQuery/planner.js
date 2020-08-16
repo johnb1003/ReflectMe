@@ -206,9 +206,13 @@ class Calendar {
                 idNum = $(e.target).parent().parent().attr("id").substring(6);
                 console.log(idNum);
             }
-            else {
+            else if($(e.target).attr("id").length > 2) {
                 console.log($(e.target).attr("id"));
                 idNum = $(e.target).attr("id").substring(6);
+                console.log(idNum);
+            }
+            else {
+                idNum = $(e.target).attr("id");
                 console.log(idNum);
             }
             this.newSelectedDate(this.shownDate[0], this.shownDate[1], idNum);
