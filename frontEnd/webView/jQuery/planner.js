@@ -203,7 +203,7 @@ class Calendar {
         $('.active-day').click((e) => {
             let idNum = null;
             if($(e.target).attr("id") == undefined) {
-                idNum = $(e.target).parent().attr("id").substring(6);
+                idNum = $(e.target).parent().attr("id");
                 if(idNum.length > 2) {
                     idNum = $(e.target).parent().parent().attr("id").substring(6);
                 }
