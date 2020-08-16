@@ -626,7 +626,7 @@ async function updateWeekObject(weekObject) {
         headers: {
             'Authorization': 'Bearer ' + JWToken
         },
-        data: weekData,
+        data: JSON.stringify(weekData),
         success: function(data, status, xhr)    {
             if(data.updated == true) {
                 calendar.render();
