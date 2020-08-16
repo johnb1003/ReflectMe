@@ -708,7 +708,7 @@ $(document).ready(function() {
     });
 
     // Side bar show specific week events (on calendar) buttons
-    $('.week-checkbox').change( (e) => {
+    $('.week-display-check input[type=checkbox]').change( (e) => {
         console.log("Here: "+$(e.target).attr('id'));
         let currWeekID = $(e.target).attr('id');
         let weeksArr = allMonthData.weeks;
