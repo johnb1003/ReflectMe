@@ -201,7 +201,7 @@ class Calendar {
         $('.grid-container').html(calendarHTML);
         
         $('.active-day').click((e) => {
-            let idNum = $(e.target).attr("id");
+            let idNum = $(e.target).attr("id").substring(6);
             console.log(idNum);
             if(idNum == undefined) {
                 idNum = $(e.target).parent().parent().attr("id").substring(6);
