@@ -653,12 +653,12 @@ function displayWeeks(weeks) {
             checked = 'checked';
         }
         showWeeksHTML += '<div class="week-row" id="week-'+element.weekID+'"> <div class="week-display-check"> '
-        showWeeksHTML += '<input type="checkbox" class="week-checkbox" id="'+element.weekID+'"'+checked+'></div>';
+        showWeeksHTML += '<input type="checkbox" class="week-checkbox" id="'+element.weekID+'" '+checked+'></div>';
         showWeeksHTML += '<p class="week-name">'+element.weekName+'</p> <div class="week-buttons">'; 
         showWeeksHTML += '<button class="edit-week-button" id="'+element.weekID+'">Ed.</button>';
         showWeeksHTML += '<button class="delete-week-button" id="'+element.weekID+'">Del</button> </div> </div>'
-        /*
-        $('#'+element.weekID+' .week-checkbox').change( (e) => {
+        
+        $('#'+element.weekID+'.week-checkbox').change( (e) => {
             console.log("Here: "+$(e.target).attr('id'));
             let currWeekID = $(e.target).attr('id');
             let weeksArr = allMonthData.weeks;
@@ -673,7 +673,7 @@ function displayWeeks(weeks) {
                 }
             });
         });
-        */
+        
     });
 
     $('.show-weeks-container').append(showWeeksHTML);
@@ -725,7 +725,7 @@ $(document).ready(function() {
     });
 
     // Side bar show specific week events (on calendar) buttons
-    $('.week-checkbox').click( (e) => {
+    $('.week-checkbox').change( (e) => {
         console.log("Here: "+$(e.target).attr('id'));
         let currWeekID = $(e.target).attr('id');
         let weeksArr = allMonthData.weeks;
