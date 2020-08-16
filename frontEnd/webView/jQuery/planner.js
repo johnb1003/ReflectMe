@@ -656,7 +656,7 @@ function displayWeeks(weeks) {
     let checked = '';
     weeks.forEach(element => {
         checked = '';
-        if(element.active) {
+        if(element.active == true) {
             checked = 'checked';
         }
         showWeeksHTML += '<div class="week-row" id="week-'+element.weekID+'"> <div class="week-display-check"> '
