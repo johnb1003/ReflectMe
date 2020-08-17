@@ -213,7 +213,7 @@
         height: fit-content;
         display: flex;
         justify-content: space-around;
-        align-items: baseline;
+        align-items: flex-end;
         padding: 1em;
         background-color: rgb(65, 65, 65);
         border-radius: 2em 2em 0 0;
