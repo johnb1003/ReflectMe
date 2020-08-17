@@ -1029,9 +1029,9 @@ $(document).ready(function() {
 
     // Close extended planner when back-to-calendar button is clicked
 	$('.back-to-cal').click( (e) => {
-		$('#'+currentExtended).css('display', 'none');
-		$('.calendar-container').css('display', 'block');
-		currentExtended = "";
+		//$('#'+currentExtended).css('display', 'none');
+		//$('.calendar-container').css('display', 'block');
+		//currentExtended = "";
     });
     
     $('#pop-up-background').click( (e) => {
