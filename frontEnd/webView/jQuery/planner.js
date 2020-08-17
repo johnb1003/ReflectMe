@@ -385,6 +385,25 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
 
 function processDayView() {
 
+
+    // Handle create-event-button activity
+    $('#log-event-button').removeClass('active-create-event');
+    $('#new-event-button').removeClass('active-create-event');
+    $('#log-event-button').removeClass('inactive-create-event');
+    $('#new-event-button').removeClass('inactive-create-event');
+    if(calendar.dateTense == 'future') {
+        $('#new-event-button').addClass('active-create-event');
+        $('#log-event-button').addClass('inactive-create-event');
+    }
+    else if(calendar.dateTense == 'past') {
+        $('#log-event-button').addClass('active-create-event');
+        $('#new-event-button').addClass('inactive-create-event');
+    }
+    else if(calendar.dateTense == 'present') {
+        $('#new-event-button').addClass('active-create-event');
+        $('#log-event-button').addClass('active-create-event');
+    }
+
     let futureMonth = false;
     let currentMonth = false;
     if(calendar.shownDate[0] >= calendar.today.getFullYear()) {

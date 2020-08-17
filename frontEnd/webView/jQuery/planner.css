@@ -232,15 +232,27 @@
         margin: 0;
         font-size: 1em;
         border: none;
-        color: #8BDD96;
-        border: 2px solid #8BDD96;
         border-radius: .5em;
     }
 
-    .create-event-button:hover {
+    .active-create-event {
+        color: #8BDD96;
+        border: 2px solid #8BDD96;
+    }
+
+    .active-create-event:hover {
         border: 1px solid #8BDD96;
-        border-radius: .5em;
         background-color: rgb(94, 94, 94);
+        cursor: pointer;
+    }
+
+    .inactive-create-event {
+        color: rgb(116, 116, 116);
+        border: none;
+    }
+
+    .inactive-create-event:hover {
+        cursor: default;
     }
 
     .day-scheduler {
