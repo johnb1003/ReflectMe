@@ -123,7 +123,7 @@ class Calendar {
 
         let dataArrived = false;
         let currMonthData = null;
-        if(allMonthData != null && (this.getFirstDayDateString() in allMonthData.months)) {
+        if((allMonthData != null && allMonthData != undefined) && (this.getFirstDayDateString() in allMonthData.months)) {
             dataArrived = true;
             currMonthData = allMonthData.months[this.getFirstDayDateString()];
         }
@@ -406,7 +406,7 @@ function processDayView() {
     console.log(dateNum);
     dayViewHTML += '<div class="day-view" id="day-'+dateNum+'">';
 
-    if((""+dateNum) in currMonthData) {
+    if((currMonthData != undefined) && ((""+dateNum) in currMonthData)) {
         let dateEvents = currMonthData[(""+dateNum)];
         let cardioEvents = dateEvents['cardio'];
         let strengthEvents = dateEvents['strength'];
