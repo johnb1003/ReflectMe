@@ -375,6 +375,7 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
 
 
     $('.existing-events').css('display', 'block');
+    $('.create-event-button').css('display', 'block');
     $('.day-scheduler').css('display', 'none');
     $('.existing-events-container').css('background-image', 'none');
     $('.existing-events-container').css('background-color', 'white');
@@ -1027,6 +1028,7 @@ $(document).ready(function() {
 
 
     $('#new-event-button').click( () => {
+        $('.create-event-button').css('display', 'none');
         $('.existing-events').css('display', 'none');
         $('.day-scheduler').css('display', 'block');
         $('.back-to-day-schedule').css('display', 'block');
@@ -1034,6 +1036,7 @@ $(document).ready(function() {
     });
 
     $('#log-event-button').click( () => {
+        $('.create-event-button').css('display', 'none');
         $('.existing-events').css('display', 'none');
         $('.day-scheduler').css('display', 'block');
         $('.back-to-day-schedule').css('display', 'block');
@@ -1053,6 +1056,7 @@ $(document).ready(function() {
 
     $('.back-to-day-schedule').click( () => {
         $('.existing-events').css('display', 'block');
+        $('.create-event-button').css('display', 'block');
         $('.day-scheduler').css('display', 'none');
         $('.back-to-day-schedule').css('display', 'none');
         $('.existing-events-container').css('background-image', 'none');
