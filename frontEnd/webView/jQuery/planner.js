@@ -401,12 +401,12 @@ function processDayView() {
     dayViewHTML += '<div class="day-view" id="day-'+dateNum+'">';
 
     if((""+dateNum) in currMonthData) {
-        noEvents = false;
         let dateEvents = currMonthData[(""+dateNum)];
         let cardioEvents = dateEvents['cardio'];
         let strengthEvents = dateEvents['strength'];
 
         cardioEvents.forEach(element => {
+            noEvents = false;
             dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-'+element.weekID+'">';
             dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
             dayViewHTML += '<p class="day-view-cardio-distance">'+element.distance+'</p>';
@@ -415,6 +415,7 @@ function processDayView() {
     
     
         strengthEvents.forEach(element => {
+            noEvents = false;
             dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-'+element.weekID+'">';
             dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
             dayViewHTML += '</div>';
@@ -426,12 +427,12 @@ function processDayView() {
                 
         weeksArr.forEach(currWeek => {
             if(currWeek.active) {
-                noEvents = false;
                 let cardioWeekEvents = currWeek['cardio'];
                 let strengthWeekEvents = currWeek['strength'];
             
                 cardioWeekEvents.forEach(element => {
                     if(dateNum%7 == element.dayofweek) {
+                        noEvents = false;
                         dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-'+element.weekID+'">';
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-cardio-distance">'+element.distance+'</p>';
@@ -441,6 +442,7 @@ function processDayView() {
             
                 strengthWeekEvents.forEach(element => {
                     if(dateNum%7 == element.dayofweek) {
+                        noEvents = false;
                         dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-'+element.weekID+'">';
                         dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
                         dayViewHTML += '</div>';
@@ -450,7 +452,7 @@ function processDayView() {
         });
     }
     if(noEvents) {
-        dayViewHTML += '<p class="no-events-message">No Events Scheduled or Completed</p>';
+        dayViewHTML += '<p class="no-events-message">No Events Scheduled</p>';
     }
     dayViewHTML += '</div>';
     $('.events-list').html(dayViewHTML);

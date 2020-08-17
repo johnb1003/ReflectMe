@@ -766,6 +766,10 @@
         
     }
 
+    .no-events-message {
+        text-align: center;
+    }
+
     .schedule {
         width: 100%;
         height: auto;
