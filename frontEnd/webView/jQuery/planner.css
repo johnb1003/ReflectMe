@@ -771,20 +771,20 @@
     }
 
     .day-view {
+        width: 95%;
         overflow: scroll;
     }
 
     .day-view-row {
-        width: 95%;
+        width: 100%;
         overflow: hidden;
         height: 4em;
         max-height: 4em;
-        margin: 0 auto 2em auto;
-        text-align: center;
+        margin: 2em auto 0 auto;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        background-color: #36495F;
+        background-color: #56B4E3;
         color: white;
     }
 
