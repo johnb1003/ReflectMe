@@ -426,7 +426,7 @@ function processDayView() {
         });
         
     }
-    if(futureMonth || (currentMonth && (dateNum >= this.today.getDate()))) {
+    if(futureMonth || (currentMonth && (dateNum >= calendar.today.getDate()))) {
         let weeksArr = allMonthData.weeks;
                 
         weeksArr.forEach(currWeek => {
