@@ -809,8 +809,8 @@ button:focus{
     .day-view-row {
         width: 90%;
         overflow: hidden;
-        height: 4em;
-        max-height: 4em;
+        height: 6em;
+        max-height: 6em;
         margin: 2em auto 2em auto;
         display: flex;
         align-items: baseline;
@@ -820,7 +820,7 @@ button:focus{
     }
 
     .day-view-title {
-        font-size: 2em;
+        font-size: 3em;
     }
 
     .day-view-cardio-distance {
