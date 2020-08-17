@@ -230,7 +230,7 @@
         border: none;
         margin: 0 0 1em 0;
         border: 1px solid black;
-        width: 12em;
+        width: 20em;
         height: 2.3em;
     }
 
@@ -260,6 +260,10 @@
 
     .cardio-duration-group {
         white-space: nowrap;
+    }
+
+    #strength-day-type {
+        border-radius: 0 3px 3px 0;
     }
       
     #strength-day-type-input {
