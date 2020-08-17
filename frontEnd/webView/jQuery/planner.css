@@ -138,8 +138,8 @@
     }
 
     .events-list {
-        height: 30em;
-        max-height: 30em;
+        height: 31em;
+        max-height: 31em;
         width: 100%;
         display: flex;
         flex-direction: column;
