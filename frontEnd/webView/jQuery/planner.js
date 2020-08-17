@@ -1027,15 +1027,12 @@ $(document).ready(function() {
         $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
     });
 
-    // Close extended planner when back-to-calendar button is clicked
-	$('.back-to-cal').click( (e) => {
-		//$('#'+currentExtended).css('display', 'none');
-		//$('.calendar-container').css('display', 'block');
-		//currentExtended = "";
-    });
-    
+    // Closeplanner when back-to-calendar button or background is clicked
     $('#pop-up-background').click( (e) => {
         if($(e.target).attr('class') == 'pop-up') {
+            $('.existing-events').css('display', 'block');
+            $('.day-scheduler').css('display', 'none');
+            $('.existing-events-container').css('background-color', 'white');
             $('.pop-up').css('display', 'none');
         }
     });
