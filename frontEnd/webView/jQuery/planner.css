@@ -141,6 +141,7 @@
 
     .events-list {
         max-height: 32em;
+        width: 100%;
         border: 2px solid blue;
         overflow: scroll;
     }

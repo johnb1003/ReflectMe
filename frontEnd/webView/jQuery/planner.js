@@ -44,12 +44,14 @@ class Calendar {
             this.prevMonth();
             this.fillMonthData();
             this.render();
+            processDayView();
         });
     
         $('.next-button').click(() => {
             this.nextMonth();
             this.fillMonthData();
             this.render();
+            processDayView();
         });
         
         this.render();
