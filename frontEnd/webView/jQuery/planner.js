@@ -1052,7 +1052,7 @@ $(document).ready(function() {
     });
 
     $('.back-to-day-schedule').click( () => {
-        $('.existing-events').css('display', 'flex');
+        $('.existing-events').css('display', 'block');
         $('.day-scheduler').css('display', 'none');
         $('.back-to-day-schedule').css('display', 'none');
         $('.existing-events-container').css('background-image', 'none');
