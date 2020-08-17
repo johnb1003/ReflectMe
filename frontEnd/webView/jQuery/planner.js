@@ -1057,7 +1057,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#log-event-button').click( () => {
+    $('#log-event-button').click( (e) => {
         if($(e.target).hasClass('active-create-event')) {
             $('#log-event-button').css('display', 'none');
             $('#new-event-button').css('display', 'none');
