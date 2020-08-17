@@ -188,6 +188,24 @@
         padding: .1em .3em;
     }
 
+    .back-to-day-schedule {
+        position: absolute;
+        width: fit-content;
+        top: 0;
+        right: left;
+        color: white;
+    }
+
+    .back-to-day-schedule:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .back-to-day-schedule p {
+        margin-bottom: 0;
+        padding: .1em .3em;
+    }
+
     #new-event-button {
         background-color: #8BDD96;
         color: white;

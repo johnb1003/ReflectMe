@@ -1043,6 +1043,13 @@ $(document).ready(function() {
         $('.pop-up').css('display', 'none');
     });
 
+    $('.back-to-day-schedule').click( () => {
+        $('.existing-events').css('display', 'flex');
+        $('.day-scheduler').css('display', 'none');
+        $('.existing-events-container').css('background-image', 'none');
+        $('.existing-events-container').css('background-color', 'white');
+    });
+
     $('.pop-up-next').click( () => {
         let date = calendar.nextDay();
         $('#corner-week-day').text(weekDays[date[0]]+',');
