@@ -204,6 +204,7 @@
     .back-to-day-schedule p {
         margin-bottom: 0;
         padding: .1em .3em;
+        text-shadow: none;
     }
 
     #new-event-button {
