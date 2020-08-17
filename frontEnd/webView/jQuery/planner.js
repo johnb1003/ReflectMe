@@ -384,15 +384,13 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
 
 function processDayView() {
 
-    let showWeekData = false;
-
     let futureMonth = false;
     let currentMonth = false;
-    if(this.shownDate[0] >= this.today.getFullYear()) {
-        if(this.shownDate[1] > this.today.getMonth()) {
+    if(calendar.shownDate[0] >= calendar.today.getFullYear()) {
+        if(calendar.shownDate[1] > calendar.today.getMonth()) {
             futureMonth = true;
         }
-        else if(this.shownDate[1] == this.today.getMonth()) {
+        else if(calendar.shownDate[1] == calendar.today.getMonth()) {
             currentMonth = true;
         }
     }
