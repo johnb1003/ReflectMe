@@ -782,10 +782,9 @@
         max-height: 4em;
         margin: 2em auto 0 auto;
         display: flex;
-        align-items: center;
+        align-items: baseline;
         justify-content: space-evenly;
-        background-color: #56B4E3;
-        color: white;
+        background-color: rgb(201, 201, 201);
     }
 
     .day-view-title {
