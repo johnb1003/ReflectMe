@@ -374,11 +374,17 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
 
 function processDayView() {
 
+    let showWeekData = false;
+
     if(calendar.dateTense == 'future') {
         $('#day-scheduler-header-title').text('Schedule Future Day Event');
+        showWeekData = true;
     }
     else {
         $('#day-scheduler-header-title').text('Log Completed Day Event');
+        if(calendar.dateTense == 'present') {
+            showWeekData = true;
+        }
     }
 
     dayViewHTML = '';
@@ -408,7 +414,7 @@ function processDayView() {
         });
         
     }
-    if(futureMonth || (currentMonth && (dateNum >= this.today.getDate()))) {
+    if(showWeekData) {
         let weeksArr = allMonthData.weeks;
                 
         weeksArr.forEach(currWeek => {
