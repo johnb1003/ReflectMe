@@ -386,14 +386,14 @@ function processDayView() {
 
     let showWeekData = false;
 
-    if(calendar.dateTense == 'future') {
-        $('#day-scheduler-header-title').text('Schedule Future Day Event');
-        showWeekData = true;
-    }
-    else {
-        $('#day-scheduler-header-title').text('Log Completed Day Event');
-        if(calendar.dateTense == 'present') {
-            showWeekData = true;
+    let futureMonth = false;
+    let currentMonth = false;
+    if(this.shownDate[0] >= this.today.getFullYear()) {
+        if(this.shownDate[1] > this.today.getMonth()) {
+            futureMonth = true;
+        }
+        else if(this.shownDate[1] == this.today.getMonth()) {
+            currentMonth = true;
         }
     }
 
@@ -428,7 +428,7 @@ function processDayView() {
         });
         
     }
-    if(showWeekData) {
+    if(futureMonth || (currentMonth && (dateNum >= this.today.getDate()))) {
         let weeksArr = allMonthData.weeks;
                 
         weeksArr.forEach(currWeek => {
