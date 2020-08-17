@@ -22,6 +22,7 @@ let eventType = 'Cardio';
 
 let allMonthData = null;
 
+
 /*
 ////////////////////////////////////////////////////////////////////////
 ////////////////              CALENDAR CLASS            ////////////////
@@ -263,6 +264,7 @@ class Calendar {
         this.selectedDate[1] = month;
         this.selectedDate[2] = parseInt(idNum);
         this.renderDay();
+        processDayView();
     }
 
     nextDay() {
@@ -367,6 +369,11 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
     $('#corner-week-day').text(weekDay+',');
     $('#corner-month-date').text(months[month]+' '+dateNum+suffix);
 
+    processDayView();
+}
+
+function processDayView() {
+
     if(calendar.dateTense == 'future') {
         $('#day-scheduler-header-title').text('Schedule Future Day Event');
     }
@@ -374,7 +381,62 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
         $('#day-scheduler-header-title').text('Log Completed Day Event');
     }
 
+    dayViewHTML = '';
 
+    let currMonthData = allMonthData.months[this.getFirstDayDateString()];
+
+    let dateNum = calendar.selectedDate[2];
+    dayViewHTML += '<div class="day-view" id="day-'+dateNum+'">';
+
+    if((""+dateNum) in currMonthData) {
+        let dateEvents = currMonthData[(""+dateNum)];
+        let cardioEvents = dateEvents['cardio'];
+        let strengthEvents = dateEvents['strength'];
+
+        cardioEvents.forEach(element => {
+            dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-'+element.weekID+'">';
+            dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
+            dayViewHTML += '<p class="day-view-cardio-distance">'+element.distance+'</p>';
+            dayViewHTML += '</div>';
+        });
+    
+    
+        strengthEvents.forEach(element => {
+            dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-'+element.weekID+'">';
+            dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
+            dayViewHTML += '</div>';
+        });
+        
+    }
+    if(futureMonth || (currentMonth && (dateNum >= this.today.getDate()))) {
+        let weeksArr = allMonthData.weeks;
+                
+        weeksArr.forEach(currWeek => {
+            if(currWeek.active) {
+                let cardioWeekEvents = currWeek['cardio'];
+                let strengthWeekEvents = currWeek['strength'];
+            
+                cardioWeekEvents.forEach(element => {
+                    if(i%7 == element.dayofweek) {
+                        dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-'+element.weekID+'">';
+                        dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
+                        dayViewHTML += '<p class="day-view-cardio-distance">'+element.distance+'</p>';
+                        dayViewHTML += '</div>';
+                    }
+                });
+            
+                strengthWeekEvents.forEach(element => {
+                    if(i%7 == element.dayofweek) {
+                        dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-'+element.weekID+'">';
+                        dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
+                        dayViewHTML += '</div>';
+                    }
+                });
+            }
+        });
+    }
+    dayViewHTML += '</div>';
+    $('.events-list').html(dayViewHTML);
 }
 
 

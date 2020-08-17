@@ -134,10 +134,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        border: 2px solid red;
     }
 
     .events-list {
-        
+        border: 2px solid blue;
     }
 
     .corner-date {
@@ -579,7 +580,7 @@
         margin: 0 .7em 0 0;
     }
 
-    .delte-week-button {
+    .delete-week-button {
         margin: 0 .7em 0 0;
     }
 
@@ -726,6 +727,38 @@
 
     .strength-row {
         background-color: rgba(100, 100, 100, 0.5);
+    }
+
+    .day-view {
+        overflow: scroll;
+    }
+
+    .day-view-row {
+        width: 95%;
+        overflow: hidden;
+        height: 4em;
+        max-height: 4em;
+        margin: 0 auto 2em auto;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .day-view-title {
+        font-size: 2em;
+    }
+
+    .day-view-cardio-distance {
+
+    }
+
+    #full-cardio-row {
+
+    }
+
+    #full-strength-row {
+        
     }
 
     .schedule {
