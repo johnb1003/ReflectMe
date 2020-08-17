@@ -395,10 +395,13 @@ function processDayView() {
 
     let currMonthData = allMonthData.months[calendar.getFirstDayDateString()];
 
+    let noEvents = true;
+
     let dateNum = calendar.selectedDate[2];
     dayViewHTML += '<div class="day-view" id="day-'+dateNum+'">';
 
     if((""+dateNum) in currMonthData) {
+        noEvents = false;
         let dateEvents = currMonthData[(""+dateNum)];
         let cardioEvents = dateEvents['cardio'];
         let strengthEvents = dateEvents['strength'];
@@ -423,6 +426,7 @@ function processDayView() {
                 
         weeksArr.forEach(currWeek => {
             if(currWeek.active) {
+                noEvents = false;
                 let cardioWeekEvents = currWeek['cardio'];
                 let strengthWeekEvents = currWeek['strength'];
             
@@ -444,6 +448,9 @@ function processDayView() {
                 });
             }
         });
+    }
+    if(noEvents) {
+        dayViewHTML += '<p class="no-events-message">No Events Scheduled or Completed</p>';
     }
     dayViewHTML += '</div>';
     $('.events-list').html(dayViewHTML);
