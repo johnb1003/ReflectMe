@@ -374,8 +374,9 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
     $('#corner-month-date').text(months[month]+' '+dateNum+suffix);
 
 
-    $('.existing-events').css('display', 'block');
+    $('.existing-events').css('display', 'flex');
     $('.day-scheduler').css('display', 'none');
+    $('.existing-events-container').css('background-image', 'none');
     $('.existing-events-container').css('background-color', 'white');
 
     processDayView();
