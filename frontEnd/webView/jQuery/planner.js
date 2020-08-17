@@ -44,14 +44,12 @@ class Calendar {
             this.prevMonth();
             this.fillMonthData();
             this.render();
-            processDayView();
         });
     
         $('.next-button').click(() => {
             this.nextMonth();
             this.fillMonthData();
             this.render();
-            processDayView();
         });
         
         this.render();
@@ -290,6 +288,8 @@ class Calendar {
 
             let weekDay = new Date(this.selectedDate[0], this.selectedDate[1], this.selectedDate[2]).getDay();
 
+            processDayView();
+
             return [weekDay, this.selectedDate[1], this.selectedDate[2]]
         }
     }
@@ -314,6 +314,8 @@ class Calendar {
             this.render();
 
             let weekDay = new Date(this.selectedDate[0], this.selectedDate[1], this.selectedDate[2]).getDay();
+
+            processDayView();
 
             return [weekDay, this.selectedDate[1], this.selectedDate[2]]
         }
