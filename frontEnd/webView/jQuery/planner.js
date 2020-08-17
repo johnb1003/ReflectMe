@@ -56,7 +56,7 @@ class Calendar {
     }
     
     nextMonth() {
-        console.log("NEXT");
+        //console.log("NEXT");
         if(this.shownDate[1] < 11) {
             this.shownDate[1]++;
         }
@@ -208,16 +208,16 @@ class Calendar {
                 if(idNum.length > 2) {
                     idNum = $(e.target).parent().parent().attr("id").substring(6);
                 }
-                console.log(idNum);
+                //console.log(idNum);
             }
             else if($(e.target).attr("id").length > 2) {
-                console.log($(e.target).attr("id"));
+                //console.log($(e.target).attr("id"));
                 idNum = $(e.target).attr("id").substring(6);
-                console.log(idNum);
+                //console.log(idNum);
             }
             else {
                 idNum = $(e.target).attr("id");
-                console.log(idNum);
+                //console.log(idNum);
             }
             this.newSelectedDate(this.shownDate[0], this.shownDate[1], idNum);
             let weekDay = new Date(this.shownDate[0], this.shownDate[1], idNum).getDay();
@@ -402,6 +402,7 @@ function processDayView() {
     let noEvents = true;
 
     let dateNum = calendar.selectedDate[2];
+    console.log(dateNum);
     dayViewHTML += '<div class="day-view" id="day-'+dateNum+'">';
 
     if((""+dateNum) in currMonthData) {
@@ -435,7 +436,7 @@ function processDayView() {
                 let strengthWeekEvents = currWeek['strength'];
             
                 cardioWeekEvents.forEach(element => {
-                    if((dateNum%7)-1 == element.dayofweek) {
+                    if(((dateNum+(calendar.firstDay-1))%7) == element.dayofweek) {
                         noEvents = false;
                         dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-'+element.weekID+'">';
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
@@ -445,7 +446,7 @@ function processDayView() {
                 });
             
                 strengthWeekEvents.forEach(element => {
-                    if((dateNum%7)-1 == element.dayofweek) {
+                    if(((dateNum+(calendar.firstDay-1))%7) == element.dayofweek) {
                         noEvents = false;
                         dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-'+element.weekID+'">';
                         dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
@@ -495,7 +496,7 @@ function displayCardio() {
     }
     let durationString = durationHString + durationMString + durationSString;
     let eventSummaryHTML = '';
-    console.log('Value: '+cardioType);
+    //console.log('Value: '+cardioType);
     if(cardioType != 'Other') {
         $('.cardio-other-group').css('display', 'none');
         $('.event-title').text(cardioType);
@@ -518,7 +519,7 @@ function displayCardio() {
     }
 
     if(calendar.dateTense != 'future') {
-        console.log('Here: '+calendar.dateTense);
+        //console.log('Here: '+calendar.dateTense);
         eventSummaryHTML += '<p class="event-duration">'+durationString+'</p>';
     }
 
@@ -670,7 +671,7 @@ function getAllMonthData() {
             //console.log(JSON.stringify(allMonthData));
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
         }
     );
 }
@@ -690,7 +691,7 @@ async function getCurrentMonthData() {
         success: function(data, status, xhr)    {
             addToAllMonthData(dateString, data);
             calendar.render()
-            console.log(allMonthData);
+            //console.log(allMonthData);
             return data;
         },
         failure: function(errMsg) {alert(errMsg);}
@@ -740,7 +741,7 @@ async function createWeekObject(weekObject) {
         data: JSON.stringify(weekData),
         success: function(data, status, xhr)    {
             if(data.updated == true) {
-                console.log("Week successfully created");
+                //console.log("Week successfully created");
                 updateWeeks();
                 return true;
             }
@@ -763,7 +764,7 @@ async function createCardioObject(cardioObject) {
         data: JSON.stringify(cardioObject),
         success: function(data, status, xhr)    {
             getAllMonthData();
-            console.log("Event Created");
+            //console.log("Event Created");
             return true;
         },
         failure: function(errMsg) {alert(errMsg); return false;}
@@ -781,7 +782,7 @@ async function createStrengthObject(strengthObject) {
         data: JSON.stringify(strengthObject),
         success: function(data, status, xhr)    {
             getAllMonthData();
-            console.log("Event Created");
+            //console.log("Event Created");
             return true;
         },
         failure: function(errMsg) {alert(errMsg); return false;}
@@ -811,7 +812,7 @@ async function updateWeekObject(weekObject) {
         data: JSON.stringify(weekData),
         success: function(data, status, xhr)    {
             if(data.updated == true) {
-                console.log("Update Successful");
+                //console.log("Update Successful");
                 updateWeeks();
                 return true;
             }
@@ -834,7 +835,7 @@ async function updateCardioObject(cardioObject) {
         data: JSON.stringify(cardioObject),
         success: function(data, status, xhr)    {
             if(data.updated == true) {
-                console.log("Update Successful");
+                //console.log("Update Successful");
                 getAllMonthData();
                 return true;
             }
@@ -857,7 +858,7 @@ async function updateStrengthObject(strengthObject) {
         data: JSON.stringify(strengthObject),
         success: function(data, status, xhr)    {
             if(data.updated == true) {
-                console.log("Update Successful");
+                //console.log("Update Successful");
                 getAllMonthData();
                 return true;
             }
@@ -886,7 +887,7 @@ async function deleteWeekObject(weekid) {
         },
         success: function(data, status, xhr)    {
             if(data.deleted == true) {
-                console.log("Delete Successful");
+                //console.log("Delete Successful");
                 updateWeeks();
                 return true;
             }
@@ -908,7 +909,7 @@ async function deleteCardioObject(cardioid) {
         },
         success: function(data, status, xhr)    {
             getAllMonthData();
-            console.log("Event Deleted");
+            //console.log("Event Deleted");
             return true;
         },
         failure: function(errMsg) {alert(errMsg); return false;}
@@ -925,7 +926,7 @@ async function deleteStrengthObject(strengthid) {
         },
         success: function(data, status, xhr)    {
             getAllMonthData();
-            console.log("Event Deleted");
+            //console.log("Event Deleted");
             return true;
         },
         failure: function(errMsg) {alert(errMsg); return false;}
@@ -960,16 +961,16 @@ function displayWeeks(weeks) {
     $('.show-weeks-container').append(showWeeksHTML);
 
     $('.week-checkbox').change( (e) => {
-        console.log("Here");
-        console.log("Here: "+$(e.target).attr('id'));
+        //console.log("Here");
+        //console.log("Here: "+$(e.target).attr('id'));
         let currWeekID = $(e.target).attr('id');
         let weeksArr = allMonthData.weeks;
         weeksArr.forEach(element => {
             if(element.weekID == parseInt(currWeekID.substring(11))) {
                 if(updateWeekObject(element)) {
-                    console.log($('#'+currWeekID).is(':checked'));
+                    //console.log($('#'+currWeekID).is(':checked'));
                     element.active = $('#'+currWeekID).is(':checked');
-                    console.log('active: '+element.active);
+                    //console.log('active: '+element.active);
                 }
                 else {
                     $('#'+currWeekID).prop( "checked", !$('#'+currWeekID).is(':checked'));
