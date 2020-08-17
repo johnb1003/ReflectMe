@@ -383,7 +383,7 @@ function processDayView() {
 
     dayViewHTML = '';
 
-    let currMonthData = allMonthData.months[this.getFirstDayDateString()];
+    let currMonthData = allMonthData.months[calendar.getFirstDayDateString()];
 
     let dateNum = calendar.selectedDate[2];
     dayViewHTML += '<div class="day-view" id="day-'+dateNum+'">';
