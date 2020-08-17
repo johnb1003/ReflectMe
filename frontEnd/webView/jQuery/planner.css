@@ -227,9 +227,10 @@
         height: 7em;
         text-shadow: 2px 2px 2px #000000;
         font-weight: bold;
+        position: relative;
     }
 
-    .day-scheduler-header p{
+    #day-scheduler-header-title {
         font-size: 2.3em;
         margin-bottom: 0;
         margin-top: 0;
