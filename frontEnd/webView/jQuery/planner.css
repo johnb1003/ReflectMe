@@ -773,7 +773,6 @@
     .day-view {
         width: 95%;
         overflow: scroll;
-        margin: 1em auto;
     }
 
     .day-view-row {
@@ -781,7 +780,7 @@
         overflow: hidden;
         height: 4em;
         max-height: 4em;
-        margin: 0 auto 2em auto;
+        margin: 2em auto 2em auto;
         display: flex;
         align-items: baseline;
         justify-content: space-evenly;
