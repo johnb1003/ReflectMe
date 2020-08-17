@@ -226,13 +226,13 @@
 
     .create-event-button {
         width: 50%;
-        height: 1.5em;
-        background-color: #8BDD96;
-        color: #36495F;
+        height: 2em;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
         border-radius: 0;
         margin: 0;
         font-weight: bold;
-        font-size: 2em;
+        font-size: 1.5em;
     }
 
     .day-scheduler {
