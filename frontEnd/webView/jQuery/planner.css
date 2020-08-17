@@ -776,7 +776,7 @@
     }
 
     .day-view-row {
-        width: 100%;
+        width: 95%;
         overflow: hidden;
         height: 4em;
         max-height: 4em;
@@ -786,6 +786,7 @@
         justify-content: space-evenly;
         background-color: rgb(201, 201, 201);
         box-shadow: .2em .2em 10px black;
+        border-radius: .8em;
     }
 
     .day-view-title {
