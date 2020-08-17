@@ -435,6 +435,8 @@ function processDayView() {
             dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-'+element.weekID+'">';
             dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
             dayViewHTML += '<p class="day-view-cardio-distance">'+element.distance+'</p>';
+            dayViewHTML += '<button class="day-cardio-view-edit-button" id="cardio-view-edit-'+element.weekID+'">Edit</button>';
+            dayViewHTML += '<button class="day-cardio-view-delete-button" id="cardio-view-delete-'+element.weekID+'">Delete</button>';
             dayViewHTML += '</div>';
         });
     
@@ -443,6 +445,8 @@ function processDayView() {
             noEvents = false;
             dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-'+element.weekID+'">';
             dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
+            dayViewHTML += '<button class="day-strength-view-edit-button" id="strength-view-edit-'+element.weekID+'">Edit</button>';
+            dayViewHTML += '<button class="day-strength-view-delete-button" id="strength-view-delete-'+element.weekID+'">Delete</button>';
             dayViewHTML += '</div>';
         });
         
@@ -461,6 +465,8 @@ function processDayView() {
                         dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-'+element.weekID+'">';
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-cardio-distance">'+element.distance+'</p>';
+                        dayViewHTML += '<button class="day-cardio-view-edit-button" id="cardio-view-edit-'+element.weekID+'">Edit</button>';
+                        dayViewHTML += '<button class="day-cardio-view-delete-button" id="cardio-view-delete-'+element.weekID+'">Delete</button>';
                         dayViewHTML += '</div>';
                     }
                 });
@@ -470,6 +476,8 @@ function processDayView() {
                         noEvents = false;
                         dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-'+element.weekID+'">';
                         dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
+                        dayViewHTML += '<button class="day-strength-view-edit-button" id="strength-view-edit-'+element.weekID+'">Edit</button>';
+                        dayViewHTML += '<button class="day-strength-view-delete-button" id="strength-view-delete-'+element.weekID+'">Delete</button>';
                         dayViewHTML += '</div>';
                     }
                 });
