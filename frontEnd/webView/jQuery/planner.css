@@ -241,14 +241,14 @@
     }
 
     .active-create-event:hover {
-        border: 1px solid #8BDD96;
+        border: 4px solid #8BDD96;
         background-color: rgb(94, 94, 94);
         cursor: pointer;
     }
 
     .inactive-create-event {
         color: rgb(116, 116, 116);
-        border: none;
+        border: 2px solid rgb(116, 116, 116);
     }
 
     .inactive-create-event:hover {
