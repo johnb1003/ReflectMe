@@ -1039,14 +1039,14 @@ $(document).ready(function() {
         let date = calendar.nextDay();
         $('#corner-week-day').text(weekDays[date[0]]+',');
         $('#corner-month-date').text(months[date[1]]+' '+date[2]+daySuffix[date[2]%10]);
-        processType();
+        processDayView();
     });
 
     $('.pop-up-previous').click( () => {
         let date = calendar.prevDay();
         $('#corner-week-day').text(weekDays[date[0]]+',');
         $('#corner-month-date').text(months[date[1]]+' '+date[2]+daySuffix[date[2]%10]);
-        processType();
+        processDayView();
     });
 
 
