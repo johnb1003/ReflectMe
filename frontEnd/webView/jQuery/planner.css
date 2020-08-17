@@ -130,7 +130,7 @@
     .existing-events {
         position: relative;
         width: 100%;
-        height: 27em;
+        height: 32em;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -139,6 +139,7 @@
 
     .events-list {
         border: 2px solid blue;
+        overflow: scroll;
     }
 
     .corner-date {
