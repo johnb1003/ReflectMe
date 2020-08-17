@@ -373,6 +373,11 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
     $('#corner-week-day').text(weekDay+',');
     $('#corner-month-date').text(months[month]+' '+dateNum+suffix);
 
+
+    $('.existing-events').css('display', 'block');
+    $('.day-scheduler').css('display', 'none');
+    $('.existing-events-container').css('background-color', 'white');
+
     processDayView();
 }
 
@@ -1030,9 +1035,6 @@ $(document).ready(function() {
     // Closeplanner when back-to-calendar button or background is clicked
     $('#pop-up-background').click( (e) => {
         if($(e.target).attr('class') == 'pop-up') {
-            $('.existing-events').css('display', 'block');
-            $('.day-scheduler').css('display', 'none');
-            $('.existing-events-container').css('background-color', 'white');
             $('.pop-up').css('display', 'none');
         }
     });
