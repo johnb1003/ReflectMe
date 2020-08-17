@@ -778,12 +778,12 @@
     }
 
     .day-view {
-        width: 95%;
+        width: 100%;
         overflow: scroll;
     }
 
     .day-view-row {
-        width: 95%;
+        width: 90%;
         overflow: hidden;
         height: 4em;
         max-height: 4em;
@@ -792,7 +792,6 @@
         align-items: baseline;
         justify-content: space-evenly;
         background-color: rgb(201, 201, 201);
-        box-shadow: .2em .2em 10px black;
         border-radius: .8em;
     }
 
