@@ -1033,6 +1033,13 @@ $(document).ready(function() {
         $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
     });
 
+    $('#log-event-button').click( () => {
+        $('.existing-events').css('display', 'none');
+        $('.day-scheduler').css('display', 'block');
+        $('.back-to-day-schedule').css('display', 'block');
+        $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
+    });
+
     // Closeplanner when back-to-calendar button or background is clicked
     $('#pop-up-background').click( (e) => {
         if($(e.target).attr('class') == 'pop-up') {
