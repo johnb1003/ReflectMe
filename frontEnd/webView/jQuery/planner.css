@@ -132,12 +132,13 @@
     .existing-events {
         position: relative;
         width: 100%;
-        height: 36em;
-        max-height: 28em;
+        height: 34em;
+        max-height: 34em;
         border: 2px solid red;
     }
 
     .events-list {
+        height: 30em;
         max-height: 28em;
         width: 100%;
         display: flex;
