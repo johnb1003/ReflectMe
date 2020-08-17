@@ -22,6 +22,8 @@ let eventType = 'Cardio';
 
 let allMonthData = null;
 
+let collectPastInput = false;
+
 
 /*
 ////////////////////////////////////////////////////////////////////////
@@ -240,19 +242,13 @@ class Calendar {
         }
 
         this.dateTense = 'future';
-        $('#day-scheduler-header-title').text('Schedule Future Day Event');
-        $('.past-input').css('display', 'none');
         if(this.selectedDate[0] <= calendar.today.getFullYear()) {
             if(this.selectedDate[1] <= calendar.today.getMonth()) {
                 if(this.selectedDate[2] < calendar.today.getDate()) {
                     this.dateTense = 'past';
-                    $('#day-scheduler-header-title').text('Log Completed Day Event');
-                    $('.past-input').css('display', 'block');
                 }
                 else if(this.selectedDate[2] == calendar.today.getDate()) {
                     this.dateTense = 'present';
-                    $('#day-scheduler-header-title').text('Log Completed Day Event');
-                    $('.past-input').css('display', 'block');
                 }
             }
         }
@@ -376,6 +372,10 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
 
     $('.existing-events').css('display', 'block');
     $('.create-event-button').css('display', 'block');
+
+    $('.pop-up-previous').css('display', 'flex');
+    $('.pop-up-next').css('display', 'flex');
+
     $('.day-scheduler').css('display', 'none');
     $('.existing-events-container').css('background-image', 'none');
     $('.existing-events-container').css('background-color', 'white');
@@ -1051,9 +1051,17 @@ $(document).ready(function() {
             $('#log-event-button').css('display', 'none');
             $('#new-event-button').css('display', 'none');
             $('.existing-events').css('display', 'none');
+
+            $('#day-scheduler-header-title').text('Schedule New Day Event');
+            $('.past-input').css('display', 'none');
+            collectPastInput = false;
+
             $('.day-scheduler').css('display', 'block');
             $('.back-to-day-schedule').css('display', 'block');
             $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
+
+            $('.pop-up-previous').css('display', 'none');
+            $('.pop-up-next').css('display', 'none');
         }
     });
 
@@ -1062,9 +1070,17 @@ $(document).ready(function() {
             $('#log-event-button').css('display', 'none');
             $('#new-event-button').css('display', 'none');
             $('.existing-events').css('display', 'none');
+
+            $('#day-scheduler-header-title').text('Log Completed Day Event');
+            $('.past-input').css('display', 'block');
+            collectPastInput = true;
+
             $('.day-scheduler').css('display', 'block');
             $('.back-to-day-schedule').css('display', 'block');
             $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
+
+            $('.pop-up-previous').css('display', 'none');
+            $('.pop-up-next').css('display', 'none');
         }
     });
 
@@ -1082,6 +1098,11 @@ $(document).ready(function() {
     $('.back-to-day-schedule').click( () => {
         $('.existing-events').css('display', 'block');
         $('.create-event-button').css('display', 'block');
+
+        $('.pop-up-previous').css('display', 'flex');
+        $('.pop-up-next').css('display', 'flex');
+
+
         $('.day-scheduler').css('display', 'none');
         $('.back-to-day-schedule').css('display', 'none');
         $('.existing-events-container').css('background-image', 'none');
