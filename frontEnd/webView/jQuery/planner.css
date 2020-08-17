@@ -177,6 +177,7 @@
         top: 0;
         right: 0;
         color: white;
+        display: none;
     }
 
     .back-to-calendar:hover {
