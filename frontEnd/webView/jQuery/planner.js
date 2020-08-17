@@ -423,7 +423,7 @@ function processDayView() {
                 let strengthWeekEvents = currWeek['strength'];
             
                 cardioWeekEvents.forEach(element => {
-                    if(i%7 == element.dayofweek) {
+                    if(dateNum%7 == element.dayofweek) {
                         dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-'+element.weekID+'">';
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-cardio-distance">'+element.distance+'</p>';
@@ -432,7 +432,7 @@ function processDayView() {
                 });
             
                 strengthWeekEvents.forEach(element => {
-                    if(i%7 == element.dayofweek) {
+                    if(dateNum%7 == element.dayofweek) {
                         dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-'+element.weekID+'">';
                         dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
                         dayViewHTML += '</div>';
