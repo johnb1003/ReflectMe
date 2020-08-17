@@ -155,6 +155,7 @@
         min-width: 17em;
         height: 7em;
         text-align: center;
+        position: relative;
     }
 
     #corner-week-day {
@@ -191,8 +192,8 @@
     .back-to-day-schedule {
         position: absolute;
         width: fit-content;
-        top: 0;
-        right: left;
+        bottom: 0;
+        left: 0;
         color: white;
     }
 
