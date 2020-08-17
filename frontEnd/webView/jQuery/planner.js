@@ -1088,11 +1088,13 @@ $(document).ready(function() {
     $('#pop-up-background').click( (e) => {
         if($(e.target).attr('class') == 'pop-up') {
             $('.pop-up').css('display', 'none');
+            $('.back-to-day-schedule').css('display', 'none')
         }
     });
     
     $('.back-to-calendar').click( () => {
         $('.pop-up').css('display', 'none');
+        $('.back-to-day-schedule').css('display', 'none')
     });
 
     $('.back-to-day-schedule').click( () => {
