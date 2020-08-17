@@ -1030,6 +1030,7 @@ $(document).ready(function() {
     $('#new-event-button').click( () => {
         $('#log-event-button').css('display', 'none');
         $('#new-event-button').css('display', 'none');
+        $('.existing-events').css('display', 'none');
         $('.day-scheduler').css('display', 'block');
         $('.back-to-day-schedule').css('display', 'block');
         $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
