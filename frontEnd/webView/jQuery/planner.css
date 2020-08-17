@@ -192,7 +192,7 @@
     .back-to-day-schedule {
         position: absolute;
         width: fit-content;
-        bottom: 0;
+        top: 0;
         left: 0;
         color: white;
         display: none;
