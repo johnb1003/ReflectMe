@@ -819,18 +819,34 @@ button:focus{
         border-radius: .8em;
     }
 
+    .day-view-type {
+        font-size: 2em;
+        text-align: center;
+    }
+
     .day-view-title {
         font-size: 3em;
+    }
+
+    .day-view-distance {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .day-view-duration {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .day-view-lifts {
+        font-size: 2em;
+        text-align: center;
     }
 
     .day-view-buttons {
         display: flex;
         align-items: center;
         justify-content: space-around;
-    }
-
-    .day-view-cardio-distance {
-
     }
 
     #full-cardio-row {
