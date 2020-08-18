@@ -830,6 +830,14 @@ button:focus{
         text-align: center;
     }
 
+    .day-view-distance-container {
+        font-size: 1em;
+        text-align: center;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+    }
+
     .day-view-distance {
         font-size: 2em;
         text-align: center;
