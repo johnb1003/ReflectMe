@@ -421,6 +421,10 @@ function processDayView() {
 
     let noEvents = true;
 
+    let viewIDs = null;
+    viewIDs.cardio = {};
+    viewIDs.strength = {}; 
+
     let dateNum = calendar.selectedDate[2];
     console.log(dateNum);
     dayViewHTML += '<div class="day-view" id="day-'+dateNum+'">';
@@ -429,10 +433,6 @@ function processDayView() {
         let dateEvents = currMonthData[(""+dateNum)];
         let cardioEvents = dateEvents['cardio'];
         let strengthEvents = dateEvents['strength'];
-
-        let viewIDs = null;
-        viewIDs.cardio = {};
-        viewIDs.strength = {}; 
 
         cardioEvents.forEach(element => {
             noEvents = false;
