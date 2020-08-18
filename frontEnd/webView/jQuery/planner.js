@@ -446,11 +446,11 @@ function processDayView() {
             dayViewHTML += '<p class="day-view-distance">'+element.distance+'</p>';
             if(durationExists) {
                 dayViewHTML += '<p class="day-view-duration">'+element.time+'</p>';
-                viewIDs.cardio[element.cardioid] = '1fr 1fr 1fr 1fr 1fr';
+                viewIDs.cardio[element.cardioid] = '1.5fr 1.5fr 1fr 1fr 1fr';
                 //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 1fr 1fr 1fr');
             }
             else {
-                viewIDs.cardio[element.cardioid] = '1fr 1fr 2fr 1fr';
+                viewIDs.cardio[element.cardioid] = '1.5fr 1.5fr 2fr 1fr';
                 //$('#full-week-strength-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
             }
             dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
@@ -470,7 +470,7 @@ function processDayView() {
             dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
             dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
             dayViewHTML += '</div></div>';
-            viewIDs.strength[element.strengthid] = '1fr 1fr 2fr 1fr';
+            viewIDs.strength[element.strengthid] = '1.5fr 1.5fr 2fr 1fr';
             //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
         });
         
@@ -494,7 +494,7 @@ function processDayView() {
                         dayViewHTML += '<button class="day-view-edit-button" id="cardio-view-edit-'+element.cardioid+'">Edit</button>';
                         dayViewHTML += '<button class="day-view-delete-button" id="cardio-view-delete-'+element.cardioid+'">Delete</button>';
                         dayViewHTML += '</div></div>';
-                        viewIDs.cardio[element.cardioid] = '1fr 1fr 2fr 1fr';
+                        viewIDs.cardio[element.cardioid] = '1.5fr 1.5fr 2fr 1fr';
                         //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
@@ -510,7 +510,7 @@ function processDayView() {
                         dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
                         dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
                         dayViewHTML += '</div></div>';
-                        viewIDs.strength[element.strengthid] = '1fr 1fr 2fr 1fr';
+                        viewIDs.strength[element.strengthid] = '1.5fr 1.5fr 2fr 1fr';
                         //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
