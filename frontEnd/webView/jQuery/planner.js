@@ -437,7 +437,7 @@ function getLiftHTML(liftList) {
     let liftHTML = '';
     let liftString = '';
     for(let i=0; i<liftArr.length; i++) {
-        liftString += liftArr[i];
+        liftString += liftArr[i].charAt(0).toUpperCase()+liftArr[i].slice(1);
         if(i < liftArr.length-1) {
             liftString += ', ';
         }
