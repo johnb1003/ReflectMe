@@ -384,6 +384,13 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
 }
 
 
+/*
+////////////////////////////////////////////////////////////////////////
+///////////////    HELPER METHODS FOR processDayView()   ///////////////
+////////////////////////////////////////////////////////////////////////
+*/
+
+
 function getDistanceHTML(dist) {
     let distHTML = '<div class="day-view-distance-container">';
     distHTML += '<p class="day-view-distance">'+dist+'</p>';
@@ -426,11 +433,17 @@ function getDurationHTML(dur) {
 }
 
 function getLiftsString(liftList) {
-
+    
 }
 
-function processDayView() {
 
+/*
+////////////////////////////////////////////////////////////////////////
+///////////////      DISPLAY DATA IN DAY VIEW POP UP      //////////////
+////////////////////////////////////////////////////////////////////////
+*/
+
+function processDayView() {
 
     // Handle create-event-button activity
     $('#log-event-button').removeClass('active-create-event');
