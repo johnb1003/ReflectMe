@@ -489,7 +489,7 @@ function processDayView() {
                         dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio'+element.cardioid+'">';
                         dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
-                        dayViewHTML += '<p class="day-view-cardio-distance">'+element.distance+'</p>';
+                        dayViewHTML += '<p class="day-view-distance">'+element.distance+'</p>';
                         dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
                         dayViewHTML += '<button class="day-view-edit-button" id="cardio-view-edit-'+element.cardioid+'">Edit</button>';
                         dayViewHTML += '<button class="day-view-delete-button" id="cardio-view-delete-'+element.cardioid+'">Delete</button>';
