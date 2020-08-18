@@ -827,6 +827,7 @@ button:focus{
 
     .day-view-title {
         font-size: 3em;
+        text-align: center;
     }
 
     .day-view-distance {
@@ -848,6 +849,7 @@ button:focus{
         display: flex;
         align-items: center;
         justify-content: space-around;
+        height: 2.2em;
     }
 
     #full-cardio-row {
