@@ -843,14 +843,21 @@ button:focus{
     .day-view-duration {
         font-size: 1em;
         text-align: center;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
     }
 
     .day-view-duration-num {
         font-size: 2em;
+        padding: 0;
+        margin: 0;
     }
 
-    .day-view-distance-label {
+    .day-view-duration-label {
         font-size: 1em;
+        padding: 0;
+        margin: 0;
     }
 
     .day-view-lifts {

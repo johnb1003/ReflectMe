@@ -393,10 +393,12 @@ function getDurationHTML(dur) {
         duration = duration % 3600;
     }
 
+    console.log(Math.floor(duration / 60));
     if(Math.floor(duration / 60) > 0) {
         durHTML += '<p class="day-view-duration-num">'+Math.floor(duration / 60)+'</p>';
         durHTML += '<p class="day-view-distance-label">m </p>';
         duration = duration % 60;
+        console.log(duration);
     }
 
     if(duration > 0) {
