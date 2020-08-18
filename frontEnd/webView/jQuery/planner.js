@@ -383,6 +383,33 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
     processDayView();
 }
 
+function getDurationHTML(dur) {
+    let durHTML = '<div class="day-view-duration">';
+
+    if((dur / 3600) > 0) {
+        durHTML += '<p class="day-view-duration-num">'+(dur / 3600)+'</p>';
+        durHTML += '<p class="day-view-distance-label">h </p>';
+        dur = dur % 3600;
+    }
+
+    if((dur / 60) > 0) {
+        durHTML += '<p class="day-view-duration-num">'+(dur / 60)+'</p>';
+        durHTML += '<p class="day-view-distance-label">m </p>';
+        dur = dur % 60;
+    }
+
+    if(dur > 0) {
+        durHTML += '<p class="day-view-duration-num">'+dur+'</p>';
+        durHTML += '<p class="day-view-distance-label">s</p>';
+    }
+
+    durHTML += '</div>';
+}
+
+function getLiftsString(liftList) {
+
+}
+
 function processDayView() {
 
 
@@ -443,9 +470,12 @@ function processDayView() {
             dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio-'+element.cardioid+'">';
             dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
             dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
+            dayViewHTML += '<div class="day-view-distance-container">';
             dayViewHTML += '<p class="day-view-distance">'+element.distance+'</p>';
+            dayViewHTML += '<p class="day-view-distance-miles">mile(s)</p>';
+            dayViewHTML += '</div>';
             if(durationExists) {
-                dayViewHTML += '<p class="day-view-duration">'+element.time+'</p>';
+                dayViewHTML += getDurationHTML(element.time);
                 viewIDs.cardio[element.cardioid] = '1.5fr 1.5fr 1fr 1fr 1fr';
                 //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 1fr 1fr 1fr');
             }
@@ -489,7 +519,10 @@ function processDayView() {
                         dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio-'+element.cardioid+'">';
                         dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
-                        dayViewHTML += '<p class="day-view-distance">'+element.distance+'</p>';
+                        dayViewHTML += '<div class="day-view-distance-container">';
+                        dayViewHTML += '<p class="day-view-distance">'+element.distance+' </p>';
+                        dayViewHTML += '<p class="day-view-distance-miles">mile(s)</p>';
+                        dayViewHTML += '</div>';
                         dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
                         dayViewHTML += '<button class="day-view-edit-button" id="cardio-view-edit-'+element.cardioid+'">Edit</button>';
                         dayViewHTML += '<button class="day-view-delete-button" id="cardio-view-delete-'+element.cardioid+'">Delete</button>';

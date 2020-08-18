@@ -835,9 +835,22 @@ button:focus{
         text-align: center;
     }
 
+    .day-view-distance-miles {
+        font-size: 1em;
+        text-align: center;
+    }
+
     .day-view-duration {
         font-size: 2em;
         text-align: center;
+    }
+
+    .day-view-duration-num {
+        font-size: 2em;
+    }
+
+    .day-view-distance-label {
+        font-size: 1em;
     }
 
     .day-view-lifts {
