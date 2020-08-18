@@ -386,7 +386,7 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
 
 function getDistanceHTML(dist) {
     let distHTML = '<div class="day-view-distance-container">';
-    distHTML += '<p class="day-view-distance">'+element.distance+'</p>';
+    distHTML += '<p class="day-view-distance">'+dist+'</p>';
     if(dist > 1) {
         distHTML += '<p class="day-view-distance-miles">&nbsp;miles</p>';
     }
