@@ -849,7 +849,8 @@ button:focus{
         display: flex;
         align-items: center;
         justify-content: space-around;
-        height: .3em;
+        line-height: 1em;
+        height: 1em;
         margin: auto auto;
         padding: 0;
     }
