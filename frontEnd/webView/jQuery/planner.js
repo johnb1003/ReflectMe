@@ -438,11 +438,11 @@ function getLiftHTML(liftList) {
     let liftString = '';
     for(let i=0; i<liftArr.length; i++) {
         liftString += liftArr[i].charAt(0).toUpperCase()+liftArr[i].slice(1);
-        if(i < liftArr.length-1) {
-            liftString += ', ';
-        }
-        else if(i == liftArr.length-2) {
+        if(i == liftArr.length-2) {
             liftString += ' & ';
+        }
+        else if(i < liftArr.length-1) {
+            liftString += ', ';
         }
     }
     liftHTML += '<p class="day-view-lifts">'+liftString+'</p>';
