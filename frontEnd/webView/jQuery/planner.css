@@ -851,6 +851,7 @@ button:focus{
         justify-content: space-around;
         height: .3em;
         margin: auto auto;
+        padding: 0;
     }
 
     #full-cardio-row {
