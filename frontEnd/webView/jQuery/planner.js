@@ -404,6 +404,7 @@ function getDurationHTML(dur) {
     }
 
     durHTML += '</div>';
+    return durHTML;
 }
 
 function getLiftsString(liftList) {
