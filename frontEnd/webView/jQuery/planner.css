@@ -811,6 +811,7 @@ button:focus{
         overflow: hidden;
         height: 6em;
         max-height: 6em;
+        line-height: 6em;
         margin: 2em auto 2em auto;
         display: grid;
         grid-template-rows: 6em;
