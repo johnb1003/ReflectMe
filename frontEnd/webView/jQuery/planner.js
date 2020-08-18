@@ -421,7 +421,7 @@ function processDayView() {
 
     let noEvents = true;
 
-    let viewIDs = null;
+    let viewIDs = {};
     viewIDs.cardio = {};
     viewIDs.strength = {}; 
 
