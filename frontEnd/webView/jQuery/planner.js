@@ -430,6 +430,10 @@ function processDayView() {
         let cardioEvents = dateEvents['cardio'];
         let strengthEvents = dateEvents['strength'];
 
+        let viewIDs = null;
+        viewIDs.cardio = {};
+        viewIDs.strength = {}; 
+
         cardioEvents.forEach(element => {
             noEvents = false;
             let durationExists = true;
@@ -442,10 +446,12 @@ function processDayView() {
             dayViewHTML += '<p class="day-view-distance">'+element.distance+'</p>';
             if(durationExists) {
                 dayViewHTML += '<p class="day-view-duration">'+element.time+'</p>';
-                $('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 1fr 1fr 1fr');
+                viewIDs.cardio[element.cardioid] = '1fr 1fr 1fr 1fr 1fr';
+                //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 1fr 1fr 1fr');
             }
             else {
-                $('#full-week-strength-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
+                viewIDs.cardio[element.cardioid] = '1fr 1fr 2fr 1fr';
+                //$('#full-week-strength-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
             }
             dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
             dayViewHTML += '<button class="day-view-edit-button" id="cardio-view-edit-'+element.cardioid+'">Edit</button>';
@@ -464,7 +470,8 @@ function processDayView() {
             dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
             dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
             dayViewHTML += '</div></div>';
-            $('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
+            viewIDs.strength[element.strengthid] = '1fr 1fr 2fr 1fr';
+            //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
         });
         
     }
@@ -487,7 +494,8 @@ function processDayView() {
                         dayViewHTML += '<button class="day-view-edit-button" id="cardio-view-edit-'+element.cardioid+'">Edit</button>';
                         dayViewHTML += '<button class="day-view-delete-button" id="cardio-view-delete-'+element.cardioid+'">Delete</button>';
                         dayViewHTML += '</div></div>';
-                        $('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
+                        viewIDs.cardio[element.cardioid] = '1fr 1fr 2fr 1fr';
+                        //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
             
@@ -502,7 +510,8 @@ function processDayView() {
                         dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
                         dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
                         dayViewHTML += '</div></div>';
-                        $('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
+                        viewIDs.strength[element.strengthid] = '1fr 1fr 2fr 1fr';
+                        //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
             }
@@ -513,6 +522,18 @@ function processDayView() {
     }
     dayViewHTML += '</div>';
     $('.events-list').html(dayViewHTML);
+
+    let cardioIDs = Object.keys(viewIDs.cardio);
+    let strengthIDs = Object.keys(viewIDs.strength);
+
+    while(cardioIDs.length > 0) {
+        let cardioKey = cardioIDs.pop();
+        $('#full-week-cardio-'+cardioKey).css('grid-template-columns', viewIDs.cardio[cardioKey]);
+    }
+    while(strengthIDs.length > 0) {
+        let strengthKey = strengthIDs.pop();
+        $('#full-week-strength-'+strengthKey).css('grid-template-columns', viewIDs.strength[strengthKey]);
+    }
 }
 
 
