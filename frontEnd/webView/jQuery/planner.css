@@ -849,10 +849,8 @@ button:focus{
         display: flex;
         align-items: center;
         justify-content: space-around;
-        line-height: 1em;
-        height: 1em;
+        line-height: 2em;
         margin: auto auto;
-        padding: 0;
     }
 
     #full-cardio-row {

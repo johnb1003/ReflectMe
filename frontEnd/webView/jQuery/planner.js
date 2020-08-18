@@ -486,7 +486,7 @@ function processDayView() {
                 cardioWeekEvents.forEach(element => {
                     if(((dateNum+(calendar.firstDay-1))%7) == element.dayofweek) {
                         noEvents = false;
-                        dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio'+element.cardioid+'">';
+                        dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio-'+element.cardioid+'">';
                         dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-distance">'+element.distance+'</p>';
