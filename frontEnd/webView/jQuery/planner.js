@@ -384,22 +384,23 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
 }
 
 function getDurationHTML(dur) {
+    let duration = parseInt(dur);
     let durHTML = '<div class="day-view-duration">';
 
-    if((dur / 3600) > 0) {
-        durHTML += '<p class="day-view-duration-num">'+(dur / 3600)+'</p>';
+    if(Math.floor(duration / 3600) > 0) {
+        durHTML += '<p class="day-view-duration-num">'+Math.floor(duration / 3600)+'</p>';
         durHTML += '<p class="day-view-distance-label">h </p>';
-        dur = dur % 3600;
+        duration = duration % 3600;
     }
 
-    if((dur / 60) > 0) {
-        durHTML += '<p class="day-view-duration-num">'+(dur / 60)+'</p>';
+    if(Math.floor(duration / 60) > 0) {
+        durHTML += '<p class="day-view-duration-num">'+Math.floor(duration / 60)+'</p>';
         durHTML += '<p class="day-view-distance-label">m </p>';
-        dur = dur % 60;
+        duration = duration % 60;
     }
 
-    if(dur > 0) {
-        durHTML += '<p class="day-view-duration-num">'+dur+'</p>';
+    if(duration > 0) {
+        durHTML += '<p class="day-view-duration-num">'+duration+'</p>';
         durHTML += '<p class="day-view-distance-label">s</p>';
     }
 
