@@ -432,8 +432,21 @@ function getDurationHTML(dur) {
     return durHTML;
 }
 
-function getLiftsString(liftList) {
-    
+function getLiftHTML(liftList) {
+    liftArr = liftList.split(', ');
+    let liftHTML = '';
+    let liftString = '';
+    for(let i=0; i<liftArr.length; i++) {
+        liftString += liftArr[i];
+        if(i < liftArr.length-1) {
+            liftString += ', ';
+        }
+        else if(i == liftArr.length-2) {
+            liftString += ' & ';
+        }
+    }
+    liftHTML += '<p class="day-view-lifts">'+liftString+'</p>';
+    return liftHTML;
 }
 
 
@@ -524,7 +537,12 @@ function processDayView() {
             dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-strength-'+element.strengthid+'">';
             dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
             dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
-            dayViewHTML += '<p class="day-view-lifts">'+element.lifts+'</p>';
+            if(element.strengthtype.toLowerCase() == 'lift') {
+                dayViewHTML += getLiftHTML(element.lifts);
+            }
+            else {
+                dayViewHTML += '<p class="day-view-placeholder"> </p>';
+            }
             dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.strengthid+'">';
             dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
             dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
@@ -564,7 +582,12 @@ function processDayView() {
                         dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-strength-'+element.strengthid+'">';
                         dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
-                        dayViewHTML += '<p class="day-view-lifts">'+element.lifts+'</p>';
+                        if(element.strengthtype.toLowerCase() == 'lift') {
+                            dayViewHTML += getLiftHTML(element.lifts);
+                        }
+                        else {
+                            dayViewHTML += '<p class="day-view-placeholder"> </p>';
+                        }
                         dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.strengthid+'">';
                         dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
                         dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
