@@ -812,9 +812,9 @@ button:focus{
         height: 6em;
         max-height: 6em;
         margin: 2em auto 2em auto;
-        display: flex;
-        align-items: baseline;
-        justify-content: space-evenly;
+        display: grid;
+        grid-template-rows: 6em;
+        grid-template-columns: 1fr 1fr 2fr 1fr;
         background-color: rgb(201, 201, 201);
         border-radius: .8em;
     }
@@ -823,20 +823,10 @@ button:focus{
         font-size: 3em;
     }
 
-    .day-cardio-view-edit-button {
-
-    }
-
-    .day-cardio-view-delete-button {
-
-    }
-
-    .day-strength-view-edit-button {
-
-    }
-
-    .day-strength-view-delete-button {
-
+    .day-view-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
     }
 
     .day-view-cardio-distance {

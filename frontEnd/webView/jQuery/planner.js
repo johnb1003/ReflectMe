@@ -432,22 +432,39 @@ function processDayView() {
 
         cardioEvents.forEach(element => {
             noEvents = false;
-            dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-'+element.weekID+'">';
+            let durationExists = true;
+            if(element.time == null || element.time == 0) {
+                daurationExists = false;
+            }
+            dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio-'+element.cardio+'">';
+            dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
             dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
-            dayViewHTML += '<p class="day-view-cardio-distance">'+element.distance+'</p>';
-            dayViewHTML += '<button class="day-cardio-view-edit-button" id="cardio-view-edit-'+element.weekID+'">Edit</button>';
-            dayViewHTML += '<button class="day-cardio-view-delete-button" id="cardio-view-delete-'+element.weekID+'">Delete</button>';
-            dayViewHTML += '</div>';
+            dayViewHTML += '<p class="day-view-distance">'+element.distance+'</p>';
+            if(durationExists) {
+                dayViewHTML += '<p class="day-view-duration">'+element.time+'</p>';
+                $('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 1fr 1fr 1fr');
+            }
+            else {
+                $('#full-week-strength-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
+            }
+            dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
+            dayViewHTML += '<button class="day-view-edit-button" id="cardio-view-edit-'+element.cardioid+'">Edit</button>';
+            dayViewHTML += '<button class="day-view-delete-button" id="cardio-view-delete-'+element.cardioid+'">Delete</button>';
+            dayViewHTML += '</div></div>';
         });
     
     
         strengthEvents.forEach(element => {
             noEvents = false;
-            dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-'+element.weekID+'">';
+            dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-strength-'+element.strengthid+'">';
+            dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
             dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
-            dayViewHTML += '<button class="day-strength-view-edit-button" id="strength-view-edit-'+element.weekID+'">Edit</button>';
-            dayViewHTML += '<button class="day-strength-view-delete-button" id="strength-view-delete-'+element.weekID+'">Delete</button>';
-            dayViewHTML += '</div>';
+            dayViewHTML += '<p class="day-view-lifts">'+element.lifts+'</p>';
+            dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.strengthid+'">';
+            dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
+            dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
+            dayViewHTML += '</div></div>';
+            $('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
         });
         
     }
@@ -462,23 +479,28 @@ function processDayView() {
                 cardioWeekEvents.forEach(element => {
                     if(((dateNum+(calendar.firstDay-1))%7) == element.dayofweek) {
                         noEvents = false;
-                        dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-'+element.weekID+'">';
+                        dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio'+element.cardioid+'">';
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-cardio-distance">'+element.distance+'</p>';
-                        dayViewHTML += '<button class="day-cardio-view-edit-button" id="cardio-view-edit-'+element.weekID+'">Edit</button>';
-                        dayViewHTML += '<button class="day-cardio-view-delete-button" id="cardio-view-delete-'+element.weekID+'">Delete</button>';
-                        dayViewHTML += '</div>';
+                        dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
+                        dayViewHTML += '<button class="day-view-edit-button" id="cardio-view-edit-'+element.cardioid+'">Edit</button>';
+                        dayViewHTML += '<button class="day-view-delete-button" id="cardio-view-delete-'+element.cardioid+'">Delete</button>';
+                        dayViewHTML += '</div></div>';
+                        $('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
             
                 strengthWeekEvents.forEach(element => {
                     if(((dateNum+(calendar.firstDay-1))%7) == element.dayofweek) {
                         noEvents = false;
-                        dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-'+element.weekID+'">';
+                        dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-strength-'+element.strengthid+'">';
                         dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
-                        dayViewHTML += '<button class="day-strength-view-edit-button" id="strength-view-edit-'+element.weekID+'">Edit</button>';
-                        dayViewHTML += '<button class="day-strength-view-delete-button" id="strength-view-delete-'+element.weekID+'">Delete</button>';
-                        dayViewHTML += '</div>';
+                        dayViewHTML += '<p class="day-view-lifts">'+element.lifts+'</p>';
+                        dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.strengthid+'">';
+                        dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
+                        dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
+                        dayViewHTML += '</div></div>';
+                        $('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
             }
