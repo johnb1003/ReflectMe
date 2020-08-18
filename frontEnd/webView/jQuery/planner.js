@@ -383,6 +383,21 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
     processDayView();
 }
 
+
+function getDistanceHTML(dist) {
+    let distHTML = '<div class="day-view-distance-container">';
+    distHTML += '<p class="day-view-distance">'+element.distance+'</p>';
+    if(dist > 1) {
+        distHTML += '<p class="day-view-distance-miles">&nbsp;miles</p>';
+    }
+    else {
+        distHTML += '<p class="day-view-distance-miles">&nbsp;mile</p>';
+    }
+    distHTML += '</div>';
+
+    return distHTML;
+}
+
 function getDurationHTML(dur) {
     let duration = parseInt(dur);
     let durHTML = '<div class="day-view-duration">';
@@ -474,10 +489,7 @@ function processDayView() {
             dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio-'+element.cardioid+'">';
             dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
             dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
-            dayViewHTML += '<div class="day-view-distance-container">';
-            dayViewHTML += '<p class="day-view-distance">'+element.distance+'</p>';
-            dayViewHTML += '<p class="day-view-distance-miles">&nbsp;mile(s)</p>';
-            dayViewHTML += '</div>';
+            dayViewHTML += getDistanceHTML(element.distance);
             if(durationExists) {
                 dayViewHTML += getDurationHTML(element.time);
                 viewIDs.cardio[element.cardioid] = '1.5fr 1.5fr 1fr 1fr 1fr';
@@ -523,10 +535,7 @@ function processDayView() {
                         dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio-'+element.cardioid+'">';
                         dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
-                        dayViewHTML += '<div class="day-view-distance-container">';
-                        dayViewHTML += '<p class="day-view-distance">'+element.distance+' </p>';
-                        dayViewHTML += '<p class="day-view-distance-miles">&nbsp;mile(s)</p>';
-                        dayViewHTML += '</div>';
+                        dayViewHTML += getDistanceHTML(element.distance);
                         dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
                         dayViewHTML += '<button class="day-view-edit-button" id="cardio-view-edit-'+element.cardioid+'">Edit</button>';
                         dayViewHTML += '<button class="day-view-delete-button" id="cardio-view-delete-'+element.cardioid+'">Delete</button>';
