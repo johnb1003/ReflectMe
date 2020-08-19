@@ -155,7 +155,7 @@ button:focus{
         padding: .2em 0;
         overflow: scroll;
         background-color: rgb(240, 240, 240);
-        border: 2px solid rgb(207, 207, 207);
+        border: 0, 2px solid rgb(170, 170, 170), 2px solid rgb(170, 170, 170), 2px solid rgb(170, 170, 170);
     }
 
     .corner-date {
@@ -223,7 +223,7 @@ button:focus{
         padding: 1em;
         background-color: rgb(65, 65, 65);
         border-radius: 2em 2em 0 0;
-        border: 2px solid rgb(207, 207, 207);
+        border: 2px solid rgb(170, 170, 170);
         width: 100%;
         min-width: 17em;
         height: 7em;
@@ -821,8 +821,8 @@ button:focus{
         background-color: rgb(201, 201, 201);
         background-image: linear-gradient(to top left, #4B45BE, #56B4E3);
         border-radius: .8em;
-        border: 2px solid rgb(207, 207, 207);
-        box-shadow: .2em .2em 0px rgb(192, 192, 192);
+        border: 2px solid rgbrgb(170, 170, 170);
+        box-shadow: .2em .2em 0px rgb(155, 155, 155);
     }
 
     .day-view-type {
