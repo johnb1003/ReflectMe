@@ -154,6 +154,8 @@ button:focus{
         border-radius: 0 0 2em 2em;
         padding: .2em 0;
         overflow: scroll;
+        background-color: rgb(102, 102, 102);
+        border: 2px solid rgb(207, 207, 207);
     }
 
     .corner-date {
@@ -804,7 +806,6 @@ button:focus{
     .day-view {
         width: 100%;
         overflow: scroll;
-        background-color: rgb(102, 102, 102);
     }
 
     .day-view-row {
