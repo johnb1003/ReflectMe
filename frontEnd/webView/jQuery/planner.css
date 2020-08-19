@@ -804,6 +804,7 @@ button:focus{
     .day-view {
         width: 100%;
         overflow: scroll;
+        background-color: rgb(102, 102, 102);
     }
 
     .day-view-row {
@@ -817,8 +818,9 @@ button:focus{
         grid-template-rows: 6em;
         grid-template-columns: 1fr 1fr 2fr 1fr;
         background-color: rgb(201, 201, 201);
-        background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
+        background-image: linear-gradient(to top left, #4B45BE, #56B4E3);
         border-radius: .8em;
+        border: 2px solid rgb(207, 207, 207);
     }
 
     .day-view-type {
