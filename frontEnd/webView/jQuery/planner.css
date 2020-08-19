@@ -154,7 +154,7 @@ button:focus{
         border-radius: 0 0 2em 2em;
         padding: .2em 0;
         overflow: scroll;
-        background-color: rgb(150, 150, 150);
+        background-color: rgb(240, 240, 240);
         border: 2px solid rgb(207, 207, 207);
     }
 
@@ -822,7 +822,7 @@ button:focus{
         background-image: linear-gradient(to top left, #4B45BE, #56B4E3);
         border-radius: .8em;
         border: 2px solid rgb(207, 207, 207);
-        box-shadow: .2em .2em 4px rgb(192, 192, 192);
+        box-shadow: .2em .2em 0px rgb(192, 192, 192);
     }
 
     .day-view-type {
