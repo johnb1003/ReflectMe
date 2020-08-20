@@ -613,6 +613,37 @@ function processDayView() {
 
 /*
 ////////////////////////////////////////////////////////////////////////
+///////////////      DISPLAY DATA IN DAY VIEW POP UP      //////////////
+////////////////////////////////////////////////////////////////////////
+*/
+
+function processSchedulerView() {
+// check collectPastInput 
+
+
+}
+
+function clearFormData() {
+    // Clear cardio data
+    $('#cardio-type').val('Run');
+    $('#cardio-distance-big').val(0);
+    $('#cardio-distance-small').val(0);
+    $('#cardio-other-name').val('Other');
+    $('#cardio-duration-h').val(0);
+    $('#cardio-duration-m').val(0);
+    $('#cardio-duration-s').val(0);
+
+    // Clear strength data
+    $('#strength-type').val('Lift');
+    $('.lift-type-pair input[type=checkbox]:checked').removeAttr('checked');
+    $('#strength-other-name').val('Other');
+
+    disableSubmitButton();
+}
+
+
+/*
+////////////////////////////////////////////////////////////////////////
 ////////////////  DISPLAY DATA IN DAY EVENT SCHEDULER   ////////////////
 ////////////////////////////////////////////////////////////////////////
 */
@@ -657,11 +688,9 @@ function displayCardio() {
     eventSummaryHTML += '<p class="event-distance">'+ cardioDistance +'</p> <p class="miles">mile(s)</p>';
     if(cardioDistance != '0.0' && !(cardioType == 'Other'  && $('#cardio-other-name').val() == "") 
             && ((calendar.dateTense != 'future' && durationString != '') || calendar.dateTense == 'future')) {
-        if(!$('.day-submit-button').hasClass('active-submit-button')) {
-            enableSubmitButton();
-        }
+        enableSubmitButton();
     }
-    else if(!$('.day-submit-button').hasClass('disabled-submit-button')) {
+    else {
         disableSubmitButton();
     }
 
@@ -759,14 +788,26 @@ function displayStrengthOther() {
 }
 
 function enableSubmitButton() {
-    $('.day-submit-button').removeClass('disabled-submit-button');
-    $('.day-submit-button').addClass('active-submit-button');
+    if($('.day-submit-button').hasClass('disabled-submit-button')) {
+        $('.day-submit-button').removeClass('disabled-submit-button');
+    }
+
+    if(!$('.day-submit-button').hasClass('active-submit-button')) {
+        $('.day-submit-button').addClass('active-submit-button');
+    }
+
     $('.day-submit-button').text('Add Event to Calendar');
 }
 
 function disableSubmitButton() {
-    $('.day-submit-button').addClass('disabled-submit-button');
-    $('.day-submit-button').removeClass('active-submit-button');
+    if($('.day-submit-button').hasClass('active-submit-button')) {
+        $('.day-submit-button').removeClass('active-submit-button');
+    }
+
+    if(!$('.day-submit-button').hasClass('disabled-submit-button')) {
+        $('.day-submit-button').addClass('disabled-submit-button');
+    }
+
     $('.day-submit-button').text('Invalid Event');
 }
 
