@@ -204,13 +204,18 @@ class Calendar {
         $('.grid-container').html(calendarHTML);
         
         $('.active-day').click((e) => {
-            let classes = $(e.target).attr('class').split(' ');
+            let element = $(e.target);
+            let classes = null;
             let idNum = null;
-            for(let i=0; i<classes.length; i++) {
-                console.log(classes[i]);
-                if(classes[i].includes('number-')) {
-                    idNum = classes[i].substring(7);
+            while(idNum == null) {
+                classes = element.attr('class').split(' ');
+                for(let i=0; i<classes.length; i++) {
+                    console.log(classes[i]);
+                    if(classes[i].includes('number-')) {
+                        idNum = classes[i].substring(7);
+                    }
                 }
+                element = element.parent();
             }
             console.log(idNum);
 
@@ -1258,14 +1263,14 @@ $(document).ready(function() {
         if($(e.target).attr('class') == 'pop-up') {
             $('.pop-up').css('display', 'none');
             $('.back-to-day-schedule').css('display', 'none')
-            //clearFormData();
+            clearFormData();
         }
     });
     
     $('.back-to-calendar').click( () => {
         $('.pop-up').css('display', 'none');
         $('.back-to-day-schedule').css('display', 'none')
-        //clearFormData();
+        clearFormData();
     });
 
     $('.back-to-day-schedule').click( () => {
@@ -1281,7 +1286,7 @@ $(document).ready(function() {
         $('.existing-events-container').css('background-image', 'none');
         $('.existing-events-container').css('background-color', 'white');
 
-        //clearFormData();
+        clearFormData();
     });
 
     $('.pop-up-next').click( () => {
