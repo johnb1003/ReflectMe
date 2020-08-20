@@ -213,25 +213,6 @@ class Calendar {
                 }
             }
 
-            /*
-            if($(e.target).attr("id") == undefined) {
-                idNum = $(e.target).parent().attr("id");
-                if(idNum.length > 2) {
-                    idNum = $(e.target).parent().parent().attr("id").substring(6);
-                }
-                //console.log(idNum);
-            }
-            else if($(e.target).attr("id").length > 2) {
-                //console.log($(e.target).attr("id"));
-                idNum = $(e.target).attr("id").substring(6);
-                //console.log(idNum);
-            }
-            else {
-                idNum = $(e.target).attr("id");
-                //console.log(idNum);
-            }
-            */
-           
             this.newSelectedDate(this.shownDate[0], this.shownDate[1], idNum);
             let weekDay = new Date(this.shownDate[0], this.shownDate[1], idNum).getDay();
             let suffix = daySuffix[idNum % 10];
