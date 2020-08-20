@@ -644,7 +644,7 @@ function clearFormData() {
     let checkedLifts = $('.lift-type-pair input[type=checkbox]:checked');
     //console.log(checkedLifts);
     for(let i=0; i<checkedLifts.length; i++) {
-        checkedLifts[i].removeAttr('checked');
+        checkedLifts[i].prop('checked', false);
     }
     $('#strength-other-name').val('Other');
 
