@@ -205,13 +205,15 @@ class Calendar {
         
         $('.active-day').click((e) => {
             let classes = $(e.target).attr("class").split(' ');
+            let idNum = null;
             for(let i=0; i<classes.length; i++) {
                 if(classes[i].includes('number-')) {
-                    let num = classes[i].substring(7);
+                    idNum = classes[i].substring(7);
                     console.log(num);
                 }
             }
-            let idNum = null;
+
+            /*
             if($(e.target).attr("id") == undefined) {
                 idNum = $(e.target).parent().attr("id");
                 if(idNum.length > 2) {
@@ -228,6 +230,8 @@ class Calendar {
                 idNum = $(e.target).attr("id");
                 //console.log(idNum);
             }
+            */
+           
             this.newSelectedDate(this.shownDate[0], this.shownDate[1], idNum);
             let weekDay = new Date(this.shownDate[0], this.shownDate[1], idNum).getDay();
             let suffix = daySuffix[idNum % 10];
