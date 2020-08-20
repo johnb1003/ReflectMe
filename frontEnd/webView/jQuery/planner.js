@@ -207,6 +207,7 @@ class Calendar {
             let classes = $(e.target).attr('class').split(' ');
             let idNum = null;
             for(let i=0; i<classes.length; i++) {
+                console.log(classes[i]);
                 if(classes[i].includes('number-')) {
                     idNum = classes[i].substring(7);
                 }
