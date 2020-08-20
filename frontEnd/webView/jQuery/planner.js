@@ -1279,6 +1279,8 @@ $(document).ready(function() {
         $('.back-to-day-schedule').css('display', 'none');
         $('.existing-events-container').css('background-image', 'none');
         $('.existing-events-container').css('background-color', 'white');
+
+        clearFormData();
     });
 
     $('.pop-up-next').click( () => {
