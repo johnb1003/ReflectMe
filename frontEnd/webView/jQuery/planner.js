@@ -137,7 +137,7 @@ class Calendar {
 
             else if(i >=  this.firstDay && i < this.numDays + this.firstDay) {  
                 let dateNum = i-this.firstDay+1;
-                calendarHTML += '<div class="day-block active-day" id="'+dateNum+'"><p class="date-number">'+dateNum+'</p>';
+                calendarHTML += '<div class="day-block active-day number-'+dateNum+'" id="'+dateNum+'"><p class="date-number">'+dateNum+'</p>';
                 calendarHTML += '<div class="day-event-container" id="event-'+dateNum+'">';
                 if(dataArrived) {
                     if((""+dateNum) in currMonthData) {
@@ -204,6 +204,13 @@ class Calendar {
         $('.grid-container').html(calendarHTML);
         
         $('.active-day').click((e) => {
+            let classes = $(e.target).attr("class").split(' ');
+            for(let i=0; i<classes.length; i++) {
+                if(classes[i].includes('number-')) {
+                    let num = classes[i].substring(7);
+                    console.log(num);
+                }
+            }
             let idNum = null;
             if($(e.target).attr("id") == undefined) {
                 idNum = $(e.target).parent().attr("id");
@@ -498,7 +505,7 @@ function processDayView() {
     viewIDs.strength = {}; 
 
     let dateNum = calendar.selectedDate[2];
-    console.log(dateNum);
+    //console.log(dateNum);
     dayViewHTML += '<div class="day-view" id="day-'+dateNum+'">';
 
     if((currMonthData != undefined) && ((""+dateNum) in currMonthData)) {
