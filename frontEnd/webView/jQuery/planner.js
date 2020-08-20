@@ -642,9 +642,10 @@ function clearFormData() {
     // Clear strength data
     $('#strength-type').val('Lift');
     let checkedLifts = $('.lift-type-pair input[type=checkbox]:checked');
-    checkedLifts.forEach( element => {
-        element.removeAttr('checked');
-    });
+    console.log(checkedLifts.value);
+    //checkedLifts.forEach( element => {
+    //    element.removeAttr('checked');
+    //});
     $('#strength-other-name').val('Other');
 
     disableSubmitButton();
