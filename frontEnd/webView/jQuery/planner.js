@@ -1257,12 +1257,14 @@ $(document).ready(function() {
         if($(e.target).attr('class') == 'pop-up') {
             $('.pop-up').css('display', 'none');
             $('.back-to-day-schedule').css('display', 'none')
+            clearFormData();
         }
     });
     
     $('.back-to-calendar').click( () => {
         $('.pop-up').css('display', 'none');
         $('.back-to-day-schedule').css('display', 'none')
+        clearFormData();
     });
 
     $('.back-to-day-schedule').click( () => {
