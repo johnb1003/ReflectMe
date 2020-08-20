@@ -1257,14 +1257,14 @@ $(document).ready(function() {
         if($(e.target).attr('class') == 'pop-up') {
             $('.pop-up').css('display', 'none');
             $('.back-to-day-schedule').css('display', 'none')
-            clearFormData();
+            //clearFormData();
         }
     });
     
     $('.back-to-calendar').click( () => {
         $('.pop-up').css('display', 'none');
         $('.back-to-day-schedule').css('display', 'none')
-        clearFormData();
+        //clearFormData();
     });
 
     $('.back-to-day-schedule').click( () => {
@@ -1280,7 +1280,7 @@ $(document).ready(function() {
         $('.existing-events-container').css('background-image', 'none');
         $('.existing-events-container').css('background-color', 'white');
 
-        clearFormData();
+        //clearFormData();
     });
 
     $('.pop-up-next').click( () => {
