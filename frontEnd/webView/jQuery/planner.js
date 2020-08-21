@@ -1511,7 +1511,7 @@ async function submitEvent() {
         else if(requestType == 'update') {
             dayEvent.cardioid = updateID;
             if(window.confirm("Are you sure you want to update this event?")) {
-                event = await editCardioEvent(dayEvent);
+                event = await updateCardioObject(dayEvent);
             }
         }
 
@@ -1549,7 +1549,7 @@ async function submitEvent() {
         else if(requestType == 'update') {
             dayEvent.strengthid = updateID;
             if(window.confirm("Are you sure you want to update this event?")) {
-                event = await editStrengthEvent(dayEvent);
+                event = await updateStrengthObject(dayEvent);
             }
         }
 
