@@ -1597,3 +1597,32 @@ function editCardioEvent(event) {
 
     requestType = 'update';
 }
+
+function editStrengthEvent(event) {
+    $('#log-event-button').css('display', 'none');
+    $('#new-event-button').css('display', 'none');
+    $('.existing-events').css('display', 'none');
+    $('.event-type-selector').css('display', 'none');
+
+    $('#day-scheduler-header-title').css('padding-top', '1em');
+    $('#day-scheduler-header-title').text('Edit Existing Day Event');
+
+    $('#strength-type').val(event.strengthtype.charAt(0).toUpperCase()+event.strengthtype.slice(1));
+    if(event.strengthtype.toLowerCase() == 'lift') {
+        let liftsString = event.lifts.toLowerCase();
+        let liftsArr = liftsString.split(', ');
+        liftsArr.forEach( element => {
+            $('#'+element).prop('checked', true);
+        });
+    }
+
+    processStrengthView();
+    $('.day-scheduler').css('display', 'block');
+    $('.back-to-day-schedule').css('display', 'block');
+    $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
+
+    $('.pop-up-previous').css('display', 'none');
+    $('.pop-up-next').css('display', 'none');
+
+    requestType = 'update';
+}
