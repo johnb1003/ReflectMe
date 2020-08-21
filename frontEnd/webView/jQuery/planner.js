@@ -1458,7 +1458,7 @@ async function submitEventCreate() {
 
         // BUFFER WHILE SENDING AJAX
         if(createCardioObject(dayEvent)) {
-            await getAllMonthData();
+            processDayView();
             backToDaySchedule();
         }
         else {
@@ -1482,7 +1482,7 @@ async function submitEventCreate() {
         }
         // BUFFER WHILE SENDING AJAX
         if(createStrengthObject(dayEvent)) {
-            await getAllMonthData();
+            processDayView();
             backToDaySchedule();
         }
         else {
