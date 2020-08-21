@@ -650,6 +650,8 @@ function clearFormData() {
 
     setClickedType('cardio');
 
+    processDayView();
+
     disableSubmitButton();
 }
 
