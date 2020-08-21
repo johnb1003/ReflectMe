@@ -24,6 +24,12 @@ let allMonthData = null;
 
 let collectPastInput = false;
 
+// create, update, or delete
+let requestType = 'create';
+
+// object to update or delete
+let submitEventObject = {};
+
 
 /*
 ////////////////////////////////////////////////////////////////////////
@@ -732,14 +738,14 @@ function displayCardio() {
 
     eventSummaryHTML += '<p class="event-distance">'+ cardioDistance +'</p> <p class="miles">mile(s)</p>';
     if(cardioDistance != '0.0' && !(cardioType == 'Other'  && $('#cardio-other-name').val() == "") 
-            && ((calendar.dateTense != 'future' && durationString != '') || calendar.dateTense == 'future')) {
+            && ((collectPastInput && durationString != '') || !collectPastInput)) {
         enableSubmitButton();
     }
     else {
         disableSubmitButton();
     }
 
-    if(calendar.dateTense != 'future') {
+    if(collectPastInput) {
         //console.log('Here: '+calendar.dateTense);
         eventSummaryHTML += '<p class="event-duration">'+durationString+'</p>';
     }
@@ -1245,6 +1251,24 @@ function getDate(dateString) {
     return dateNum;
 }
 
+function getSelectedDateString() {
+    let year = ''+calendar.selectedDate[0];
+    let month = ''+(calendar.selectedDate[1] + 1);
+    let day = ''+calendar.selectedDate[2];
+
+    if (month.length < 2) {
+        month = '0' + month;
+    }
+
+    if (day.length < 2) {
+        day = '0' + day;
+    }
+
+    let stringDate = [year, month, day].join('-');
+
+    return stringDate;
+}
+
 $(document).ready(function() {
     calendar.init();
 
@@ -1276,6 +1300,8 @@ $(document).ready(function() {
 
             $('.pop-up-previous').css('display', 'none');
             $('.pop-up-next').css('display', 'none');
+
+            requestType = 'create';
         }
     });
 
@@ -1295,6 +1321,8 @@ $(document).ready(function() {
 
             $('.pop-up-previous').css('display', 'none');
             $('.pop-up-next').css('display', 'none');
+
+            requestType = 'create';
         }
     });
 
@@ -1397,44 +1425,83 @@ $(document).ready(function() {
     
     // Submit past("Completed") or future("Scheduled") day event
     $('.active-submit-button').click( () => {
-        let urlEndPoint = "";
-        let dayEvent = {};
-
-        if(clickedType.includes('cardio')) {
-            urlEndPoint = "/cardio";
-            dayEvent.cardioType = $('.event-title').text();
-            dayEvent.distance = parseFloat($('#cardio-distance-big').val()+'.'+$('#cardio-distance-small').val());
-            if(calendar.dateTense != 'future') {
-                // Duration
-                //day.time = 
-                alert('future');
-            }
+        if(requestType == 'create') {
+            submitEventCreate();
         }
-        else if(clickedType.includes('strength')) {
-            urlEndPoint = "/strength";
-        }
-        else {
-            urlEndPoint = "/misc";
-        }
-
-        // Check calendar.dateTense
-
-        // Get appropriate data
-        // Send post ajax
-        // Bring back to updated day schedule view
     });
 });
 
-function createDayEventAJAX(endPoint, eventData) {
-    return dayEventReq = $.ajax({
-        type: "POST",
-        url: baseAPIURL+endPoint,
-        contentType: "application/json",
-        data: JSON.stringify(eventData),
-        success: function(data, status, xhr)    {
-            JWTToken = xhr.getResponseHeader('Authorization');
-            setCookie("token", JWTToken);
-        },
-        failure: function(errMsg) {alert(errMsg);}
-    });
+function submitEventCreate() {
+    let urlEndPoint = "";
+    let dayEvent = {};
+
+    dayEvent.date = getSelectedDateString();
+    dayEvent.dayofweek = parseInt(new Date(this.selectedDate[0], this.selectedDate[1], this.selectedDate[2]).getDay());
+
+    if(collectPastInput) {
+        dayEvent.status = 'completed';
+    }
+    else {
+        dayEvent.status = 'scheduled';
+    }
+
+    if(clickedType.includes('cardio')) {
+        urlEndPoint = "events/cardio";
+        dayEvent.cardiotype = $('.event-title').text().toLowerCase();
+        dayEvent.distance = parseFloat($('#cardio-distance-big').val()+'.'+$('#cardio-distance-small').val());
+        if(collectPastInput) {
+            dayEvent.time = 3600 * parseInt($('#cardio-duration-h').val()) + 60 * parseInt($('#cardio-duration-m').val()) + parseInt($('#cardio-duration-s').val());
+        }
+
+        // BUFFER WHILE SENDING AJAX
+        if(await createCardioObject(dayEvent)) {
+            backToDaySchedule();
+        }
+        else {
+            alert("Could not create event")
+        }
+    }
+    else if(clickedType.includes('strength')) {
+        urlEndPoint = "events/strength";
+        dayEvent.strengthtype = $('.event-title').text().toLowerCase();
+        
+        if(dayEvent.strengthtype == 'lift') {
+            let liftSchedule = getLiftSchedule();
+            let liftString = '';
+            for(let i=0; i<liftSchedule.length; i++) {
+                liftString += liftSchedule[i].value.toLowerCase();
+                if(i < liftSchedule.length-1) {
+                    liftString += ', ';
+                }
+            }
+            dayEvent.lifts = liftString;
+        }
+        // BUFFER WHILE SENDING AJAX
+        if(await createStrengthObject(dayEvent)) {
+            alert("Event created!");
+            backToDaySchedule();
+        }
+        else {
+            alert("Could not create event");
+        }
+    }
+    else {
+        urlEndPoint = "events/misc";
+    }
+}
+
+function backToDaySchedule() {
+    $('.existing-events').css('display', 'block');
+    $('.create-event-button').css('display', 'block');
+
+    $('.pop-up-previous').css('display', 'flex');
+    $('.pop-up-next').css('display', 'flex');
+
+
+    $('.day-scheduler').css('display', 'none');
+    $('.back-to-day-schedule').css('display', 'none');
+    $('.existing-events-container').css('background-image', 'none');
+    $('.existing-events-container').css('background-color', 'white');
+
+    clearFormData();
 }
