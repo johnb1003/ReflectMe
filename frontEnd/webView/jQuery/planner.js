@@ -1288,13 +1288,13 @@ function displayWeeks(weeks) {
             $(e.target).removeClass('up-arrow');
             $(e.target).addClass('down-arrow');
             $('#week-dropdown-'+currWeekID).css('display', 'block');
-            $(e.target).val('&#9660;');
+            $(e.target).html('&#9660;');
         }
         else if($(e.target).hasClass('down-arrow')) {
             $(e.target).removeClass('down-arrow');
             $(e.target).addClass('up-arrow');
             $('#week-dropdown-'+currWeekID).css('display', 'none');
-            $(e.target).val('&#9650;');
+            $(e.target).html('&#9650;');
         }
     });
 
