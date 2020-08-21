@@ -1281,7 +1281,7 @@ function displayWeeks(weeks) {
     $('.show-weeks-container').html(showWeeksHTML);
 
     $('.dropdown-week-button').click( (e) => {
-        let currWeekID = $(e.target).parent().attr('id').substring(5);
+        let currWeekID = $(e.target).attr('id').substring(9);
 
         $('#week-dropdown-'+currWeekID).toggle();
 
