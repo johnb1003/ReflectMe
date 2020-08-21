@@ -463,7 +463,7 @@ function getLiftHTML(liftList) {
 ////////////////////////////////////////////////////////////////////////
 */
 
-function processDayView() {
+async function processDayView() {
 
     // Handle create-event-button activity
     $('#log-event-button').removeClass('active-create-event');
@@ -661,7 +661,7 @@ function processDayView() {
         if(id.includes('cardio')) {
             idNum = parseInt(id.substring(19));
             if(window.confirm("Are you sure you want to delete this event?")) {
-                deleteCardioObject(idNum);
+                await deleteCardioObject(idNum);
                 processDayView();
             }
             console.log("Delete Cardio: "+idNum);
@@ -669,7 +669,7 @@ function processDayView() {
         else if(id.includes('strength')) {
             idNum = parseInt(id.substring(21));
             if(window.confirm("Are you sure you want to delete this event?")) {
-                deleteStrengthObject(idNum);
+                await deleteStrengthObject(idNum);
                 processDayView();
             }
             console.log("Delete Strength: "+idNum);
@@ -1167,7 +1167,7 @@ async function updateStrengthObject(strengthObject) {
 */
 
 async function deleteWeekObject(weekid) {
-    return $.ajax({
+    return await $.ajax({
         type: "DELETE",
         url: baseAPIURL+'/events/week/'+weekid,
         contentType: "application/json",
@@ -1189,7 +1189,7 @@ async function deleteWeekObject(weekid) {
 }
 
 async function deleteCardioObject(cardioid) {
-    let delCardioReq = $.ajax({
+    return await $.ajax({
         type: "DELETE",
         url: baseAPIURL+'/events/cardio/'+cardioid,
         contentType: "application/json",
@@ -1203,11 +1203,10 @@ async function deleteCardioObject(cardioid) {
         },
         failure: function(errMsg) {alert(errMsg); return false;}
     });
-    return await delCardioReq;
 }
 
 async function deleteStrengthObject(strengthid) {
-    let delStrengthReq = $.ajax({
+    return await $.ajax({
         type: "DELETE",
         url: baseAPIURL+'/events/strength/'+strengthid,
         contentType: "application/json",
@@ -1221,7 +1220,6 @@ async function deleteStrengthObject(strengthid) {
         },
         failure: function(errMsg) {alert(errMsg); return false;}
     });
-    return await delStrengthReq;
 }
 
 
