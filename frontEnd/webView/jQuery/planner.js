@@ -463,7 +463,7 @@ function getLiftHTML(liftList) {
 ////////////////////////////////////////////////////////////////////////
 */
 
-async function processDayView() {
+function processDayView() {
 
     // Handle create-event-button activity
     $('#log-event-button').removeClass('active-create-event');
@@ -654,7 +654,7 @@ async function processDayView() {
         }
     });
 
-    $('.day-view-delete-button').click( (e) => {
+    $('.day-view-delete-button').click( async (e) => {
         // id="cardio-view-delete-#" or id="strength-view-delete-#"
         let id = $(e.target).attr('id');
         let idNum = null;
