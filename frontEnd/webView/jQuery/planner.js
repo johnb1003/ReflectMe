@@ -1425,6 +1425,7 @@ $(document).ready(function() {
     
     // Submit past("Completed") or future("Scheduled") day event
     $('.active-submit-button').click( () => {
+        console.log("Active submit button");
         if(requestType == 'create') {
             submitEventCreate();
         }
