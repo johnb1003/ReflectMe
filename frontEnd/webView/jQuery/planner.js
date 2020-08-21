@@ -648,6 +648,10 @@ function clearFormData() {
     }
     $('#strength-other-name').val('Other');
 
+    processType();
+
+    // CLEAR EVENT SUMMARY
+
     disableSubmitButton();
 }
 
