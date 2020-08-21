@@ -671,7 +671,7 @@ button:focus{
     .week-dropdown-event {
         display: grid;
         grid-template-columns: 1fr 1fr 1.5fr;
-        grid-template-rows: 1em;
+        grid-template-rows: 2em;
         text-align: center;
     }
 
