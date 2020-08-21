@@ -740,6 +740,7 @@ function displayStrengthLifts() {
 
     $('.event-title').text('Lift');
     let liftSchedule = getLiftSchedule();
+    console.log('liftSchedule length: '+liftSchedule.length);
     if(liftSchedule.length == 0) {
         disableSubmitButton();
         eventSummaryHTML += '<p>No lifts selected</p>';
