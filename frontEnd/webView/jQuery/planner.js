@@ -1569,11 +1569,11 @@ function editCardioEvent(event) {
     $('#cardio-distance-big').val(Math.floor(event.distance / 1));
     $('#cardio-distance-small').val(Math.floor((event.distance % 1) * 10));
 
-    if(event.duration != null && event.duration != 0) {
-        let dur = event.duration;
+    if(event.status.toLowerCase() == 'completed' && event.time != null) {
+        let dur = event.time;
         let hour = Math.floor(dur / 3600);
         dur = dur % 3600;
-        let min = Math.floor(event.duration / 60);
+        let min = Math.floor(dur / 60);
         dur = dur % 60;
         let sec = dur;
         $('#cardio-duration-h').val(hour);
