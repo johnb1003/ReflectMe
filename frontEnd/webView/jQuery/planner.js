@@ -658,21 +658,24 @@ function processDayView() {
         // id="cardio-view-delete-#" or id="strength-view-delete-#"
         let id = $(e.target).attr('id');
         let idNum = null;
+        let event = null;
         if(id.includes('cardio')) {
             idNum = parseInt(id.substring(19));
             if(window.confirm("Are you sure you want to delete this event?")) {
-                await deleteCardioObject(idNum);
-                processDayView();
+                event = await deleteCardioObject(idNum);
             }
             console.log("Delete Cardio: "+idNum);
         }
         else if(id.includes('strength')) {
             idNum = parseInt(id.substring(21));
             if(window.confirm("Are you sure you want to delete this event?")) {
-                await deleteStrengthObject(idNum);
-                processDayView();
+                event = await deleteStrengthObject(idNum);
             }
             console.log("Delete Strength: "+idNum);
+        }
+
+        if(event) {
+            processDayView();
         }
     });
 }
@@ -1167,7 +1170,7 @@ async function updateStrengthObject(strengthObject) {
 */
 
 async function deleteWeekObject(weekid) {
-    return await $.ajax({
+    return $.ajax({
         type: "DELETE",
         url: baseAPIURL+'/events/week/'+weekid,
         contentType: "application/json",
@@ -1189,7 +1192,7 @@ async function deleteWeekObject(weekid) {
 }
 
 async function deleteCardioObject(cardioid) {
-    return await $.ajax({
+    return $.ajax({
         type: "DELETE",
         url: baseAPIURL+'/events/cardio/'+cardioid,
         contentType: "application/json",
@@ -1206,7 +1209,7 @@ async function deleteCardioObject(cardioid) {
 }
 
 async function deleteStrengthObject(strengthid) {
-    return await $.ajax({
+    return $.ajax({
         type: "DELETE",
         url: baseAPIURL+'/events/strength/'+strengthid,
         contentType: "application/json",
