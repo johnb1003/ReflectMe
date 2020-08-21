@@ -27,6 +27,9 @@ let collectPastInput = false;
 // create, update, or delete
 let requestType = 'create';
 
+// id of event to be updated
+let updateID = null;
+
 // object to update or delete
 let submitEventObject = {};
 
@@ -656,11 +659,17 @@ function processDayView() {
         let id = $(e.target).attr('id');
         let idNum = null;
         if(id.includes('cardio')) {
-            idNum = id.substring(19);
+            idNum = parseInt(id.substring(19));
+            if(window.confirm("Are you sure you want to delete this event?")) {
+                deleteCardioObject(idNum);
+            }
             console.log("Delete Cardio: "+idNum);
         }
         else if(id.includes('strength')) {
-            idNum = id.substring(21);
+            idNum = parseInt(id.substring(21));
+            if(window.confirm("Are you sure you want to delete this event?")) {
+                deleteStrengthObject(idNum);
+            }
             console.log("Delete Strength: "+idNum);
         }
     });
@@ -1468,16 +1477,13 @@ $(document).ready(function() {
     // Submit past("Completed") or future("Scheduled") day event
     $('.day-submit-button').click( (e) => {
         if($(e.target).hasClass('active-submit-button')) {
-            console.log("Active submit button");
-            if(requestType == 'create') {
-                submitEventCreate();
-            }
+            //console.log("Active submit button");
+            submitEvent();
         }
     });
 });
 
-async function submitEventCreate() {
-    let urlEndPoint = "";
+async function submitEvent() {
     let dayEvent = {};
 
     dayEvent.date = getSelectedDateString();
@@ -1491,15 +1497,24 @@ async function submitEventCreate() {
     }
 
     if(clickedType.includes('cardio')) {
-        urlEndPoint = "events/cardio";
         dayEvent.cardiotype = $('.event-title').text().toLowerCase();
         dayEvent.distance = parseFloat($('#cardio-distance-big').val()+'.'+$('#cardio-distance-small').val());
         if(collectPastInput) {
             dayEvent.time = 3600 * parseInt($('#cardio-duration-h').val()) + 60 * parseInt($('#cardio-duration-m').val()) + parseInt($('#cardio-duration-s').val());
         }
 
+        let event = null;
         // BUFFER WHILE SENDING AJAX
-        let event = await createCardioObject(dayEvent);
+        if(requestType == 'create') {
+            event = await createCardioObject(dayEvent);
+        }
+        else if(requestType == 'update') {
+            dayEvent.cardioid = updateID;
+            if(window.confirm("Are you sure you want to update this event?")) {
+                event = await editCardioEvent(dayEvent);
+            }
+        }
+
         if(event) {
             await getAllMonthData();
             console.log(allMonthData);
@@ -1525,8 +1540,19 @@ async function submitEventCreate() {
             }
             dayEvent.lifts = liftString;
         }
+
+        let event = null;
         // BUFFER WHILE SENDING AJAX
-        let event = await createStrengthObject(dayEvent);
+        if(requestType == 'create') {
+            event = await createStrengthObject(dayEvent);
+        }
+        else if(requestType == 'update') {
+            dayEvent.strengthid = updateID;
+            if(window.confirm("Are you sure you want to update this event?")) {
+                event = await editStrengthEvent(dayEvent);
+            }
+        }
+
         if(event) {
             await getAllMonthData();
             processDayView();
@@ -1601,6 +1627,7 @@ function editCardioEvent(event) {
     $('.pop-up-previous').css('display', 'none');
     $('.pop-up-next').css('display', 'none');
 
+    updateID = event.cardioid;
     requestType = 'update';
 }
 
@@ -1631,5 +1658,6 @@ function editStrengthEvent(event) {
     $('.pop-up-previous').css('display', 'none');
     $('.pop-up-next').css('display', 'none');
 
+    updateID = event.strengthid;
     requestType = 'update';
 }
