@@ -522,11 +522,11 @@ function processDayView() {
             dayViewHTML += getDistanceHTML(element.distance);
             if(durationExists) {
                 dayViewHTML += getDurationHTML(element.time);
-                viewIDs.cardio[element.cardioid] = '1.5fr 1.5fr 1fr 1fr 1fr';
+                viewIDs.cardio[element.cardioid] = '1.2fr 1.2fr 1fr 1fr 1.4fr';
                 //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 1fr 1fr 1fr');
             }
             else {
-                viewIDs.cardio[element.cardioid] = '1.5fr 1.5fr 2fr 1fr';
+                viewIDs.cardio[element.cardioid] = '1.2fr 1.2fr 2fr 1.4fr';
                 //$('#full-week-strength-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
             }
             dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
@@ -551,7 +551,7 @@ function processDayView() {
             dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
             dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
             dayViewHTML += '</div></div>';
-            viewIDs.strength[element.strengthid] = '1.5fr 1.5fr 2fr 1fr';
+            viewIDs.strength[element.strengthid] = '1.2fr 1.2fr 2fr 1.4fr';
             //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
         });
         
@@ -574,7 +574,7 @@ function processDayView() {
                         dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
                         dayViewHTML += '<button class="day-view-edit-week-button" id="cardio-view-edit-week-'+element.cardioid+'">Edit Week Event</button>';
                         dayViewHTML += '</div></div>';
-                        viewIDs.cardio[element.cardioid] = '1.5fr 1.5fr 2fr 1fr';
+                        viewIDs.cardio[element.cardioid] = '1.2fr 1.2fr 2fr 1.4fr';
                         //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
@@ -594,7 +594,7 @@ function processDayView() {
                         dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.strengthid+'">';
                         dayViewHTML += '<button class="day-view-edit-week-button" id="strength-view-edit-week-'+element.strengthid+'">Edit Week Event</button>';
                         dayViewHTML += '</div></div>';
-                        viewIDs.strength[element.strengthid] = '1.5fr 1.5fr 2fr 1fr';
+                        viewIDs.strength[element.strengthid] = '1.2fr 1.2fr 2fr 1.4fr';
                         //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
