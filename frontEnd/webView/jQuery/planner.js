@@ -1003,7 +1003,7 @@ async function createCardioObject(cardioObject) {
         },
         data: JSON.stringify(cardioObject),
         success: function(data, status, xhr)    {
-            //getAllMonthData();
+            getAllMonthData();
             //console.log("Event Created");
             return true;
         },
@@ -1021,7 +1021,7 @@ async function createStrengthObject(strengthObject) {
         },
         data: JSON.stringify(strengthObject),
         success: function(data, status, xhr)    {
-            //getAllMonthData();
+            getAllMonthData();
             //console.log("Event Created");
             return true;
         },
