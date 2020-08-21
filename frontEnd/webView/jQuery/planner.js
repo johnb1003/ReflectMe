@@ -647,6 +647,7 @@ function processDayView() {
             });
             console.log("Edit Strength: ");
             console.log(event);
+            editStrengthEvent(event);
         }
     });
 
