@@ -1267,11 +1267,12 @@ function displayWeeks(weeks) {
         showWeeksHTML += '<div class="week-dropdown" id="week-dropdown'+element.weekID+'">';
         element.cardio.forEach( event => {
             showWeeksHTML += '<div class="week-dropdown-event" id="week-dropdown-cardio-event-'+event.cardioid+'">';
-            showWeeksHTML += '<p class="week-dropdown-cardio-event-type">'+event.cardiotype+'</p>';
+            showWeeksHTML += '<p class="week-dropdown-cardio-event-type">'+event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1)+'</p>';
             showWeeksHTML += '<p class="week-dropdown-cardio-event-distance">'+event.distance+'</p>';
+            showWeeksHTML += '<div class="week-dropdown-event-buttons-container">';
             showWeeksHTML += '<button class="week-dropdown-cardio-event-edit">Edit</button>';
-            showWeeksHTML += '<button class="week-dropdown-cardio-event-edit">&#xe020;</button>';
-            showWeeksHTML += '</div>';
+            showWeeksHTML += '<button class="week-dropdown-cardio-event-edit">Delete</button>';
+            showWeeksHTML += '</div></div>';
         });
         showWeeksHTML += '</div>';
 

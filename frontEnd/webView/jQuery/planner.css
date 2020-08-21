@@ -665,9 +665,14 @@ button:focus{
     }
 
     .week-dropdown-event {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.5fr;
+        grid-template-rows: 1em;
+        text-align: center;
+    }
+
+    .week-dropdown-event-buttons-container button {
+        padding: 0;
     }
 
     .calendar {
