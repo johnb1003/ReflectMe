@@ -1327,6 +1327,7 @@ $(document).ready(function() {
             $('#new-event-button').css('display', 'none');
             $('.existing-events').css('display', 'none');
 
+            $('#day-scheduler-header-title').css('margin-top', '.1em');
             $('#day-scheduler-header-title').text('Schedule New Day Event');
             $('.past-input').css('display', 'none');
             collectPastInput = false;
@@ -1349,6 +1350,7 @@ $(document).ready(function() {
             $('#new-event-button').css('display', 'none');
             $('.existing-events').css('display', 'none');
 
+            $('#day-scheduler-header-title').css('margin-top', '.1em');
             $('#day-scheduler-header-title').text('Log Completed Day Event');
             $('.past-input').css('display', 'block');
             collectPastInput = true;
@@ -1560,11 +1562,12 @@ function editCardioEvent(event) {
     $('.existing-events').css('display', 'none');
     $('.event-type-selector').css('display', 'none');
 
+    $('#day-scheduler-header-title').css('margin-top', '1em');
     $('#day-scheduler-header-title').text('Edit Day Event');
 
     $('#cardio-type').val(event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1));
     $('#cardio-distance-big').val(Math.floor(event.distance / 1));
-    $('#cardio-distance-small').val((event.distance % 1) * 10);
+    $('#cardio-distance-small').val(Math.floor((event.distance % 1) * 10));
 
     if(event.duration != null && event.duration != 0) {
         let dur = event.duration;
