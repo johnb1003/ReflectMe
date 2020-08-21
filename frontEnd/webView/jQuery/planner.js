@@ -572,8 +572,7 @@ function processDayView() {
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
                         dayViewHTML += getDistanceHTML(element.distance);
                         dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
-                        dayViewHTML += '<button class="day-view-edit-button" id="cardio-view-edit-'+element.cardioid+'">Edit</button>';
-                        dayViewHTML += '<button class="day-view-delete-button" id="cardio-view-delete-'+element.cardioid+'">Delete</button>';
+                        dayViewHTML += '<button class="day-view-edit-week-button" id="cardio-view-edit-week-'+element.cardioid+'">Edit</button>';
                         dayViewHTML += '</div></div>';
                         viewIDs.cardio[element.cardioid] = '1.5fr 1.5fr 2fr 1fr';
                         //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
@@ -593,8 +592,7 @@ function processDayView() {
                             dayViewHTML += '<p class="day-view-placeholder"> </p>';
                         }
                         dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.strengthid+'">';
-                        dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
-                        dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
+                        dayViewHTML += '<button class="day-view-edit-week-button" id="strength-view-edit-week-'+element.strengthid+'">Edit</button>';
                         dayViewHTML += '</div></div>';
                         viewIDs.strength[element.strengthid] = '1.5fr 1.5fr 2fr 1fr';
                         //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
@@ -629,12 +627,6 @@ function processDayView() {
         let event = null;
         if(id.includes('cardio')) {
             idNum = parseInt(id.substring(17));
-            console.log("Cardioid: "+idNum);
-            console.log(calendar.getFirstDayDateString());
-            console.log(calendar.selectedDate[2]);
-            console.log(allMonthData.months[calendar.getFirstDayDateString()]);
-            console.log(allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]);
-            console.log(allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['cardio']);
             eventArr = allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['cardio'];
             eventArr.forEach( element => {
                 if(element.cardioid == idNum) {
@@ -646,12 +638,6 @@ function processDayView() {
         }
         else if(id.includes('strength')) {
             idNum = id.substring(19);
-            console.log("Strengthid: "+idNum);
-            console.log(calendar.getFirstDayDateString());
-            console.log(calendar.selectedDate[2]);
-            console.log(allMonthData.months[calendar.getFirstDayDateString()]);
-            console.log(allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]);
-            console.log(allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['strength']);
             eventArr = allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['strength'];
             eventArr.forEach( element => {
                 if(element.strengthid == idNum) {
