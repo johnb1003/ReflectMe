@@ -981,7 +981,7 @@ async function createWeekObject(weekObject) {
         data: JSON.stringify(weekData),
         success: async function(data, status, xhr)    {
             if(data.updated == true) {
-                await updateWeeks();
+                // await updateWeeks();
                 return true;
             }
             else {
@@ -1002,7 +1002,7 @@ async function createCardioObject(cardioObject) {
         },
         data: JSON.stringify(cardioObject),
         success: async function(data, status, xhr)    {
-            await getAllMonthData();
+            // getAllMonthData();
             return true;
         },
         failure: function(errMsg) {alert(errMsg); return false;}
@@ -1019,7 +1019,7 @@ async function createStrengthObject(strengthObject) {
         },
         data: JSON.stringify(strengthObject),
         success: async function(data, status, xhr)    {
-            await getAllMonthData();
+            // getAllMonthData();
             return true;
         },
         failure: function(errMsg) {alert(errMsg); return false;}
@@ -1456,6 +1456,7 @@ async function submitEventCreate() {
         // BUFFER WHILE SENDING AJAX
         let event = await createCardioObject(dayEvent);
         if(event) {
+            await getAllMonthData();
             console.log(allMonthData);
             processDayView();
             backToDaySchedule();
@@ -1482,7 +1483,7 @@ async function submitEventCreate() {
         // BUFFER WHILE SENDING AJAX
         let event = await createStrengthObject(dayEvent);
         if(event) {
-            console.log(allMonthData);
+            await getAllMonthData();
             processDayView();
             backToDaySchedule();
         }
