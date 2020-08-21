@@ -673,7 +673,7 @@ function setClickedType(typeString) {
     else if(typeString == 'strength') {
         clickedType = 'strength-day-type';
     }
-    if(typeString == 'misc') {
+    else if(typeString == 'misc') {
         clickedType = 'misc-day-type';
     }
     else {
