@@ -1570,7 +1570,7 @@ function editCardioEvent(event) {
 
     let dist = parseFloat(event.distance);
     let bigDist = Math.floor(dist);
-    let smallDist = 10 * (dist - bigDist);
+    let smallDist = Math.floor(10 * (dist - bigDist) + .01);
 
     $('#cardio-distance-big').val(bigDist);
     $('#cardio-distance-small').val(smallDist);
