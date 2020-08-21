@@ -675,7 +675,13 @@ function processDayView() {
         }
 
         if(event) {
+            await getAllMonthData();
+            console.log(allMonthData);
             processDayView();
+            backToDaySchedule();
+        }
+        else {
+            alert("Could not create event")
         }
     });
 }
