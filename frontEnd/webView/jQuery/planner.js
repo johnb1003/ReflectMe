@@ -1617,6 +1617,7 @@ function editStrengthEvent(event) {
         });
     }
 
+    setClickedType('strength');
     processStrengthView();
     $('.day-scheduler').css('display', 'block');
     $('.back-to-day-schedule').css('display', 'block');
