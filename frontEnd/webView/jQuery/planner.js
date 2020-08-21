@@ -624,22 +624,44 @@ function processDayView() {
     $('.day-view-edit-button').click( (e) => {
         // id="cardio-view-edit-#" or id="strength-view-edit-#"
         let id = $(e.target).attr('id');
+        let eventArr = null;
+        let idNum = null;
+        let event = null;
         if(id.includes('cardio')) {
-            console.log("Edit Cardio");
+            idNum = parseInt(id.substring(18));
+            eventArr = allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['cardio'];
+            eventArr.forEach( element => {
+                if(element.cardioid == idNum) {
+                    event = element;
+                }
+            });
+            console.log("Edit Cardio: ");
+            console.log(event);
         }
         else if(id.includes('strength')) {
-            console.log("Edit Strength");
+            idNum = id.substring(20);
+            eventArr = allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['strength'];
+            eventArr.forEach( element => {
+                if(element.strengthid == idNum) {
+                    event = element;
+                }
+            });
+            console.log("Edit Strength: ");
+            console.log(event);
         }
     });
 
     $('.day-view-delete-button').click( (e) => {
-        // id="cardio-view-edit-#" or id="strength-view-edit-#"
+        // id="cardio-view-delete-#" or id="strength-view-delete-#"
         let id = $(e.target).attr('id');
+        let idNum = null;
         if(id.includes('cardio')) {
-            console.log("Delete Cardio");
+            idNum = id.substring(20);
+            console.log("Delete Cardio: "+idNum);
         }
         else if(id.includes('strength')) {
-            console.log("Delete Strength");
+            idNum = id.substring(22);
+            console.log("Delete Strength: "+idNum);
         }
     });
 }
