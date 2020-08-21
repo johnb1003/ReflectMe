@@ -1282,7 +1282,7 @@ function displayWeeks(weeks) {
 
     $('.dropdown-week-button').click( (e) => {
         let currWeekID = $(e.target).attr('id').substring(9);
-
+        console.log(currWeekID);
         $('#week-dropdown-'+currWeekID).toggle();
 
         if($(e.target).hasClass('up-arrow')) {
