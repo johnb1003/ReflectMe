@@ -664,6 +664,10 @@ button:focus{
         margin: 0 .7em 0 0;
     }
 
+    .week-dropdown {
+        display: none;
+    }
+
     .week-dropdown-event {
         display: grid;
         grid-template-columns: 1fr 1fr 1.5fr;
