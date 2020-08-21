@@ -1003,7 +1003,7 @@ async function createCardioObject(cardioObject) {
         },
         data: JSON.stringify(cardioObject),
         success: function(data, status, xhr)    {
-            getAllMonthData();
+            await getAllMonthData();
             //console.log("Event Created");
             return true;
         },
@@ -1021,7 +1021,7 @@ async function createStrengthObject(strengthObject) {
         },
         data: JSON.stringify(strengthObject),
         success: function(data, status, xhr)    {
-            getAllMonthData();
+            await getAllMonthData();
             //console.log("Event Created");
             return true;
         },
@@ -1457,7 +1457,8 @@ async function submitEventCreate() {
         }
 
         // BUFFER WHILE SENDING AJAX
-        if(createCardioObject(dayEvent)) {
+        let event = await createCardioObject(dayEvent);
+        if(event) {
             processDayView();
             backToDaySchedule();
         }
@@ -1481,7 +1482,8 @@ async function submitEventCreate() {
             dayEvent.lifts = liftString;
         }
         // BUFFER WHILE SENDING AJAX
-        if(createStrengthObject(dayEvent)) {
+        let event = await createStrengthObject(dayEvent);
+        if(event) {
             processDayView();
             backToDaySchedule();
         }
