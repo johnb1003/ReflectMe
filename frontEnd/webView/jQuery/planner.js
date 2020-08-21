@@ -1200,9 +1200,13 @@ async function deleteCardioObject(cardioid) {
             'Authorization': 'Bearer ' + JWToken
         },
         success: function(data, status, xhr)    {
-            getAllMonthData();
-            //console.log("Event Deleted");
-            return true;
+            if(data.deleted == true) {
+                getAllMonthData();
+                return true;
+            }
+            else {
+                return false;
+            }
         },
         failure: function(errMsg) {alert(errMsg); return false;}
     });
@@ -1217,9 +1221,13 @@ async function deleteStrengthObject(strengthid) {
             'Authorization': 'Bearer ' + JWToken
         },
         success: function(data, status, xhr)    {
-            getAllMonthData();
-            //console.log("Event Deleted");
-            return true;
+            if(data.deleted == true) {
+                getAllMonthData();
+                return true;
+            }
+            else {
+                return false;
+            }
         },
         failure: function(errMsg) {alert(errMsg); return false;}
     });
