@@ -1568,7 +1568,7 @@ function editCardioEvent(event) {
 
     $('#cardio-type').val(event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1));
     $('#cardio-distance-big').val(Math.floor(event.distance / 1));
-    $('#cardio-distance-small').val(Math.floor((event.distance % 1) * 10));
+    $('#cardio-distance-small').val((event.distance % 1) * 10);
 
     if(event.status.toLowerCase() == 'completed' && event.time != null) {
         let dur = event.time;
