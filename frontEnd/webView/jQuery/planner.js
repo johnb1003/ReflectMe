@@ -624,9 +624,13 @@ function processDayView() {
 */
 
 function processSchedulerView() {
-// check collectPastInput 
+    // Check collectPastInput 
 
+    // Check selected type (cardio, strength)
 
+    // Show corresponding sections / inputs
+
+    // 
 }
 
 function clearFormData() {
@@ -664,13 +668,13 @@ function clearFormData() {
 
 function setClickedType(typeString) {
     if(typeString == 'cardio') {
-        selectedDayType = 'cardio-day-type';
+        clickedType = 'cardio-day-type';
     }
     else if(typeString == 'strength') {
-        selectedDayType = 'strength-day-type';
+        clickedType = 'strength-day-type';
     }
     if(typeString == 'misc') {
-        selectedDayType = 'misc-day-type';
+        clickedType = 'misc-day-type';
     }
     else {
         return; 
