@@ -979,10 +979,9 @@ async function createWeekObject(weekObject) {
             'Authorization': 'Bearer ' + JWToken
         },
         data: JSON.stringify(weekData),
-        success: function(data, status, xhr)    {
+        success: async function(data, status, xhr)    {
             if(data.updated == true) {
-                //console.log("Week successfully created");
-                updateWeeks();
+                await updateWeeks();
                 return true;
             }
             else {
@@ -1002,9 +1001,8 @@ async function createCardioObject(cardioObject) {
             'Authorization': 'Bearer ' + JWToken
         },
         data: JSON.stringify(cardioObject),
-        success: function(data, status, xhr)    {
+        success: async function(data, status, xhr)    {
             await getAllMonthData();
-            //console.log("Event Created");
             return true;
         },
         failure: function(errMsg) {alert(errMsg); return false;}
@@ -1020,9 +1018,8 @@ async function createStrengthObject(strengthObject) {
             'Authorization': 'Bearer ' + JWToken
         },
         data: JSON.stringify(strengthObject),
-        success: function(data, status, xhr)    {
+        success: async function(data, status, xhr)    {
             await getAllMonthData();
-            //console.log("Event Created");
             return true;
         },
         failure: function(errMsg) {alert(errMsg); return false;}
