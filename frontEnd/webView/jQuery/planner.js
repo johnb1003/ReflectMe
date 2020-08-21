@@ -1567,8 +1567,13 @@ function editCardioEvent(event) {
     $('#day-scheduler-header-title').text('Edit Existing Day Event');
 
     $('#cardio-type').val(event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1));
-    $('#cardio-distance-big').val(Math.floor(event.distance / 1));
-    $('#cardio-distance-small').val((event.distance % 1) * 10);
+
+    let dist = parseFloat(event.distance);
+    let bigDist = Math.floor(dist);
+    let smallDist = dist - bigDist;
+
+    $('#cardio-distance-big').val(bigDist);
+    $('#cardio-distance-small').val(smallDist);
 
     if(event.status.toLowerCase() == 'completed' && event.time != null) {
         let dur = event.time;
