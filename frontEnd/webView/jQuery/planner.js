@@ -629,6 +629,9 @@ function processDayView() {
         let event = null;
         if(id.includes('cardio')) {
             idNum = parseInt(id.substring(18));
+            console.log("Cardioid: "+idNum);
+            console.log(calendar.getFirstDayDateString());
+            console.log(calendar.selectedDate[2]);
             eventArr = allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['cardio'];
             eventArr.forEach( element => {
                 if(element.cardioid == idNum) {
