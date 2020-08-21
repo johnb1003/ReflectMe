@@ -1264,7 +1264,7 @@ function displayWeeks(weeks) {
         showWeeksHTML += '<button class="delete-week-button" id="delete-week-'+element.weekID+'">Delete</button> </div> </div>'
 
         // Prepare dropdown html
-        showWeeksHTML += '<div class="week-dropdown" id="week-dropdown'+element.weekID+'">';
+        showWeeksHTML += '<div class="week-dropdown" id="week-dropdown-'+element.weekID+'">';
         element.cardio.forEach( event => {
             showWeeksHTML += '<div class="week-dropdown-event" id="week-dropdown-cardio-event-'+event.cardioid+'">';
             showWeeksHTML += '<p class="week-dropdown-cardio-event-type">'+event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1)+'</p>';
