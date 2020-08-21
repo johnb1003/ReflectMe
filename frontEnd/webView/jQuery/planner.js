@@ -646,6 +646,12 @@ function processDayView() {
         }
         else if(id.includes('strength')) {
             idNum = id.substring(19);
+            console.log("Strengthid: "+idNum);
+            console.log(calendar.getFirstDayDateString());
+            console.log(calendar.selectedDate[2]);
+            console.log(allMonthData.months[calendar.getFirstDayDateString()]);
+            console.log(allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]);
+            console.log(allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['strength']);
             eventArr = allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['strength'];
             eventArr.forEach( element => {
                 if(element.strengthid == idNum) {
