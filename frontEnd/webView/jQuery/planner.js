@@ -620,6 +620,28 @@ function processDayView() {
         let strengthKey = strengthIDs.pop();
         $('#full-week-strength-'+strengthKey).css('grid-template-columns', viewIDs.strength[strengthKey]);
     }
+
+    $('.day-view-edit-button').click( (e) => {
+        // id="cardio-view-edit-#" or id="strength-view-edit-#"
+        let id = $(e.target).attr('id');
+        if(id.includes('cardio')) {
+            console.log("Edit Cardio");
+        }
+        else if(id.includes('strength')) {
+            console.log("Edit Strength");
+        }
+    });
+
+    $('.day-view-delete-button').click( (e) => {
+        // id="cardio-view-edit-#" or id="strength-view-edit-#"
+        let id = $(e.target).attr('id');
+        if(id.includes('cardio')) {
+            console.log("Delete Cardio");
+        }
+        else if(id.includes('strength')) {
+            console.log("Delete Strength");
+        }
+    });
 }
 
 
@@ -1424,28 +1446,6 @@ $(document).ready(function() {
             if(requestType == 'create') {
                 submitEventCreate();
             }
-        }
-    });
-
-    $('.day-view-edit-button').click( (e) => {
-        // id="cardio-view-edit-#" or id="strength-view-edit-#"
-        let id = $(e.target).attr('id');
-        if(id.includes('cardio')) {
-            console.log("Edit Cardio");
-        }
-        else if(id.includes('strength')) {
-            console.log("Edit Strength");
-        }
-    });
-
-    $('.day-view-delete-button').click( (e) => {
-        // id="cardio-view-edit-#" or id="strength-view-edit-#"
-        let id = $(e.target).attr('id');
-        if(id.includes('cardio')) {
-            console.log("Delete Cardio");
-        }
-        else if(id.includes('strength')) {
-            console.log("Delete Strength");
         }
     });
 });
