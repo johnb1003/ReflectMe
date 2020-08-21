@@ -1477,7 +1477,7 @@ function submitEventCreate() {
             dayEvent.lifts = liftString;
         }
         // BUFFER WHILE SENDING AJAX
-        if(await createStrengthObject(dayEvent)) {
+        if(createStrengthObject(dayEvent)) {
             alert("Event created!");
             backToDaySchedule();
         }
