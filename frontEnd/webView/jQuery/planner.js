@@ -628,7 +628,7 @@ function processDayView() {
         let idNum = null;
         let event = null;
         if(id.includes('cardio')) {
-            idNum = parseInt(id.substring(18));
+            idNum = parseInt(id.substring(17));
             console.log("Cardioid: "+idNum);
             console.log(calendar.getFirstDayDateString());
             console.log(calendar.selectedDate[2]);
@@ -645,7 +645,7 @@ function processDayView() {
             console.log(event);
         }
         else if(id.includes('strength')) {
-            idNum = id.substring(20);
+            idNum = id.substring(19);
             eventArr = allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['strength'];
             eventArr.forEach( element => {
                 if(element.strengthid == idNum) {
@@ -662,11 +662,11 @@ function processDayView() {
         let id = $(e.target).attr('id');
         let idNum = null;
         if(id.includes('cardio')) {
-            idNum = id.substring(20);
+            idNum = id.substring(19);
             console.log("Delete Cardio: "+idNum);
         }
         else if(id.includes('strength')) {
-            idNum = id.substring(22);
+            idNum = id.substring(21);
             console.log("Delete Strength: "+idNum);
         }
     });
