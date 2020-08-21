@@ -648,9 +648,7 @@ function clearFormData() {
     }
     $('#strength-other-name').val('Other');
 
-    processType();
-
-    // CLEAR EVENT SUMMARY
+    setClickedType('cardio');
 
     disableSubmitButton();
 }
@@ -662,6 +660,35 @@ function clearFormData() {
 ////////////////////////////////////////////////////////////////////////
 */
 
+function setClickedType(typeString) {
+    if(typeString == 'cardio') {
+        selectedDayType = 'cardio-day-type';
+    }
+    else if(typeString == 'strength') {
+        selectedDayType = 'strength-day-type';
+    }
+    if(typeString == 'misc') {
+        selectedDayType = 'misc-day-type';
+    }
+    else {
+        return; 
+    }
+    if(selectedDayType != clickedType) {
+        $('#'+selectedDayType).removeClass('button-clicked');
+        $('#'+clickedType).addClass('button-clicked');
+        
+        $('#'+selectedDayType+'-input').css('display', 'none');
+        $('#'+clickedType+'-input').css('display', 'block');
+
+        
+        processType();
+        
+
+        //('#type-name').text(eventType+' Event');
+        
+        selectedDayType = clickedType;
+    }
+}
 
 function getLiftSchedule() {
     let checkedLifts = $('.lift-type-pair input[type=checkbox]:checked');
