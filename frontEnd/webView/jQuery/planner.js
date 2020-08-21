@@ -994,7 +994,7 @@ async function createWeekObject(weekObject) {
 }
 
 async function createCardioObject(cardioObject) {
-    let cardioUpdateReq = $.ajax({
+    return await $.ajax({
         type: "POST",
         url: baseAPIURL+'/events/cardio',
         contentType: "application/json",
