@@ -1167,7 +1167,7 @@ async function updateStrengthObject(strengthObject) {
 async function deleteWeekObject(weekid) {
     return $.ajax({
         type: "DELETE",
-        url: baseAPIURL+'/events/week'+weekid,
+        url: baseAPIURL+'/events/week/'+weekid,
         contentType: "application/json",
         headers: {
             'Authorization': 'Bearer ' + JWToken
@@ -1189,7 +1189,7 @@ async function deleteWeekObject(weekid) {
 async function deleteCardioObject(cardioid) {
     return $.ajax({
         type: "DELETE",
-        url: baseAPIURL+'/events/cardio'+cardioid,
+        url: baseAPIURL+'/events/cardio/'+cardioid,
         contentType: "application/json",
         headers: {
             'Authorization': 'Bearer ' + JWToken
@@ -1206,7 +1206,7 @@ async function deleteCardioObject(cardioid) {
 async function deleteStrengthObject(strengthid) {
     return $.ajax({
         type: "DELETE",
-        url: baseAPIURL+'/events/strength'+strengthid,
+        url: baseAPIURL+'/events/strength/'+strengthid,
         contentType: "application/json",
         headers: {
             'Authorization': 'Bearer ' + JWToken
