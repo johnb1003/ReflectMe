@@ -1439,7 +1439,7 @@ function submitEventCreate() {
     let dayEvent = {};
 
     dayEvent.date = getSelectedDateString();
-    dayEvent.dayofweek = parseInt(new Date(this.selectedDate[0], this.selectedDate[1], this.selectedDate[2]).getDay());
+    dayEvent.dayofweek = parseInt(new Date(calendar.selectedDate[0], calendar.selectedDate[1], calendar.selectedDate[2]).getDay());
 
     if(collectPastInput) {
         dayEvent.status = 'completed';
