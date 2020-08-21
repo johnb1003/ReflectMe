@@ -902,7 +902,7 @@ async function allMonthDataAJAX() {
     });
 }
 
-function getAllMonthData() {
+async function getAllMonthData() {
     allMonthDataAJAX()
         .then(data => {
             allMonthData = data;
@@ -1003,7 +1003,7 @@ async function createCardioObject(cardioObject) {
         },
         data: JSON.stringify(cardioObject),
         success: function(data, status, xhr)    {
-            getAllMonthData();
+            //getAllMonthData();
             //console.log("Event Created");
             return true;
         },
@@ -1021,7 +1021,7 @@ async function createStrengthObject(strengthObject) {
         },
         data: JSON.stringify(strengthObject),
         success: function(data, status, xhr)    {
-            getAllMonthData();
+            //getAllMonthData();
             //console.log("Event Created");
             return true;
         },
@@ -1458,6 +1458,7 @@ function submitEventCreate() {
 
         // BUFFER WHILE SENDING AJAX
         if(createCardioObject(dayEvent)) {
+            await getAllMonthData();
             backToDaySchedule();
         }
         else {
@@ -1481,7 +1482,7 @@ function submitEventCreate() {
         }
         // BUFFER WHILE SENDING AJAX
         if(createStrengthObject(dayEvent)) {
-            alert("Event created!");
+            await getAllMonthData();
             backToDaySchedule();
         }
         else {
