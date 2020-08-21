@@ -903,12 +903,12 @@ async function allMonthDataAJAX() {
 }
 
 async function getAllMonthData() {
-    allMonthDataAJAX()
+    await allMonthDataAJAX()
         .then(data => {
             allMonthData = data;
             displayWeeks(allMonthData.weeks);
             calendar.render();
-            console.log(allMonthData);
+            //console.log(allMonthData);
         })
         .catch(error => {
             //console.log(error);
@@ -993,7 +993,7 @@ async function createWeekObject(weekObject) {
 }
 
 async function createCardioObject(cardioObject) {
-    return await $.ajax({
+    return $.ajax({
         type: "POST",
         url: baseAPIURL+'/events/cardio',
         contentType: "application/json",
@@ -1001,8 +1001,7 @@ async function createCardioObject(cardioObject) {
             'Authorization': 'Bearer ' + JWToken
         },
         data: JSON.stringify(cardioObject),
-        success: async function(data, status, xhr)    {
-            // getAllMonthData();
+        success: function(data, status, xhr)    {
             return true;
         },
         failure: function(errMsg) {alert(errMsg); return false;}
@@ -1010,7 +1009,7 @@ async function createCardioObject(cardioObject) {
 }
 
 async function createStrengthObject(strengthObject) {
-    let strengthUpdateReq = $.ajax({
+    return $.ajax({
         type: "POST",
         url: baseAPIURL+'/events/strength',
         contentType: "application/json",
@@ -1019,7 +1018,6 @@ async function createStrengthObject(strengthObject) {
         },
         data: JSON.stringify(strengthObject),
         success: async function(data, status, xhr)    {
-            // getAllMonthData();
             return true;
         },
         failure: function(errMsg) {alert(errMsg); return false;}
@@ -1195,7 +1193,7 @@ function displayWeeks(weeks) {
         showWeeksHTML += '<button class="delete-week-button" id="'+element.weekID+'">Del</button> </div> </div>'
     });
 
-    $('.show-weeks-container').append(showWeeksHTML);
+    $('.show-weeks-container').html(showWeeksHTML);
 
     $('.week-checkbox').change( (e) => {
         //console.log("Here");
