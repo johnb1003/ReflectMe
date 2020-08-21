@@ -1023,7 +1023,7 @@ async function createWeekObject(weekObject) {
         'active': !weekObject.active,
         'name': weekObject.weekName
     }
-    let weekUpdateReq = $.ajax({
+    return weekUpdateReq = $.ajax({
         type: "POST",
         url: baseAPIURL+'/events/week',
         contentType: "application/json",
@@ -1089,7 +1089,7 @@ async function updateWeekObject(weekObject) {
         'active': !weekObject.active,
         'name': weekObject.weekName
     }
-    let weekUpdateReq = $.ajax({
+    return $.ajax({
         type: "PATCH",
         url: baseAPIURL+'/events/week',
         contentType: "application/json",
@@ -1112,7 +1112,7 @@ async function updateWeekObject(weekObject) {
 }
 
 async function updateCardioObject(cardioObject) {
-    let cardioUpdateReq = $.ajax({
+    return $.ajax({
         type: "PATCH",
         url: baseAPIURL+'/events/cardio',
         contentType: "application/json",
@@ -1135,7 +1135,7 @@ async function updateCardioObject(cardioObject) {
 }
 
 async function updateStrengthObject(strengthObject) {
-    let strengthUpdateReq = $.ajax({
+    return $.ajax({
         type: "PATCH",
         url: baseAPIURL+'/events/strength',
         contentType: "application/json",
@@ -1165,7 +1165,7 @@ async function updateStrengthObject(strengthObject) {
 */
 
 async function deleteWeekObject(weekid) {
-    let weekUpdateReq = $.ajax({
+    return $.ajax({
         type: "DELETE",
         url: baseAPIURL+'/events/week'+weekid,
         contentType: "application/json",
@@ -1187,7 +1187,7 @@ async function deleteWeekObject(weekid) {
 }
 
 async function deleteCardioObject(cardioid) {
-    let cardioUpdateReq = $.ajax({
+    return $.ajax({
         type: "DELETE",
         url: baseAPIURL+'/events/cardio'+cardioid,
         contentType: "application/json",
@@ -1204,7 +1204,7 @@ async function deleteCardioObject(cardioid) {
 }
 
 async function deleteStrengthObject(strengthid) {
-    let strengthUpdateReq = $.ajax({
+    return $.ajax({
         type: "DELETE",
         url: baseAPIURL+'/events/strength'+strengthid,
         contentType: "application/json",
