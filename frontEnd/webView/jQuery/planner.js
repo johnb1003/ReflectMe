@@ -632,6 +632,9 @@ function processDayView() {
             console.log("Cardioid: "+idNum);
             console.log(calendar.getFirstDayDateString());
             console.log(calendar.selectedDate[2]);
+            console.log(allMonthData.months[calendar.getFirstDayDateString()]);
+            console.log(allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]);
+            console.log(allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['cardio']);
             eventArr = allMonthData.months[calendar.getFirstDayDateString()][''+calendar.selectedDate[2]]['cardio'];
             eventArr.forEach( element => {
                 if(element.cardioid == idNum) {
