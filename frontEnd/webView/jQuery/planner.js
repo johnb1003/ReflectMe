@@ -685,15 +685,13 @@ function setClickedType(typeString) {
         
         $('#'+selectedDayType+'-input').css('display', 'none');
         $('#'+clickedType+'-input').css('display', 'block');
-
-        
-        processType();
         
 
         //('#type-name').text(eventType+' Event');
         
         selectedDayType = clickedType;
     }
+    processType();
 }
 
 function getLiftSchedule() {
