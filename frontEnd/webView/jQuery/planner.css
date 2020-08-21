@@ -664,6 +664,12 @@ button:focus{
         margin: 0 .7em 0 0;
     }
 
+    .week-dropdown-event {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
     .calendar {
         background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
         width: 100%;
