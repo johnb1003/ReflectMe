@@ -1260,7 +1260,7 @@ function displayWeeks(weeks) {
         showWeeksHTML += '<div class="week-row" id="week-'+element.weekID+'"> <div class="week-display-check"> ';
         showWeeksHTML += '<input type="checkbox" class="week-checkbox" id="week-check-'+element.weekID+'" '+checked+'></div>';
         showWeeksHTML += '<p class="week-name">'+element.weekName+'</p> <div class="week-buttons">'; 
-        showWeeksHTML += '<button class="dropdown-week-button" id="dropdown-'+element.weekID+'">&#9660;</button>';
+        showWeeksHTML += '<button class="dropdown-week-button up-arrow" id="dropdown-'+element.weekID+'">&#9660;</button>';
         showWeeksHTML += '<button class="delete-week-button" id="delete-week-'+element.weekID+'">Delete</button> </div> </div>'
 
         // Prepare dropdown html
@@ -1283,16 +1283,17 @@ function displayWeeks(weeks) {
     $('.dropdown-week-button').click( (e) => {
         let currWeekID = $(e.target).attr('id').substring(9);
         console.log(currWeekID);
-        $('#week-dropdown-'+currWeekID).toggle();
 
         if($(e.target).hasClass('up-arrow')) {
-            $(e.target).removeClass('up-arrow')
-            $(e.target).addClass('down-arrow')
+            $(e.target).removeClass('up-arrow');
+            $(e.target).addClass('down-arrow');
+            $('#week-dropdown-'+currWeekID).css('display', 'block');
             $(e.target).prop('value', '&#9660;');
         }
         else if($(e.target).hasClass('down-arrow')) {
-            $(e.target).removeClass('down-arrow')
-            $(e.target).addClass('up-arrow')
+            $(e.target).removeClass('down-arrow');
+            $(e.target).addClass('up-arrow');
+            $('#week-dropdown-'+currWeekID).css('display', 'none');
             $(e.target).prop('value', '&#9650;');
         }
     });
