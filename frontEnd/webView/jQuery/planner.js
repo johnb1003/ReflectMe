@@ -514,7 +514,7 @@ function processDayView() {
             noEvents = false;
             let durationExists = true;
             if(element.time == null || element.time == 0) {
-                daurationExists = false;
+                durationExists = false;
             }
             dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio-'+element.cardioid+'">';
             dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
@@ -635,6 +635,7 @@ function processDayView() {
             });
             console.log("Edit Cardio: ");
             console.log(event);
+            editCardioEvent(event);
         }
         else if(id.includes('strength')) {
             idNum = id.substring(19);
@@ -1330,6 +1331,7 @@ $(document).ready(function() {
             $('.past-input').css('display', 'none');
             collectPastInput = false;
 
+            $('.event-type-selector').css('display', 'flex');
             $('.day-scheduler').css('display', 'block');
             $('.back-to-day-schedule').css('display', 'block');
             $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
@@ -1351,6 +1353,7 @@ $(document).ready(function() {
             $('.past-input').css('display', 'block');
             collectPastInput = true;
 
+            $('.event-type-selector').css('display', 'flex');
             $('.day-scheduler').css('display', 'block');
             $('.back-to-day-schedule').css('display', 'block');
             $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
@@ -1549,4 +1552,45 @@ function backToDaySchedule() {
     $('.existing-events-container').css('background-color', 'white');
 
     clearFormData();
+}
+
+function editCardioEvent(event) {
+    $('#log-event-button').css('display', 'none');
+    $('#new-event-button').css('display', 'none');
+    $('.existing-events').css('display', 'none');
+    $('.event-type-selector').css('display', 'none');
+
+    $('#day-scheduler-header-title').text('Edit Day Event');
+
+    $('#cardio-type').val(event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1));
+    $('#cardio-distance-big').val(Math.floor(event.distance / 1));
+    $('#cardio-distance-small').val(event.distance % 1);
+
+    if(event.duration != null && event.duration != 0) {
+        let dur = event.duration;
+        let hour = Math.floor(dur / 3600);
+        dur = dur % 3600;
+        let min = Math.floor(event.duration / 60);
+        dur = dur % 60;
+        let sec = dur;
+        $('#cardio-duration-h').val(hour);
+        $('#cardio-duration-m').val(min);
+        $('#cardio-duration-s').val(sec);
+        $('.past-input').css('display', 'block');
+        collectPastInput = true;
+    }
+    else {
+        $('.past-input').css('display', 'none');
+        collectPastInput = false;
+    }
+
+
+    $('.day-scheduler').css('display', 'block');
+    $('.back-to-day-schedule').css('display', 'block');
+    $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
+
+    $('.pop-up-previous').css('display', 'none');
+    $('.pop-up-next').css('display', 'none');
+
+    requestType = 'update';
 }
