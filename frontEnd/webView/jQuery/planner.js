@@ -1434,7 +1434,7 @@ $(document).ready(function() {
     });
 });
 
-function submitEventCreate() {
+async function submitEventCreate() {
     let urlEndPoint = "";
     let dayEvent = {};
 
