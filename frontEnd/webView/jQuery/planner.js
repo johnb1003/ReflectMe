@@ -1257,11 +1257,22 @@ function displayWeeks(weeks) {
         if(element.active == true) {
             checked = 'checked';
         }
-        showWeeksHTML += '<div class="week-row" id="week-'+element.weekID+'"> <div class="week-display-check"> '
+        showWeeksHTML += '<div class="week-row" id="week-'+element.weekID+'"> <div class="week-display-check"> ';
         showWeeksHTML += '<input type="checkbox" class="week-checkbox" id="week-check-'+element.weekID+'" '+checked+'></div>';
         showWeeksHTML += '<p class="week-name">'+element.weekName+'</p> <div class="week-buttons">'; 
         showWeeksHTML += '<button class="edit-week-button" id="'+element.weekID+'">&#9660;</button>';
         showWeeksHTML += '<button class="delete-week-button" id="'+element.weekID+'">Delete</button> </div> </div>'
+
+        // Prepare dropdown html
+        showWeeksHTML += '<div class="week-dropdown" id="week-dropdown'+element.weekID+'">';
+        element.cardio.forEach( event => {
+            showWeeksHTML += '<div class="week-dropdown-cardio-event" id="week-dropdown-cardio-event-'+event.cardioid+'">';
+            showWeeksHTML += '<p class="week-dropdown-cardio-event-type">'+event.cardiotype+'</p>';
+            showWeeksHTML += '<p class="week-dropdown-cardio-event-distance">'+event.distance+'</p>';
+            showWeeksHTML += '<button class="week-dropdown-cardio-event-edit">Edit</button>';
+            showWeeksHTML += '<button class="week-dropdown-cardio-event-edit">&#xe020;</button>';
+        });
+
     });
 
     $('.show-weeks-container').html(showWeeksHTML);

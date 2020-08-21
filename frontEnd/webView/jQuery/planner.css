@@ -621,8 +621,8 @@ button:focus{
     .show-weeks-container {
         margin: auto;
         width: 100%;
-        height: 30em;
-        max-height: 21em;
+        height: 27em;
+        max-height: 27em;
         background-color: #cccccc;
         overflow: scroll;
     }
