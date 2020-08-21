@@ -908,7 +908,7 @@ async function getAllMonthData() {
             allMonthData = data;
             displayWeeks(allMonthData.weeks);
             calendar.render();
-            //console.log(JSON.stringify(allMonthData));
+            console.log(allMonthData);
         })
         .catch(error => {
             //console.log(error);
