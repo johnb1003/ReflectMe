@@ -662,6 +662,7 @@ function processDayView() {
             idNum = parseInt(id.substring(19));
             if(window.confirm("Are you sure you want to delete this event?")) {
                 deleteCardioObject(idNum);
+                processDayView();
             }
             console.log("Delete Cardio: "+idNum);
         }
@@ -669,6 +670,7 @@ function processDayView() {
             idNum = parseInt(id.substring(21));
             if(window.confirm("Are you sure you want to delete this event?")) {
                 deleteStrengthObject(idNum);
+                processDayView();
             }
             console.log("Delete Strength: "+idNum);
         }
@@ -1187,7 +1189,7 @@ async function deleteWeekObject(weekid) {
 }
 
 async function deleteCardioObject(cardioid) {
-    return $.ajax({
+    let delCardioReq = $.ajax({
         type: "DELETE",
         url: baseAPIURL+'/events/cardio/'+cardioid,
         contentType: "application/json",
@@ -1201,10 +1203,11 @@ async function deleteCardioObject(cardioid) {
         },
         failure: function(errMsg) {alert(errMsg); return false;}
     });
+    return await delCardioReq;
 }
 
 async function deleteStrengthObject(strengthid) {
-    return $.ajax({
+    let delStrengthReq = $.ajax({
         type: "DELETE",
         url: baseAPIURL+'/events/strength/'+strengthid,
         contentType: "application/json",
@@ -1218,6 +1221,7 @@ async function deleteStrengthObject(strengthid) {
         },
         failure: function(errMsg) {alert(errMsg); return false;}
     });
+    return await delStrengthReq;
 }
 
 
