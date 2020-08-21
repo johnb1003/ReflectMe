@@ -1454,7 +1454,7 @@ function submitEventCreate() {
         }
 
         // BUFFER WHILE SENDING AJAX
-        if(await createCardioObject(dayEvent)) {
+        if(createCardioObject(dayEvent)) {
             backToDaySchedule();
         }
         else {
