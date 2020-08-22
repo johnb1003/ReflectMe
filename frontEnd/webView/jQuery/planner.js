@@ -35,6 +35,12 @@ let updateID = null;
 // object to update or delete
 let submitEventObject = {};
 
+// key=cardioid, value=cardio object
+let cardioEventsObject = null;
+
+// key=strengthid, value=strength object
+let strengthEventsObject = null;
+
 
 /*
 ////////////////////////////////////////////////////////////////////////
@@ -157,22 +163,25 @@ class Calendar {
                         let strengthEvents = dateEvents['strength'];
 
                         // IF SHOW CARDIO IS CHECKED
-                        if(showCardio) {
-                            cardioEvents.forEach(element => {
+                        cardioEvents.forEach(element => {
+                            cardioEventsObject[element.cardioid] = element;
+                            if(showCardio) {
                                 calendarHTML += '<div class="day-event-row cardio-row" id="week-'+element.weekID+'">';
                                 calendarHTML += '<p class="day-event-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
                                 calendarHTML += '<p class="day-event-cardio-distance">'+element.distance+'</p>';
                                 calendarHTML += '</div>';
-                            });
-                        }
+                            }
+                        });
+                        
                         // IF SHOW STRENGTH IS CHECKED
-                        if(showStrength) {
-                            strengthEvents.forEach(element => {
+                        strengthEvents.forEach(element => {
+                            strengthEventsObject[element.strengthid] = element;
+                            if(showStrength) {
                                 calendarHTML += '<div class="day-event-row strength-row" id="week-'+element.weekID+'">';
                                 calendarHTML += '<p class="day-event-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
                                 calendarHTML += '</div>';
-                            });
-                        }
+                            }
+                        });                       
                     }
                     if(futureMonth || (currentMonth && (dateNum >= this.today.getDate()))) {
                         let weeksArr = allMonthData.weeks;
@@ -969,6 +978,8 @@ async function allMonthDataAJAX() {
 }
 
 async function getAllMonthData() {
+    cardioEventsObject = null;
+    strengthEventsObject = null;
     await allMonthDataAJAX()
         .then(data => {
             allMonthData = data;
@@ -1268,6 +1279,7 @@ function displayWeeks(weeks) {
         // Prepare dropdown html
         showWeeksHTML += '<div class="week-dropdown" id="week-dropdown-'+element.weekID+'">';
         element.cardio.forEach( event => {
+            cardioEventsObject[event.cardioid] = event;
             showWeeksHTML += '<div class="week-dropdown-cardio-event" id="week-dropdown-cardio-event-'+event.cardioid+'">';
             showWeeksHTML += '<p class="week-dropdown-event-dow">'+shortWeekDays[event.dayofweek]+'</p>';
             showWeeksHTML += '<p class="week-dropdown-event-type">'+event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1)+'</p>';
@@ -1279,6 +1291,7 @@ function displayWeeks(weeks) {
         });
 
         element.strength.forEach( event => {
+            strengthEventsObject[event.strengthid] = event;
             showWeeksHTML += '<div class="week-dropdown-strength-event" id="week-dropdown-strength-event-'+event.strengthid+'">';
             showWeeksHTML += '<p class="week-dropdown-event-dow">'+shortWeekDays[event.dayofweek]+'</p>';
             showWeeksHTML += '<p class="week-dropdown-event-type">'+event.strengthtype.charAt(0).toUpperCase()+event.strengthtype.slice(1)+'</p>';
@@ -1296,10 +1309,17 @@ function displayWeeks(weeks) {
     $('.week-dropdown-cardio-event-edit').click( (e) => {
         let cardioID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
         console.log(cardioID);
+        if(cardioID in cardioEventsObject) {
+            editCardioEvent(cardioEventsObject[cardioID]);
+        }
     });
 
     $('.week-dropdown-strength-event-edit').click( (e) => {
-        let strengthID = $(e.target).attr('id').substring(9);
+        let strengthID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
+        console.log(strengthID);
+        if(strengthID in strengthEventsObject) {
+            editStrengthEvent(strengthEventsObject[strengthID]);
+        }
     });
 
     $('.dropdown-week-button').click( (e) => {
