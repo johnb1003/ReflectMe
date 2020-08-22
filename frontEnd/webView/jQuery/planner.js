@@ -1740,7 +1740,7 @@ async function submitEvent() {
                 dayEvent.dayofweek = parseInt($('#dow-selector-cardio').val());
                 dayEvent.weekid = createWeekID;
             }
-            console.log(dayEvent);
+            console.log('Event: '+dayEvent);
             event = await createCardioObject(dayEvent);
         }
         else if(requestType == 'update') {
@@ -1758,7 +1758,7 @@ async function submitEvent() {
 
             console.log(dayEvent);
             if(window.confirm("Are you sure you want to update this event?")) {
-                console.log(dayEvent);
+                console.log('Event: '+dayEvent);
                 event = await updateCardioObject(dayEvent);
             }
         }
@@ -1801,7 +1801,7 @@ async function submitEvent() {
                 dayEvent.dayofweek = parseInt($('#dow-selector-strength').val());
                 dayEvent.weekid = createWeekID;
             }
-            console.log(dayEvent);
+            console.log('Event: '+dayEvent);
             event = await createStrengthObject(dayEvent);
         }
         else if(requestType == 'update') {
@@ -1819,7 +1819,7 @@ async function submitEvent() {
 
             console.log(dayEvent);
             if(window.confirm("Are you sure you want to update this event?")) {
-                console.log(dayEvent);
+                console.log('Event: '+dayEvent);
                 event = await updateStrengthObject(dayEvent);
             }
         }
