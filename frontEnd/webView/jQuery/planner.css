@@ -667,8 +667,12 @@ button:focus{
 
     .week-buttons {
         position: absolute;
-        margin: auto 1em;
+        margin: auto .4em;
         right: 0;
+    }
+
+    .add-week-event-button {
+        margin: 0;
     }
 
     .delete-week-button {
@@ -677,7 +681,7 @@ button:focus{
 
     .week-dropdown {
         display: none;
-        margin-bottom: .3em;
+        margin-bottom: .4em;
     }
 
     .week-dropdown-cardio-event {

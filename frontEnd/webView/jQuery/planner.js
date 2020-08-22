@@ -1281,8 +1281,11 @@ function displayWeeks(weeks) {
         showWeeksHTML += '<div class="week-row" id="week-'+element.weekID+'"> <div class="week-display-check"> ';
         showWeeksHTML += '<input type="checkbox" class="week-checkbox" id="week-check-'+element.weekID+'" '+checked+'>';
         showWeeksHTML += '<button class="dropdown-week-button up-arrow" id="dropdown-'+element.weekID+'">&#9660;</button></div>';
-        showWeeksHTML += '<p class="week-name">'+element.weekName+'</p> <div class="week-buttons">';
-        showWeeksHTML += '<button class="delete-week-button" id="delete-week-'+element.weekID+'">Delete</button> </div> </div>'
+        showWeeksHTML += '<p class="week-name">'+element.weekName+'</p>';
+        showWeeksHTML += '<div class="week-buttons">';
+        showWeeksHTML += '<button class="add-week-event-button" id="delete-week-'+element.weekID+'">&#43;</button>';
+        showWeeksHTML += '<button class="delete-week-button" id="delete-week-'+element.weekID+'">Delete</button>';
+        showWeeksHTML += '</div> </div>';
 
         // Prepare dropdown html
         showWeeksHTML += '<div class="week-dropdown" id="week-dropdown-'+element.weekID+'">';
