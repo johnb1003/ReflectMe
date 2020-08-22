@@ -1867,7 +1867,14 @@ function editCardioEvent(event) {
         $('.dow-selector-container').css('display', 'none');
     }
 
-    $('#cardio-type').val(event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1));
+    if(event.cardiotype.toLowerCase() == 'run' || event.cardiotype.toLowerCase() == 'walk' || 
+        event.cardiotype.toLowerCase() == 'hike' || event.cardiotype.toLowerCase() == 'bike') {
+        $('#cardio-type').val(event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1));
+    }
+    else {
+        $('#cardio-type').val('Other');
+        $('#cardio-other-name').val(event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1));
+    }
 
     let dist = parseFloat(event.distance);
     let bigDist = Math.floor(dist);
@@ -1962,6 +1969,15 @@ function editStrengthEvent(event) {
     }
 
     $('#strength-type').val(event.strengthtype.charAt(0).toUpperCase()+event.strengthtype.slice(1));
+
+    if(event.strengthtype.toLowerCase() == 'lift' || event.strengthtype.toLowerCase() == 'yoga') {
+        $('#strength-type').val(event.strengthtype.charAt(0).toUpperCase()+event.strengthtype.slice(1));
+    }
+    else {
+        $('#strength-type').val('Other');
+        $('#strength-other-name').val(event.strengthtype.charAt(0).toUpperCase()+event.strengthtype.slice(1));
+    }
+
     if(event.strengthtype.toLowerCase() == 'lift') {
         let liftsString = event.lifts.toLowerCase();
         let liftsArr = liftsString.split(', ');
