@@ -1004,6 +1004,7 @@ async function getAllMonthData() {
     await allMonthDataAJAX()
         .then(data => {
             allMonthData = data;
+            console.log(allMonthData);
             displayWeeks(allMonthData.weeks);
             calendar.render();
         })
