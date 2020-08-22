@@ -1656,15 +1656,6 @@ async function submitEvent() {
     let dayEvent = {};
 
     dayEvent.date = getSelectedDateString();
-    if(updateScope == 'day') {
-        console.log('scope = day');
-        dayEvent.dayofweek = parseInt(new Date(calendar.selectedDate[0], calendar.selectedDate[1], calendar.selectedDate[2]).getDay());
-    }
-    else if(updateScope == 'week'){
-        console.log('scope = week');
-        dayEvent.dayofweek = parseInt($('#dow-selector').val());
-        dayEvent.weekid = updateWeekID;
-    }
 
     if(collectPastInput) {
         dayEvent.status = 'completed';
@@ -1689,6 +1680,17 @@ async function submitEvent() {
         }
         else if(requestType == 'update') {
             dayEvent.cardioid = updateID;
+
+            if(updateScope == 'day') {
+                console.log('scope = day');
+                dayEvent.dayofweek = parseInt(new Date(calendar.selectedDate[0], calendar.selectedDate[1], calendar.selectedDate[2]).getDay());
+            }
+            else if(updateScope == 'week'){
+                console.log('scope = week');
+                dayEvent.dayofweek = parseInt($('#dow-selector-cardio').val());
+                dayEvent.weekid = updateWeekID;
+            }
+
             console.log(dayEvent);
             if(window.confirm("Are you sure you want to update this event?")) {
                 event = await updateCardioObject(dayEvent);
@@ -1730,6 +1732,16 @@ async function submitEvent() {
             dayEvent.strengthid = updateID;
             if(window.confirm("Are you sure you want to update this event?")) {
                 event = await updateStrengthObject(dayEvent);
+            }
+
+            if(updateScope == 'day') {
+                console.log('scope = day');
+                dayEvent.dayofweek = parseInt(new Date(calendar.selectedDate[0], calendar.selectedDate[1], calendar.selectedDate[2]).getDay());
+            }
+            else if(updateScope == 'week'){
+                console.log('scope = week');
+                dayEvent.dayofweek = parseInt($('#dow-selector-strength').val());
+                dayEvent.weekid = updateWeekID;
             }
         }
 
@@ -1809,11 +1821,11 @@ function editCardioEvent(event) {
     $('#day-scheduler-header-title').text('Edit Existing Event');
 
     if(updateScope == 'week') {
-        $('#dow-selector').val(''+event.dayofweek);
-        $('#dow-selector-container').css('display', 'block');
+        $('#dow-selector-cardio').val(''+event.dayofweek);
+        $('.dow-selector-container').css('display', 'block');
     }
     else if(updateScope == 'day') {
-        $('#dow-selector-container').css('display', 'none');
+        $('.dow-selector-container').css('display', 'none');
     }
 
     $('#cardio-type').val(event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1));
@@ -1903,11 +1915,11 @@ function editStrengthEvent(event) {
     $('#day-scheduler-header-title').text('Edit Existing Event');
 
     if(updateScope == 'week') {
-        $('#dow-selector').val(''+event.dayofweek);
-        $('#dow-selector-container').css('display', 'block');
+        $('#dow-selector-strength').val(''+event.dayofweek);
+        $('.dow-selector-container').css('display', 'block');
     }
     else if(updateScope == 'day') {
-        $('#dow-selector-container').css('display', 'none');
+        $('.dow-selector-container').css('display', 'none');
     }
 
     $('#strength-type').val(event.strengthtype.charAt(0).toUpperCase()+event.strengthtype.slice(1));
