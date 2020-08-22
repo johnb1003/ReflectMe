@@ -744,6 +744,7 @@ function clearFormData() {
     $('#cardio-duration-h').val(0);
     $('#cardio-duration-m').val(0);
     $('#cardio-duration-s').val(0);
+    $('#dow-selector-cardio').val('0');
 
     // Clear strength data
     $('#strength-type').val('Lift');
@@ -753,6 +754,7 @@ function clearFormData() {
         $('#'+checkedLifts[i].value.toLowerCase()).prop('checked', false);
     }
     $('#strength-other-name').val('Other');
+    $('#dow-selector-cardio').val('0');
 
     setClickedType('cardio');
 
@@ -1738,6 +1740,7 @@ async function submitEvent() {
                 dayEvent.dayofweek = parseInt($('#dow-selector-cardio').val());
                 dayEvent.weekid = createWeekID;
             }
+            console.log(dayEvent);
             event = await createCardioObject(dayEvent);
         }
         else if(requestType == 'update') {
@@ -1755,6 +1758,7 @@ async function submitEvent() {
 
             console.log(dayEvent);
             if(window.confirm("Are you sure you want to update this event?")) {
+                console.log(dayEvent);
                 event = await updateCardioObject(dayEvent);
             }
         }
@@ -1797,6 +1801,7 @@ async function submitEvent() {
                 dayEvent.dayofweek = parseInt($('#dow-selector-strength').val());
                 dayEvent.weekid = createWeekID;
             }
+            console.log(dayEvent);
             event = await createStrengthObject(dayEvent);
         }
         else if(requestType == 'update') {
@@ -1814,6 +1819,7 @@ async function submitEvent() {
 
             console.log(dayEvent);
             if(window.confirm("Are you sure you want to update this event?")) {
+                console.log(dayEvent);
                 event = await updateStrengthObject(dayEvent);
             }
         }
