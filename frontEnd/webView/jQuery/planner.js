@@ -1309,18 +1309,26 @@ function displayWeeks(weeks) {
     $('.week-dropdown-cardio-event-edit').click( (e) => {
         let cardioID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
         console.log(cardioID);
+        console.log(cardioEventsObject);
         if(cardioID in cardioEventsObject) {
             console.log("Key in cardioEventsObject");
             editCardioEvent(cardioEventsObject[cardioID]);
+        }
+        else {
+            console.log(cardioEventsObject);
         }
     });
 
     $('.week-dropdown-strength-event-edit').click( (e) => {
         let strengthID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
         console.log(strengthID);
+        console.log(strengthEventsObject);
         if(strengthID in strengthEventsObject) {
             console.log("Key in strengthEventsObject");
             editStrengthEvent(strengthEventsObject[strengthID]);
+        }
+        else {
+            console.log(strengthEventsObject);
         }
     });
 
