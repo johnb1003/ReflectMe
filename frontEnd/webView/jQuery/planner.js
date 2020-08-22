@@ -33,7 +33,7 @@ let requestType = 'create';
 let updateID = null;
 
 // scope = solo 'day' event or 'week' event
-let updateScope = 'day';
+let updateScope = '';
 
 let updateWeekID = null;
 
