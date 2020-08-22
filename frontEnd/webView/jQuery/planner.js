@@ -1277,6 +1277,16 @@ function displayWeeks(weeks) {
             showWeeksHTML += '<button class="week-dropdown-cardio-event-edit">Delete</button>';
             showWeeksHTML += '</div></div>';
         });
+
+        element.strength.forEach( event => {
+            showWeeksHTML += '<div class="week-dropdown-strength-event" id="week-dropdown-strength-event-'+event.strengthid+'">';
+            showWeeksHTML += '<p class="week-dropdown-strength-event-dow">'+shortWeekDays[event.dayofweek]+'</p>';
+            showWeeksHTML += '<p class="week-dropdown-strength-event-type">'+event.strengthtype.charAt(0).toUpperCase()+event.strengthtype.slice(1)+'</p>';
+            showWeeksHTML += '<div class="week-dropdown-event-buttons-container">';
+            showWeeksHTML += '<button class="week-dropdown-strength-event-edit">Edit</button>';
+            showWeeksHTML += '<button class="week-dropdown-strength-event-edit">Delete</button>';
+            showWeeksHTML += '</div></div>';
+        });
         showWeeksHTML += '</div>';
 
     });
