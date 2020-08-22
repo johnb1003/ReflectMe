@@ -1327,7 +1327,7 @@ function displayWeeks(weeks) {
         }
     });
 
-    $('.week-dropdown-cardio-event-delete').click( (e) => {
+    $('.week-dropdown-cardio-event-delete').click( async (e) => {
         let event = null;
         let cardioID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
         console.log(cardioID);
@@ -1367,7 +1367,7 @@ function displayWeeks(weeks) {
         }
     });
 
-    $('.week-dropdown-strength-event-delete').click( (e) => {
+    $('.week-dropdown-strength-event-delete').click( async (e) => {
         let strengthID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
         console.log(strengthID);
         console.log(strengthEventsObject);
