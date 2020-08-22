@@ -1320,7 +1320,7 @@ function displayWeeks(weeks) {
     });
 
     $('.week-dropdown-strength-event-edit').click( (e) => {
-        let strengthID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
+        let strengthID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
         console.log(strengthID);
         console.log(strengthEventsObject);
         if(strengthID in strengthEventsObject) {
