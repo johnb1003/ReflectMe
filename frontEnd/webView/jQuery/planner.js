@@ -35,6 +35,8 @@ let updateID = null;
 // scope = solo 'day' event or 'week' event
 let updateScope = 'day';
 
+let updateWeekID = null;
+
 // object to update or delete
 let submitEventObject = {};
 
@@ -1603,6 +1605,7 @@ async function submitEvent() {
     }
     else if(updateScope = 'week'){
         dayEvent.dayofweek = parseInt($('#dow-selector').val());
+        dayEvent.weekid = updateWeekID;
     }
 
     if(collectPastInput) {
@@ -1628,6 +1631,7 @@ async function submitEvent() {
         }
         else if(requestType == 'update') {
             dayEvent.cardioid = updateID;
+            console.log(dayEvent);
             if(window.confirm("Are you sure you want to update this event?")) {
                 event = await updateCardioObject(dayEvent);
             }
@@ -1711,6 +1715,7 @@ function editCardioEvent(event) {
 
     if($('.pop-up').css('display') == 'none') {
         updateScope = 'week';
+        updateWeekID = event.weekid;
 
         let weeksArr = allMonthData.weeks;
         let weekName = 'Week Event';
