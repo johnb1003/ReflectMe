@@ -623,7 +623,7 @@ button:focus{
     }
 
     #week-container-title {
-        padding: 0 .5em;
+        padding: 0;
         margin: auto 0;
         text-align: left;
         font-size: 1.5em;
