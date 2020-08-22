@@ -689,6 +689,10 @@ button:focus{
         text-align: center;
     }
 
+    .week-dropdown-cardio-event-dow {
+        margin: auto 0;
+    }
+
     .week-dropdown-event-buttons-container button {
         padding: 0 .1em;
         margin: auto .4em;
