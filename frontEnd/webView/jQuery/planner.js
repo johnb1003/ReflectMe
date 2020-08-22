@@ -29,6 +29,11 @@ let collectPastInput = false;
 // create, update, or delete
 let requestType = 'create';
 
+// scope = solo 'day' event or 'week' event
+let createScope = '';
+    
+let createWeekID = null;
+
 // id of event to be updated
 let updateID = null;
 
@@ -1291,7 +1296,7 @@ function displayWeeks(weeks) {
         showWeeksHTML += '<button class="dropdown-week-button up-arrow" id="dropdown-'+element.weekID+'">&#9660;</button></div>';
         showWeeksHTML += '<p class="week-name">'+element.weekName+'</p>';
         showWeeksHTML += '<div class="week-buttons">';
-        showWeeksHTML += '<button class="add-week-event-button" id="delete-week-'+element.weekID+'">&#43;</button>';
+        showWeeksHTML += '<button class="add-week-event-button" id="add-week-event-'+element.weekID+'">&#43;</button>';
         showWeeksHTML += '<button class="delete-week-button" id="delete-week-'+element.weekID+'">Delete</button>';
         showWeeksHTML += '</div> </div>';
 
@@ -1417,6 +1422,16 @@ function displayWeeks(weeks) {
         }
     });
 
+    $('.add-week-event-button').click( (e) => {
+        let currWeekID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
+
+    });
+
+    $('.delete-week-button').click( (e) => {
+        let currWeekID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
+        
+    });
+
     $('.dropdown-week-button').click( (e) => {
         let currWeekID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
         console.log(currWeekID);
@@ -1540,6 +1555,7 @@ $(document).ready(function() {
             $('.pop-up-next').css('display', 'none');
 
             requestType = 'create';
+            createScope = 'day';
         }
     });
 
@@ -1564,6 +1580,7 @@ $(document).ready(function() {
             $('.pop-up-next').css('display', 'none');
 
             requestType = 'create';
+            createScope = 'day';
         }
     });
 
@@ -1814,6 +1831,51 @@ function backToCalendar() {
     clearFormData();
 }
 
+function createWeekEvent(weekID) {
+    
+    // individual day event, or week event?
+    createScope = 'week';
+    createWeekID = weekID;
+
+    let weeksArr = allMonthData.weeks;
+    let weekName = 'Week Event';
+                
+    weeksArr.forEach(currWeek => { 
+        if(currWeek.weekID = weekID) {
+            weekName = currWeek.weekName.charAt(0).toUpperCase()+currWeek.weekName.slice(1);
+            break;
+        }
+    });
+
+    $('#log-event-button').css('display', 'none');
+    $('#new-event-button').css('display', 'none');
+    $('.existing-events').css('display', 'none');
+
+    $('#corner-week-day').text('Event belongs to week:');
+    $('#corner-month-date').text(weekName);
+    $('.pop-up').css('display', 'flex');
+
+    $('#day-scheduler-header-title').css('padding-top', '.1em');
+    $('#day-scheduler-header-title').text('Schedule New Event');
+    $('.past-input').css('display', 'none');
+    collectPastInput = false;
+
+    activeButtonText = 'Add Event to Week';
+    $('.event-type-selector').css('display', 'flex');
+    $('.back-to-day-schedule').css('display', 'none');
+    $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
+
+
+    displayCardio();
+    $('.day-scheduler').css('display', 'block');
+
+    $('.pop-up-previous').css('display', 'none');
+    $('.pop-up-next').css('display', 'none');
+
+    requestType = 'create';
+}
+
+
 function editCardioEvent(event) {
 
     // individual day event, or week event?
@@ -1905,6 +1967,9 @@ function editCardioEvent(event) {
     $('.day-scheduler').css('display', 'block');
     if(updateScope == 'day') {
         $('.back-to-day-schedule').css('display', 'block');
+    }
+    else {
+        $('.back-to-day-schedule').css('display', 'none');
     }
     $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
 
