@@ -645,7 +645,7 @@ button:focus{
     }
 
     .dropdown-week-button {
-        margin: 0 .5em;
+        margin: 0;
         background-color: transparent;
         border: none;
         line-height: .66em;
