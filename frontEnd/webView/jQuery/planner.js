@@ -1425,12 +1425,31 @@ function displayWeeks(weeks) {
 
     $('.add-week-event-button').click( (e) => {
         let currWeekID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
-
+        createWeekEvent(currWeekID);
     });
 
     $('.delete-week-button').click( (e) => {
         let currWeekID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
-        
+        let event = null;
+        if(window.confirm("Are you sure you want to delete this week and its corresponding events?")) {
+            event = await deleteWeekObject(parseInt(currWeekID));
+        }
+        console.log("Delete Week: "+currWeekID);
+
+        if(event) {
+            await getAllMonthData();
+            console.log(allMonthData);
+            processDayView();
+            if(createScope == 'day') {
+                backToDaySchedule();
+            }
+            else if(createScope == 'week'){
+                backToCalendar();
+            }
+        }
+        else {
+            alert("Could not delete week")
+        }
     });
 
     $('.dropdown-week-button').click( (e) => {
