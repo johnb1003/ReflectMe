@@ -1461,13 +1461,13 @@ function displayWeeks(weeks) {
         if($(e.target).hasClass('up-arrow')) {
             $(e.target).removeClass('up-arrow');
             $(e.target).addClass('down-arrow');
-            $('#week-dropdown-'+currWeekID).css('display', 'block');
+            $('#week-dropdown-'+currWeekID).css('display', 'none');
             $(e.target).html('&#9650;');
         }
         else if($(e.target).hasClass('down-arrow')) {
             $(e.target).removeClass('down-arrow');
             $(e.target).addClass('up-arrow');
-            $('#week-dropdown-'+currWeekID).css('display', 'none');
+            $('#week-dropdown-'+currWeekID).css('display', 'block');
             $(e.target).html('&#9660;');
         }
     });
