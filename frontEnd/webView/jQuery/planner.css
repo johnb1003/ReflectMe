@@ -646,11 +646,18 @@ button:focus{
 
     .dropdown-week-button {
         margin: 0 .5em;
+        background-color: transparent;
+        border: none;
+        line-height: .66em;
+    }
+
+    .dropdown-week-button:hover {
+        background-color: transparent;
     }
 
     .week-name {
         max-width: 20em;
-        margin: 0 1em 0 2em;
+        margin: 0 2em;
         font-size: 1.5em;
     }
 
@@ -661,7 +668,7 @@ button:focus{
     }
 
     .delete-week-button {
-        margin: 0 .7em 0 0;
+        margin: 0;
     }
 
     .week-dropdown {
