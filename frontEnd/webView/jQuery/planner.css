@@ -675,9 +675,16 @@ button:focus{
         display: none;
     }
 
-    .week-dropdown-event {
+    .week-dropdown-cardio-event {
         display: grid;
-        grid-template-columns: 1fr 1fr 1.5fr;
+        grid-template-columns: .5fr 1fr .5fr 1.5fr;
+        grid-template-rows: 2em;
+        text-align: center;
+    }
+
+    .week-dropdown-strength-event {
+        display: grid;
+        grid-template-columns: .5fr 1.5fr 1.5fr;
         grid-template-rows: 2em;
         text-align: center;
     }

@@ -10,6 +10,8 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+const shortWeekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+
 const daySuffix = ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
 
 let showCardio = true;
@@ -1266,7 +1268,8 @@ function displayWeeks(weeks) {
         // Prepare dropdown html
         showWeeksHTML += '<div class="week-dropdown" id="week-dropdown-'+element.weekID+'">';
         element.cardio.forEach( event => {
-            showWeeksHTML += '<div class="week-dropdown-event" id="week-dropdown-cardio-event-'+event.cardioid+'">';
+            showWeeksHTML += '<div class="week-dropdown-cardio-event" id="week-dropdown-cardio-event-'+event.cardioid+'">';
+            showWeeksHTML += '<p class="week-dropdown-cardio-event-dow">'+shortWeekDays[event.dayofweek]+'</p>';
             showWeeksHTML += '<p class="week-dropdown-cardio-event-type">'+event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1)+'</p>';
             showWeeksHTML += '<p class="week-dropdown-cardio-event-distance">'+event.distance+'</p>';
             showWeeksHTML += '<div class="week-dropdown-event-buttons-container">';
