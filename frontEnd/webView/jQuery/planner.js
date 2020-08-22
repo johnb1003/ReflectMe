@@ -1687,6 +1687,10 @@ function backToDaySchedule() {
 }
 
 function editCardioEvent(event) {
+    $('.pop-up').css('display', 'flex');
+    $('#corner-week-day').text(weekDay+',');
+    $('#corner-month-date').text(months[month]+' '+dateNum+suffix);
+
     $('#log-event-button').css('display', 'none');
     $('#new-event-button').css('display', 'none');
     $('.existing-events').css('display', 'none');
