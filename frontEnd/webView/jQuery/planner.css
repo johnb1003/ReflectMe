@@ -640,7 +640,7 @@ button:focus{
 
     .week-display-check {
         position: absolute;
-        margin: auto .8em;
+        margin: auto .4em;
         left: 0;
     }
 
@@ -648,7 +648,7 @@ button:focus{
         margin: 0;
         background-color: transparent;
         border: none;
-        line-height: .66em;
+        line-height: .8em;
     }
 
     .dropdown-week-button:hover {
