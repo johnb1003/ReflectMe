@@ -673,6 +673,7 @@ button:focus{
 
     .week-dropdown {
         display: none;
+        margin-bottom: .3em;
     }
 
     .week-dropdown-cardio-event {
