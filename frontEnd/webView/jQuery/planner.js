@@ -1750,6 +1750,18 @@ function editCardioEvent(event) {
 }
 
 function editStrengthEvent(event) {
+    if($('.pop-up').css('display') == 'none') {
+        // dayClickFunction(weekDay, month, dateNum, suffix, year)
+        let currDate = calendar.selectedDate;
+        let year = currDate[0];
+        let month = currDate[1];
+        let dateNum = currDate[2];
+        let weekDay = new Date(year, month, dateNum).getDay();
+        let suffix = daySuffix[weekDay];
+
+        dayClickFunction(weekDays[weekDay], month, dateNum, suffix, year);
+    }
+
     $('#log-event-button').css('display', 'none');
     $('#new-event-button').css('display', 'none');
     $('.existing-events').css('display', 'none');
