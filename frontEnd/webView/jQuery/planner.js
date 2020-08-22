@@ -1713,7 +1713,7 @@ function editCardioEvent(event) {
 
         // dayClickFunction(weekDay, month, dateNum, suffix, year)
         $('.pop-up').css('display', 'flex');
-        //$('#corner-week-day').text(weekDay+',');
+        $('#corner-week-day').text('Event belongs to week:');
         $('#corner-month-date').text(weekName);
 
 
