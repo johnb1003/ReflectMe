@@ -41,6 +41,9 @@ let cardioEventsObject = {};
 // key=strengthid, value=strength object
 let strengthEventsObject = {};
 
+// Text to set for the event submit button (depending on creating vs editing event)
+let activeButtonText = 'Add Event to Calendar';
+
 
 /*
 ////////////////////////////////////////////////////////////////////////
@@ -923,7 +926,7 @@ function enableSubmitButton() {
         $('.day-submit-button').addClass('active-submit-button');
     }
 
-    $('.day-submit-button').text('Add Event to Calendar');
+    $('.day-submit-button').text(activeButtonText);
 }
 
 function disableSubmitButton() {
@@ -1445,6 +1448,7 @@ $(document).ready(function() {
             $('.past-input').css('display', 'none');
             collectPastInput = false;
 
+            activeButtonText = 'Add Event to Calendar';
             $('.event-type-selector').css('display', 'flex');
             $('.day-scheduler').css('display', 'block');
             $('.back-to-day-schedule').css('display', 'block');
@@ -1468,6 +1472,7 @@ $(document).ready(function() {
             $('.past-input').css('display', 'block');
             collectPastInput = true;
 
+            activeButtonText = 'Add Event to Calendar';
             $('.event-type-selector').css('display', 'flex');
             $('.day-scheduler').css('display', 'block');
             $('.back-to-day-schedule').css('display', 'block');
@@ -1690,16 +1695,38 @@ function editCardioEvent(event) {
     // If pop-up is not already visible
     console.log($('.pop-up').css('display'))
     console.log($('.pop-up').css('display') == 'none')
-    if($('.pop-up').css('display') == 'none') {
-        // dayClickFunction(weekDay, month, dateNum, suffix, year)
-        let currDate = calendar.selectedDate;
-        let year = currDate[0];
-        let month = currDate[1];
-        let dateNum = currDate[2];
-        let weekDay = new Date(year, month, dateNum).getDay();
-        let suffix = daySuffix[weekDay];
 
-        dayClickFunction(weekDays[weekDay], month, dateNum, suffix, year);
+    // individual day event, or week event?
+    let updateScope = 'day';
+
+    if($('.pop-up').css('display') == 'none') {
+        updateScope = 'week';
+
+        let weeksArr = allMonthData.weeks;
+        let weekName = 'Week Event';
+                    
+        weeksArr.forEach(currWeek => { 
+            if(currWeek.weekID = event.weekid) {
+                weekName = currWeek.weekName.charAt(0).toUpperCase()+currWeek.weekName.slice(1);
+            }
+        });
+
+        // dayClickFunction(weekDay, month, dateNum, suffix, year)
+        $('.pop-up').css('display', 'flex');
+        //$('#corner-week-day').text(weekDay+',');
+        $('#corner-month-date').text(weekName);
+
+
+        activeButtonText = 'Confirm Event Changes';
+        $('.existing-events').css('display', 'block');
+        $('.create-event-button').css('display', 'block');
+
+        $('.pop-up-previous').css('display', 'flex');
+        $('.pop-up-next').css('display', 'flex');
+
+        $('.day-scheduler').css('display', 'none');
+        $('.existing-events-container').css('background-image', 'none');
+        $('.existing-events-container').css('background-color', 'white');
     }
 
     $('#log-event-button').css('display', 'none');
@@ -1708,7 +1735,7 @@ function editCardioEvent(event) {
     $('.event-type-selector').css('display', 'none');
 
     $('#day-scheduler-header-title').css('padding-top', '1em');
-    $('#day-scheduler-header-title').text('Edit Existing Day Event');
+    $('#day-scheduler-header-title').text('Edit Existing Event');
 
     $('#cardio-type').val(event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1));
 
@@ -1739,7 +1766,9 @@ function editCardioEvent(event) {
 
     displayCardio();
     $('.day-scheduler').css('display', 'block');
-    $('.back-to-day-schedule').css('display', 'block');
+    if(updateScope == 'day') {
+        $('.back-to-day-schedule').css('display', 'block');
+    }
     $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
 
     $('.pop-up-previous').css('display', 'none');
@@ -1781,8 +1810,11 @@ function editStrengthEvent(event) {
 
     setClickedType('strength');
     processStrengthView();
+    activeButtonText = 'Confirm Event Changes';
     $('.day-scheduler').css('display', 'block');
-    $('.back-to-day-schedule').css('display', 'block');
+    if(updateScope == 'day') {
+        $('.back-to-day-schedule').css('display', 'block');
+    }
     $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
 
     $('.pop-up-previous').css('display', 'none');
