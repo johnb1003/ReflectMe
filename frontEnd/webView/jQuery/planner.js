@@ -700,7 +700,7 @@ function processDayView() {
             backToDaySchedule();
         }
         else {
-            alert("Could not create event")
+            alert("Could not delete event")
         }
     });
 }
@@ -1294,7 +1294,7 @@ function displayWeeks(weeks) {
             showWeeksHTML += '<p class="week-dropdown-cardio-event-distance">'+event.distance+'</p>';
             showWeeksHTML += '<div class="week-dropdown-event-buttons-container">';
             showWeeksHTML += '<button class="week-dropdown-cardio-event-edit">Edit</button>';
-            showWeeksHTML += '<button class="week-dropdown-cardio-event-edit">Delete</button>';
+            showWeeksHTML += '<button class="week-dropdown-cardio-event-delete">Delete</button>';
             showWeeksHTML += '</div></div>';
         });
 
@@ -1305,7 +1305,7 @@ function displayWeeks(weeks) {
             showWeeksHTML += '<p class="week-dropdown-event-type">'+event.strengthtype.charAt(0).toUpperCase()+event.strengthtype.slice(1)+'</p>';
             showWeeksHTML += '<div class="week-dropdown-event-buttons-container">';
             showWeeksHTML += '<button class="week-dropdown-strength-event-edit">Edit</button>';
-            showWeeksHTML += '<button class="week-dropdown-strength-event-edit">Delete</button>';
+            showWeeksHTML += '<button class="week-dropdown-strength-event-delete">Delete</button>';
             showWeeksHTML += '</div></div>';
         });
         showWeeksHTML += '</div>';
@@ -1327,6 +1327,33 @@ function displayWeeks(weeks) {
         }
     });
 
+    $('.week-dropdown-cardio-event-delete').click( (e) => {
+        let event = null;
+        let cardioID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
+        console.log(cardioID);
+        console.log(cardioEventsObject);
+        if(cardioID in cardioEventsObject) {
+            console.log("Key in cardioEventsObject");
+            if(window.confirm("Are you sure you want to delete this event?")) {
+                event = await deleteCardioObject(parseInt(cardioID));
+            }
+            console.log("Delete Cardio: "+cardioID);
+        }
+        else {
+            console.log(cardioEventsObject);
+        }
+
+        if(event) {
+            await getAllMonthData();
+            console.log(allMonthData);
+            processDayView();
+            backToDaySchedule();
+        }
+        else {
+            alert("Could not delete event")
+        }
+    });
+
     $('.week-dropdown-strength-event-edit').click( (e) => {
         let strengthID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
         console.log(strengthID);
@@ -1337,6 +1364,32 @@ function displayWeeks(weeks) {
         }
         else {
             console.log(strengthEventsObject);
+        }
+    });
+
+    $('.week-dropdown-strength-event-delete').click( (e) => {
+        let strengthID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
+        console.log(strengthID);
+        console.log(strengthEventsObject);
+        if(strengthID in strengthEventsObject) {
+            console.log("Key in strengthEventsObject");
+            if(window.confirm("Are you sure you want to delete this event?")) {
+                event = await deleteStrengthObject(parseInt(strengthID));
+            }
+            console.log("Delete Strength: "+strengthID);
+        }
+        else {
+            console.log(strengthEventsObject);
+        }
+
+        if(event) {
+            await getAllMonthData();
+            console.log(allMonthData);
+            processDayView();
+            backToDaySchedule();
+        }
+        else {
+            alert("Could not delete event")
         }
     });
 
