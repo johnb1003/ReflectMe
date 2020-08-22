@@ -315,6 +315,10 @@ button:focus{
         overflow: scroll;
         display: none;
     }
+
+    #dow-selector-container {
+        display: none;
+    }
       
     #cardio-day-type {
         border-radius: 3px 0 0 3px;

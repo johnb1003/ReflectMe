@@ -32,6 +32,9 @@ let requestType = 'create';
 // id of event to be updated
 let updateID = null;
 
+// scope = solo 'day' event or 'week' event
+let updateScope = 'day';
+
 // object to update or delete
 let submitEventObject = {};
 
@@ -1595,7 +1598,12 @@ async function submitEvent() {
     let dayEvent = {};
 
     dayEvent.date = getSelectedDateString();
-    dayEvent.dayofweek = parseInt(new Date(calendar.selectedDate[0], calendar.selectedDate[1], calendar.selectedDate[2]).getDay());
+    if(updateScope = 'day') {
+        dayEvent.dayofweek = parseInt(new Date(calendar.selectedDate[0], calendar.selectedDate[1], calendar.selectedDate[2]).getDay());
+    }
+    else if(updateScope = 'week'){
+        dayEvent.dayofweek = parseInt($('#dow-selector').val());
+    }
 
     if(collectPastInput) {
         dayEvent.status = 'completed';
@@ -1603,6 +1611,8 @@ async function submitEvent() {
     else {
         dayEvent.status = 'scheduled';
     }
+
+
 
     if(clickedType.includes('cardio')) {
         dayEvent.cardiotype = $('.event-title').text().toLowerCase();
@@ -1697,7 +1707,7 @@ function editCardioEvent(event) {
     console.log($('.pop-up').css('display') == 'none')
 
     // individual day event, or week event?
-    let updateScope = 'day';
+    updateScope = 'day';
 
     if($('.pop-up').css('display') == 'none') {
         updateScope = 'week';
@@ -1736,6 +1746,14 @@ function editCardioEvent(event) {
 
     $('#day-scheduler-header-title').css('padding-top', '1em');
     $('#day-scheduler-header-title').text('Edit Existing Event');
+
+    if(updateScope == 'week') {
+        $('#dow-selector').val(''+event.dayofweek);
+        $('#dow-selector-container').css('display', 'block');
+    }
+    else if(updateScope == 'day') {
+        $('#dow-selector-container').css('display', 'none');
+    }
 
     $('#cardio-type').val(event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1));
 
