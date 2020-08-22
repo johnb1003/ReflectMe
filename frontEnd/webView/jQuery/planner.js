@@ -37,6 +37,8 @@ let updateScope = '';
 
 let updateWeekID = null;
 
+let deleteScope = '';
+
 // object to update or delete
 let submitEventObject = {};
 
@@ -678,6 +680,7 @@ function processDayView() {
         let id = $(e.target).attr('id');
         let idNum = null;
         let event = null;
+        deleteScope = 'day'
         if(id.includes('cardio')) {
             idNum = parseInt(id.substring(19));
             if(window.confirm("Are you sure you want to delete this event?")) {
@@ -697,7 +700,12 @@ function processDayView() {
             await getAllMonthData();
             console.log(allMonthData);
             processDayView();
-            backToDaySchedule();
+            if(deleteScope == 'day') {
+                backToDaySchedule();
+            }
+            else if(deleteScope == 'week'){
+                backToCalendar();
+            }
         }
         else {
             alert("Could not delete event")
@@ -1333,6 +1341,7 @@ function displayWeeks(weeks) {
     $('.week-dropdown-cardio-event-delete').click( async (e) => {
         let event = null;
         let cardioID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
+        deleteScope = 'week';
         console.log(cardioID);
         console.log(cardioEventsObject);
         if(cardioID in cardioEventsObject) {
@@ -1350,7 +1359,12 @@ function displayWeeks(weeks) {
             await getAllMonthData();
             console.log(allMonthData);
             processDayView();
-            backToDaySchedule();
+            if(deleteScope == 'day') {
+                backToDaySchedule();
+            }
+            else if(deleteScope == 'week'){
+                backToCalendar();
+            }
         }
         else {
             alert("Could not delete event")
@@ -1372,6 +1386,8 @@ function displayWeeks(weeks) {
 
     $('.week-dropdown-strength-event-delete').click( async (e) => {
         let strengthID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
+        let event = null;
+        deleteScope = 'week';
         console.log(strengthID);
         console.log(strengthEventsObject);
         if(strengthID in strengthEventsObject) {
@@ -1389,7 +1405,12 @@ function displayWeeks(weeks) {
             await getAllMonthData();
             console.log(allMonthData);
             processDayView();
-            backToDaySchedule();
+            if(deleteScope == 'day') {
+                backToDaySchedule();
+            }
+            else if(deleteScope == 'week'){
+                backToCalendar();
+            }
         }
         else {
             alert("Could not delete event")
@@ -1701,7 +1722,12 @@ async function submitEvent() {
             await getAllMonthData();
             console.log(allMonthData);
             processDayView();
-            backToDaySchedule();
+            if(updateScope == 'day') {
+                backToDaySchedule();
+            }
+            else if(updateScope == 'week'){
+                backToCalendar();
+            }
         }
         else {
             alert("Could not create event")
@@ -1730,9 +1756,6 @@ async function submitEvent() {
         }
         else if(requestType == 'update') {
             dayEvent.strengthid = updateID;
-            if(window.confirm("Are you sure you want to update this event?")) {
-                event = await updateStrengthObject(dayEvent);
-            }
 
             if(updateScope == 'day') {
                 console.log('scope = day');
@@ -1743,12 +1766,22 @@ async function submitEvent() {
                 dayEvent.dayofweek = parseInt($('#dow-selector-strength').val());
                 dayEvent.weekid = updateWeekID;
             }
+
+            console.log(dayEvent);
+            if(window.confirm("Are you sure you want to update this event?")) {
+                event = await updateStrengthObject(dayEvent);
+            }
         }
 
         if(event) {
             await getAllMonthData();
             processDayView();
-            backToDaySchedule();
+            if(updateScope == 'day') {
+                backToDaySchedule();
+            }
+            else if(updateScope == 'week'){
+                backToCalendar();
+            }
         }
         else {
             alert("Could not create event");
@@ -1772,6 +1805,12 @@ function backToDaySchedule() {
     $('.existing-events-container').css('background-image', 'none');
     $('.existing-events-container').css('background-color', 'white');
 
+    clearFormData();
+}
+
+function backToCalendar() {
+    $('.pop-up').css('display', 'none');
+    $('.back-to-day-schedule').css('display', 'none')
     clearFormData();
 }
 
