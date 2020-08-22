@@ -616,6 +616,12 @@ button:focus{
         border-radius: 8px;
     }
 
+    .week-container-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     #week-container-title {
         padding: 0 .5em;
         text-align: left;
@@ -639,7 +645,7 @@ button:focus{
         justify-content: left;
         align-items: center;
         position: relative;
-        margin-bottom: 1em;
+        margin-bottom: .4em;
     }
 
     .week-display-check {
@@ -682,8 +688,7 @@ button:focus{
     }
 
     .week-dropdown {
-        display: none;
-        margin-bottom: .4em;
+        margin-bottom: .6em;
     }
 
     .week-dropdown-cardio-event {
