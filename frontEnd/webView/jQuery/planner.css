@@ -696,6 +696,7 @@ button:focus{
 
     .week-dropdown-event-type {
         margin: auto 0;
+        max-width: 7em;
     }
 
     .week-dropdown-cardio-event-distance {

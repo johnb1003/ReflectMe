@@ -1293,8 +1293,17 @@ function displayWeeks(weeks) {
 
     $('.show-weeks-container').html(showWeeksHTML);
 
+    $('.week-dropdown-cardio-event-edit').click( (e) => {
+        let cardioID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
+        console.log(cardioID);
+    });
+
+    $('.week-dropdown-strength-event-edit').click( (e) => {
+        let strengthID = $(e.target).attr('id').substring(9);
+    });
+
     $('.dropdown-week-button').click( (e) => {
-        let currWeekID = $(e.target).attr('id').substring(9);
+        let currWeekID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
         console.log(currWeekID);
 
         if($(e.target).hasClass('up-arrow')) {
