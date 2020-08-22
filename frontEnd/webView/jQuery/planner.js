@@ -1843,7 +1843,6 @@ function createWeekEvent(weekID) {
     weeksArr.forEach(currWeek => { 
         if(currWeek.weekID = weekID) {
             weekName = currWeek.weekName.charAt(0).toUpperCase()+currWeek.weekName.slice(1);
-            break;
         }
     });
 
