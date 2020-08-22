@@ -1428,7 +1428,7 @@ function displayWeeks(weeks) {
         createWeekEvent(currWeekID);
     });
 
-    $('.delete-week-button').click( (e) => {
+    $('.delete-week-button').click( async (e) => {
         let currWeekID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
         let event = null;
         if(window.confirm("Are you sure you want to delete this week and its corresponding events?")) {
