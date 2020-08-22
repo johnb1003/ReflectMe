@@ -1604,6 +1604,7 @@ async function submitEvent() {
         dayEvent.dayofweek = parseInt(new Date(calendar.selectedDate[0], calendar.selectedDate[1], calendar.selectedDate[2]).getDay());
     }
     else if(updateScope = 'week'){
+        console.log('scope = week');
         dayEvent.dayofweek = parseInt($('#dow-selector').val());
         dayEvent.weekid = updateWeekID;
     }
