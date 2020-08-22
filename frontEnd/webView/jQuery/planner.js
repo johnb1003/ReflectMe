@@ -1688,6 +1688,8 @@ function backToDaySchedule() {
 
 function editCardioEvent(event) {
     // If pop-up is not already visible
+    console.log($('.pop-up').attr('display'))
+    console.log($('.pop-up').attr('display') == 'none')
     if($('.pop-up').attr('display') == 'none') {
         // dayClickFunction(weekDay, month, dateNum, suffix, year)
         let currDate = calendar.selectedDate;
