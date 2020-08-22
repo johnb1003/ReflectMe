@@ -223,7 +223,7 @@ class Calendar {
         }
         $('.grid-container').html(calendarHTML);
         
-        $('.active-day').click((e) => {
+        $('.active-day').click( (e) => {
             let element = $(e.target);
             let classes = null;
             let idNum = null;
@@ -1687,9 +1687,18 @@ function backToDaySchedule() {
 }
 
 function editCardioEvent(event) {
-    $('.pop-up').css('display', 'flex');
-    $('#corner-week-day').text(weekDay+',');
-    $('#corner-month-date').text(months[month]+' '+dateNum+suffix);
+    // If pop-up is not already visible
+    if($('.pop-up').attr('display') == 'none') {
+        // dayClickFunction(weekDay, month, dateNum, suffix, year)
+        let currDate = calendar.selectedDate;
+        let year = currDate[0];
+        let month = currDate[1];
+        let dateNum = currDate[2];
+        let weekDay = new Date(year, month, dateNum).getDay();
+        let suffix = daySuffix[weekDay];
+
+        dayClickFunction(weekDays[weekDay], month, dateNum, suffix, year);
+    }
 
     $('#log-event-button').css('display', 'none');
     $('#new-event-button').css('display', 'none');
