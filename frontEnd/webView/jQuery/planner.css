@@ -640,8 +640,12 @@ button:focus{
 
     .week-display-check {
         position: absolute;
-        margin: auto 1em;
+        margin: auto .8em;
         left: 0;
+    }
+
+    .dropdown-week-button {
+        margin: 0 .5em;
     }
 
     .week-name {
@@ -654,10 +658,6 @@ button:focus{
         position: absolute;
         margin: auto 1em;
         right: 0;
-    }
-
-    .edit-week-button {
-        margin: 0 .7em 0 0;
     }
 
     .delete-week-button {
@@ -676,7 +676,8 @@ button:focus{
     }
 
     .week-dropdown-event-buttons-container button {
-        padding: 0;
+        padding: 0 .1em;
+        margin: 0 .4em;
     }
 
     .calendar {
