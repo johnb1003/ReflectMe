@@ -628,6 +628,11 @@ button:focus{
         font-size: 1.5em;
     }
 
+    #new-week-button {
+        padding: 0;
+        margin: 0;
+    }
+
     .show-weeks-container {
         margin: auto;
         width: 100%;
