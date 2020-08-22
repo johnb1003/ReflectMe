@@ -672,13 +672,13 @@ button:focus{
     }
 
     .add-week-event-button {
-        padding: 0 auto;
-        margin: auto .2em;
+        padding: auto;
+        margin: auto;
     }
 
     .delete-week-button {
-        padding: 0 .1em;
-        margin: auto .2em;
+        padding: auto;
+        margin: auto;
     }
 
     .week-dropdown {
