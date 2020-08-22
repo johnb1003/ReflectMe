@@ -36,10 +36,10 @@ let updateID = null;
 let submitEventObject = {};
 
 // key=cardioid, value=cardio object
-let cardioEventsObject = null;
+let cardioEventsObject = {};
 
 // key=strengthid, value=strength object
-let strengthEventsObject = null;
+let strengthEventsObject = {};
 
 
 /*
@@ -978,8 +978,8 @@ async function allMonthDataAJAX() {
 }
 
 async function getAllMonthData() {
-    cardioEventsObject = null;
-    strengthEventsObject = null;
+    cardioEventsObject = {};
+    strengthEventsObject = {};
     await allMonthDataAJAX()
         .then(data => {
             allMonthData = data;
