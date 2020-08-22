@@ -1310,6 +1310,7 @@ function displayWeeks(weeks) {
         let cardioID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
         console.log(cardioID);
         if(cardioID in cardioEventsObject) {
+            console.log("Key in cardioEventsObject");
             editCardioEvent(cardioEventsObject[cardioID]);
         }
     });
@@ -1318,6 +1319,7 @@ function displayWeeks(weeks) {
         let strengthID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
         console.log(strengthID);
         if(strengthID in strengthEventsObject) {
+            console.log("Key in strengthEventsObject");
             editStrengthEvent(strengthEventsObject[strengthID]);
         }
     });
