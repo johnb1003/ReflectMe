@@ -690,7 +690,15 @@ button:focus{
         text-align: center;
     }
 
-    .week-dropdown-cardio-event-dow {
+    .week-dropdown-event-dow {
+        margin: auto 0;
+    }
+
+    .week-dropdown-event-type {
+        margin: auto 0;
+    }
+
+    .week-dropdown-cardio-event-distance {
         margin: auto 0;
     }
 
@@ -700,14 +708,6 @@ button:focus{
     }
 
     .week-dropdown-event-buttons-container{
-        margin: auto 0;
-    }
-
-    .week-dropdown-cardio-event-type {
-        margin: auto 0;
-    }
-
-    .week-dropdown-cardio-event-distance {
         margin: auto 0;
     }
 
