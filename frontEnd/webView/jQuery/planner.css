@@ -624,13 +624,14 @@ button:focus{
 
     #week-container-title {
         padding: 0 .5em;
+        margin: auto 0;
         text-align: left;
         font-size: 1.5em;
     }
 
     #new-week-button {
-        padding: 0;
-        margin: 0;
+        padding: auto .2em;
+        margin: auto 0;
     }
 
     .show-weeks-container {
