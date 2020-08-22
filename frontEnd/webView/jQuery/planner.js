@@ -1734,6 +1734,10 @@ async function submitEvent() {
         let event = null;
         // BUFFER WHILE SENDING AJAX
         if(requestType == 'create') {
+            if(createScope == 'week') {
+                dayEvent.dayofweek = parseInt($('#dow-selector-cardio').val());
+                dayEvent.weekid = updateWeekID;
+            }
             event = await createCardioObject(dayEvent);
         }
         else if(requestType == 'update') {
@@ -1789,6 +1793,10 @@ async function submitEvent() {
         let event = null;
         // BUFFER WHILE SENDING AJAX
         if(requestType == 'create') {
+            if(createScope == 'week') {
+                dayEvent.dayofweek = parseInt($('#dow-selector-strength').val());
+                dayEvent.weekid = updateWeekID;
+            }
             event = await createStrengthObject(dayEvent);
         }
         else if(requestType == 'update') {
@@ -1876,6 +1884,7 @@ function createWeekEvent(weekID) {
 
     $('#day-scheduler-header-title').css('padding-top', '.1em');
     $('#day-scheduler-header-title').text('Schedule New Event');
+    $('.dow-selector-container').css('display', 'block');
     $('.past-input').css('display', 'none');
     collectPastInput = false;
 
