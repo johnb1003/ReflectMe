@@ -1736,7 +1736,7 @@ async function submitEvent() {
         if(requestType == 'create') {
             if(createScope == 'week') {
                 dayEvent.dayofweek = parseInt($('#dow-selector-cardio').val());
-                dayEvent.weekid = updateWeekID;
+                dayEvent.weekid = createWeekID;
             }
             event = await createCardioObject(dayEvent);
         }
@@ -1795,7 +1795,7 @@ async function submitEvent() {
         if(requestType == 'create') {
             if(createScope == 'week') {
                 dayEvent.dayofweek = parseInt($('#dow-selector-strength').val());
-                dayEvent.weekid = updateWeekID;
+                dayEvent.weekid = createWeekID;
             }
             event = await createStrengthObject(dayEvent);
         }
