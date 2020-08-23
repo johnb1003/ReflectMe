@@ -78,17 +78,18 @@ public class EventsService {
 
                 while(!cardioWeeks.isEmpty() && cardioWeeks.get(0).getweekid().longValue() == currID) {
                     cardioWeekArrNode.addPOJO(cardioWeeks.remove(0));
-                    cardioEvent = true;
+                    //cardioEvent = true;
                 }
 
                 while(!strengthWeeks.isEmpty() && strengthWeeks.get(0).getweekid().longValue() == currID) {
                     strengthWeekArrNode.addPOJO(strengthWeeks.remove(0));
-                    strengthEvent = true;
+                    //strengthEvent = true;
                 }
 
-                if(cardioEvent || strengthEvent) {
-                    weeksArrNode.add(currWeekNode);
-                }
+                //if(cardioEvent || strengthEvent) {
+                //    weeksArrNode.add(currWeekNode);
+                //}
+                weeksArrNode.add(currWeekNode);
             }
 
             ArrayList<Cardio> cardioEvents = cardioRepository.getMonthEvents(userID, date);
