@@ -1628,6 +1628,7 @@ $(document).ready(function() {
         $('.pop-up').css('display', 'none');
         $('.pop-up-planner').css('display', 'flex');
         $('.back-to-day-schedule').css('display', 'none')
+        $('.create-week-container').css('display', 'none');
         clearFormData();
     });
 
@@ -1873,6 +1874,7 @@ function backToCalendar() {
     $('.pop-up').css('display', 'none');
     $('.pop-up-planner').css('display', 'flex');
     $('.back-to-day-schedule').css('display', 'none');
+    $('.create-week-container').css('display', 'none');
     clearFormData();
 }
 
