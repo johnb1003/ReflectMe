@@ -1421,6 +1421,7 @@ function displayWeeks(weeks) {
 
     $('.add-week-event-button').click( (e) => {
         let currWeekID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
+        console.log(currWeekID);
         createWeekEvent(currWeekID);
     });
 
@@ -1904,7 +1905,7 @@ function createWeekEvent(weekID) {
     let weekName = 'Week Event';
                 
     weeksArr.forEach(currWeek => { 
-        if(currWeek.weekID = weekID) {
+        if(currWeek.weekID == weekID) {
             weekName = currWeek.weekName.charAt(0).toUpperCase()+currWeek.weekName.slice(1);
         }
     });
