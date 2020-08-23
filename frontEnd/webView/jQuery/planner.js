@@ -746,6 +746,7 @@ function clearFormData() {
     $('#cardio-duration-m').val(0);
     $('#cardio-duration-s').val(0);
     $('#dow-selector-cardio').val('0');
+    $('#dow-selector-cardio').css('display', 'none');
 
     // Clear strength data
     $('#strength-type').val('Lift');
@@ -755,7 +756,8 @@ function clearFormData() {
         $('#'+checkedLifts[i].value.toLowerCase()).prop('checked', false);
     }
     $('#strength-other-name').val('Other');
-    $('#dow-selector-cardio').val('0');
+    $('#dow-selector-strength').val('0');
+    $('#dow-selector-strength').css('display', 'none');
 
     setClickedType('cardio');
 
