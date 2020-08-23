@@ -510,6 +510,10 @@ function processDayView() {
         $('#log-event-button').addClass('active-create-event');
     }
 
+    let weekDay = new Date(calendar.selectedDate[0], calendar.selectedDate[1], calendar.selectedDate[2]).getDay();
+    $('#corner-week-day').text(weekDays[weekDay]+',');
+    $('#corner-month-date').text(months[calendar.selectedDate[1]]+' '+date[2]+daySuffix[calendar.selectedDate[2]%10]);
+
     let futureMonth = false;
     let currentMonth = false;
     if(calendar.shownDate[0] >= calendar.today.getFullYear()) {
