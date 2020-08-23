@@ -602,7 +602,7 @@ function processDayView() {
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
                         dayViewHTML += getDistanceHTML(element.distance);
                         dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
-                        dayViewHTML += '<button class="day-view-edit-week-button" id="cardio-view-edit-week-'+element.cardioid+'">Edit Week Event</button>';
+                        dayViewHTML += '<button class="day-view-edit-cardio-week-button" id="cardio-view-edit-week-'+element.cardioid+'">Edit Week Event</button>';
                         dayViewHTML += '</div></div>';
                         viewIDs.cardio[element.cardioid] = '1.3fr 1fr 2fr 1.2fr';
                         //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
@@ -622,7 +622,7 @@ function processDayView() {
                             dayViewHTML += '<p class="day-view-placeholder"> </p>';
                         }
                         dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.strengthid+'">';
-                        dayViewHTML += '<button class="day-view-edit-week-button" id="strength-view-edit-week-'+element.strengthid+'">Edit Week Event</button>';
+                        dayViewHTML += '<button class="day-view-edit-strength-week-button" id="strength-view-edit-week-'+element.strengthid+'">Edit Week Event</button>';
                         dayViewHTML += '</div></div>';
                         viewIDs.strength[element.strengthid] = '1.3fr 1fr 2fr 1.2fr';
                         //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
@@ -714,7 +714,31 @@ function processDayView() {
             }
         }
         else {
-            alert("Could not delete event")
+            console.log("Could not delete event")
+        }
+    });
+
+    $('.day-view-edit-cardio-week-button').click( async (e) => {
+        let cardioID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
+        console.log(cardioID);
+        console.log(cardioEventsObject);
+        if(cardioID in cardioEventsObject) {
+            editCardioEvent(cardioEventsObject[cardioID]);
+        }
+        else {
+            console.log(cardioEventsObject);
+        }
+    });
+
+    $('.day-view-edit-strength-week-button').click( async (e) => {
+        let strengthID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
+        console.log(strengthID);
+        console.log(strengthEventsObject);
+        if(strengthID in strengthEventsObject) {
+            editCardioEvent(strengthEventsObject[strengthID]);
+        }
+        else {
+            console.log(strengthEventsObject);
         }
     });
 }
