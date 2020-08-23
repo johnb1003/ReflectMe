@@ -744,6 +744,7 @@ button:focus{
         border: 2px solid rgb(170, 170, 170);
         border-radius: 2em;
         box-shadow: .2em .2em 0px rgb(155, 155, 155);
+        display: none;
     }
 
     #create-week-back {
