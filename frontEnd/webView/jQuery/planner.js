@@ -44,6 +44,9 @@ let updateWeekID = null;
 
 let deleteScope = '';
 
+// boolean for whether to return to calender or day schedule after an event submission
+let toCalendar = false;
+
 // object to update or delete
 let submitEventObject = {};
 
@@ -1827,10 +1830,10 @@ async function submitEvent() {
             await getAllMonthData();
             console.log(allMonthData);
             processDayView();
-            if(updateScope == 'day') {
+            if(!toCalendar) {
                 backToDaySchedule();
             }
-            else if(updateScope == 'week'){
+            else if(toCalendar){
                 backToCalendar();
             }
         }
@@ -1887,10 +1890,10 @@ async function submitEvent() {
         if(event) {
             await getAllMonthData();
             processDayView();
-            if(updateScope == 'day') {
+            if(!toCalendar) {
                 backToDaySchedule();
             }
-            else if(updateScope == 'week'){
+            else if(toCalendar){
                 backToCalendar();
             }
         }
@@ -1979,7 +1982,7 @@ function editCardioEvent(event) {
     // individual day event, or week event?
     updateScope = 'day';
 
-    let toCalendar = false;
+    toCalendar = false;
     // If pop-up is not already visible
     if($('.pop-up').css('display') == 'none') {
         toCalendar = true;
@@ -2088,7 +2091,7 @@ function editStrengthEvent(event) {
     // individual day event, or week event?
     updateScope = 'day';
 
-    let toCalendar = false;
+    toCalendar = false;
     // If pop-up is not already visible
     if($('.pop-up').css('display') == 'none') {
         toCalendar = true;
