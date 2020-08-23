@@ -1973,8 +1973,12 @@ function editCardioEvent(event) {
     // individual day event, or week event?
     updateScope = 'day';
 
+    let toCalendar = false;
     // If pop-up is not already visible
     if($('.pop-up').css('display') == 'none') {
+        toCalendar = true;
+    }
+    if(event.weekid == null || event.weekid == undefined) {
         updateScope = 'week';
         updateWeekID = event.weekid;
 
@@ -2057,7 +2061,8 @@ function editCardioEvent(event) {
 
     displayCardio();
     $('.day-scheduler').css('display', 'block');
-    if(updateScope == 'day') {
+    //if(updateScope == 'day') {
+    if(!toCalendar) {
         $('.back-to-day-schedule').css('display', 'block');
     }
     else {
