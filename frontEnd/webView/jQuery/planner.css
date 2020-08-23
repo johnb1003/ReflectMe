@@ -742,6 +742,11 @@ button:focus{
         padding: 3em 0;
     }
 
+    #create-week-title {
+        text-align: center;
+        font-size: 2em;
+    }
+
     .create-week-input {
         width: 100%;
         display: flex;
