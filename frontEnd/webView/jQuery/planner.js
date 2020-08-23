@@ -1738,8 +1738,8 @@ $(document).ready(function() {
         }
     });
 
-    $('#create-week-name').on('input', () => {
-        console.log(this.value);
+    $('#create-week-name').keyup( () => {
+        console.log($('#create-week-name').val());
     });
 });
 
