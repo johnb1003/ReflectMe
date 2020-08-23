@@ -1726,12 +1726,7 @@ $(document).ready(function() {
             await getAllMonthData();
             console.log(allMonthData);
             processDayView();
-            if(updateScope == 'day') {
-                backToDaySchedule();
-            }
-            else if(updateScope == 'week'){
-                backToCalendar();
-            }
+            backToCalendar();
         }
         else {
             alert("Could not create week")
