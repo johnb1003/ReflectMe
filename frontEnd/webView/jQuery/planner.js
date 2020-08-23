@@ -735,7 +735,7 @@ function processDayView() {
         console.log(strengthID);
         console.log(strengthEventsObject);
         if(strengthID in strengthEventsObject) {
-            editCardioEvent(strengthEventsObject[strengthID]);
+            editStrengthEvent(strengthEventsObject[strengthID]);
         }
         else {
             console.log(strengthEventsObject);
@@ -1980,7 +1980,7 @@ function editCardioEvent(event) {
     if($('.pop-up').css('display') == 'none') {
         toCalendar = true;
     }
-    if(event.weekid == null || event.weekid == undefined) {
+    if(event.weekid != null && event.weekid != undefined) {
         updateScope = 'week';
         updateWeekID = event.weekid;
 
