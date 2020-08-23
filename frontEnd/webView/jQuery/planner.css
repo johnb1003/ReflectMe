@@ -736,10 +736,10 @@ button:focus{
     .create-week-container {
         background-color: white;
         width: 50%;
-        height: 35em;
+        height: 20em;
         cursor: default;
         position: relative;
-        padding: 3em 0;
+        padding: 1em 0;
     }
 
     .create-week-body {
@@ -758,7 +758,7 @@ button:focus{
         align-items: center;
     }
 
-    .create-week-name {
+    #create-week-name {
         width: 60%;
     }
 
