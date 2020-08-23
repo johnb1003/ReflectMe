@@ -1958,7 +1958,7 @@ function editCardioEvent(event) {
         let weekName = 'Week Event';
                     
         weeksArr.forEach(currWeek => { 
-            if(currWeek.weekID = event.weekid) {
+            if(currWeek.weekID == event.weekid) {
                 weekName = currWeek.weekName.charAt(0).toUpperCase()+currWeek.weekName.slice(1);
             }
         });
@@ -2063,7 +2063,7 @@ function editStrengthEvent(event) {
                     
         console.log('Week id: '+ event.weekid);
         weeksArr.forEach(currWeek => { 
-            if(currWeek.weekID = event.weekid) {
+            if(currWeek.weekID == event.weekid) {
                 weekName = currWeek.weekName.charAt(0).toUpperCase()+currWeek.weekName.slice(1);
                 console.log('Week Name: '+ weekName);
             }
