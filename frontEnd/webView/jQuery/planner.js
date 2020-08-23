@@ -1970,7 +1970,7 @@ function createWeekEvent(weekID) {
 
 function editCardioEvent(event) {
 
-    console.log('editCardioEvent: '+event);
+    console.log('editCardioEvent: '+JSON.stringify(event));
 
     // individual day event, or week event?
     updateScope = 'day';
