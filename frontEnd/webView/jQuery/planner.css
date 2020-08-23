@@ -740,6 +740,8 @@ button:focus{
         cursor: default;
         position: relative;
         padding: 1em 0;
+        border: 2px solid rgb(170, 170, 170);
+        border-radius: 2em;
     }
 
     #create-week-back {
