@@ -1490,6 +1490,12 @@ function displayWeeks(weeks) {
             }
         });
     });
+
+    $('.new-week-button').click( () => { 
+        $('.pop-up-planner').css('display', 'none');
+        $('.create-week-container').css('display', 'flex');
+        $('.pop-up').css('display', 'flex');
+    });
 }
 
 function displayCardioMonthData(cardioArr) {
@@ -1610,6 +1616,7 @@ $(document).ready(function() {
     $('#pop-up-background').click( (e) => {
         if($(e.target).attr('class') == 'pop-up') {
             $('.pop-up').css('display', 'none');
+            $('.pop-up-planner').css('display', 'flex');
             $('.back-to-day-schedule').css('display', 'none')
             clearFormData();
         }
@@ -1617,6 +1624,7 @@ $(document).ready(function() {
     
     $('.back-to-calendar').click( () => {
         $('.pop-up').css('display', 'none');
+        $('.pop-up-planner').css('display', 'flex');
         $('.back-to-day-schedule').css('display', 'none')
         clearFormData();
     });
@@ -1861,7 +1869,8 @@ function backToDaySchedule() {
 
 function backToCalendar() {
     $('.pop-up').css('display', 'none');
-    $('.back-to-day-schedule').css('display', 'none')
+    $('.pop-up-planner').css('display', 'flex');
+    $('.back-to-day-schedule').css('display', 'none');
     clearFormData();
 }
 

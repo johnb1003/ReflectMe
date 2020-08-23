@@ -733,6 +733,25 @@ button:focus{
         margin: auto 0;
     }
 
+    .create-week-container {
+        background-color: transparent;
+        width: 50%;
+        height: 35em;
+        cursor: default;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3em 0;
+    }
+
+    .create-week-input {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .calendar {
         background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
         width: 100%;
