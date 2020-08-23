@@ -1739,7 +1739,7 @@ $(document).ready(function() {
     });
 
     $('#create-week-name').keyup( () => {
-        console.log(this.val());
+        console.log(this.value);
     });
 });
 
