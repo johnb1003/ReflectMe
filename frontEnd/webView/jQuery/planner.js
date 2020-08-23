@@ -1738,7 +1738,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#create-week-name').keyup( () => {
+    $('#create-week-name').on('input', () => {
         console.log(this.value);
     });
 });
