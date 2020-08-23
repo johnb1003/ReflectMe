@@ -742,6 +742,10 @@ button:focus{
         padding: 3em 0;
     }
 
+    .create-week-body {
+        text-align: center;
+    }
+
     #create-week-title {
         text-align: center;
         font-size: 2em;
@@ -752,6 +756,10 @@ button:focus{
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .create-week-name {
+        width: 60%;
     }
 
     .calendar {
