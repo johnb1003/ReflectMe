@@ -410,6 +410,7 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
     $('.pop-up-next').css('display', 'flex');
 
     $('.day-scheduler').css('display', 'none');
+    $('.create-week-container').css('display', 'none');
     $('.existing-events-container').css('background-image', 'none');
     $('.existing-events-container').css('background-color', 'white');
 
