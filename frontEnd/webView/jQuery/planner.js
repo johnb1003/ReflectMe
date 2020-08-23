@@ -746,7 +746,6 @@ function clearFormData() {
     $('#cardio-duration-m').val(0);
     $('#cardio-duration-s').val(0);
     $('#dow-selector-cardio').val('0');
-    $('#dow-selector-cardio').css('display', 'none');
 
     // Clear strength data
     $('#strength-type').val('Lift');
@@ -757,7 +756,8 @@ function clearFormData() {
     }
     $('#strength-other-name').val('Other');
     $('#dow-selector-strength').val('0');
-    $('#dow-selector-strength').css('display', 'none');
+
+    $('.dow-selector-container').css('display', 'none');
 
     setClickedType('cardio');
 
