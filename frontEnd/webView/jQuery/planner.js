@@ -2088,8 +2088,12 @@ function editStrengthEvent(event) {
     // individual day event, or week event?
     updateScope = 'day';
 
+    let toCalendar = false;
     // If pop-up is not already visible
     if($('.pop-up').css('display') == 'none') {
+        toCalendar = true;
+    }
+    if(event.weekid != null && event.weekid != undefined) {
         updateScope = 'week';
         updateWeekID = event.weekid;
 
@@ -2159,7 +2163,7 @@ function editStrengthEvent(event) {
     setClickedType('strength');
     processStrengthView();
     $('.day-scheduler').css('display', 'block');
-    if(updateScope == 'day') {
+    if(!toCalendar) {
         $('.back-to-day-schedule').css('display', 'block');
     }
     $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
