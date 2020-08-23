@@ -1493,7 +1493,7 @@ function displayWeeks(weeks) {
 
     $('#new-week-button').click( () => { 
         $('.pop-up-planner').css('display', 'none');
-        $('.create-week-container').css('display', 'flex');
+        $('.create-week-container').css('display', 'block');
         $('.pop-up-previous').css('display', 'none');
         $('.pop-up-next').css('display', 'none');
         $('.pop-up').css('display', 'flex');
