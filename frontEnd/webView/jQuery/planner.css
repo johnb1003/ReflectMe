@@ -407,7 +407,7 @@ button:focus{
     }
 
     .lift-type-pair label{
-        color: #8BDD96;
+        color: rgb(0, 0, 0);
     }
 
     #strength-selector {
