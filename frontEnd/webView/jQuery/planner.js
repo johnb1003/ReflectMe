@@ -1043,7 +1043,7 @@ function addToAllMonthData(dateString, data) {
 }
 
 function updateWeeks() {
-    let newWeeksReq = $.ajax({
+    return $.ajax({
         type: "GET",
         url: baseAPIURL+'/events/weeks',
         contentType: "application/json",
@@ -1065,13 +1065,12 @@ function updateWeeks() {
 ////////////////////////////////////////////////////////////////////////
 */
 
-async function createWeekObject(weekObject) {
+async function createWeekObject(newWeekName) {
     let weekData = {
-        'weekid': weekObject.weekID,
-        'active': !weekObject.active,
-        'name': weekObject.weekName
+        'active': true,
+        'name': newWeekName
     }
-    return weekUpdateReq = $.ajax({
+    return $.ajax({
         type: "POST",
         url: baseAPIURL+'/events/week',
         contentType: "application/json",
@@ -1079,14 +1078,8 @@ async function createWeekObject(weekObject) {
             'Authorization': 'Bearer ' + JWToken
         },
         data: JSON.stringify(weekData),
-        success: async function(data, status, xhr)    {
-            if(data.updated == true) {
-                // await updateWeeks();
-                return true;
-            }
-            else {
-                return false;
-            }
+        success: function(data, status, xhr)    {
+            return true;
         },
         failure: function(errMsg) {alert(errMsg);}
     });
@@ -1117,7 +1110,7 @@ async function createStrengthObject(strengthObject) {
             'Authorization': 'Bearer ' + JWToken
         },
         data: JSON.stringify(strengthObject),
-        success: async function(data, status, xhr)    {
+        success: function(data, status, xhr)    {
             return true;
         },
         failure: function(errMsg) {alert(errMsg); return false;}
@@ -1720,6 +1713,33 @@ $(document).ready(function() {
             //console.log("Active submit button");
             submitEvent();
         }
+    });
+
+    $('#create-week-submit-button').click( async () => { 
+        // Check $('#create-week-name').val();
+        let newWeekName = $('#create-week-name').val();
+        let event = null;
+        console.log(newWeekName);
+        event = await createWeekObject(newWeekName);
+
+        if(event) {
+            await getAllMonthData();
+            console.log(allMonthData);
+            processDayView();
+            if(updateScope == 'day') {
+                backToDaySchedule();
+            }
+            else if(updateScope == 'week'){
+                backToCalendar();
+            }
+        }
+        else {
+            alert("Could not create week")
+        }
+    });
+
+    $('#create-week-name').keyup( () => {
+        console.log(this.val());
     });
 });
 
