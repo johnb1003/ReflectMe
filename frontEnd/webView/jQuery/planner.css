@@ -757,6 +757,7 @@ button:focus{
         display: flex;
         justify-content: center;
         align-items: center;
+        margin: auto 0;
     }
 
     #create-week-name {
