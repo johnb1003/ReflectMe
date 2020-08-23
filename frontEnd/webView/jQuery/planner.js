@@ -1734,7 +1734,7 @@ $(document).ready(function() {
     });
 
     $('#create-week-name').keyup( () => {
-        console.log($('#create-week-name').val());
+        //console.log($('#create-week-name').val());
     });
 });
 
