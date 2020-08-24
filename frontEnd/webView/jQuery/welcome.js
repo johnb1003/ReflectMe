@@ -25,13 +25,11 @@ function getCookie(key) {
 $(document).ready(function() {
 
     // Check for token cookie
-    /*
     let JWToken = getCookie("token");
     if(JWToken == "") {
         alert("Must be logged in to access this page.")
         window.location.href = "login.html";
     }
-    */
 
     accountAJAX()
         .then(data => {

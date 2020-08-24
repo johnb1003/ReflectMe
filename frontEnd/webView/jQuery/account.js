@@ -56,4 +56,10 @@ $(document).ready(function() {
             failure: function(errMsg) {alert(errMsg);}
         });
     }
+
+    $('#logout-button').click( () => {
+        setCookie('token', '');
+        setCookie('email', '');
+        window.location.href = "login.html";
+    });
 });
