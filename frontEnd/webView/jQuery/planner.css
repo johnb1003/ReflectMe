@@ -754,7 +754,6 @@
         height: 42em;
         max-height: 42em;
         border-radius: 8px;
-        box-shadow: 0em 0em 8px 3px black;
     }
       
     .calendar-header {
@@ -1011,6 +1010,7 @@
     .calendar-container {
         width: 65%;
         min-width: 45em;
+        box-shadow: 0em 0em 5px 1px black;
     }
 
     .schedule-button {
