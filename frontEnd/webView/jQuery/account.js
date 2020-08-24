@@ -22,11 +22,9 @@ function getCookie(key) {
     return "";
 }
 
-accountData = getAccountData();
-
 async function getAccountData() {
-    let data = await accountAJAX();
-    return data;
+    accountData = await accountAJAX();
+    $('#hello-name').text("Hello " + accountData.fName + "!");
 }
 
 function accountAJAX() {
@@ -43,8 +41,6 @@ function accountAJAX() {
 }
 
 $(document).ready(function() {
-
-    $('#hello-name').text("Hello " + accountData.fName + "!");
 
     // Check for token cookie
     let JWToken = getCookie("token");
