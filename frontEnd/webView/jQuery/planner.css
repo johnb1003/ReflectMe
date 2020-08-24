@@ -501,7 +501,15 @@ button:focus{
         align-items: center;
         overflow: scroll;
         border: 2px solid black;
+    }
 
+    .event-title-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 4em;
+        min-height: 3em;
     }
 
     .event-title {
