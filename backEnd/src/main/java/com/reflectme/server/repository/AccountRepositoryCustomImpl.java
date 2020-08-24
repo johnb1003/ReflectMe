@@ -66,7 +66,7 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     }
 
     @Override
-    public Account getAccountById(String id) {
+    public Account getAccountById(long id) {
         entityManager = emf.getObject().createEntityManager();
         //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         //entityManager.getTransaction().begin();

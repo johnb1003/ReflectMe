@@ -19,7 +19,7 @@ public interface AccountRepositoryCustom {
     @Query(value = "select * " +
             "from Account a " +
             "where a.userID = :id", nativeQuery = true)
-    public Account getAccountById(String id);
+    public Account getAccountById(long id);
 
     @Query(value = "select * " +
             "from Account a " +

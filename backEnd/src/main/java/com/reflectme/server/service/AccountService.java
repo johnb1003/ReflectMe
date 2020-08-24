@@ -80,6 +80,13 @@ public class AccountService {
         }
     }
 
+    public ResponseEntity getAccountByID(long id) {
+        return Optional
+                .ofNullable(accountRepo.getAccountById(id))
+                .map( account -> ResponseEntity.ok().body(account.dropPassword()) )
+                .orElseGet( () -> ResponseEntity.notFound().build() );
+    }
+
     public ResponseEntity getAccountByEmail(String email) {
         return Optional
                 .ofNullable(accountRepo.getAccountByEmail(email))

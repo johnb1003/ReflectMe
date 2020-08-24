@@ -46,7 +46,7 @@ public class AccountController {
     @GetMapping("/info")
     public ResponseEntity getAccount(Principal principal) {
         // HOW TO ACCESS ACCOUNT EMAIL FROM JWT
-        return accountService.getAccountByEmail(principal.getName());
+        return accountService.getAccountByID(Long.parseLong(principal.getName()));
     }
 
     public AccountService getAccountService() {
