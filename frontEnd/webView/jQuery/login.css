@@ -26,6 +26,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 100%;
+    }
+
+    .logo p{
         height: 12em;
         width: 18em;
     }
