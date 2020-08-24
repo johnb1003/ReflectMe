@@ -1755,7 +1755,7 @@ $(document).ready(function() {
     $('#create-week-submit-button').click( async () => { 
         // Check $('#create-week-name').val();
         let newWeekName = $('#create-week-name').val().trim();
-        if(validateNewWeekName($(newWeekName))) {
+        if(validateNewWeekName(newWeekName)) {
             let event = null;
             console.log(newWeekName);
             event = await createWeekObject(newWeekName);
@@ -1774,7 +1774,7 @@ $(document).ready(function() {
 
     $('#create-week-name').keyup( () => {
         //console.log($('#create-week-name').val());
-        if(validateNewWeekName($('#create-week-name').val()).trim()) {
+        if(validateNewWeekName($('#create-week-name').val().trim())) {
             $('#invalid-create-week-name').css('display', 'none');
         }
         else {
