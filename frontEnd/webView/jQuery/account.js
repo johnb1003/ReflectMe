@@ -22,6 +22,13 @@ function getCookie(key) {
     return "";
 }
 
+// Check for token cookie
+let JWToken = getCookie("token");
+if(JWToken == "") {
+    alert("Must be logged in to access this page.")
+    window.location.href = "login.html";
+}
+
 getAccountData();
 
 async function getAccountData() {
@@ -44,13 +51,6 @@ function accountAJAX() {
 }
 
 $(document).ready(function() {
-
-    // Check for token cookie
-    let JWToken = getCookie("token");
-    if(JWToken == "") {
-        alert("Must be logged in to access this page.")
-        window.location.href = "login.html";
-    }
 
     $('#logout-button').click( () => {
         setCookie('token', '');
