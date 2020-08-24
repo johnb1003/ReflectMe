@@ -1,5 +1,5 @@
 body {
-    background-color: #9bdea6;
+    background-color: #b9e9c2;
     background-image: url("resources/green-metal-background.png");
 }
 
@@ -108,5 +108,14 @@ body {
     .signup-line p{
         margin-right: 1%;
         color: #8BDD96;
+    }
+
+    #signup-here {
+        color: #337AB7;
+    }
+
+    #signup-here:hover {
+        text-decoration: underline;
+        color: #337AB7;
     }
 }

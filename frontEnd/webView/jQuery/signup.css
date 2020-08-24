@@ -1,5 +1,5 @@
 body {
-    background-color: #9bdea6;
+    background-color: #b9e9c2;
     background-image: url("resources/green-metal-background.png");
 }
 
@@ -116,9 +116,13 @@ body {
         height: 2em;
     }
 
+    .password-criteria-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .password-criteria {
-        text-align: left;
-        margin-left: 15%;
         margin-top: 3%;
         color: #8BDD96;
     }
@@ -159,5 +163,14 @@ body {
     .login-line p{
         margin-right: 1%;
         color: #8BDD96;
+    }
+
+    #login-here {
+        color: #337AB7;
+    }
+
+    #login-here:hover {
+        text-decoration: underline;
+        color: #337AB7;
     }
 }
