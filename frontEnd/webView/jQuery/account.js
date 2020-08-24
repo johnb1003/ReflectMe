@@ -22,8 +22,11 @@ function getCookie(key) {
     return "";
 }
 
+getAccountData();
+
 async function getAccountData() {
     accountData = await accountAJAX();
+    console.log(JSON.stringify(accountData));
     $('#hello-name').text("Hello " + accountData.fName + "!");
 }
 
