@@ -514,8 +514,6 @@ button:focus{
 
     .event-title {
         font-size: 3em;
-        height: 2.2em;
-        min-height: 48px;
         max-width: 10em;
         margin: 0;
         padding: 0;
