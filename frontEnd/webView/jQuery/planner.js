@@ -1715,6 +1715,18 @@ $(document).ready(function() {
     });
 
     $('#strength-type').change( () => {
+        if($('#strength-type').val() == 'Other') {
+            let otherEventName = $('#strength-other-name').val();
+            if(otherEventName.length <= 5) {
+                $('.event-title').css('font-size', '3em');
+            }
+            else if(otherEventName.length <= 10){
+                $('.event-title').css('font-size', '2em');
+            }
+        }
+        else {
+            $('.event-title').css('font-size', '3em');
+        }
         processStrengthView();
     });
 
@@ -1723,6 +1735,18 @@ $(document).ready(function() {
     });
 
     $('#cardio-type').change( () => {
+        if($('#cardio-type').val() == 'Other') {
+            let otherEventName = $('#cardio-other-name').val();
+            if(otherEventName.length <= 5) {
+                $('.event-title').css('font-size', '3em');
+            }
+            else if(otherEventName.length <= 10){
+                $('.event-title').css('font-size', '2em');
+            }
+        }
+        else {
+            $('.event-title').css('font-size', '3em');
+        }
         displayCardio();
     });
 
@@ -2194,5 +2218,21 @@ function validateNewWeekName(newWeekName) {
     }
     else {
         return false;
+    }
+}
+
+function validateOtherEventName(otherEventName) {
+    if(otherEventName.length > 0) {
+        if(otherEventName.length <= 5) {
+            $('.event-title').css('font-size', '3em');
+            return true;
+        }
+        else if(otherEventName.length <= 8){
+            $('.event-title').css('font-size', '2em');
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
