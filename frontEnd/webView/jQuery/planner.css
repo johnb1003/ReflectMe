@@ -433,6 +433,11 @@ button:focus{
         display: none;
     }
 
+    .invalid-other-name {
+        display: none;
+        color: red;
+    }
+
     .day-submit-button {
         display: flex;
         justify-content: baseline;
