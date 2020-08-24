@@ -1,3 +1,8 @@
+body {
+    background-color: #dddddd;
+    background-image: url("resources/green-metal-background.png");
+}
+
 .main {
     background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
     margin-top: 0px;
