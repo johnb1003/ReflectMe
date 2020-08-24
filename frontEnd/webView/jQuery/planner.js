@@ -1754,24 +1754,32 @@ $(document).ready(function() {
 
     $('#create-week-submit-button').click( async () => { 
         // Check $('#create-week-name').val();
-        let newWeekName = $('#create-week-name').val();
-        let event = null;
-        console.log(newWeekName);
-        event = await createWeekObject(newWeekName);
+        let newWeekName = $('#create-week-name').val().trim();
+        if(validateNewWeekName($(newWeekName))) {
+            let event = null;
+            console.log(newWeekName);
+            event = await createWeekObject(newWeekName);
 
-        if(event) {
-            await getAllMonthData();
-            console.log(allMonthData);
-            processDayView();
-            backToCalendar();
-        }
-        else {
-            alert("Could not create week")
+            if(event) {
+                await getAllMonthData();
+                console.log(allMonthData);
+                processDayView();
+                backToCalendar();
+            }
+            else {
+                alert("Could not create week")
+            }
         }
     });
 
     $('#create-week-name').keyup( () => {
         //console.log($('#create-week-name').val());
+        if(validateNewWeekName($('#create-week-name').val()).trim()) {
+            $('#invalid-create-week-name').css('display', 'none');
+        }
+        else {
+            $('#invalid-create-week-name').css('display', 'block');
+        }
     });
 });
 
@@ -2176,4 +2184,13 @@ function editStrengthEvent(event) {
 
     updateID = event.strengthid;
     requestType = 'update';
+}
+
+function validateNewWeekName(newWeekName) {
+    if(newWeekName.length > 0 && newWeekName.length <= 10) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

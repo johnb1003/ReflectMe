@@ -784,6 +784,11 @@ button:focus{
         margin: 1em;
     }
 
+    #invalid-create-week-name {
+        display: none;
+        color: red;
+    }
+
     .calendar {
         background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
         width: 100%;
