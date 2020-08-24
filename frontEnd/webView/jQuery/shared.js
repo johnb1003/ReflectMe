@@ -8,4 +8,8 @@ $(document).ready(function() {
     $('#home-button').click( (e) => {
         window.location.href = "welcome.html";
     });
+
+    $('#landing-button').click( (e) => {
+        window.location.href = "landing.html";
+    });
 })
