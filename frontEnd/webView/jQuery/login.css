@@ -9,7 +9,6 @@
     }
 
     .login-container {
-        background-color: #8BDD96;
         border-radius: 8px;
 
         display: flex;
@@ -18,7 +17,9 @@
         align-items: center;
         margin: auto;
         width: 98%;
+        min-width: 30em;
         height: 80vh;
+        min-height: 30em;
     }
 
     .logo {
