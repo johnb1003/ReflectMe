@@ -871,7 +871,7 @@ function displayCardio() {
     }
 
     eventSummaryHTML += '<p class="event-distance">'+ cardioDistance +'</p> <p class="miles">mile(s)</p>';
-    if(cardioDistance != '0.0' && !(cardioType == 'Other'  && $('#cardio-other-name').val() == "") 
+    if(cardioDistance != '0.0' && !(cardioType == 'Other'  && validateOtherEventName('#cardio-other-name')) 
             && ((collectPastInput && durationString != '') || !collectPastInput)) {
         enableSubmitButton();
     }
@@ -961,13 +961,13 @@ function displayStrengthOther() {
     $('.strength-other-group').css('display', 'block');
     let eventSummaryHTML = '';
 
-    $('.event-title').text($('#strength-other-name').val());
+    //$('.event-title').text($('#strength-other-name').val().trim());
 
-    if($('#strength-other-name').val() == "") {
-        disableSubmitButton();
+    if(validateOtherEventName('#strength-other-name')) {
+        enableSubmitButton();
     }
     else {
-        enableSubmitButton();
+        disableSubmitButton();
     }
 
     $('.event-summary').html(eventSummaryHTML);
@@ -1716,7 +1716,7 @@ $(document).ready(function() {
 
     $('#strength-type').change( () => {
         if($('#strength-type').val() == 'Other') {
-            let otherEventName = $('#strength-other-name').val();
+            let otherEventName = $('#strength-other-name').val().trim();
             if(otherEventName.length <= 5) {
                 $('.event-title').css('font-size', '3em');
             }
@@ -1736,7 +1736,7 @@ $(document).ready(function() {
 
     $('#cardio-type').change( () => {
         if($('#cardio-type').val() == 'Other') {
-            let otherEventName = $('#cardio-other-name').val();
+            let otherEventName = $('#cardio-other-name').val().trim();
             if(otherEventName.length <= 5) {
                 $('.event-title').css('font-size', '3em');
             }
@@ -1761,12 +1761,26 @@ $(document).ready(function() {
     });
 
     $('#cardio-other-name').keyup( () => {
-        $('.event-title').text($('#cardio-other-name').val());
+        let otherEventName = $('#cardio-other-name').val().trim();
+        if(validateOtherEventName(otherEventName)) {
+            $('.event-title').text($('#cardio-other-name').val());
+            $('.invalid-other-name').css('display', 'none');
+        }
+        else {
+            $('.invalid-other-name').css('display', 'block');
+        }
         displayCardio();
     });
-
+    
     $('#strength-other-name').keyup( () => {
-        $('.event-title').text($('#strength-other-name').val());
+        let otherEventName = $('#strength-other-name').val().trim();
+        if(validateOtherEventName(otherEventName)) {
+            $('.event-title').text($('#strength-other-name').val());
+            $('.invalid-other-name').css('display', 'none');
+        }
+        else {
+            $('.invalid-other-name').css('display', 'block');
+        }
         processStrengthView();
     });
     
