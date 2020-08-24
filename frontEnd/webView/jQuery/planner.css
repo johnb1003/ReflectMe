@@ -508,8 +508,8 @@ button:focus{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 4em;
-        min-height: 3em;
+        height: 6em;
+        min-height: 5em;
     }
 
     .event-title {

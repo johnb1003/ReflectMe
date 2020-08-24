@@ -1726,7 +1726,7 @@ $(document).ready(function() {
                 $('.event-title').css('font-size', '2em');
             }
             else if(otherEventName.length <= 10){
-                $('.event-title').css('font-size', '1em');
+                $('.event-title').css('font-size', '1.5em');
             }
         }
         else {
@@ -1749,7 +1749,7 @@ $(document).ready(function() {
                 $('.event-title').css('font-size', '2em');
             }
             else if(otherEventName.length <= 10){
-                $('.event-title').css('font-size', '1em');
+                $('.event-title').css('font-size', '1.5em');
             }
         }
         else {
@@ -2254,7 +2254,7 @@ function validateOtherEventName(otherEventName) {
             return true;
         }
         else if(otherEventName.length <= 10){
-            $('.event-title').css('font-size', '1em');
+            $('.event-title').css('font-size', '1.5em');
             return true;
         }
         else {
