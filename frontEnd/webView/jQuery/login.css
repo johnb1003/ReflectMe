@@ -20,7 +20,6 @@
         min-width: 30em;
         height: 85vh;
         min-height: 33em;
-
     }
 
     .logo {
@@ -41,7 +40,8 @@
         height: 33em;
         background-color: #36495F;
         border-radius: 8px;
-        box-shadow: black;
+        box-shadow: 0.3em 0.3em 4px black;
+        border: 2px solid rgb(170, 170, 170);
     }
 
     .form-input {
