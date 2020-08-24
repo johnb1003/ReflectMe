@@ -20,11 +20,13 @@
     .advertisement-1 {
         font-size: 2em;
         color: #94DF93;
+        text-shadow: 1px 1px 2px black;
     }
 
     .advertisement-2 {
         font-size: 1.7em;
         color: #8BDD96;
+        text-shadow: 1px 1px 2px black;
     }
 
     .input-bar {
@@ -46,6 +48,7 @@
         justify-content: space-around;
         align-items: center;
         margin: 0 1% 1% 1%;
+        box-shadow: 0 0 10px 3px black;
     }
 
     .left-panel {

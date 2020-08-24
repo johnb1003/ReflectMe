@@ -6,11 +6,6 @@ button:focus{
     outline: none;
 }
 
-body {
-    background-color: #9bdea6;
-    background-image: url("resources/green-metal-background.png");
-}
-
 .nav-bar {
     color: rgb(40, 40, 40);
     background-color: rgb(53, 53, 53);
@@ -20,6 +15,7 @@ body {
 
 .nav-bar header {
     color: rgb(69, 145, 212);
+    color: rgb(255, 255, 255);
 }
 
 #home-button:hover {
