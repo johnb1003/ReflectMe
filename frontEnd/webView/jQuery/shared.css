@@ -16,6 +16,10 @@ button:focus{
     color: rgb(40, 40, 40);
 }
 
+#home-button:hover {
+    cursor: pointer;
+}
+
 /* PC format */
 @media screen and (min-width: 600px) {
 
