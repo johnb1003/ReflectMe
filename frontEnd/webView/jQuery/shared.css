@@ -38,6 +38,8 @@ button:focus{
         align-items: baseline;
         margin-bottom: 1em;
         box-shadow: 0 0.1em 5px black;
+        position: sticky;
+        top: 0;
     }
 
     .nav-bar header {
