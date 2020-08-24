@@ -22,20 +22,15 @@ function getCookie(key) {
     return "";
 }
 
-accountAJAX()
-    .then(data => {
-        accountData = data;
-        console.log(data);
-        $('#hello-name').text("Hello " + data.fName + "!");
-    })
-    .catch(error => {
-        console.log(error);
-});
+accountData = getAccountData();
 
+async function getAccountData() {
+    let data = await accountAJAX();
+    return data;
+}
 
 function accountAJAX() {
-
-    return accReq = $.ajax({
+    return $.ajax({
         type: "GET",
         url: baseAPIURL+"/accounts/info",
         contentType: "application/json",
@@ -48,6 +43,8 @@ function accountAJAX() {
 }
 
 $(document).ready(function() {
+
+    $('#hello-name').text("Hello " + accountData.fName + "!");
 
     // Check for token cookie
     let JWToken = getCookie("token");
