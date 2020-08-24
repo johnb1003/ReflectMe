@@ -1,3 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+button:focus{
+    outline: none;
+}
+
 .nav-bar {
     color: rgb(40, 40, 40);
     background-color: white;
