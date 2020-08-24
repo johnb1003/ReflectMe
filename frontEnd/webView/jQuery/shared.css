@@ -64,6 +64,6 @@ button:focus{
         margin-bottom: 0;
         padding-bottom: 0;
         border: none;
-        background-color: white;
+        color: white;
     }
 }
