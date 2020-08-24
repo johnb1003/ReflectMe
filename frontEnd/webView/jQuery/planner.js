@@ -777,6 +777,7 @@ function clearFormData() {
     $('#cardio-duration-m').val(0);
     $('#cardio-duration-s').val(0);
     $('#dow-selector-cardio').val('0');
+    $('#invalid-other-cardio').css('display', 'none');
 
     // Clear strength data
     $('#strength-type').val('Lift');
@@ -787,10 +788,9 @@ function clearFormData() {
     }
     $('#strength-other-name').val('Other');
     $('#dow-selector-strength').val('0');
+    $('#invalid-other-strength').css('display', 'none');
 
     $('.dow-selector-container').css('display', 'none');
-
-    $('.invalid-other-name').css('display', 'none');
 
     $('#create-week-name').val('');
 
@@ -1772,10 +1772,10 @@ $(document).ready(function() {
         let otherEventName = $('#cardio-other-name').val().trim();
         if(validateOtherEventName(otherEventName)) {
             $('.event-title').text($('#cardio-other-name').val());
-            $('.invalid-other-name').css('display', 'none');
+            $('#invalid-other-cardio').css('display', 'none');
         }
         else {
-            $('.invalid-other-name').css('display', 'block');
+            $('#invalid-other-cardio').css('display', 'block');
         }
         displayCardio();
     });
@@ -1784,10 +1784,10 @@ $(document).ready(function() {
         let otherEventName = $('#strength-other-name').val().trim();
         if(validateOtherEventName(otherEventName)) {
             $('.event-title').text($('#strength-other-name').val());
-            $('.invalid-other-name').css('display', 'none');
+            $('#invalid-other-strength').css('display', 'none');
         }
         else {
-            $('.invalid-other-name').css('display', 'block');
+            $('#invalid-other-strength').css('display', 'block');
         }
         processStrengthView();
     });
