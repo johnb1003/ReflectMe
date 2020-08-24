@@ -790,6 +790,8 @@ function clearFormData() {
 
     $('.dow-selector-container').css('display', 'none');
 
+    $('#create-week-name').val('');
+
     setClickedType('cardio');
 
     processDayView();
