@@ -873,7 +873,7 @@ function displayCardio() {
     }
 
     eventSummaryHTML += '<p class="event-distance">'+ cardioDistance +'</p> <p class="miles">mile(s)</p>';
-    if(cardioDistance != '0.0' && !(cardioType == 'Other'  && validateOtherEventName('#cardio-other-name')) 
+    if(cardioDistance != '0.0' && (cardioType != 'Other'  || validateOtherEventName($('#cardio-other-name').val().trim())) 
             && ((collectPastInput && durationString != '') || !collectPastInput)) {
         enableSubmitButton();
     }
@@ -965,7 +965,7 @@ function displayStrengthOther() {
 
     //$('.event-title').text($('#strength-other-name').val().trim());
 
-    if(validateOtherEventName('#strength-other-name')) {
+    if(validateOtherEventName($('#strength-other-name').val().trim())) {
         enableSubmitButton();
     }
     else {
@@ -2260,5 +2260,8 @@ function validateOtherEventName(otherEventName) {
         else {
             return false;
         }
+    }
+    else {
+        return false;
     }
 }
