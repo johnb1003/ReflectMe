@@ -1,3 +1,8 @@
+body {
+    background-color: #9bdea6;
+    background-image: url("resources/green-metal-background.png");
+}
+
 .signup-error-message {
     color: rgb(219, 0, 0);
 }
