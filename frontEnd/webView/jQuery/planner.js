@@ -1636,7 +1636,7 @@ $(document).ready(function() {
             $('.back-to-day-schedule').css('display', 'block');
             $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
 
-            $('.dow-selector-container').css('display', 'block');
+            $('.dow-selector-container').css('display', 'none');
 
             $('.pop-up-previous').css('display', 'none');
             $('.pop-up-next').css('display', 'none');
