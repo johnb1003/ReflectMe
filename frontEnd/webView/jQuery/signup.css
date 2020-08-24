@@ -19,12 +19,12 @@
         width: 98%;
         min-width: 30em;
         height: 85vh;
-        min-height: 50em;
+        min-height: 40em;
     }
 
     .logo {
-        margin-top: 20%;
-        margin-bottom: 18%;
+        height: 10em;
+        width: 10em;
     }
 
     .names-group {
@@ -77,7 +77,7 @@
 
     .signup-form {
         width: 50%;
-        height: 50em;
+        height: 40em;
         background-color: #36495F;
         border-radius: 8px;
         box-shadow: 0em 0em 8px 3px black;

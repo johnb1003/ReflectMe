@@ -23,8 +23,8 @@
     }
 
     .logo {
-        margin-top: 20%;
-        margin-bottom: 18%;
+        height: 10em;
+        width: 10em;
     }
 
     .email-group input{
