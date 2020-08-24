@@ -22,37 +22,34 @@ function getCookie(key) {
     return "";
 }
 
+// Check for token cookie
+let JWToken = getCookie("token");
+if(JWToken == "") {
+    alert("Must be logged in to access this page.")
+    window.location.href = "login.html";
+}
+
+getAccountData();
+
+async function getAccountData() {
+    accountData = await accountAJAX();
+    console.log(JSON.stringify(accountData));
+    $('#hello-name').text("Hello " + accountData.fName + "!");
+}
+
+function accountAJAX() {
+    return $.ajax({
+        type: "GET",
+        url: baseAPIURL+"/accounts/info",
+        contentType: "application/json",
+        headers: {'Authorization': JWToken},
+        success: function(data, status, xhr)    {
+            return data;
+        },
+        failure: function(errMsg) {alert(errMsg);}
+    });
+}
+
 $(document).ready(function() {
 
-    // Check for token cookie
-    let JWToken = getCookie("token");
-    if(JWToken == "") {
-        alert("Must be logged in to access this page.")
-        window.location.href = "login.html";
-    }
-
-    accountAJAX()
-        .then(data => {
-            accountData = data;
-            console.log(data);
-            $('#hello-name').text("Hello " + data.fName + "!");
-        })
-        .catch(error => {
-            console.log(error);
-    });
-
-
-    function accountAJAX() {
-
-        return accReq = $.ajax({
-            type: "GET",
-            url: baseAPIURL+"/accounts/info",
-            contentType: "application/json",
-            headers: {'Authorization': JWToken},
-            success: function(data, status, xhr)    {
-                return data;
-            },
-            failure: function(errMsg) {alert(errMsg);}
-        });
-    }
 });
