@@ -57,7 +57,4 @@ $(document).ready(function() {
             failure: function(errMsg) {alert(errMsg);}
         });
     }
-
-
-
-})
+});
