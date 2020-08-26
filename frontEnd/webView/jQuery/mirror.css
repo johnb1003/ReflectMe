@@ -7,11 +7,7 @@ body {
 @media screen and (min-width: 600px) {
 
     .main {
-        background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
-        margin: 0 1% 1% 1%;
-        border-radius: 8px;
-        padding: 20%;
-        height: 80vh;
+        margin: 0 5px 5px 5px;
         text-align: center;
     }
 }

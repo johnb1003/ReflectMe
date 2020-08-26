@@ -18,8 +18,13 @@ body {
 
 /* PC format */
 @media screen and (min-width: 600px) {
+
     body {
         height: 100%;
+    }
+
+    .nav-bar {
+        min-width: 812px;
     }
 
     .advertisement-1 {
@@ -52,8 +57,9 @@ body {
         flex-wrap: wrap;
         justify-content: space-around;
         align-items: center;
-        margin: 0 1% 1% 1%;
+        margin: 0 5px 5px 5px;
         box-shadow: 0 0 10px 3px black;
+        min-width: 800px;
     }
 
     .left-panel {
@@ -67,18 +73,16 @@ body {
     }
 
     .slideshow {
-        width: 98%;
-        margin: 1%;
         height: auto;
         text-align: center;
     }
 
     .slide {
-        margin: 0%;
-        width: 100%;
+        margin: 3em auto;
+        min-width: 800px;
         height: 400px;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
     }
 
@@ -88,7 +92,9 @@ body {
     }
 
     .slide-description {
-        width: 40%;
+        max-width: 45%;
+        margin: 0;
+        padding: 0;
     }
 
     .slide-header {
@@ -100,6 +106,9 @@ body {
         background-position: 45% 110%, center;
         background-repeat: no-repeat, no-repeat;
         background-size: auto, cover;
+        filter: drop-shadow(0 0 2px black);
+        padding: 5em auto;
+        width: 45%;
     }
 
     #set-goals-description {
@@ -111,6 +120,8 @@ body {
         background-position: 74% 85%, center;
         background-repeat: no-repeat, no-repeat;
         background-size: auto, cover;
+        width: 45%;
+        filter: drop-shadow(0 0 2px black);
     }
 
     #see-goals-description {
@@ -122,6 +133,8 @@ body {
         background-position: 20% 90%, center;
         background-repeat: no-repeat, no-repeat;
         background-size: auto, cover;
+        width: 45%;
+        filter: drop-shadow(0 0 2px black);
     }
 
     #achieve-goals-description {
@@ -130,9 +143,10 @@ body {
 
     .bottom {
         background-color: transparent;
-        width: 100%;
         height: auto;
         text-align: center;
+        min-width: 800px;
+        margin: 0 5px 5px 5px;
     }
 }
 
