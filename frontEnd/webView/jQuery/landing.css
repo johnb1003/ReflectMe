@@ -75,15 +75,18 @@ body {
     .slideshow {
         height: auto;
         text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: baseline;
     }
 
     .slide {
-        margin: 3em auto;
-        min-width: 800px;
-        height: 400px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+        margin: 2em auto;
+        min-width: 200px;
+        height: 440px;
+        background-color: white;
+        text-align: center;
+        position: relative;
     }
 
     .picture {
@@ -91,54 +94,102 @@ body {
         height: 400px;
     }
 
-    .slide-description {
-        max-width: 45%;
-        margin: 0;
-        padding: 0;
-    }
-
     .slide-header {
-        font-size: 2em;
+        font-size: 2.5em;
+        height: 60px;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
     }
 
-    #set-goals-picture {
-        background-image: url("resources/set-goals-character.svg"), url("resources/set-goals-background.svg");
-        background-position: 45% 110%, center;
-        background-repeat: no-repeat, no-repeat;
-        background-size: auto, cover;
+    .slide-background-image {
+        max-height: 240px;
+    }
+
+    .slide-character {
+        height: 180px;
+        max-height: 240px;
+    }
+
+    .slide-description {
+        color: rgb(8, 8, 8);
+        background-color: rgb(255, 255, 255);
+        max-width: 100%;
+        margin: 0;
+        padding: 0 .2em;
+        text-align: center;
+        height: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #set-goals-slide {
+        width: 30%;
         filter: drop-shadow(0 0 2px black);
-        padding: 5em auto;
-        width: 45%;
+    }
+
+    #set-goals-background {
+        background-image: url("resources/set-goals-background.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #set-goals-character {
+        width: auto;
+        height: auto;
+        position: 50% 50%;
     }
 
     #set-goals-description {
         font-size: 1.3em;
+        margin: 0;
     }
 
-    #see-goals-picture {
-        background-image: url("resources/see-goals-character.svg"), url("resources/see-goals-background.svg");
-        background-position: 74% 85%, center;
-        background-repeat: no-repeat, no-repeat;
-        background-size: auto, cover;
-        width: 45%;
+    #see-goals-slide {
+        width: 30%;
         filter: drop-shadow(0 0 2px black);
+    }
+
+    #see-goals-background {
+        background-image: url("resources/see-goals-background.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #see-goals-character {
+        width: auto;
+        height: auto;
+        position: center;
     }
 
     #see-goals-description {
         font-size: 1.3em;
+        margin: 0;
     }
 
-    #achieve-goals-picture {
-        background-image: url("resources/achieve-goals-character.svg"), url("resources/achieve-goals-background.svg");
-        background-position: 20% 90%, center;
-        background-repeat: no-repeat, no-repeat;
-        background-size: auto, cover;
-        width: 45%;
+    #achieve-goals-slide {
+        width: 30%;
         filter: drop-shadow(0 0 2px black);
+    }
+
+    #achieve-goals-background {
+        background-image: url("resources/achieve-goals-background.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #achieve-goals-character {
+        width: auto;
+        height: auto;
+        position: 50% 50%;
     }
 
     #achieve-goals-description {
         font-size: 1.3em;
+        margin: 0;
     }
 
     .bottom {

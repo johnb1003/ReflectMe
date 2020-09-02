@@ -9,6 +9,10 @@ body {
 
 /* PC format */
 @media screen and (min-width: 600px) {
+    .nav-bar {
+        display: none !important;
+    }
+
     .content {
         text-align: center;
     }
@@ -23,7 +27,7 @@ body {
         margin: auto;
         width: 98%;
         min-width: 30em;
-        height: 85vh;
+        height: 100vh;
         min-height: 33em;
     }
 
@@ -34,8 +38,8 @@ body {
         width: 100%;
     }
 
-    .logo p{
-        height: 12em;
+    .logo-pic{
+        height: 13em;
         width: 18em;
     }
 

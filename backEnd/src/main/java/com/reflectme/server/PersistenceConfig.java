@@ -55,6 +55,12 @@ public class PersistenceConfig {
     }
 
     @Bean
+    public SimpleJdbcInsert simpleJdbcInsertMirror(){
+        return new SimpleJdbcInsert(dataSource).withTableName("mirrors")
+                .usingGeneratedKeyColumns("mirrorid");
+    }
+
+    @Bean
     public NamedParameterJdbcTemplate namedParameterJdbcTemplateJdbcTemplate(){
         return new NamedParameterJdbcTemplate(dataSource);
     }

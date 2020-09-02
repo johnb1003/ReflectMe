@@ -3,6 +3,7 @@ package com.reflectme.server.service;
 import com.reflectme.server.exception.ResourceNotFoundException;
 import com.reflectme.server.model.Account;
 import com.reflectme.server.repository.AccountRepository;
+import com.reflectme.server.repository.MirrorRepository;
 import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -26,11 +27,14 @@ import java.util.Optional;
 public class AccountService {
 
     private AccountRepository accountRepo;
+    private MirrorRepository mirrorRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public AccountService(AccountRepository accountRepo, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public AccountService(AccountRepository accountRepo, MirrorRepository mirrorRepository,
+                          BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.accountRepo = accountRepo;
+        this.mirrorRepository = mirrorRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -54,7 +58,7 @@ public class AccountService {
         }
     }
 
-    public ResponseEntity verifyLogin(Account acc) throws ResourceNotFoundException{
+    public Account verifyLogin(Account acc) {
         // Catch if email doesn't exist
         String rawPassword = acc.getPassword();
         String encryptedPassword = "";
@@ -62,21 +66,27 @@ public class AccountService {
             encryptedPassword = accountRepo.getPassword(acc.getEmail());
         }
         catch (Exception e){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Email not linked to an account");
+            //return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Email not linked to an account");
+            return null;
         }
 
         if(encryptedPassword == null) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Email not linked to an account");
+            //return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Email not linked to an account");
+            return null;
         }
-        //else if(passwordEncoder.matches((CharSequence) encryptedPassword, acc.getPassword())) {
+        //
         else if(bCryptPasswordEncoder.matches(acc.getPassword(), encryptedPassword)) {
+            /*
             return Optional
-                    .ofNullable(accountRepo.getAccountByEmail(acc.getEmail()).dropPassword())
+                    .ofNullable(accountRepo.getAccountByEmail(acc.getEmail()))
                     .map( account -> ResponseEntity.ok().body(account.dropPassword()) )
                     .orElseGet( () -> ResponseEntity.notFound().build() );
+             */
+            return acc.dropPassword();
         }
         else {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Error: Incorrect password");
+            //return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Error: Incorrect password");
+            return null;
         }
     }
 
