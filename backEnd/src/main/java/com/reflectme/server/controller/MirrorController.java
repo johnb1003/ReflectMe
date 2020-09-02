@@ -23,6 +23,7 @@ public class MirrorController {
     @Autowired
     private MirrorService mirrorService;
 
+    /*
     @PostMapping("/create")
     public ResponseEntity createMirror(@Valid @RequestBody Mirror mirror, Principal principal) {
         mirror.setUserid(Long.parseLong(principal.getName()));
@@ -50,10 +51,14 @@ public class MirrorController {
         return mirrorService.getAvailableMirrors(account);
     }
 
+    /*
     // Request sent from mirror
     @GetMapping("/data")
     public ResponseEntity getDayEvents(@Valid @RequestBody Mirror mirror, Principal principal) {
 
         return mirrorService.getDayEvents(Long.parseLong(principal.getName()));
     }
+
+     */
+    
 }

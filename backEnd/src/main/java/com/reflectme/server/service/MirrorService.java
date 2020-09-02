@@ -49,13 +49,14 @@ public class MirrorService {
         this.accountService = accountService;
     }
 
-
+    /*
     public ResponseEntity createMirror(Mirror mirror) {
         return Optional
                 .ofNullable(mirrorRepository.createMirror(mirror))
                 .map( newMirror -> ResponseEntity.ok().body(newMirror) )
                 .orElseGet( () -> ResponseEntity.notFound().build() );
     }
+
 
     public ResponseEntity connectMirror(Account account, long mirrorID) {
         // Authenticate
@@ -110,4 +111,6 @@ public class MirrorService {
         }
         return ResponseEntity.notFound().build();
     }
+
+     */
 }
