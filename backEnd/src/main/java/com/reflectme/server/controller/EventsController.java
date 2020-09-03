@@ -200,4 +200,10 @@ public class EventsController {
 
         return eventsService.getAllMonthEvents(Long.parseLong(principal.getName()), LocalDate.parse(date));
     }
+
+    @GetMapping("/day/{date}")
+    public ResponseEntity getDayEvents(@PathVariable(value = "date")String date, Principal principal) {
+
+        return eventsService.getScheduledDayEvents(Long.parseLong(principal.getName()), LocalDate.parse(date));
+    }
 }

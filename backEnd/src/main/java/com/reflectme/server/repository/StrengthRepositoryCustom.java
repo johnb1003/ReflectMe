@@ -19,4 +19,6 @@ public interface StrengthRepositoryCustom {
     public ArrayList<Strength> getAllWeekEvents(long userid);
 
     public ArrayList<Strength> getMonthEvents(long userid, LocalDate date);
+
+    public ArrayList<Strength> getScheduledDayEvents(long userid, LocalDate date);
 }

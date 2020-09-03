@@ -189,4 +189,40 @@ public class CardioRepositoryCustomImpl implements CardioRepositoryCustom{
 
         return result;
     }
+
+    @Override
+    public ArrayList<Cardio> getScheduledDayEvents(long userid, LocalDate date) {
+        entityManager = emf.getObject().createEntityManager();
+        //entityManager.getTransaction().begin();
+
+        String sql = "SELECT c.userid, c.date, c.cardiotype, c.distance, c.status, c.time, c.weekid, c.dayofweek, c.cardioid " +
+                "FROM cardio c LEFT OUTER JOIN weeks w " +
+                "ON c.weekid=w.weekid " +
+                "where c.userid=:userid " +
+                "AND ((c.weekid IS NULL " +
+                "AND (date_part('year', c.date)=date_part('year', :date) " +
+                "AND date_part('month', c.date)=date_part('month', :date) " +
+                "AND date_part('day', c.date)=date_part('day',:date))) " +
+                "OR (c.weekid IS NOT NULL " +
+                "AND w.active = TRUE " +
+                "AND c.dayofweek=date_part('dow', :date)))";
+
+        ArrayList<Cardio> result = null;
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("userid", userid);
+        parameters.put("date", date);
+
+        try {
+            result = new ArrayList<Cardio>(namedParameterJdbcTemplate.query(sql, parameters,
+                    new BeanPropertyRowMapper(Cardio.class)));
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result;
+    }
 }

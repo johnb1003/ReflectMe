@@ -227,4 +227,38 @@ public class EventsService {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Month events not found.");
         }
     }
+
+
+    public ResponseEntity getScheduledDayEvents(long userID, LocalDate date) {
+
+        try {
+            ArrayList<Cardio> cardioEvents = cardioRepository.getScheduledDayEvents(userID, date);
+            ArrayList<Strength> strengthEvents = strengthRepository.getScheduledDayEvents(userID, date);
+
+            ArrayNode cardioArrNode = null;
+            ArrayNode strengthArrNode = null;
+
+            ObjectNode dateNode = objectMapper.createObjectNode();
+            cardioArrNode = objectMapper.createArrayNode();
+            strengthArrNode = objectMapper.createArrayNode();
+            dateNode.set("cardio", cardioArrNode);
+            dateNode.set("strength", strengthArrNode);
+
+            while(!cardioEvents.isEmpty()) {
+                cardioArrNode.addPOJO(cardioEvents.remove(0));
+            }
+
+            while(!strengthEvents.isEmpty()) {
+                strengthArrNode.addPOJO(strengthEvents.remove(0));
+            }
+
+            return Optional
+                    .ofNullable(dateNode)
+                    .map(list -> ResponseEntity.ok().body(dateNode))
+                    .orElseGet(() -> ResponseEntity.notFound().build());
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Day events not found.");
+        }
+    }
 }

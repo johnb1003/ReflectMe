@@ -19,4 +19,6 @@ public interface CardioRepositoryCustom {
     public ArrayList<Cardio> getAllWeekEvents(long userid);
 
     public ArrayList<Cardio> getMonthEvents(long userid, LocalDate date);
+
+    public ArrayList<Cardio> getScheduledDayEvents(long userid, LocalDate date);
 }

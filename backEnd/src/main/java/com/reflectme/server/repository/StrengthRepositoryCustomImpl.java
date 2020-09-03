@@ -192,4 +192,40 @@ public class StrengthRepositoryCustomImpl implements StrengthRepositoryCustom{
 
         return result;
     }
+
+    @Override
+    public ArrayList<Strength> getScheduledDayEvents(long userid, LocalDate date) {
+        entityManager = emf.getObject().createEntityManager();
+        //entityManager.getTransaction().begin();
+
+        String sql = "SELECT s.userid, s.date, s.strengthtype, s.lifts, s.status, s.weekid, s.dayofweek, s.strengthid " +
+                "FROM strength s LEFT OUTER JOIN weeks w " +
+                "ON s.weekid=w.weekid " +
+                "WHERE s.userid=:userid " +
+                "AND ((s.weekid IS NULL " +
+                "AND (date_part('year', s.date)=date_part('year', :date) " +
+                "AND date_part('month', s.date)=date_part('month', :date) " +
+                "AND date_part('day', s.date)=date_part('day',:date))) " +
+                "OR (s.weekid IS NOT NULL " +
+                "AND w.active = TRUE " +
+                "AND s.dayofweek=date_part('dow', :date)))";
+
+        ArrayList<Strength> result = null;
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("userid", userid);
+        parameters.put("date", date);
+
+        try {
+            result = new ArrayList<Strength>(namedParameterJdbcTemplate.query(sql, parameters,
+                    new BeanPropertyRowMapper(Strength.class)));
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        entityManager.close();
+
+        return result;
+    }
 }
