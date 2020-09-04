@@ -12,9 +12,47 @@
         <!-- Corresponding js and css files -->
         <link rel="stylesheet" type="text/css" href="mirrorApp.css">
         <script type="text/javascript" src="mirrorApp.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
     </head>
 
     <body>
+        <div class="login-view">
+            <form class="login-form">
+                <div class="logo">
+                    <img class="logo-pic" src="reflectme-logo-wide.svg"></img>
+                </div>
+                <div class="form-input">
+                    <p class="login-error-message">Email and password do not match</p>
+                    <div class="email-group">
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email" placeholder="Email"><br>
+                    </div>
 
+                    <div class="password-group">
+                        <div class="pass-group">
+                            <label for="password">Password:</label><br>        
+                            <input type="password" id="password" name="password" placeholder="Password"><br>
+                        </div>
+                    </div>
+
+                </div>
+                <input class="submit-button" type="submit" value="Submit" id="login-submit-button">
+                <div class="signup-line">
+                    <p> Don't have an account? Signup at https://ReflectMe.tech/signup.html</p>
+                </div>
+            </form>
+        </div>
+        <div class="mirror-view">
+            <div class="date-time-container">
+                <h2 id="date-string"></h2>
+                <h1 id="time-string"></h1>
+            </div>
+            <div class="weather-container">
+
+            </div>
+            <div class="schedule-container">
+
+            </div>
+        </div>
     </body>
 </html>
