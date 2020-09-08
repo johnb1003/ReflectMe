@@ -1,28 +1,104 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
     background-color: black;
     color: white;
 }
 
-
-
-
-
-
 .mirror-view {
+    height: 99vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: .3vh .3vw;
     display: none;
+}
+
+.top-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.bottom-row {
+    width: 100%;
 }
 
 .date-time-container {
     font-family: 'Montserrat', sans-serif;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#date-string {
+    font-size: 3rem;
+    margin-top: -.2rem;
+}
+#time-string {
+    font-size: 6rem;
+    margin-top: -.5rem;
 }
 
 
+
+.schedule-container {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    max-width: 60rem;
+}
+
+#cardio-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 60rem;
+}
+
+#strength-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-container {
+    max-width: 20rem;
+
+}
+
+.event-icon {
+    width: 15rem;
+    height: 8em;
+    padding: 0;
+    margin: 0;
+}
+
+.event-name {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.event-distance {
+    font-size: 2rem;
+    text-align: center;
+}
 
 
 /********************/
 /* Login Formatting */
 /********************/
-
 
 .nav-bar {
     display: none !important;

@@ -20,6 +20,18 @@ let loginObject = {};
 
 let currDate = 0;
 
+let scheduleData = { 
+    'cardio': [],
+    'strength': []
+};
+
+function devSetup() {
+    JWToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2NCJ9.7Iak7NNb5S4fkpJDvXLnIfJy1a7_hMfSUZ46iOMGL5-J8s-O-_rsCIVPmxArjaaCw3IvJO4AX__bkYuTVqygBQ'
+    displayLoops();
+    $('.login-view').css('display', 'none');
+    $('.mirror-view').css('display', 'flex');
+}
+
 ///////////////////////////////////////
 ///////////////////////////////////////
 ///////// Login View Functions ////////
@@ -27,23 +39,27 @@ let currDate = 0;
 ///////////////////////////////////////
 
 async function loginAJAX() {
-
     return loginReq = $.ajax({
         type: "POST",
         url: loginURL,
+        crossDomain: true,
         contentType: "application/json",
         data: JSON.stringify({
             email: $('#email').val(),
             password: $('#password').val()
         }),
         success: function(data, status, xhr)    {
+            // ERROR HERE, CANT GET TOKEN
+            console.log(data);
+            console.log(status);
+            console.log(xhr);
             JWToken = xhr.getResponseHeader('Authorization');
-            displayLoop();
-            updateDateTime();
+            displayLoops();
             $('.login-view').css('display', 'none');
-            $('.mirror-view').css('display', 'block');
+            $('.mirror-view').css('display', 'flex');
         },
         failure: function(errMsg) {
+            $('.login-error-message').css('display', 'block');
             console.log(errMsg);
         }
     });
@@ -96,55 +112,92 @@ function validPassword(password) {
 ////////////////////////////////////////
 ////////////////////////////////////////
 
-function displayLoop() {
+function displayLoops() {
     // Update display every 10 minutes
     //let updateDataInterval = setInterval(updateAllData, 10 * 60 * 1000);
 
     // Update display every 10 seconds
-    let updateDataInterval = setInterval(updateAllData, 10 * 1000);
+    updateSchedule();
+    updateDateTime();
+    updateWeather();
+    let updateUserDataInterval = setInterval(updateSchedule, 10 * 60 * 1000);
+    let timeUpdateInterval = setInterval(updateDateTime, 10 * 1000);
+    let updateWeatherDataInterval = setInterval(updateWeather, 10 * 60 * 1000);
 }
 
-async function updateAllData() {
-    updateDayData();
-    // updateWeatherData();
-    // updateDateTime();
-}
-
-// Load user day data
-async function updateDayData() {
+async function updateSchedule() {
     let dateString = new Date().toISOString().slice(0,10);
-    console.log(dateString);
+    $.ajax({
+        type: "GET",
+        url: dayDataURL+dateString,
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        success: function(data, status, xhr)    {
+            // Display schedule data
+            scheduleData = data;
+            displaySchedule();
+        },
+        failure: function(errMsg) {
+            console.log(errMsg);
+        }
+    });
+}
 
-    let httpRequest = new XMLHttpRequest();
+function displaySchedule() {
+    let cardioEvents = scheduleData.cardio;
+    let strengthEvents = scheduleData.strength;
 
-    if (!httpRequest) {
-        console.log('Giving up. Cannot create an XMLHTTP instance');
-    }
+    let cardioHTML = '';
+    let strengthHTML = '';
 
-    httpRequest.onreadystatechange = function() {
-        console.log(`${this.readyState} = ${XMLHttpRequest.DONE}`);
-        console.log(this.readyState === 4);
-        if (this.readyState === 4) {
-            if (this.status === 200) {
-                console.log(this.responseText);
-                // Display data in mirrorApp.html
-            } 
-            else {
-                // ERROR
-            }
+    cardioEvents.forEach( event => {
+        let iconName = '';
+        if(event.cardiotype == 'run') {
+            iconName = 'run.svg';
+        }
+        else if(event.cardiotype == 'bike') {
+            iconName = 'bike.svg';
         }
         else {
-            // ERROR
+            iconName = 'walk.svg';
         }
-    };
-    
-    httpRequest.open('GET', dayDataURL+dateString, true);
-    httpRequest.setRequestHeader("Content-Type", "application/json");
-    httpRequest.setRequestHeader("Authorization", "Bearer " + JWToken);
-    httpRequest.send();
+
+        let mileString = event.distance > 1 ? 'miles' : 'mile';
+        cardioHTML += `<div class='event-container'>`;
+        cardioHTML += `<p class='event-name'>${event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1)}</p>`;
+        cardioHTML += `<img class="event-icon" src="event-icons/${iconName}"></img>`;
+        cardioHTML += `<div class='event-description'>`;
+        cardioHTML += `<p class='event-distance'>${event.distance} ${mileString}</p>`;
+        cardioHTML += `</div>`;
+        cardioHTML += `</div>`;
+    });
+
+    strengthEvents.forEach( event => {
+        let iconName = '';
+        if(event.strengthtype == 'yoga') {
+            iconName = 'yoga.svg';
+        }
+        else {
+            iconName = 'lift.svg';
+        }
+        strengthHTML += `<div class='event-container'>`;
+        strengthHTML += `<p class='event-name'>${event.strengthtype.charAt(0).toUpperCase()+event.strengthtype.slice(1)}</p>`;
+        strengthHTML += `<img class="event-icon" src="event-icons/${iconName}"></img>`;
+        strengthHTML += `<div class='event-description'>`;
+        if(event.strengthtype == 'lift') {
+            strengthHTML += `<p class='event-lifts'>${event.lifts.charAt(0).toUpperCase()+event.lifts.slice(1)}</p>`;
+        }
+        strengthHTML += `</div>`;
+        strengthHTML += `</div>`;
+    });
+    $('#cardio-container').html(cardioHTML);
+    $('#strength-container').html(strengthHTML);
 }
 
-async function updateWeatherData() {
+
+async function updateWeather() {
 
 }
 
@@ -157,15 +210,20 @@ async function updateDateTime() {
     h = formatHour(h);
     m = formatMinutes(m);
     let timeString = `${h}:${m} ${ampm}`;
-    $('time-string').text(timeString);
+    console.log(timeString);
+    $('#time-string').text(timeString);
 
     if(currDate != currDateTime.getDate()) {
         let dateString = `${weekDays[currDateTime.getDay()]}, ${months[currDateTime.getMonth()]} ${currDateTime.getDate(), currDateTime.getFullYear()}`;
+        console.log(dateString);
+        $('#date-string').text(dateString);
+        currDate = currDateTime.getDate();
     }
 }
 
 function formatHour(hour) {
     hour = hour <= 12 ? hour : hour-12;
+    return hour;
 }
 
 function formatMinutes(minute) {
@@ -186,21 +244,13 @@ $(document).ready(function() {
 
     // Take in login form information
     $('#login-submit-button').click( () => {
-
-        console.log("here!!!!!!!!!!!");
         event.preventDefault();
 
         let valid = authenticateLogin();
 
         if(valid) {
             $('.login-error-message').css('display', 'none');
-            loginAJAX()
-                .then(data => {
-                    window.location.href = "welcome.html";
-                })
-                .catch(error => {
-                    $('.login-error-message').css('display', 'block');
-                });
+            loginAJAX();
         }
         else {
             $('.login-error-message').css('display', 'block');
@@ -209,13 +259,14 @@ $(document).ready(function() {
 
 
 
+    // Only use for development purposes
+    //devSetup();
+
 
     //////////////////////////////////
     ///////// Mirror Functions ///////
     //////////////////////////////////
 
-    // On successful login
-    let timeUpdateInterval = setTimeout(updateDateTime, 5 * 1000);
 });
 
 
