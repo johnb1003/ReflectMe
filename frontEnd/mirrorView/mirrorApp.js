@@ -52,7 +52,7 @@ async function loginAJAX() {
             // ERROR HERE, CANT GET TOKEN
             console.log(data);
             console.log(status);
-            console.log(xhr);
+            console.log(xhr.getAllResponseHeaders());
             JWToken = xhr.getResponseHeader('Authorization');
             displayLoops();
             $('.login-view').css('display', 'none');
