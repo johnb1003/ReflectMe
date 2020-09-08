@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 button:focus{
@@ -85,6 +87,8 @@ button:focus{
 
 
 /* Mobile format */
-@media screen and (min-width: 800px) {
-    
+@media screen and (max-width: 800px) {
+    .tagline {
+        display: none;
+    }
 }
