@@ -16,8 +16,9 @@ body {
     display: none;
 }
 
-/* PC format */
+/* PC format 
 @media screen and (min-width: 600px) {
+    */
 
     body {
         height: 100%;
@@ -199,7 +200,7 @@ body {
         min-width: 800px;
         margin: 0 5px 5px 5px;
     }
-}
+/* } */
 
 
 
@@ -212,7 +213,7 @@ body {
 
 
 
-/* Mobile format */
+/* Mobile format 
 @media screen and (max-width: 600px) {
     body {
         height: 100%;
@@ -251,3 +252,5 @@ body {
         text-align: center;
     }
 }
+
+*/

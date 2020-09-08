@@ -206,7 +206,7 @@ async function updateDateTime() {
     let h = currDateTime.getHours();
     let m = currDateTime.getMinutes();
 
-    let ampm = h <= 12 ? 'AM' : 'PM';
+    let ampm = h < 12 ? 'AM' : 'PM';
     h = formatHour(h);
     m = formatMinutes(m);
     let timeString = `${h}:${m} ${ampm}`;
@@ -223,6 +223,7 @@ async function updateDateTime() {
 
 function formatHour(hour) {
     hour = hour <= 12 ? hour : hour-12;
+    hour = hour == 0 ? 12 : hour;
     return hour;
 }
 
