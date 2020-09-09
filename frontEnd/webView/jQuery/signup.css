@@ -303,8 +303,8 @@ body {
         margin: 0;
         padding: 0;
         width: 100vw;
-        height: 100vh;
-        min-height: 100%;
+        height: fit-content;
+        min-height: 100vh;
         background-color: #36495F;
     }
 
@@ -378,7 +378,8 @@ body {
     
     .signup-form {
         width: 100%;
-        height: 90vh;
+        height: fit-content;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -388,7 +389,7 @@ body {
     .form-input {
         margin: 0;
         width: 100%;
-        background-color: #36495F;
+        
     }
     
     .form-input label {
