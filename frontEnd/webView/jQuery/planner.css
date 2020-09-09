@@ -540,10 +540,10 @@ body {
         height: 100%;
         border-radius: 8px;
         background-color: rgb(255, 255, 255);
-        border: 2px solid black;
         padding: .5rem;
         display: flex;
         flex-direction: column;
+        box-shadow: 0 0 10px black;
     }
 
     .form-container {
@@ -590,10 +590,7 @@ body {
     }
 
     .week-container-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1em;
+        text-align: left;
     }
 
     #week-container-title {
@@ -604,16 +601,24 @@ body {
     }
 
     #new-week-button {
-        padding: auto .2em;
+        padding: 0 .2em;
         margin: auto 0;
+        border: none;
+        background-color: transparent;
+        color: #5180D1;
+    }
+
+    #new-week-button:hover {
+        text-decoration: underline;
     }
 
     .show-weeks-container {
         margin: auto;
         width: 100%;
-        height: calc(85vh - 12em);
+        height: calc(85vh - 10em);
         background-color: #2e2e2e;
         overflow: scroll;
+        border-radius: 0 0 8px 8px;
     }
 
     .week-row {
@@ -675,6 +680,8 @@ body {
         grid-template-columns: .5fr 1fr .5fr 1.5fr;
         grid-template-rows: 2em;
         text-align: center;
+        background-color: grey;
+        margin-bottom: .1em;
     }
 
     .week-dropdown-strength-event {
@@ -682,6 +689,8 @@ body {
         grid-template-columns: .5fr 1.5fr 1.5fr;
         grid-template-rows: 2em;
         text-align: center;
+        background-color: grey;
+        margin-bottom: .1em;
     }
 
     .week-dropdown-event-dow {
@@ -765,6 +774,7 @@ body {
         width: 100%;
         height: 100%;
         border-radius: 8px;
+        box-shadow: 0 0 10px black;
     }
       
     .calendar-header {
