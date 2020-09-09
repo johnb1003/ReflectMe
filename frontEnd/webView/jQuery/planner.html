@@ -211,58 +211,54 @@
                 <button class="nav-button" id="account.html">Account</button>
             </nav>
             <div class="main">
-                <div class="schedule">
-                    <div class="calendar-planner-container">
 
-                        <div class="side-bar">
-                            <div class="form-container">
-                                <p id="showing-label"> Currently Showing:</p>
-                                <form class="currently-showing">
-                                    <div>
-                                        <input type="checkbox" id="show-cardio" name="show-cardio" value="cardio" checked>
-                                        <label for="show-cardio"> Cardio events</label><br>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id="show-strength" name="show-strength" value="strength" checked>
-                                        <label for="show-strength"> Strength events</label><br>
-                                    </div>
-                                    <div id="show-misc">
-                                        <input type="checkbox" id="show-misc" name="show-misc" value="misc" checked>
-                                    <label id="show-misc-label" for="show-misc"> Misc. events</label><br>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="week-container">
-                                <div class="week-container-header">
-                                    <p id="week-container-title"> Weekly Schedules:</p>
-                                    <button id="new-week-button">&#43; New Week</button>
-                                </div>
-                                <div class="show-weeks-container">
-                                    
-                                </div>
-                            </div>
+                <div class="calendar-container">
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <button class="prev-button">&lt;&lt;</button>
+                            <p id="month-year">Month / Year</p>
+                            <button class="next-button">&gt;&gt;</button>
+                        </div> 
+                        <div class="grid-names-container">
+                            <p class="day-name">Sun</p>
+                            <p class="day-name">Mon</p>
+                            <p class="day-name">Tue</p>
+                            <p class="day-name">Wed</p>
+                            <p class="day-name">Thu</p>
+                            <p class="day-name">Fri</p>
+                            <p class="day-name">Sat</p>
                         </div>
+                        <div class="grid-container">
+                            
+                        </div>
+                    </div>
+                </div>
 
-                        <div class="calendar-container">
-                            <div class="calendar">
-                                <div class="calendar-header">
-                                    <button class="prev-button">&lt;&lt;</button>
-                                  <p id="month-year">Month / Year</p>
-                                  <button class="next-button">&gt;&gt;</button>
-                                </div> 
-                                <div class="grid-names-container">
-                                  <p class="day-name">Sun</p>
-                                  <p class="day-name">Mon</p>
-                                  <p class="day-name">Tue</p>
-                                  <p class="day-name">Wed</p>
-                                  <p class="day-name">Thu</p>
-                                    <p class="day-name">Fri</p>
-                                  <p class="day-name">Sat</p>
-                                </div>
-                                <div class="grid-container">
-                                  
-                                </div>
+                <div class="side-bar">
+                    <div class="form-container">
+                        <p id="showing-label"> Currently Showing:</p>
+                        <form class="currently-showing">
+                            <div>
+                                <input type="checkbox" id="show-cardio" name="show-cardio" value="cardio" checked>
+                                <label for="show-cardio"> Cardio events</label><br>
                             </div>
+                            <div>
+                                <input type="checkbox" id="show-strength" name="show-strength" value="strength" checked>
+                                <label for="show-strength"> Strength events</label><br>
+                            </div>
+                            <div id="show-misc">
+                                <input type="checkbox" id="show-misc" name="show-misc" value="misc" checked>
+                            <label id="show-misc-label" for="show-misc"> Misc. events</label><br>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="week-container">
+                        <div class="week-container-header">
+                            <p id="week-container-title"> Weekly Schedules:</p>
+                            <button id="new-week-button">&#43; New Week</button>
+                        </div>
+                        <div class="show-weeks-container">
+                            
                         </div>
                     </div>
                 </div>

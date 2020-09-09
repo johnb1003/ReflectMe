@@ -146,12 +146,12 @@ class Calendar {
         }
         
         if(this.firstDay + this.numDays <= 35) {
-            $('.grid-container').css('grid-template-rows', 'repeat(5, 5.5em)');
-            $('.grid-container').css('padding-top', '3.2em');
-            $('.grid-container').css('padding-bottom', '3.2em');
+            $('.grid-container').css('grid-template-rows', 'repeat(5, 4em)');
+            $('.grid-container').css('padding-top', '.3em');
+            $('.grid-container').css('padding-bottom', '.3em');
         }
         else {
-            $('.grid-container').css('grid-template-rows', 'repeat(6, 5.5em)');
+            $('.grid-container').css('grid-template-rows', 'repeat(6, 4em)');
             $('.grid-container').css('padding-top', '.3em');
             $('.grid-container').css('padding-bottom', '.3em');
         }
