@@ -314,8 +314,8 @@ body {
         margin: 0;
         padding: 0;
         width: 100vw;
-        height: 100vh;
-        min-height: 100vh;
+        height: 100%;
+        min-height: 100%;
     }
 
     .logo {
@@ -483,5 +483,22 @@ body {
     #login-here:hover {
         text-decoration: underline;
         color: #337AB7;
+    }
+}
+
+
+@media screen and (max-width: 800px) and (min-height: 650px){
+    .signup-container {
+        height: 100%;
+        min-height: 100%;
+    }
+
+    .signup-form {
+        margin: 2em 1em;
+        min-height: 90vh;
+    }
+
+    .form-input {
+        height: 90vh;
     }
 }
