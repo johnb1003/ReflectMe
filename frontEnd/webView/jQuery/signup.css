@@ -451,7 +451,7 @@ body {
     
     #signup-submit-button {
         margin-top: 1%;
-        border-radius: 10px;
+        border-radius: 5px;
         width: 70%;
         height: 2.4em;
         min-height: 2.4em;
@@ -495,10 +495,15 @@ body {
 
     .signup-form {
         margin: 2em 1em;
-        min-height: 90vh;
+        min-height: 87vh;
     }
 
     .form-input {
-        height: 90vh;
+        height: 87vh;
+    }
+
+    #signup-submit-button {
+        height: 3em;
+        min-height: 2.4em;
     }
 }
