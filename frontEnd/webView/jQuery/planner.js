@@ -146,12 +146,16 @@ class Calendar {
         }
         
         if(this.firstDay + this.numDays <= 35) {
-            $('.grid-container').css('grid-template-rows', 'repeat(5, 4em)');
+            let boxHeight = 'calc(((85vh - 10px) - 7.83em - 21px)/6)';
+            //$('.grid-container').css('grid-template-rows', 'repeat(5, 1fr)');
+            $('.grid-container').css(`grid-template-rows', 'repeat(5, ${boxHeight})`);
             $('.grid-container').css('padding-top', '.3em');
             $('.grid-container').css('padding-bottom', '.3em');
         }
         else {
-            $('.grid-container').css('grid-template-rows', 'repeat(6, 4em)');
+            let boxHeight = 'calc(((85vh - 10px) - 7.83em - 21px)/6)';
+            $('.grid-container').css(`grid-template-rows', 'repeat(6, ${boxHeight})`);
+            //$('.grid-container').css('grid-template-rows', 'repeat(6, 1fr)');
             $('.grid-container').css('padding-top', '.3em');
             $('.grid-container').css('padding-bottom', '.3em');
         }

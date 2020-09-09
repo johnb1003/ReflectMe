@@ -10,6 +10,10 @@ body {
         padding: 5px;
         border-radius: 8px;
         text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        height: 85vh;
     }
 
     .content {
@@ -532,12 +536,14 @@ body {
     }
 
     .side-bar {
-        width: 100%;
+        width: 25%;
+        height: 100%;
         border-radius: 8px;
         background-color: rgb(255, 255, 255);
         border: 2px solid black;
-        padding: 1.5em;
-        margin-top: 2rem;
+        padding: .5rem;
+        display: flex;
+        flex-direction: column;
     }
 
     .form-container {
@@ -563,16 +569,23 @@ body {
         display: none;
     }
 
+    .show-group {
+        margin: 0 .5em;
+    }
+
     .currently-showing {
-        text-align: left;
-        margin: 0 auto;
-        padding: 0 auto;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: baseline;
     }
 
     .week-container {
         margin: 1em auto;
         width: 100%;
         border-radius: 8px;
+        flex: 1 1 auto;
     }
 
     .week-container-header {
@@ -597,8 +610,7 @@ body {
     .show-weeks-container {
         margin: auto;
         width: 100%;
-        height: 27em;
-        max-height: 27em;
+        height: 40vh;
         background-color: #cccccc;
         overflow: scroll;
     }
@@ -750,6 +762,7 @@ body {
     .calendar {
         background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
         width: 100%;
+        height: 100%;
         border-radius: 8px;
     }
       
@@ -766,7 +779,7 @@ body {
     .calendar-header button{
         background-color: transparent;
         border: none;
-        padding: .2em 3em;
+        padding: .2em 1em;
     }
 
     .calendar-header p{
@@ -802,11 +815,11 @@ body {
         width: 100%;
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        grid-template-rows: repeat(5, 4em);
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-rows: repeat(5, calc(((85vh - 10px) - 3.83em - 21px)/6));
         grid-gap: .3em;
         padding: .3em;
         color: black;
-        background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
     }
       
     .day-name {
@@ -820,7 +833,6 @@ body {
         position: relative;
         background-color: rgb(255, 255, 255);
         text-align: left;
-        padding: .1em 0 0 .2em;
         overflow: hidden;
     }
       
@@ -997,8 +1009,8 @@ body {
     }
 
     .calendar-container {
-        width: 100%;
-        min-width: 45em;
+        width: 70%;
+        height: 100%;
     }
 
     .schedule-button {
