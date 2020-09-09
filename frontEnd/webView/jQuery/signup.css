@@ -78,19 +78,17 @@ body {
     padding-bottom: 0;
 }
 
-#invalid-email {
-    margin-right: 16%;
-}
-
-.submit-button {
-    margin-top: 6%;
-    border-radius: 10px;
+#signup-submit-button {
+    margin-top: 2rem;
+    border-radius: 5px;
     width: 70%;
     height: 2.4em;
+    min-height: 2.4em;
     background-color: white;
+    color: black;
 }
 
-.submit-button:hover {
+#signup-submit-button:hover{
     background-color: rgb(184, 184, 184);
 }
 
@@ -200,8 +198,9 @@ body {
     }
 
     .signup-form {
-        width: 50%;
-        height: 40em;
+        width: 75%;
+        height: fit-content;
+        min-height: 40em;
         background-color: #36495F;
         border-radius: 8px;
         box-shadow: 0em 0em 8px 3px black;
@@ -228,8 +227,25 @@ body {
         height: 2em;
     }
 
+    .password-criteria-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1em;
+        padding: .2em;
+    }
+
+    .password-criteria-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
     .password-criteria {
-        margin-top: 3%;
+        margin: 0 1em;
         color: #8BDD96;
     }
     
@@ -242,21 +258,6 @@ body {
         margin-bottom: 0;
         padding-top: 0;
         padding-bottom: 0;
-    }
-
-    #invalid-email {
-        margin-right: 16%;
-    }
-    
-    .submit-button {
-        margin-top: 6%;
-        border-radius: 10px;
-        width: 70%;
-        height: 2.4em;
-    }
-
-    .submit-button:hover {
-        background-color: rgb(184, 184, 184);
     }
 
     .login-line {
@@ -308,7 +309,19 @@ body {
         width: 80%;
     }
 
+    .email-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
     .email-group {
+        width: 70%;
+    }
+
+    .email-group input {
         width: 100%;
     }
     
@@ -334,10 +347,6 @@ body {
     
     .l-name-group input {
         width: 100%;
-    }
-    
-    .email-group input{
-        width: 70%;
     }
     
     .password-group {
@@ -420,15 +429,11 @@ body {
         font-size: 9px;
         display: none;
         text-align: right;
-        margin-right: 15%;
+        margin-right: 2%;
         margin-top: 0;
         margin-bottom: 0;
         padding-top: 0;
         padding-bottom: 0;
-    }
-    
-    #invalid-email {
-        margin-right: 16%;
     }
     
     #signup-submit-button {

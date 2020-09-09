@@ -29,8 +29,8 @@ body {
         margin: auto;
         width: 98%;
         min-width: 30em;
-        height: 100vh;
-        min-height: 33em;
+        height: fit-content;
+        min-height: 100vh;
     }
 
     .logo {
@@ -55,7 +55,8 @@ body {
 
     .login-form {
         width: 50%;
-        height: 33em;
+        height: fit-content;
+        min-height: 33em;
         background-color: #36495F;
         border-radius: 8px;
         box-shadow: 0em 0em 8px 3px black;
