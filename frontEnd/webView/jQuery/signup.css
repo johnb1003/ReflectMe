@@ -490,8 +490,8 @@ body {
 
 @media screen and (max-width: 800px) and (min-height: 700px){
     .signup-container {
-        height: 97vh;
-        min-height: 97vh;
+        height: 100%;
+        min-height: 100%;
         padding: 1vh 1em 2vh 1em;
     }
 
@@ -513,7 +513,7 @@ body {
     .signup-container {
         height: 100%;
         min-height: 100%;
-        padding: 1vh 1em 3vh 1em;
+        padding: 1vh 1em 2vh 1em;
     }
 
     .signup-form {
