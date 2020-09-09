@@ -62,12 +62,6 @@ body {
     height: 2em;
 }
 
-.password-criteria-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .password-criteria {
     margin-top: 3%;
     color: #8BDD96;
@@ -234,12 +228,6 @@ body {
         height: 2em;
     }
 
-    .password-criteria-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     .password-criteria {
         margin-top: 3%;
         color: #8BDD96;
@@ -394,7 +382,7 @@ body {
     
     .form-input label {
         color: white;
-        margin-top: .8em;
+        margin-top: 2rem;
         text-align: left;
     }
     
@@ -403,18 +391,28 @@ body {
         color: white;
         border-radius: 10px;
         border: none;
-        height: 2em;
+        height: 2.5em;
     }
     
     .password-criteria-container {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 1em;
         padding: .2em;
+    }
+
+    .password-criteria-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
     }
     
     .password-criteria {
-        margin-top: 1em;
+        margin: 0 1em;
         color: #8BDD96;
     }
     
@@ -434,7 +432,7 @@ body {
     }
     
     #signup-submit-button {
-        margin-top: 1%;
+        margin-top: 2rem;
         border-radius: 5px;
         width: 70%;
         height: 2.4em;
@@ -451,7 +449,7 @@ body {
         display: flex;
         justify-content: center;
         align-items: baseline;
-        margin-top: 4%;
+        margin-top: 2rem;
         width: 95%;
     } 
     

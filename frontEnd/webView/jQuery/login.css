@@ -200,7 +200,7 @@ body {
 
     .form-input label {
         color: white;
-        margin-top: 4%;
+        margin-top: 2rem;
         text-align: left;
     }
 
@@ -209,7 +209,7 @@ body {
         color: white;
         border-radius: 10px;
         border: none;
-        height: 2em;
+        height: 2.5em;
     }
     
     .login-error-message {
@@ -225,7 +225,7 @@ body {
     
     .submit-button {
         margin-top: 3rem;
-        border-radius: 10px;
+        border-radius: 5px;
         width: 75%;
         height: 2.4em;
         background-color: white;
