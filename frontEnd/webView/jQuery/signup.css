@@ -494,12 +494,12 @@ body {
     }
 
     .signup-form {
-        margin: 5vh 1em 10vh 1em;
-        min-height: 80vh;
+        margin: 5vh 1em 8vh 1em;
+        min-height: 75vh;
     }
 
     .form-input {
-        height: 80vh;
+        height: 75vh;
     }
 
     #signup-submit-button {
