@@ -5,6 +5,7 @@ import com.reflectme.server.model.Account;
 import com.reflectme.server.model.Cardio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -22,6 +25,9 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
 
     @Autowired
     private LocalContainerEntityManagerFactoryBean emf;
+
+    @Autowired
+    private SimpleJdbcInsert simpleJdbcInsertAccount;
 
     @Override
     public Account getAccountByEmail(String email) {
@@ -131,8 +137,6 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
     @Override
     public int saveAccount(String fname, String lname, String email, String phonenum, String password) {
         entityManager = emf.getObject().createEntityManager();
-        //entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        //entityManager.getTransaction().begin();
 
         String queryString = "INSERT INTO account (fname, lname, email, phonenum, password) " +
                 "VALUES(:fname, :lname, :email, :phonenum, :password)";
@@ -148,5 +152,25 @@ public class AccountRepositoryCustomImpl implements AccountRepositoryCustom{
         entityManager.close();
 
         return rows;
+    }
+
+    @Override
+    public long saveAccount(Account account) {
+        entityManager = emf.getObject().createEntityManager();
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+
+        parameters.put("fname", account.getfName());
+        parameters.put("lname", account.getlName());
+        parameters.put("email", account.getEmail());
+        parameters.put("phonenum", account.getPhoneNum());
+        parameters.put("password", account.getPassword());
+
+        Number result = simpleJdbcInsertAccount.executeAndReturnKey(parameters);
+        //System.out.println("Generated id - " + result.longValue());
+
+        entityManager.close();
+
+        return result.longValue();
     }
 }

@@ -40,10 +40,9 @@ public class AccountService {
 
     public ResponseEntity createAccount(Account rawAccount) {
         try {
+            rawAccount.setPassword(bCryptPasswordEncoder.encode(rawAccount.getPassword()));
             return Optional
-                    .ofNullable(accountRepo.saveAccount(rawAccount.getfName(), rawAccount.getlName(),
-                            rawAccount.getEmail(), rawAccount.getPhoneNum(),
-                            bCryptPasswordEncoder.encode(rawAccount.getPassword())))
+                    .ofNullable(accountRepo.saveAccount(rawAccount))
                     .map(account -> ResponseEntity.ok().body(rawAccount.dropPassword()))
                     .orElseGet(() -> ResponseEntity.notFound().build());
         }

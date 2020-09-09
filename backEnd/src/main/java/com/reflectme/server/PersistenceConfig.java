@@ -35,6 +35,11 @@ public class PersistenceConfig {
         return factory;
     }
 
+    @Bean
+    public SimpleJdbcInsert simpleJdbcInsertAccount(){
+        return new SimpleJdbcInsert(dataSource).withTableName("account")
+                .usingGeneratedKeyColumns("userid");
+    }
 
     @Bean
     public SimpleJdbcInsert simpleJdbcInsertCardio(){

@@ -31,7 +31,12 @@ public interface AccountRepositoryCustom {
             "where a.email = :email", nativeQuery = true)
     public String getPassword(String email);
 
+
     @Query(value = "INSERT INTO account (fname, lname, email, phonenum, password) " +
             "VALUES(:fname, :lname, :email, :phonenum, :password)", nativeQuery = true)
     public int saveAccount(String fname, String lname, String email, String phonenum, String password);
+
+
+
+    public long saveAccount(Account account);
 }
