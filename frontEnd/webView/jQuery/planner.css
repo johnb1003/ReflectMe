@@ -34,7 +34,7 @@ body {
         align-items: center;
         cursor: default;
         overflow: hidden;
-        /*display: none;*/
+        display: none;
     }
 
     .pop-up-planner {
