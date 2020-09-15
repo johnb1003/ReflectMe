@@ -68,7 +68,7 @@ let activeButtonText = 'Add Event to Calendar';
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
-
+/*
 allMonthData = {
     "months": {
         "2020-09-01": {
@@ -352,6 +352,7 @@ allMonthData = {
         }
     ]
 };
+*/
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -1111,25 +1112,15 @@ function processDayView() {
 ////////////////////////////////////////////////////////////////////////
 */
 
-function processSchedulerView() {
-    // Check collectPastInput 
-
-    // Check selected type (cardio, strength)
-
-    // Show corresponding sections / inputs
-
-    // 
-}
-
 function clearFormData() {
     // Clear cardio data
     $('#cardio-type').val('Run');
-    $('#cardio-distance-big').val(0);
-    $('#cardio-distance-small').val(0);
+    $('#cardio-distance-big').val('0');
+    $('#cardio-distance-small').val('0');
     $('#cardio-other-name').val('Other');
-    $('#cardio-duration-h').val(0);
-    $('#cardio-duration-m').val(0);
-    $('#cardio-duration-s').val(0);
+    $('#cardio-duration-h').val('0');
+    $('#cardio-duration-m').val('0');
+    $('#cardio-duration-s').val('0');
     $('#dow-selector-cardio').val('0');
     $('#invalid-other-cardio').css('display', 'none');
 
@@ -1400,7 +1391,7 @@ async function getAllMonthData() {
     
     cardioEventsObject = {};
     strengthEventsObject = {};
-    /*
+    
     await allMonthDataAJAX()
         .then(data => {
             allMonthData = data;
@@ -1412,7 +1403,7 @@ async function getAllMonthData() {
             console.log(error);
         }
     );
-    */
+    
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
@@ -1420,8 +1411,8 @@ async function getAllMonthData() {
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
-    displayWeeks(allMonthData.weeks);
-    calendar.render();
+    //displayWeeks(allMonthData.weeks);
+    //calendar.render();
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
@@ -1970,7 +1961,7 @@ $(document).ready(function() {
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
-    getAllMonthData();
+    //getAllMonthData();
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
