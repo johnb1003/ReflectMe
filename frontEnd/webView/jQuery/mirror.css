@@ -3,11 +3,36 @@ body {
     background-image: url("resources/green-metal-background.png");
 }
 
-/* PC format */
-@media screen and (min-width: 600px) {
+.setup-mirror-container {
+    margin: 0 auto;
+    width: 100%;
+    /*
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px black;
+    */
+}
 
-    .main {
-        margin: 0 5px 5px 5px;
-        text-align: center;
-    }
+
+.setup-mirror-header {
+    
+}
+
+.setup-mirror-description {
+    color: #5180D1;
+}
+
+.main {
+    margin: 0 5px 5px 5px;
+    text-align: center;
+}
+
+/* PC format */
+@media screen and (min-width: 801px) {
+
+}
+
+/* Mobile format */
+@media screen and (max-width: 800px) {
+
 }

@@ -21,8 +21,8 @@
     </head>
 
     <body>
-        <div class="pop-up" id="pop-up-background">
-            <div class="pop-up-previous">&lt;</div>
+        <div class="pop-up-background"></div>
+        <div class="pop-up" id="pop-up-container">
             <div class="pop-up-planner">
                 <div class="back-to-day-schedule">
                     <p>&lt; Back to day schedule</p>
@@ -32,12 +32,18 @@
                 </div>
                 <div class="existing-events-container">
                     <div class="day-view-header">
-                        <button class="create-event-button" id="log-event-button">Log Completed Event</button>
-                        <div class="corner-date">
-                            <p id="corner-week-day"></p>
-                            <p id="corner-month-date"></p>
+                        <div class="day-view-header-date">
+                            <div class="pop-up-previous">&lt;</div>
+                            <div class="corner-date">
+                                <p id="corner-week-day"></p>
+                                <p id="corner-month-date"></p>
+                            </div>
+                            <div class="pop-up-next">&gt;</div>
                         </div>
-                        <button class="create-event-button" id="new-event-button">Schedule New Event</button>
+                        <div class="day-view-header-event-buttons">
+                            <button class="create-event-button" id="log-event-button">Log Completed Event</button>
+                            <button class="create-event-button" id="new-event-button">Schedule New Event</button>
+                        </div>
                     </div>
                     <div class="existing-events">
                         <div class="events-list">
@@ -49,11 +55,12 @@
 
                             <p id="day-scheduler-header-title"> Schedule Future Day Event </p>
     
-                            <div class="event-type-selector">
-                                <button class="day-type-button button-clicked" id="cardio-day-type">Cardio</button>
-                                <button class="day-type-button" id="strength-day-type">Strength</button>
-                                <button class="day-type-button" id="misc-day-type">Misc.</button>
-                            </div>
+                            
+                        </div>
+                        <div class="event-type-selector">
+                            <button class="day-type-button button-clicked" id="cardio-day-type">Cardio</button>
+                            <button class="day-type-button" id="strength-day-type">Strength</button>
+                            <button class="day-type-button" id="misc-day-type">Misc.</button>
                         </div>
                         <div class="day-input-container">
                             <div class="top-panel">
@@ -90,15 +97,25 @@
 
                                             <div class="input-grouping cardio-distance-group">
                                                 <label for="cardio-distance">Distance: </label>
-                                                <input type="number" class="cardio-distance" id="cardio-distance-big" min="0" max="99" step="1" value="0"> .
-                                                <input type="number" class="cardio-distance" id="cardio-distance-small" min="0" max="9" step="1" value="0"> mile(s)<br>
+                                                <select name="distance-big-selector" class="cardio-distance" id="cardio-distance-big">
+                                                    <option value="0" selected>0</option>
+                                                </select> .
+                                                <select name="distance-small-selector" class="cardio-distance" id="cardio-distance-small">
+                                                    <option value="0" selected>0</option>
+                                                </select> mile(s)<br>
                                             </div>
 
                                             <div class="input-grouping past-input cardio-duration-group">
                                                 <label for="cardio-duration-h">Duration: </label>
-                                                <input type="number" class="cardio-duration" id="cardio-duration-h" min="0" max="23" step="01" value="00"> h
-                                                <input type="number" class="cardio-duration" id="cardio-duration-m" min="0" max="59" step="01" value="00"> m
-                                                <input type="number" class="cardio-duration" id="cardio-duration-s" min="0" max="59" step="01" value="00"> s <br>
+                                                <select name="cardio-duration-h" class="cardio-duration" id="cardio-duration-h">
+                                                    <option value="0" selected>0</option>
+                                                </select> h 
+                                                <select name="cardio-duration-m" class="cardio-duration" id="cardio-duration-m">
+                                                    <option value="0" selected>0</option>
+                                                </select> m 
+                                                <select name="cardio-duration-s" class="cardio-duration" id="cardio-duration-s">
+                                                    <option value="0" selected>0</option>
+                                                </select> s
                                             </div>
                                         </div>
                                     </div>
@@ -200,7 +217,6 @@
                     <p id="invalid-create-week-name">Week name must contain 1-10 characters</p>
                 </div>
             </div>
-            <div class="pop-up-next">&gt;</div>
         </div>
         <div class="content">
             <nav class="nav-bar">
@@ -213,7 +229,7 @@
             </nav>
             <div class="nav-dropdown-container">
                 <div class="nav-dropdown">
-                    <button class="nav-button-dropdown" id="planner.html">Planner</button>
+                    <button class="nav-button-dropdown" id="welcome.html">Home</button>
                     <button class="nav-button-dropdown" id="mirror.html">Mirror</button>
                     <button class="nav-button-dropdown" id="account.html">Account</button>
                 </div>

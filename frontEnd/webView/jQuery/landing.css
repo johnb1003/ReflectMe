@@ -99,6 +99,8 @@ body {
         border-radius: 2px;
         padding: .1em;
         border: 1px solid black;
+        color: black;
+        background-color: white;
     }
 
     .main {

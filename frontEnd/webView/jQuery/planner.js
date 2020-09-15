@@ -60,6 +60,307 @@ let strengthEventsObject = {};
 let activeButtonText = 'Add Event to Calendar';
 
 
+
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+// ONLY FOR DEVELOPMENT & TESTING PURPOSES !!!!!!!
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+allMonthData = {
+    "months": {
+        "2020-09-01": {
+            "9": {
+                "cardio": [
+                    {
+                        "cardioid": 14,
+                        "userid": 64,
+                        "date": "2020-09-09",
+                        "dayofweek": 0,
+                        "cardiotype": "run",
+                        "distance": 2.1,
+                        "time": null,
+                        "status": "scheduled",
+                        "weekid": null
+                    }
+                ],
+                "strength": []
+            },
+            "12": {
+                "cardio": [
+                    {
+                        "cardioid": 51,
+                        "userid": 64,
+                        "date": "2020-09-12",
+                        "dayofweek": 0,
+                        "cardiotype": "run",
+                        "distance": 1.0,
+                        "time": 492,
+                        "status": "completed",
+                        "weekid": null
+                    }
+                ],
+                "strength": []
+            },
+            "16": {
+                "cardio": [
+                    {
+                        "cardioid": 32,
+                        "userid": 64,
+                        "date": "2020-09-16",
+                        "dayofweek": 0,
+                        "cardiotype": "run",
+                        "distance": 1.6,
+                        "time": 789,
+                        "status": "completed",
+                        "weekid": null
+                    }
+                ],
+                "strength": []
+            },
+            "18": {
+                "cardio": [
+                    {
+                        "cardioid": 53,
+                        "userid": 64,
+                        "date": "2020-09-18",
+                        "dayofweek": 0,
+                        "cardiotype": "run",
+                        "distance": 1.0,
+                        "time": 480,
+                        "status": "completed",
+                        "weekid": null
+                    }
+                ],
+                "strength": []
+            },
+            "19": {
+                "cardio": [
+                    {
+                        "cardioid": 25,
+                        "userid": 64,
+                        "date": "2020-09-19",
+                        "dayofweek": 3,
+                        "cardiotype": "run",
+                        "distance": 1.0,
+                        "time": 484,
+                        "status": "completed",
+                        "weekid": null
+                    }
+                ],
+                "strength": []
+            },
+            "21": {
+                "cardio": [
+                    {
+                        "cardioid": 44,
+                        "userid": 64,
+                        "date": "2020-09-21",
+                        "dayofweek": 5,
+                        "cardiotype": "run",
+                        "distance": 1.5,
+                        "time": 738,
+                        "status": "completed",
+                        "weekid": null
+                    }
+                ],
+                "strength": []
+            },
+            "23": {
+                "cardio": [
+                    {
+                        "cardioid": 45,
+                        "userid": 64,
+                        "date": "2020-09-23",
+                        "dayofweek": 0,
+                        "cardiotype": "golf",
+                        "distance": 5.0,
+                        "time": null,
+                        "status": "scheduled",
+                        "weekid": null
+                    },
+                    {
+                        "cardioid": 99,
+                        "userid": 64,
+                        "date": "2020-09-23",
+                        "dayofweek": 0,
+                        "cardiotype": "golf",
+                        "distance": 5.0,
+                        "time": null,
+                        "status": "scheduled",
+                        "weekid": null
+                    }
+                ],
+                "strength": []
+            },
+            "25": {
+                "cardio": [
+                    {
+                        "cardioid": 24,
+                        "userid": 64,
+                        "date": "2020-09-25",
+                        "dayofweek": 2,
+                        "cardiotype": "run",
+                        "distance": 1.1,
+                        "time": null,
+                        "status": "scheduled",
+                        "weekid": null
+                    }
+                ],
+                "strength": []
+            },
+            "29": {
+                "cardio": [
+                    {
+                        "cardioid": 26,
+                        "userid": 64,
+                        "date": "2020-09-29",
+                        "dayofweek": 6,
+                        "cardiotype": "run",
+                        "distance": 1.0,
+                        "time": null,
+                        "status": "scheduled",
+                        "weekid": null
+                    }
+                ],
+                "strength": []
+            }
+        }
+    },
+    "weeks": [
+        {
+            "weekID": 5,
+            "weekName": "Run Sched.",
+            "active": true,
+            "cardio": [
+                {
+                    "cardioid": 50,
+                    "userid": 64,
+                    "date": "2020-09-22",
+                    "dayofweek": 0,
+                    "cardiotype": "walk",
+                    "distance": 4.0,
+                    "time": null,
+                    "status": "scheduled",
+                    "weekid": 5
+                },
+                {
+                    "cardioid": 15,
+                    "userid": 64,
+                    "date": "2020-09-23",
+                    "dayofweek": 1,
+                    "cardiotype": "run",
+                    "distance": 2.0,
+                    "time": null,
+                    "status": "scheduled",
+                    "weekid": 5
+                },
+                {
+                    "cardioid": 16,
+                    "userid": 64,
+                    "date": "2020-09-22",
+                    "dayofweek": 3,
+                    "cardiotype": "run",
+                    "distance": 3.0,
+                    "time": null,
+                    "status": "scheduled",
+                    "weekid": 5
+                },
+                {
+                    "cardioid": 47,
+                    "userid": 64,
+                    "date": "2020-09-22",
+                    "dayofweek": 4,
+                    "cardiotype": "run",
+                    "distance": 2.0,
+                    "time": null,
+                    "status": "scheduled",
+                    "weekid": 5
+                }
+            ],
+            "strength": []
+        },
+        {
+            "weekID": 21,
+            "weekName": "Lift Sched.",
+            "active": true,
+            "cardio": [],
+            "strength": [
+                {
+                    "strengthid": 30,
+                    "userid": 64,
+                    "date": "2020-09-22",
+                    "dayofweek": 2,
+                    "strengthtype": "lift",
+                    "lifts": "chest, triceps, core",
+                    "status": "scheduled",
+                    "weekid": 21
+                },
+                {
+                    "strengthid": 31,
+                    "userid": 64,
+                    "date": "2020-09-22",
+                    "dayofweek": 3,
+                    "strengthtype": "lift",
+                    "lifts": "back, biceps",
+                    "status": "scheduled",
+                    "weekid": 21
+                },
+                {
+                    "strengthid": 32,
+                    "userid": 64,
+                    "date": "2020-09-22",
+                    "dayofweek": 4,
+                    "strengthtype": "lift",
+                    "lifts": "legs",
+                    "status": "scheduled",
+                    "weekid": 21
+                },
+                {
+                    "strengthid": 33,
+                    "userid": 64,
+                    "date": "2020-09-22",
+                    "dayofweek": 5,
+                    "strengthtype": "lift",
+                    "lifts": "chest, triceps, core",
+                    "status": "scheduled",
+                    "weekid": 21
+                },
+                {
+                    "strengthid": 34,
+                    "userid": 64,
+                    "date": "2020-09-22",
+                    "dayofweek": 6,
+                    "strengthtype": "lift",
+                    "lifts": "back, biceps",
+                    "status": "scheduled",
+                    "weekid": 21
+                },
+                {
+                    "strengthid": 29,
+                    "userid": 64,
+                    "date": "2020-09-30",
+                    "dayofweek": 1,
+                    "strengthtype": "lift",
+                    "lifts": "legs, shoulders",
+                    "status": "scheduled",
+                    "weekid": 21
+                }
+            ]
+        }
+    ]
+};
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+// ONLY FOR DEVELOPMENT & TESTING PURPOSES !!!!!!!
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+
 /*
 ////////////////////////////////////////////////////////////////////////
 ////////////////              CALENDAR CLASS            ////////////////
@@ -399,11 +700,13 @@ let JWToken = getCookie("token");
 
 // Method to call when a day in the calendar view is clicked
 function dayClickFunction(weekDay, month, dateNum, suffix, year) {
+    $('.pop-up-background').css('height', `${$('.content').outerHeight()}px`);
+    $('.pop-up-background').css('display', 'block');
     $('.pop-up').css('display', 'flex');
     $('#corner-week-day').text(weekDay+',');
     $('#corner-month-date').text(months[month]+' '+dateNum+suffix);
 
-
+    $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
     $('.existing-events').css('display', 'block');
     $('.create-event-button').css('display', 'block');
 
@@ -428,6 +731,7 @@ function dayClickFunction(weekDay, month, dateNum, suffix, year) {
 
 function getDistanceHTML(dist) {
     let distHTML = '<div class="day-view-distance-container">';
+    distHTML += '<p class="day-view-distance-label">Distance:&nbsp;</p>';
     distHTML += '<p class="day-view-distance">'+dist+'</p>';
     if(dist > 1) {
         distHTML += '<p class="day-view-distance-miles">&nbsp;miles</p>';
@@ -443,24 +747,24 @@ function getDistanceHTML(dist) {
 function getDurationHTML(dur) {
     let duration = parseInt(dur);
     let durHTML = '<div class="day-view-duration">';
-
+    durHTML += '<p class="day-view-duration-label">Time:&nbsp;</p>';
     if(Math.floor(duration / 3600) > 0) {
         durHTML += '<p class="day-view-duration-num">'+Math.floor(duration / 3600)+'</p>';
-        durHTML += '<p class="day-view-distance-label">h&nbsp;</p>';
+        durHTML += '<p class="day-view-duration-unit">h&nbsp;</p>';
         duration = duration % 3600;
     }
 
     console.log(Math.floor(duration / 60));
     if(Math.floor(duration / 60) > 0) {
         durHTML += '<p class="day-view-duration-num">'+Math.floor(duration / 60)+'</p>';
-        durHTML += '<p class="day-view-distance-label">m&nbsp;</p>';
+        durHTML += '<p class="day-view-duration-unit">m&nbsp;</p>';
         duration = duration % 60;
         console.log(duration);
     }
 
     if(duration > 0) {
         durHTML += '<p class="day-view-duration-num">'+duration+'</p>';
-        durHTML += '<p class="day-view-distance-label">s</p>';
+        durHTML += '<p class="day-view-duration-unit">s</p>';
     }
 
     durHTML += '</div>';
@@ -552,41 +856,53 @@ function processDayView() {
                 durationExists = false;
             }
             dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio-'+element.cardioid+'">';
+            dayViewHTML += '<div class="day-view-row-top">';
             dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
             dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
-            dayViewHTML += getDistanceHTML(element.distance);
-            if(durationExists) {
-                dayViewHTML += getDurationHTML(element.time);
-                viewIDs.cardio[element.cardioid] = '1.3fr 1fr 1fr 1fr 1.2fr';
-                //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 1fr 1fr 1fr');
-            }
-            else {
-                viewIDs.cardio[element.cardioid] = '1.3fr 1fr 2fr 1.2fr';
-                //$('#full-week-strength-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
-            }
+            dayViewHTML += '<button class="day-view-dropdown-button" id="cardio-view-dropdown-button-'+element.cardioid+'">&#9660;</button>';
+            dayViewHTML += '</div>';
+            dayViewHTML += '<div class="day-view-row-dropdown" id="cardio-view-dropdown-'+element.cardioid+'">';
             dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
             dayViewHTML += '<button class="day-view-edit-button" id="cardio-view-edit-'+element.cardioid+'">Edit</button>';
             dayViewHTML += '<button class="day-view-delete-button" id="cardio-view-delete-'+element.cardioid+'">Delete</button>';
-            dayViewHTML += '</div></div>';
+            dayViewHTML += '</div>';
+            dayViewHTML += '<div class="day-view-details">';
+            dayViewHTML += getDistanceHTML(element.distance);
+            if(durationExists) {
+                dayViewHTML += getDurationHTML(element.time);
+                //viewIDs.cardio[element.cardioid] = '1.3fr 1fr 1fr 1fr 1.2fr';
+                //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 1fr 1fr 1fr');
+            }
+            else {
+                //viewIDs.cardio[element.cardioid] = '1.3fr 1fr 2fr 1.2fr';
+                //$('#full-week-strength-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
+            }
+            dayViewHTML += '</div></div></div>';
         });
     
     
         strengthEvents.forEach(element => {
             noEvents = false;
             dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-strength-'+element.strengthid+'">';
+            dayViewHTML += '<div class="day-view-row-top">';
             dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
             dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
+            dayViewHTML += '<button class="day-view-dropdown-button" id="strength-view-dropdown-button-'+element.strengthid+'">&#9660;</button>';
+            dayViewHTML += '</div>';
+            dayViewHTML += '<div class="day-view-row-dropdown" id="strength-view-dropdown-'+element.strengthid+'">';
+            dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.strengthid+'">';
+            dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
+            dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
+            dayViewHTML += '</div>';
+            dayViewHTML += '<div class="day-view-details">';
             if(element.strengthtype.toLowerCase() == 'lift') {
                 dayViewHTML += getLiftHTML(element.lifts);
             }
             else {
                 dayViewHTML += '<p class="day-view-placeholder"> </p>';
             }
-            dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.strengthid+'">';
-            dayViewHTML += '<button class="day-view-edit-button" id="strength-view-edit-'+element.strengthid+'">Edit</button>';
-            dayViewHTML += '<button class="day-view-delete-button" id="strength-view-delete-'+element.strengthid+'">Delete</button>';
-            dayViewHTML += '</div></div>';
-            viewIDs.strength[element.strengthid] = '1.3fr 1fr 2fr 1.2fr';
+            dayViewHTML += '</div></div></div>';
+            //viewIDs.strength[element.strengthid] = '1.3fr 1fr 2fr 1.2fr';
             //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
         });
         
@@ -603,13 +919,19 @@ function processDayView() {
                     if(((dateNum+(calendar.firstDay-1))%7) == element.dayofweek) {
                         noEvents = false;
                         dayViewHTML += '<div class="day-view-row full-cardio-row" id="full-week-cardio-'+element.cardioid+'">';
+                        dayViewHTML += '<div class="day-view-row-top">';
                         dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-title">'+element.cardiotype.charAt(0).toUpperCase()+element.cardiotype.slice(1)+'</p>';
-                        dayViewHTML += getDistanceHTML(element.distance);
+                        dayViewHTML += '<button class="day-view-dropdown-button" id="cardio-view-dropdown-button-'+element.cardioid+'">&#9660;</button>';
+                        dayViewHTML += '</div>';
+                        dayViewHTML += '<div class="day-view-row-dropdown" id="cardio-view-dropdown-'+element.cardioid+'">';
                         dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.cardioid+'">';
                         dayViewHTML += '<button class="day-view-edit-cardio-week-button" id="cardio-view-edit-week-'+element.cardioid+'">Edit Week Event</button>';
-                        dayViewHTML += '</div></div>';
-                        viewIDs.cardio[element.cardioid] = '1.3fr 1fr 2fr 1.2fr';
+                        dayViewHTML += '</div>';
+                        dayViewHTML += '<div class="day-view-details">';
+                        dayViewHTML += getDistanceHTML(element.distance);
+                        dayViewHTML += '</div></div></div>';
+                        //viewIDs.cardio[element.cardioid] = '1.3fr 1fr 2fr 1.2fr';
                         //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
@@ -618,18 +940,24 @@ function processDayView() {
                     if(((dateNum+(calendar.firstDay-1))%7) == element.dayofweek) {
                         noEvents = false;
                         dayViewHTML += '<div class="day-view-row full-strength-row" id="full-week-strength-'+element.strengthid+'">';
+                        dayViewHTML += '<div class="day-view-row-top">';
                         dayViewHTML += '<p class="day-view-type">'+element.status.charAt(0).toUpperCase()+element.status.slice(1)+'</p>';
                         dayViewHTML += '<p class="day-view-title">'+element.strengthtype.charAt(0).toUpperCase()+element.strengthtype.slice(1)+'</p>';
+                        dayViewHTML += '<button class="day-view-dropdown-button" id="strength-view-dropdown-button-'+element.strengthid+'">&#9660;</button>';
+                        dayViewHTML += '</div>';
+                        dayViewHTML += '<div class="day-view-row-dropdown" id="strength-view-dropdown-'+element.strengthid+'">';
+                        dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.strengthid+'">';
+                        dayViewHTML += '<button class="day-view-edit-strength-week-button" id="strength-view-edit-week-'+element.strengthid+'">Edit Week Event</button>';
+                        dayViewHTML += '</div>';
+                        dayViewHTML += '<div class="day-view-details">';
                         if(element.strengthtype.toLowerCase() == 'lift') {
                             dayViewHTML += getLiftHTML(element.lifts);
                         }
                         else {
                             dayViewHTML += '<p class="day-view-placeholder"> </p>';
                         }
-                        dayViewHTML += '<div class="day-view-buttons" id="day-view-buttons-'+element.strengthid+'">';
-                        dayViewHTML += '<button class="day-view-edit-strength-week-button" id="strength-view-edit-week-'+element.strengthid+'">Edit Week Event</button>';
-                        dayViewHTML += '</div></div>';
-                        viewIDs.strength[element.strengthid] = '1.3fr 1fr 2fr 1.2fr';
+                        dayViewHTML += '</div></div></div>';
+                        //viewIDs.strength[element.strengthid] = '1.3fr 1fr 2fr 1.2fr';
                         //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
@@ -640,11 +968,12 @@ function processDayView() {
         dayViewHTML += '<p class="no-events-message">No Events Scheduled</p>';
     }
     dayViewHTML += '</div>';
+    $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
     $('.events-list').html(dayViewHTML);
 
     let cardioIDs = Object.keys(viewIDs.cardio);
     let strengthIDs = Object.keys(viewIDs.strength);
-
+    /*
     while(cardioIDs.length > 0) {
         let cardioKey = cardioIDs.pop();
         $('#full-week-cardio-'+cardioKey).css('grid-template-columns', viewIDs.cardio[cardioKey]);
@@ -653,6 +982,33 @@ function processDayView() {
         let strengthKey = strengthIDs.pop();
         $('#full-week-strength-'+strengthKey).css('grid-template-columns', viewIDs.strength[strengthKey]);
     }
+    */
+
+    $('.day-view-dropdown-button').click( (e) => {
+        // id="cardio-view-dropdown-#" or id="strength-view-dropdown-#"
+        let id = $(e.target).attr('id');
+        let idNum = $(e.target).attr('id').replace( /[^\d.]/g, '' );
+        if(id.includes('cardio')) {
+            if($('#cardio-view-dropdown-'+idNum).css('display') == 'none') {
+                $('#cardio-view-dropdown-'+idNum).css('display', 'flex');
+                $('#cardio-view-dropdown-button-'+idNum).html('&#9650;');
+            }
+            else {
+                $('#cardio-view-dropdown-'+idNum).css('display', 'none');
+                $('#cardio-view-dropdown-button-'+idNum).html('&#9660;');
+            }
+        }
+        else if(id.includes('strength')) {
+            if($('#strength-view-dropdown-'+idNum).css('display') == 'none') {
+                $('#strength-view-dropdown-'+idNum).css('display', 'flex');
+                $('#strength-view-dropdown-button-'+idNum).html('&#9650;');
+            }
+            else {
+                $('#strength-view-dropdown-'+idNum).css('display', 'none');
+                $('#strength-view-dropdown-button-'+idNum).html('&#9660;');
+            }
+        }
+    });
 
     $('.day-view-edit-button').click( (e) => {
         // id="cardio-view-edit-#" or id="strength-view-edit-#"
@@ -962,11 +1318,15 @@ function displayStrengthOther() {
     let eventSummaryHTML = '';
 
     //$('.event-title').text($('#strength-other-name').val().trim());
+    $('.event-title').text($('#strength-other-name').val());
 
     if(validateOtherEventName($('#strength-other-name').val().trim())) {
         enableSubmitButton();
     }
     else {
+        if($('#strength-other-name').val().length > 10) {
+            $('#strength-other-name').val($('#strength-other-name').val().substring(0, 11));
+        }
         disableSubmitButton();
     }
 
@@ -1037,8 +1397,10 @@ async function allMonthDataAJAX() {
 }
 
 async function getAllMonthData() {
+    
     cardioEventsObject = {};
     strengthEventsObject = {};
+    /*
     await allMonthDataAJAX()
         .then(data => {
             allMonthData = data;
@@ -1050,6 +1412,23 @@ async function getAllMonthData() {
             console.log(error);
         }
     );
+    */
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    // ONLY FOR DEVELOPMENT & TESTING PURPOSES !!!!!!!
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    displayWeeks(allMonthData.weeks);
+    calendar.render();
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    // ONLY FOR DEVELOPMENT & TESTING PURPOSES !!!!!!!
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
 }
 
 getAllMonthData();
@@ -1522,10 +1901,13 @@ function displayWeeks(weeks) {
     });
 
     $('#new-week-button').click( () => { 
+        console.log("NEW WEEK BUTTON");
         $('.pop-up-planner').css('display', 'none');
         $('.create-week-container').css('display', 'block');
         $('.pop-up-previous').css('display', 'none');
         $('.pop-up-next').css('display', 'none');
+        $('.pop-up-background').css('height', `${$('.content').outerHeight()}px`);
+        $('.pop-up-background').css('display', 'block');
         $('.pop-up').css('display', 'flex');
     });
 }
@@ -1579,8 +1961,28 @@ function getSelectedDateString() {
     return stringDate;
 }
 
+
 $(document).ready(function() {
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    // ONLY FOR DEVELOPMENT & TESTING PURPOSES !!!!!!!
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    getAllMonthData();
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    // ONLY FOR DEVELOPMENT & TESTING PURPOSES !!!!!!!
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
     calendar.init();
+
+    $( window ).resize( () => {
+        $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
+      });
 
     // Side bar show event type (on calendar) buttons
     $('#show-cardio').change( () => {
@@ -1593,6 +1995,35 @@ $(document).ready(function() {
         calendar.render();
     });
 
+
+    // Fill distance Select elements with appropriate Options
+    (function () {
+        bigDistanceHTML = '<option value="0" selected>0</option>';
+        smallDistanceHTML = '<option value="0" selected>0</option>';
+        for(let i=1; i<100; i++) {
+            bigDistanceHTML += `<option value="${i}" selected>${i}</option>`;
+            smallDistanceHTML += `<option value="${i}" selected>${i}</option>`;
+        }
+        $(`#cardio-distance-big`).html(bigDistanceHTML);
+        $(`#cardio-distance-small`).html(smallDistanceHTML);
+    })();
+
+    // Fill duration Select elements with appropriate Options
+    (function () {
+        hDurationHTML = '<option value="0" selected>0</option>';
+        mDurationHTML = '<option value="0" selected>0</option>';
+        sDurationHTML = '<option value="0" selected>0</option>';
+        for(let i=1; i<24; i++) {
+            hDurationHTML += `<option value="${i}" selected>${i}</option>`;
+        }
+        for(let i=1; i<60; i++) {
+            mDurationHTML += `<option value="${i}" selected>${i}</option>`;
+            sDurationHTML += `<option value="${i}" selected>${i}</option>`;
+        }
+        $(`#cardio-duration-h`).html(hDurationHTML);
+        $(`#cardio-duration-m`).html(mDurationHTML);
+        $(`#cardio-duration-s`).html(sDurationHTML);
+    })();
 
     $('#new-event-button').click( (e) => {
         if($(e.target).hasClass('active-create-event')) {
@@ -1610,6 +2041,29 @@ $(document).ready(function() {
             $('.day-scheduler').css('display', 'block');
             $('.back-to-day-schedule').css('display', 'block');
             $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // HERE - day-scheduler width / format 
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            if($(window).height() > 800) {
+                $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
+                $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
+            }
+            else {
+                $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
+                $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
+            }
+
+            $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
+            console.log($('.existing-events-container').height());
+            console.log($('.day-view-header').height());
+            console.log($('.day-scheduler-header').height());
+            console.log($('.event-type-selector').height());
+
 
             $('.pop-up-previous').css('display', 'none');
             $('.pop-up-next').css('display', 'none');
@@ -1634,7 +2088,10 @@ $(document).ready(function() {
             $('.event-type-selector').css('display', 'flex');
             $('.day-scheduler').css('display', 'block');
             $('.back-to-day-schedule').css('display', 'block');
+            $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
             $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
+
+            $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight(true) + 10)}px`);
 
             $('.dow-selector-container').css('display', 'none');
 
@@ -1647,9 +2104,10 @@ $(document).ready(function() {
     });
 
     // Closeplanner when back-to-calendar button or background is clicked
-    $('#pop-up-background').click( (e) => {
+    $('#pop-up-container').click( (e) => {
         if($(e.target).attr('class') == 'pop-up') {
             $('.pop-up').css('display', 'none');
+            $('.pop-up-background').css('display', 'none');
             $('.pop-up-planner').css('display', 'flex');
             $('.back-to-day-schedule').css('display', 'none')
             clearFormData();
@@ -1658,6 +2116,7 @@ $(document).ready(function() {
     
     $('.back-to-calendar').click( () => {
         $('.pop-up').css('display', 'none');
+        $('.pop-up-background').css('display', 'none');
         $('.pop-up-planner').css('display', 'flex');
         $('.back-to-day-schedule').css('display', 'none')
         $('.create-week-container').css('display', 'none');
@@ -1665,6 +2124,7 @@ $(document).ready(function() {
     });
 
     $('.back-to-day-schedule').click( () => {
+        $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
         $('.existing-events').css('display', 'block');
         $('.create-event-button').css('display', 'block');
 
@@ -1773,6 +2233,9 @@ $(document).ready(function() {
             $('#invalid-other-cardio').css('display', 'none');
         }
         else {
+            if($('#cardio-other-name').val().length > 10) {
+                $('#cardio-other-name').val($('#cardio-other-name').val().substring(0, 11));
+            }
             $('#invalid-other-cardio').css('display', 'block');
         }
         displayCardio();
@@ -1961,6 +2424,7 @@ async function submitEvent() {
 }
 
 function backToDaySchedule() {
+    $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
     $('.existing-events').css('display', 'block');
     $('.create-event-button').css('display', 'block');
 
@@ -1978,6 +2442,7 @@ function backToDaySchedule() {
 
 function backToCalendar() {
     $('.pop-up').css('display', 'none');
+    $('.pop-up-background').css('display', 'none');
     $('.pop-up-planner').css('display', 'flex');
     $('.back-to-day-schedule').css('display', 'none');
     $('.create-week-container').css('display', 'none');
@@ -2005,6 +2470,8 @@ function createWeekEvent(weekID) {
 
     $('#corner-week-day').text('Event belongs to week:');
     $('#corner-month-date').text(weekName);
+    $('.pop-up-background').css('height', `${$('.content').outerHeight()}px`);
+    $('.pop-up-background').css('display', 'block');
     $('.pop-up').css('display', 'flex');
 
     $('#day-scheduler-header-title').css('padding-top', '.1em');
@@ -2016,11 +2483,13 @@ function createWeekEvent(weekID) {
     activeButtonText = 'Add Event to Week';
     $('.event-type-selector').css('display', 'flex');
     $('.back-to-day-schedule').css('display', 'none');
+    $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
     $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
 
 
     displayCardio();
     $('.day-scheduler').css('display', 'block');
+    $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight(true) + 10)}px`);
 
     $('.pop-up-previous').css('display', 'none');
     $('.pop-up-next').css('display', 'none');
@@ -2055,12 +2524,15 @@ function editCardioEvent(event) {
         });
 
         // dayClickFunction(weekDay, month, dateNum, suffix, year)
+        $('.pop-up-background').css('height', `${$('.content').outerHeight()}px`);
+        $('.pop-up-background').css('display', 'block');
         $('.pop-up').css('display', 'flex');
         $('#corner-week-day').text('Event belongs to week:');
         $('#corner-month-date').text(weekName);
 
 
         activeButtonText = 'Confirm Event Changes';
+        $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
         $('.existing-events').css('display', 'block');
         $('.create-event-button').css('display', 'block');
 
@@ -2077,7 +2549,6 @@ function editCardioEvent(event) {
     $('.existing-events').css('display', 'none');
     $('.event-type-selector').css('display', 'none');
 
-    $('#day-scheduler-header-title').css('padding-top', '1em');
     $('#day-scheduler-header-title').text('Edit Existing Event');
 
     if(updateScope == 'week') {
@@ -2124,6 +2595,7 @@ function editCardioEvent(event) {
 
     displayCardio();
     $('.day-scheduler').css('display', 'block');
+    $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + 10)}px`);
     //if(updateScope == 'day') {
     if(!toCalendar) {
         $('.back-to-day-schedule').css('display', 'block');
@@ -2166,12 +2638,15 @@ function editStrengthEvent(event) {
         });
 
         // dayClickFunction(weekDay, month, dateNum, suffix, year)
+        $('.pop-up-background').css('height', `${$('.content').outerHeight()}px`);
+        $('.pop-up-background').css('display', 'block');
         $('.pop-up').css('display', 'flex');
         $('#corner-week-day').text('Event belongs to week:');
         $('#corner-month-date').text(weekName);
 
 
         activeButtonText = 'Confirm Event Changes';
+        $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
         $('.existing-events').css('display', 'block');
         $('.create-event-button').css('display', 'block');
 
@@ -2188,7 +2663,6 @@ function editStrengthEvent(event) {
     $('.existing-events').css('display', 'none');
     $('.event-type-selector').css('display', 'none');
 
-    $('#day-scheduler-header-title').css('padding-top', '1em');
     $('#day-scheduler-header-title').text('Edit Existing Event');
 
     if(updateScope == 'week') {
@@ -2220,6 +2694,7 @@ function editStrengthEvent(event) {
     setClickedType('strength');
     processStrengthView();
     $('.day-scheduler').css('display', 'block');
+    $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + 10)}px`);
     if(!toCalendar) {
         $('.back-to-day-schedule').css('display', 'block');
     }
