@@ -282,6 +282,7 @@ body {
     .input-section {
         width: fit-content;
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
         overflow: scroll;
         display: none;
@@ -444,6 +445,12 @@ body {
     .active-submit-button:active {
         margin: .8em auto .6em auto;
         box-shadow: none;
+    }
+
+    .summary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .event-summary-container {
@@ -1129,1058 +1136,6 @@ body {
 
 }
 
-/* PC format 
-@media screen and (min-width: 801px) {
-
-    .main {
-        padding: 5px;
-        border-radius: 8px;
-        text-align: center;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: flex-start;
-        height: 85vh;
-    }
-
-    .content {
-        position: relative;
-        z-index: 1;
-    }
-
-    .pop-up {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: default;
-        overflow: hidden;
-        display: none;
-    }
-
-    .pop-up-background {
-        position: absolute;
-        z-index: 9;
-        top: 0;
-        left: 0;
-        width: 100%;
-        min-height: 100vh;
-        background-color: rgba(51, 51, 51, 0.925);
-        display: none;
-    }
-
-    .pop-up-planner {
-        background-color: transparent;
-        width: 75%;
-        height: 80%;
-        cursor: default;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .pop-up-previous {
-        background-color: transparent;
-        color: white;
-        font-size: 3em;
-        padding: 0 2rem;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 2em 0 0 0;
-    }
-
-    .pop-up-next {
-        background-color: transparent;
-        color: white;
-        font-size: 3em;
-        padding: 0 2rem;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 0 2em 0 0;
-    }
-
-    .existing-events-container {
-        width: 100%;
-        height: 100%;
-        min-height: 20em;
-        box-shadow: .2em .2em 10px black;
-        border: 2px solid rgb(170, 170, 170);
-        overflow: auto;
-    }
-
-    .existing-events {
-        position: relative;
-        width: 100%;
-        background-color: white;
-        overflow: scroll;
-    }
-
-    .events-list {
-        /*$('.events-list').css('max-height', 'calc(${$('.existing-events-container').height()} - ${$('.day-view-header').outerHeight()})');*/
-        /*
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: start;
-        padding: .2em 0;
-        overflow: scroll;
-    }
-
-    .corner-date {
-        
-    }
-
-    #corner-week-day {
-        font-size: 1.25em;
-        margin-bottom: 0;
-        color: white;
-    }
-
-    #corner-month-date {
-        margin-top: 0;
-        margin-bottom: 0;
-        font-size: 2em;
-        color: white;
-    }
-
-    .back-to-calendar {
-        position: absolute;
-        width: fit-content;
-        top: 0;
-        right: 0;
-        color: white;
-        margin-top: -1.5em;
-    }
-
-    .back-to-calendar:hover {
-        cursor: pointer;
-        text-decoration: underline;
-    }
-
-    .back-to-calendar p {
-        margin-bottom: 0;
-        padding: .1em .3em;
-    }
-
-    .back-to-day-schedule {
-        position: absolute;
-        width: fit-content;
-        top: 0;
-        left: 0;
-        color: white;
-        display: none;
-        margin-top: -1.5em;
-    }
-
-    .back-to-day-schedule:hover {
-        cursor: pointer;
-        text-decoration: underline;
-    }
-
-    .back-to-day-schedule p {
-        margin-bottom: 0;
-        padding: .1em .3em;
-        text-shadow: none;
-        font-weight: normal;
-    }
-
-    .day-view-header {
-        width: 100%;
-        height: fit-content;
-        background-color: rgb(65, 65, 65);
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 5;
-    }
-
-    .day-view-header-date {
-        width: 100%;
-        height: fit-content;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: flex-end;
-        min-width: 17em;
-        text-align: center;
-        position: relative;
-        margin-bottom: 1rem;
-    }
-
-    .day-view-header-event-buttons {
-        width: 100%;
-        height: fit-content;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        min-width: 17em;
-        text-align: center;
-        position: relative;
-        border-top: 2px solid rgb(170, 170, 170);
-        border-bottom: 2px solid rgb(170, 170, 170);
-    }
-
-    .create-event-button {
-        width: 45%;
-        height: 2em;
-        background-color: transparent;
-        margin: 0;
-        font-size: 1.3em;
-        border: none;
-        border-radius: .5em;
-        margin: 1rem;
-    }
-
-    .active-create-event {
-        color: #8BDD96;
-        border: 2px solid #8BDD96;
-    }
-
-    .active-create-event:hover {
-        border: 4px solid #8BDD96;
-        background-color: rgb(94, 94, 94);
-        cursor: pointer;
-    }
-
-    .inactive-create-event {
-        color: rgb(116, 116, 116);
-        border: 2px solid rgb(116, 116, 116);
-    }
-
-    .inactive-create-event:hover {
-        cursor: default;
-    }
-
-    .day-scheduler {
-        width: 100%;
-        height: 33em;
-        margin: 0;
-        display: none;
-    }
-
-    .day-scheduler-header {
-        text-align: center;
-        height: 7em;
-        text-shadow: 2px 2px 2px #000000;
-        font-weight: bold;
-        position: relative;
-    }
-
-    #day-scheduler-header-title {
-        font-size: 2.3em;
-        margin-bottom: 0;
-        margin-top: 0;
-        color: #8BDD96;
-    }
-      
-    .event-type-selector {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 1em;
-    }
-      
-    .day-type-button{
-        border: none;
-        margin: 0 0 1em 0;
-        border: 1px solid black;
-        width: 20em;
-        height: 2.3em;
-    }
-
-    .day-type-button:focus{
-        outline: none;
-    }
-
-    .input-section {
-        width: fit-content;
-        max-width: 25em;
-        min-height: 10em;
-        display: flex;
-        justify-content: space-around;
-        margin: 1em;
-        overflow: scroll;
-        display: none;
-    }
-
-    .dow-selector-container {
-        display: none;
-    }
-      
-    #cardio-day-type {
-        border-radius: 3px 0 0 3px;
-    }
-      
-    #cardio-day-type-input {
-        display: block;
-        min-width: 15em;
-    }
-
-    .cardio-duration-group {
-        white-space: nowrap;
-    }
-
-    #strength-day-type {
-        border-radius: 0 3px 3px 0;
-    }
-      
-    #strength-day-type-input {
-        display: none;
-        min-width: 17em;
-    }
-
-    .input-grouping {
-        padding: 1em;
-    }
-
-    .lift-type {
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        width: 100%;
-        padding: 0;
-    }
-      
-    #misc-day-type {
-        border-radius: 0 3px 3px 0;
-        display: none;
-    }
-      
-    #misc-day-type-input {
-        display: none;
-    }
-      
-    .button-clicked {
-        box-shadow: inset 0 0 5px black;
-    }
-
-    .day-input-container {
-        position: relative;
-        width: 70%;
-        min-width: 45em;
-        height: 23em;
-        font-size: 1em;
-        padding: 2em;
-        margin: 2em auto;
-        border-radius: .5em;
-        border: 2px solid black;
-        background-color: rgb(226, 226, 226);
-        box-shadow: inset 0 0 8px black;
-        overflow: scroll;
-    }
-
-    .top-panel {
-        display: flex;
-        justify-content: space-between;
-        height: 100%;
-        margin: auto;
-    }
-
-    .input-container {
-        width: 30em;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .input-grouping label{
-        font-size: 1.3em;
-        color: black;
-    }
-
-    .lift-type-pair{
-        margin: 1em;
-    }
-
-    .lift-type-pair label{
-        color: rgb(0, 0, 0);
-    }
-
-    #strength-selector {
-        text-align: center;
-    }
-
-    input[type=number]::-webkit-inner-spin-button {
-        opacity: 1
-    }
-
-    #cardio-other-name {
-        width: 6em;
-    }
-
-    .cardio-other-group {
-        display: none;
-    }
-
-    #strength-other-name {
-        width: 6em;
-    }
-
-    .strength-other-group {
-        display: none;
-    }
-
-    .invalid-other-name {
-        display: none;
-        color: red;
-    }
-
-    .day-submit-button {
-        display: flex;
-        justify-content: baseline;
-        align-items: flex-start;
-        border-radius: 1em;
-        width: fit-content;
-        padding: .2em 1em;
-        margin: .7em auto;
-        height: 10%;
-        border: 1px solid black;
-    }
-
-    .day-submit-button p{
-        margin: 0;
-    }
-
-    .disabled-submit-button {
-        cursor: default;
-        background-color: rgb(172, 172, 172);
-        box-shadow: none;
-    }
-
-    .active-submit-button {
-        cursor: pointer;
-        background-color: #8BDD96;
-        box-shadow: .2em .2em 4px black;
-    }
-
-    .active-submit-button:hover {
-        margin: .6em auto .8em auto;
-        background-color: rgb(175, 255, 184);
-    }
-
-    .active-submit-button:active {
-        margin: .8em auto .6em auto;
-        box-shadow: none;
-    }
-
-    .event-summary-container {
-        position: relative;
-        background-color: white;
-        height: 100%;
-        width: 15em;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        border: 2px solid black;
-        background-color: #36495F;
-        box-shadow: .2em .2em 4px black;
-    }
-
-    .event-summary {
-        position: relative;
-        background-color: white;
-        height: 90%;
-        width: 15em;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        overflow: scroll;
-        border: 2px solid black;
-    }
-
-    .event-title-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 4em;
-        min-height: 4em;
-        padding: 0;
-        margin: 0;
-    }
-
-    .event-title {
-        font-size: 3em;
-        max-width: 10em;
-        margin: 0;
-        padding: 0;
-        color: #ffffff;
-        overflow: hidden;
-    }
-
-    .event-distance {
-        font-size: 5em;
-        margin: 0;
-        padding: 0;
-    }
-
-    .miles {
-        font-size: 2em;
-        margin: 0;
-        padding: 0;
-        margin-top: -.7em;
-    }
-
-    .lift-list {
-
-    }
-
-    .lift-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(1, 1fr);
-    }
-
-    .lift-grid div{
-        padding: .5em;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .lift-grid-2-3 {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-    }
-
-    .lift-grid-2-3 div{
-        padding: .5em;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .lift-grid-2-4 {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-    }
-
-    .lift-grid-2-4 div{
-        padding: .5em;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .past-input {
-        display: none;
-    }
-      
-    .week-scheduler {
-        display: none;
-    }
-
-    .side-bar {
-        width: 25%;
-        min-width: 18em;
-        height: 100%;
-        border-radius: 8px;
-        background-color: rgb(255, 255, 255);
-        padding: .5rem;
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0 0 10px black;
-    }
-
-    .form-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: left;
-        margin: 0 auto;
-        padding: 0 auto;
-        width: 100%;
-    }
-
-    #showing-label {
-        width: 100%;
-        padding: 0;
-        font-size: 1.5em;
-    }
-
-    #show-misc {
-        display: none;
-    }
-
-    #show-misc-label {
-        display: none;
-    }
-
-    .show-group {
-        margin: 0 .5em;
-    }
-
-    .currently-showing {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: baseline;
-    }
-
-    .week-container {
-        margin: 1em auto;
-        width: 100%;
-        border-radius: 8px;
-        flex: 1 1 auto;
-    }
-
-    .week-container-header {
-        text-align: left;
-    }
-
-    #week-container-title {
-        padding: 0;
-        margin: auto 0;
-        text-align: left;
-        font-size: 1.5em;
-    }
-
-    #new-week-button {
-        padding: 0 .2em;
-        margin: auto 0;
-        border: none;
-        background-color: transparent;
-        color: #5180D1;
-    }
-
-    #new-week-button:hover {
-        text-decoration: underline;
-    }
-
-    .show-weeks-container {
-        margin: auto;
-        width: 100%;
-        height: calc(85vh - 11em);
-        background-color: #2e2e2e;
-        overflow: scroll;
-        border-radius: 0 0 8px 8px;
-    }
-
-    .week-row {
-        height: 3em;
-        max-height: 3em;
-        background-color: rgb(226, 226, 226);
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        position: relative;
-        margin-bottom: .4em;
-    }
-
-    .week-display-check {
-        position: absolute;
-        margin: auto .4em;
-        left: 0;
-    }
-
-    .dropdown-week-button {
-        margin: 0;
-        background-color: transparent;
-        border: none;
-        line-height: .8em;
-    }
-
-    .dropdown-week-button:hover {
-        background-color: transparent;
-    }
-
-    .week-name {
-        max-width: 20em;
-        margin: 0 2em;
-        font-size: 1.5em;
-    }
-
-    .week-buttons {
-        position: absolute;
-        margin: auto .4em;
-        right: 0;
-    }
-
-    .add-week-event-button {
-        padding: auto;
-        margin: 0 .2em;
-    }
-
-    .delete-week-button {
-        padding: auto;
-        margin: 0 .2em;
-    }
-
-    .week-dropdown {
-        margin-bottom: .6em;
-    }
-
-    .week-dropdown-cardio-event {
-        display: grid;
-        grid-template-columns: .5fr 1fr .5fr 1.5fr;
-        grid-template-rows: 2em;
-        text-align: center;
-        background-color: rgb(143, 143, 143);
-        margin-bottom: .1em;
-    }
-
-    .week-dropdown-strength-event {
-        display: grid;
-        grid-template-columns: .5fr 1.5fr 1.5fr;
-        grid-template-rows: 2em;
-        text-align: center;
-        background-color: rgb(143, 143, 143);
-        margin-bottom: .1em;
-    }
-
-    .week-dropdown-event-dow {
-        margin: auto 0;
-    }
-
-    .week-dropdown-event-type {
-        margin: auto 0;
-    }
-
-    .week-dropdown-cardio-event-distance {
-        margin: auto 0;
-    }
-
-    .week-dropdown-event-buttons-container button {
-        padding: 0 .1em;
-        margin: auto .4em;
-    }
-
-    .week-dropdown-event-buttons-container{
-        margin: auto 0;
-    }
-
-    .create-week-container {
-        background-color: #36495F;
-        width: 50%;
-        height: 16em;
-        cursor: default;
-        position: relative;
-        padding: 1em 0;
-        border: 2px solid rgb(170, 170, 170);
-        border-radius: 2em;
-        box-shadow: .2em .2em 0px rgb(155, 155, 155);
-        display: none;
-    }
-
-    #create-week-back {
-        margin-top: -1.7em;
-    }
-
-    .create-week-body {
-        text-align: center;
-        margin-top: 2.5em;
-    }
-
-    .create-week-body label{
-        color: white;
-    }
-
-    #create-week-title {
-        text-align: center;
-        font-size: 2.3em;
-        margin-bottom: 0;
-        margin-top: 0;
-        color: #8BDD96;
-        text-shadow: 2px 2px 2px #000000;
-        font-weight: bold;
-    }
-
-    .create-week-input {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: auto 0s;
-    }
-
-    #create-week-name {
-        width: 60%;
-        margin: 1em;
-    }
-
-    #invalid-create-week-name {
-        display: none;
-        color: red;
-    }
-
-    .calendar {
-        background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
-        width: 100%;
-        height: 100%;
-        border-radius: 8px;
-        box-shadow: 0 0 10px black;
-    }
-      
-    .calendar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        background-color: #36495F;
-        color: #8BDD96;
-        font-weight: bold;
-        font-size: 2em;
-    }
-
-    .calendar-header button{
-        background-color: transparent;
-        border: none;
-        padding: .2em 1em;
-        color: #8BDD96;
-    }
-
-    .calendar-header p{
-        width: 8em;
-        overflow: hidden;
-        margin: 0;
-    }
-
-    .calendar-header button:hover{
-        background-color: rgba(255, 255, 255, .2);
-    }
-
-    .calendar-header button:focus{
-        outline: none;
-    }
-
-    .calendar-header {
-        outline: none;
-    }
-      
-    .grid-names-container {
-        width: 100%;
-        height: 2em;
-        padding: .3em;
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        grid-template-rows: 1fr;
-        grid-gap: .3em;
-        background-color: rgba(135, 135, 135, .4);
-    }
-      
-    .grid-container {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        grid-template-rows: repeat(6, calc(((85vh - 10px) - 7em - 21px)/6));
-        grid-gap: .3em;
-        padding: .3em;
-        color: black;
-    }
-      
-    .day-name {
-        text-align: center;
-        padding: 0;
-        margin: 0;
-        color: darkSlateBlue;
-    }
-      
-    .day-block {
-        position: relative;
-        background-color: rgb(255, 255, 255);
-        text-align: left;
-        overflow: hidden;
-    }
-      
-    .noclick {
-        cursor: default;
-    }
-      
-    .active-day:hover{
-        cursor: pointer;
-        background-color: rgb(223, 223, 223);
-    }
-      
-    .today {
-        background-color: #8BDD96;
-    }
-
-    .today:hover {
-        background-color: rgb(158, 255, 171);
-    }
-      
-    .selected-day {
-        background-color: white; 
-    }
-      
-    .selected-day:hover {
-        border: 1px solid black;
-    }
-
-    .today {
-        background-color: #8BDD96;
-    }
-
-    .date-number {
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 0 .2em;
-    }
-
-    .day-event-container {
-        position: relative;
-        width: 100%;
-        height: calc((((85vh - 10px) - 7em - 21px)/6) - 1.4em);
-        overflow: scroll !important;
-        margin-top: 1.4em;
-    }
-
-    .day-event-row {
-        width: 95%;
-        overflow: hidden;
-        height: 1.1em;
-        max-height: 2em;
-        margin: 0 auto .3em auto;
-        text-align: center;
-    }
-
-    .day-event-title {
-        margin: 0 auto;
-        padding: 0 auto;
-        line-height: 1em;
-    }
-
-    .cardio-row {
-        background-color: rgba(100, 100, 100, 0.5);
-    }
-
-    .strength-row {
-        background-color: rgba(100, 100, 100, 0.5);
-    }
-
-    .day-view {
-        width: 100%;
-        overflow: scroll;
-    }
-
-    .day-view-row {
-        width: 90%;
-        overflow: hidden;
-        height: 6em;
-        max-height: 6em;
-        line-height: 6em;
-        margin: 2em auto 2em auto;
-        display: grid;
-        grid-template-rows: 6em;
-        grid-template-columns: 1fr 1fr 2fr 1fr;
-        background-color: rgb(201, 201, 201);
-        background-image: linear-gradient(to top left, #4B45BE, #56B4E3);
-        border-radius: .8em;
-        border: 2px solid rgb(170, 170, 170);
-        box-shadow: .2em .2em 0px rgb(155, 155, 155);
-    }
-
-    .day-view-type {
-        font-size: 2em;
-        text-align: center;
-    }
-
-    .day-view-title {
-        font-size: 2em;
-        text-align: center;
-    }
-
-    .day-view-distance-container {
-        font-size: 1em;
-        text-align: center;
-        display: flex;
-        align-items: baseline;
-        justify-content: center;
-    }
-
-    .day-view-distance {
-        font-size: 2em;
-        text-align: center;
-    }
-
-    .day-view-distance-miles {
-        font-size: 1em;
-        text-align: center;
-    }
-
-    .day-view-duration {
-        font-size: 1em;
-        text-align: center;
-        display: flex;
-        align-items: baseline;
-        justify-content: center;
-    }
-
-    .day-view-duration-num {
-        font-size: 2em;
-        padding: 0;
-        margin: 0;
-    }
-
-    .day-view-duration-label {
-        font-size: 1em;
-        padding: 0;
-        margin: 0;
-    }
-
-    .day-view-lifts {
-        font-size: 1.4em;
-        text-align: center;
-    }
-
-    .day-view-buttons {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        line-height: 2em;
-        margin: 0;
-        padding: 0;
-    }
-
-    #full-cardio-row {
-
-    }
-
-    #full-strength-row {
-        
-    }
-
-    .no-events-message {
-        text-align: center;
-    }
-
-    .schedule {
-        width: 100%;
-        height: auto;
-    }
-
-    #cardio {
-        background-color: #36495F;
-    }
-
-    .calendar-container {
-        width: 70%;
-        height: 100%;
-    }
-
-    .schedule-button {
-        width: 65%;
-        height: 2.5em;
-        margin-top: 4%;
-    }
-
-}
-
-
-
 
 /* Mobile format */
 @media screen and (max-width: 800px) {
@@ -2451,9 +1406,12 @@ body {
     .input-section {
         width: fit-content;
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: baseline;
         overflow: scroll;
         display: none;
+        height: 100%;
     }
 
     .dow-selector-container {
@@ -2465,7 +1423,7 @@ body {
     }
       
     #cardio-day-type-input {
-        display: block;
+        display: flex;
         min-width: 15em;
     }
 
@@ -2483,14 +1441,13 @@ body {
     }
 
     .input-grouping {
-        margin: .2em;
+        margin: 1em;
     }
 
     .lift-type {
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        width: 100%;
         padding: 0;
     }
       
@@ -2545,7 +1502,7 @@ body {
 
     .lift-type-pair label{
         color: rgb(0, 0, 0);
-        margin-bottom: .2em;
+        margin-bottom: .5em;
     }
 
     #strength-selector {
@@ -2613,6 +1570,12 @@ body {
     .active-submit-button:active {
         margin: .8em auto .6em auto;
         box-shadow: none;
+    }
+
+    .summary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .event-summary-container {
@@ -3278,5 +2241,36 @@ body {
         width: 65%;
         height: 2.5em;
         margin-top: 4%;
+    }
+}
+
+
+
+/* Mobile taller than 600px format */
+@media screen and (max-width: 800px) and (min-height: 601px) {
+    .lift-type-pair label {
+        margin-bottom: .5em;
+    }
+
+    #cardio-day-type-input {
+        align-items: baseline;
+    }
+
+    #strength-day-type-input {
+        align-items: center;
+    }
+
+    #strength-selector {
+        margin: 0;
+        padding-top: 1em;
+    }
+
+    .input-section{
+        margin-top: 1em;
+    }
+
+    .input-grouping {
+        padding-top: 1em;
+        margin: 0;
     }
 }

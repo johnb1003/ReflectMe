@@ -184,16 +184,18 @@
                                         <p> Misc Scheduling</p>
                                     </div>
                                 </div>
-                                <div class="event-summary-container">
-                                    <div class="event-title-container">
-                                        <p class="event-title">Run</p>
-                                    </div>
-                                    <div class="event-summary">
-                                        <p class="event-distance">0.0</p>
-                                        <p class="miles">mile(s)</p>
-                                    </div>
-                                    <div class="day-submit-button disabled-submit-button">
-                                        <p>Invalid Event</p>
+                                <div class="summary">
+                                    <div class="event-summary-container">
+                                        <div class="event-title-container">
+                                            <p class="event-title">Run</p>
+                                        </div>
+                                        <div class="event-summary">
+                                            <p class="event-distance">0.0</p>
+                                            <p class="miles">mile(s)</p>
+                                        </div>
+                                        <div class="day-submit-button disabled-submit-button">
+                                            <p>Invalid Event</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -219,19 +221,22 @@
             </div>
         </div>
         <div class="content">
-            <nav class="nav-bar">
-                <header id="home-button">ReflectMe Tech</header>
-                <div class="spacer"></div>
-                <button class="nav-button" id="planner.html">Planner</button>
-                <button class="nav-button" id="mirror.html">Mirror</button>
-                <button class="nav-button" id="account.html">Account</button>
-                <button id="nav-dropdown-button">&#8801;</button>
-            </nav>
-            <div class="nav-dropdown-container">
-                <div class="nav-dropdown">
-                    <button class="nav-button-dropdown" id="welcome.html">Home</button>
-                    <button class="nav-button-dropdown" id="mirror.html">Mirror</button>
-                    <button class="nav-button-dropdown" id="account.html">Account</button>
+            <div class="nav-container">
+                <nav class="nav-bar">
+                    <header class="home-button" id="welcome.html">ReflectMe Tech</header>
+                    <div class="spacer"></div>
+                    <button class="nav-button" id="welcome.html">Home</button>
+                    <button class="nav-button" id="planner.html">Planner</button>
+                    <div class="landing-nav-buttons">
+                        <button class="nav-button landing-nav-button" id="landing.html">Logout</button>
+                    </div>
+                    <button id="nav-dropdown-button">&#8801;</button>
+                </nav>
+                <div class="nav-dropdown-container">
+                    <div class="nav-dropdown">
+                        <button class="nav-button-dropdown" id="planner.html">Planner</button>
+                        <button class="nav-button-dropdown" id="landing.html">Logout</button>
+                    </div>
                 </div>
             </div>
             <div class="main">

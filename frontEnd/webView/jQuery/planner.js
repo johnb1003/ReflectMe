@@ -697,6 +697,21 @@ function getCookie(key) {
 }
 
 let JWToken = getCookie("token");
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+// ONLY FOR DEVELOPMENT & TESTING PURPOSES !!!!!!!
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//let JWToken = '';
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+// ONLY FOR DEVELOPMENT & TESTING PURPOSES !!!!!!!
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
 
 
 // Method to call when a day in the calendar view is clicked
@@ -1171,7 +1186,7 @@ function setClickedType(typeString) {
         $('#'+clickedType).addClass('button-clicked');
         
         $('#'+selectedDayType+'-input').css('display', 'none');
-        $('#'+clickedType+'-input').css('display', 'block');
+        $('#'+clickedType+'-input').css('display', 'flex');
         
 
         //('#type-name').text(eventType+' Event');
@@ -1992,8 +2007,10 @@ $(document).ready(function() {
         bigDistanceHTML = '<option value="0" selected>0</option>';
         smallDistanceHTML = '<option value="0" selected>0</option>';
         for(let i=1; i<100; i++) {
-            bigDistanceHTML += `<option value="${i}" selected>${i}</option>`;
-            smallDistanceHTML += `<option value="${i}" selected>${i}</option>`;
+            bigDistanceHTML += `<option value="${i}">${i}</option>`;
+            if(i < 10) {
+                smallDistanceHTML += `<option value="${i}">${i}</option>`;
+            }
         }
         $(`#cardio-distance-big`).html(bigDistanceHTML);
         $(`#cardio-distance-small`).html(smallDistanceHTML);
@@ -2005,11 +2022,11 @@ $(document).ready(function() {
         mDurationHTML = '<option value="0" selected>0</option>';
         sDurationHTML = '<option value="0" selected>0</option>';
         for(let i=1; i<24; i++) {
-            hDurationHTML += `<option value="${i}" selected>${i}</option>`;
+            hDurationHTML += `<option value="${i}">${i}</option>`;
         }
         for(let i=1; i<60; i++) {
-            mDurationHTML += `<option value="${i}" selected>${i}</option>`;
-            sDurationHTML += `<option value="${i}" selected>${i}</option>`;
+            mDurationHTML += `<option value="${i}">${i}</option>`;
+            sDurationHTML += `<option value="${i}">${i}</option>`;
         }
         $(`#cardio-duration-h`).html(hDurationHTML);
         $(`#cardio-duration-m`).html(mDurationHTML);
@@ -2040,20 +2057,24 @@ $(document).ready(function() {
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
-            if($(window).height() > 800) {
+            if($(window).width() > 800) {
                 $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
                 $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
+            }
+            else if($(window).height() < 600){
+                $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
+                $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
+                $('.input-container').css('height', `fit-content`);
+                $('.summary').css('height', `fit-content`);
             }
             else {
                 $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
                 $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
+                $('.input-container').css('height', `${$('.top-panel').height() / 2}px`);
+                $('.summary').css('height', `${$('.top-panel').height() / 2}px`);
             }
 
             $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
-            console.log($('.existing-events-container').height());
-            console.log($('.day-view-header').height());
-            console.log($('.day-scheduler-header').height());
-            console.log($('.event-type-selector').height());
 
 
             $('.pop-up-previous').css('display', 'none');
@@ -2079,11 +2100,27 @@ $(document).ready(function() {
             $('.event-type-selector').css('display', 'flex');
             $('.day-scheduler').css('display', 'block');
             $('.back-to-day-schedule').css('display', 'block');
-            $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
             $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
 
-            $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight(true) + 10)}px`);
+            if($(window).height() > 800) {
+                $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
+                $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
+            }
+            else if($(window).height() < 600){
+                $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
+                $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
+                $('.input-container').css('height', `fit-content`);
+                $('.summary').css('height', `fit-content`);
+            }
+            else {
+                $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
+                $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
+                $('.input-container').css('height', `${$('.top-panel').height() / 2}px`);
+                $('.summary').css('height', `${$('.top-panel').height() / 2}px`);
+            }
 
+            $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
+            
             $('.dow-selector-container').css('display', 'none');
 
             $('.pop-up-previous').css('display', 'none');
@@ -2153,7 +2190,7 @@ $(document).ready(function() {
             $('#'+clickedType).addClass('button-clicked');
             
             $('#'+selectedDayType+'-input').css('display', 'none');
-            $('#'+clickedType+'-input').css('display', 'block');
+            $('#'+clickedType+'-input').css('display', 'flex');
 
             
             processType();
@@ -2474,11 +2511,30 @@ function createWeekEvent(weekID) {
     activeButtonText = 'Add Event to Week';
     $('.event-type-selector').css('display', 'flex');
     $('.back-to-day-schedule').css('display', 'none');
-    $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
     $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
 
 
     displayCardio();
+
+    if($(window).height() > 800) {
+        $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
+        $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
+    }
+    else if($(window).height() < 600){
+        $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
+        $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
+        $('.input-container').css('height', `fit-content`);
+        $('.summary').css('height', `fit-content`);
+    }
+    else {
+        $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
+        $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
+        $('.input-container').css('height', `${$('.top-panel').height() / 2}px`);
+        $('.summary').css('height', `${$('.top-panel').height() / 2}px`);
+    }
+
+    $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
+
     $('.day-scheduler').css('display', 'block');
     $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight(true) + 10)}px`);
 
@@ -2586,7 +2642,27 @@ function editCardioEvent(event) {
 
     displayCardio();
     $('.day-scheduler').css('display', 'block');
-    $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + 10)}px`);
+    
+    if($(window).height() > 800) {
+        $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
+        $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
+    }
+    else if($(window).height() < 600){
+        $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
+        $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
+        $('.input-container').css('height', `fit-content`);
+        $('.summary').css('height', `fit-content`);
+    }
+    else {
+        $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
+        $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
+        $('.input-container').css('height', `${$('.top-panel').height() / 2}px`);
+        $('.summary').css('height', `${$('.top-panel').height() / 2}px`);
+    }
+
+    $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
+
+
     //if(updateScope == 'day') {
     if(!toCalendar) {
         $('.back-to-day-schedule').css('display', 'block');
@@ -2685,7 +2761,26 @@ function editStrengthEvent(event) {
     setClickedType('strength');
     processStrengthView();
     $('.day-scheduler').css('display', 'block');
-    $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + 10)}px`);
+
+    if($(window).height() > 800) {
+        $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
+        $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
+    }
+    else if($(window).height() < 600){
+        $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
+        $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
+        $('.input-container').css('height', `fit-content`);
+        $('.summary').css('height', `fit-content`);
+    }
+    else {
+        $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
+        $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
+        $('.input-container').css('height', `${$('.top-panel').height() / 2}px`);
+        $('.summary').css('height', `${$('.top-panel').height() / 2}px`);
+    }
+
+    $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
+
     if(!toCalendar) {
         $('.back-to-day-schedule').css('display', 'block');
     }

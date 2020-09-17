@@ -40,12 +40,20 @@ button:focus{
     color: rgb(255, 255, 255);
 }
 
-#home-button:hover {
+.home-button:hover {
     cursor: pointer;
 }
 
 #landing-button:hover {
     cursor: pointer;
+}
+
+.nav-container {
+    overflow: hidden;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .nav-bar {
@@ -59,9 +67,6 @@ button:focus{
     align-items: baseline;
     margin-bottom: 1em;
     box-shadow: 0 0.1em 5px black;
-    position: sticky;
-    top: 0;
-    z-index: 100;
     line-height: 5em;
 }
 
@@ -75,6 +80,8 @@ button:focus{
     font-size: 1.5em;
     color: white;
 }
+
+
 
 .spacer {
     padding: 3px;

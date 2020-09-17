@@ -5,6 +5,17 @@ body {
     background-image: url("resources/green-metal-background.png");
 }
 
+#mirror-button {
+    margin-right: 4%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border: none;
+    color: white;
+    background-color: transparent;
+    font-size: 1.7em;
+    cursor: pointer;
+}
+
 .main {
     margin-top: 0px;
 }
@@ -42,14 +53,64 @@ body {
 }
 
 .bottom {
-    background-color: rgb(41, 41, 41);
-    color: white;
+    padding: 5px 5px 1em 5px;
+    background-color: white;
+    background-color: rgb(53, 53, 53);
+    background-color: transparent;
+    width: 100%;
+    /*border-top: 3px solid rgb(53, 53, 53);*/
+}
+
+.bottom-2 {
+    background-color: rgb(53, 53, 53);
+    color: black;
+    margin-top: 1em;
+    border-top: 2px solid black;
+    height: 40vh;
     display: none;
 }
 
-.no-mirror p {
+.reflectme-vision-container {
     margin: 0;
     padding: 0;
+    color: white;
+    text-align: center;
+    background-color: rgb(53, 53, 53);
+    background-color: transparent;
+}
+
+#reflectme-vision-header {
+    color: white;
+    color: #5180D1;
+    text-shadow: 1px 1px 2px black;
+    margin: 0;
+}
+
+#reflectme-vision-description {
+    color: black;
+    margin: 0 auto 10px;
+    width: 96%;
+    margin-bottom: 1em;
+}
+
+#reflectme-vision-description-2 {
+    color: black;
+    color: #5180D1;
+    margin: 0 auto 10px;
+    width: 96%;
+
+}
+
+.slide {
+    background-color: rgb(53, 53, 53);
+}
+
+.slide-header {
+    color: white;
+}
+
+.slide-description {
+    color: white;
 }
 
 
@@ -65,10 +126,22 @@ body {
         height: 5em;
     }
 
+    #mirror-button {
+        display: block;
+    }
+
     .landing-nav-buttons {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
+    }
+
+    .reflectme-vision-container {
+        margin-top: -1em;
+    }
+
+    #reflectme-vision-header {
+        font-size: 5em;
     }
 
     .advertisement-1 {
@@ -108,7 +181,7 @@ body {
         flex-wrap: wrap;
         justify-content: space-around;
         align-items: center;
-        margin: 0 5px 5px 5px;
+        margin: 0 5px 1em 5px;
         box-shadow: 0 0 10px 3px black;
         min-width: 800px;
         background-image: linear-gradient(to top left, #4B45BE, #56B4E3);
@@ -125,13 +198,21 @@ body {
         background-image: none;
     }
 
+    .bottom-2 {
+        text-align: center;
+        width: 100%;
+        max-width: 100vw;
+        box-shadow: 0 -2px 10px black;
+    }
+
     .slideshow {
         height: auto;
         text-align: center;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: baseline;
-        margin: 2em 0;
+        margin: 1em 0;
+        width: 100%;
     }
 
     .slide {
@@ -139,7 +220,6 @@ body {
         width: 32%;
         min-width: 200px;
         height: 440px;
-        background-color: white;
         text-align: center;
         position: relative;
     }
@@ -153,7 +233,6 @@ body {
         font-size: 2.5em;
         height: 60px;
         width: 100%;
-        background-color: rgb(255, 255, 255);
     }
 
     .slide-background-image {
@@ -166,8 +245,6 @@ body {
     }
 
     .slide-description {
-        color: rgb(8, 8, 8);
-        background-color: rgb(255, 255, 255);
         max-width: 100%;
         margin: 0;
         padding: 0 .2em;
@@ -243,13 +320,6 @@ body {
         font-size: 1.3em;
         margin: 0;
     }
-
-    .bottom {
-        background-color: rgb(41, 41, 41);
-        height: auto;
-        text-align: center;
-        margin: 0;
-    }
 } 
 
 
@@ -275,6 +345,10 @@ body {
         width: 100vw;
         height: 4em;
         margin-bottom: 0 !important;
+    }
+
+    #mirror-button {
+        display: none;
     }
 
     .nav-dropdown {
@@ -331,6 +405,7 @@ body {
         margin-top: 1em;
     }
 
+
     .slideshow {
         width: 100%;
         height: auto;
@@ -363,6 +438,7 @@ body {
         height: 60px;
         width: 100%;
         background-color: rgb(255, 255, 255);
+        color: black;
     }
 
     .slide-background-image {
@@ -449,14 +525,6 @@ body {
 
     #achieve-goals-description {
         font-size: 1.3em;
-        margin: 0;
-    }
-
-    .bottom {
-        background-color: rgb(41, 41, 41);
-        height: auto;
-        text-align: center;
-        max-width: 100vw;
         margin: 0;
     }
 } 

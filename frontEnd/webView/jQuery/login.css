@@ -9,6 +9,10 @@ body {
     text-align: center;
 }
 
+.form-input input{
+    padding: 1em;
+}
+
 /* PC format */
 @media screen and (min-width: 800px) {
     .nav-bar {

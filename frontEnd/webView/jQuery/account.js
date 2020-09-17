@@ -24,10 +24,12 @@ function getCookie(key) {
 
 // Check for token cookie
 let JWToken = getCookie("token");
+
 if(JWToken == "") {
     alert("Must be logged in to access this page.")
     window.location.href = "login.html";
 }
+
 
 getAccountData();
 
@@ -55,6 +57,6 @@ $(document).ready(function() {
     $('#logout-button').click( () => {
         setCookie('token', '');
         setCookie('email', '');
-        window.location.href = "login.html";
+        window.location.href = "landing.html";
     });
 });

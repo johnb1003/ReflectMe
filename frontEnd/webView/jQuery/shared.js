@@ -13,8 +13,8 @@ $(document).ready(function() {
         window.location.href = 'landing.html';
     });
 
-    $('#home-button').click( (e) => {
-        window.location.href = "welcome.html";
+    $('.home-button').click( (e) => {
+        window.location.href = $(e.target).attr('id');
     });
 
     $('#landing-button').click( (e) => {
@@ -28,5 +28,11 @@ $(document).ready(function() {
         else {
             $('.nav-dropdown-container').css('display', 'none');
         }
+    });
+
+    $('#logout-button').click( () => {
+        setCookie('token', '');
+        setCookie('email', '');
+        window.location.href = "landing.html";
     });
 })

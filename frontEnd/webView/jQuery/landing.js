@@ -55,4 +55,8 @@ $(document).ready(function() {
         }
         return true;
     }
+
+    $('#mirror-button').click( (e) => {
+        window.location.href = "mirror.html";
+    });
 });

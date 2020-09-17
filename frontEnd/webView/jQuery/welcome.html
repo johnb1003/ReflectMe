@@ -22,24 +22,85 @@
 
     <body>
         <div class="content">
-            <nav class="nav-bar">
-                <header id="home-button">ReflectMe Tech</header>
-                <div class="spacer"></div>
-                <button class="nav-button" id="planner.html">Planner</button>
-                <button class="nav-button" id="mirror.html">Mirror</button>
-                <button class="nav-button" id="account.html">Account</button>
-                <button id="nav-dropdown-button">&#8801;</button>
-            </nav>
-            <div class="nav-dropdown-container">
-                <div class="nav-dropdown">
-                    <button class="nav-button-dropdown" id="planner.html">Planner</button>
-                    <button class="nav-button-dropdown" id="mirror.html">Mirror</button>
-                    <button class="nav-button-dropdown" id="account.html">Account</button>
+            <div class="nav-container">
+                <nav class="nav-bar">
+                    <header class="home-button" id="welcome.html">ReflectMe Tech</header>
+                    <div class="spacer"></div>
+                    <button class="nav-button" id="welcome.html">Home</button>
+                    <button class="nav-button" id="planner.html">Planner</button>
+                    <div class="landing-nav-buttons">
+                        <button class="nav-button landing-nav-button" id="landing.html">Logout</button>
+                    </div>
+                    <button id="nav-dropdown-button">&#8801;</button>
+                </nav>
+                <div class="nav-dropdown-container">
+                    <div class="nav-dropdown">
+                        <button class="nav-button-dropdown" id="planner.html">Planner</button>
+                        <button class="nav-button-dropdown" id="landing.html">Logout</button>
+                    </div>
                 </div>
             </div>
             <div class="main">
-                <p id="hello-name"> </p>
-                <p>Welcome to your home page</p>
+                <div class="main-panel">
+                    <div class="welcome-container">
+                        <div id="welcome-message">
+                            <h1 id="hello-message"></h1>
+                            <h1 id="glad-message">We are glad to see you back!</h1>
+                        </div>
+                        <div id="mirror-ad-pc">
+                            <h2 id="mirror-ad-header">Don't have a mirror yet?</h2>
+                            <h3 id="mirror-ad-message">Follow our <a id="mirror-tutorial" href="mirror.html">tutorial</a> to create your own</h3>
+                        </div>
+                        <div id="coming-soon-container-pc">
+                            <h3 id="coming-soon-header">Coming Soon:</h3>
+                            <h4 id="coming-soon-message">ReflectMe will soon add another level of accountability! Recieve email alerts for upcoming events, or alert others when you fail to complete an event.</h4>
+                        </div>
+                    </div>
+                    <div class="scheduled-events-container">
+                        <h1 id="scheduled-events-header">Today's Events</h1>
+                        <div id="scheduled-events-list">
+                            <!--    HTML added by javascript    -->
+                        </div>
+                        <h4 id="add-events-line">Manage events using the <a href="planner.html" id="planner-link">ReflectMe Planner</a></h4>
+                    </div>
+                    <div id="mirror-ad-mobile">
+                        <h3 id="mirror-ad-header">Don't have a mirror yet?</h3>
+                        <h4 id="mirror-ad-message">Follow our <a id="mirror-tutorial" href="mirror.html">tutorial</a> to create your own.</h4>
+                    </div>
+                    <div id="coming-soon-container-mobile">
+                        <h3 id="coming-soon-header">Coming Soon:</h3>
+                        <h4 id="coming-soon-message">ReflectMe will soon add another level of accountability! Recieve email alerts for upcoming events, or alert others when you fail to complete an event.</h4>
+                    </div>
+                </div>
+                <div class="slideshow">
+                    <div class="slide" id="set-goals-slide">
+                        <p class="slide-header">Set goals</p>
+                        <div class="slide-background-image" id="set-goals-background">
+                            <img src="resources/set-goals-character.svg" alt="set-goals-character" class="slide-character" id="set-goals-character">
+                        </div>
+                        <div class="slide-description">
+                            <p id="set-goals-description">Enter personal goals and schedules into the ReflectMe Planner section of our website.</p>
+                        </div>
+                    </div>
+                    <div class="slide" id="see-goals-slide">
+                        <p class="slide-header">See goals</p>
+                        <div class="slide-background-image" id="see-goals-background">
+                            <img src="resources/see-goals-character.svg" alt="see-goals-character" class="slide-character" id="see-goals-character">
+                        </div>
+                        <div class="slide-description">
+                            <p id="see-goals-description">Goals entered in your ReflectMe Planner will be automatically displayed and updated on your in-home smart mirror.</p>
+                        </div>
+                    </div>
+                    <div class="slide" id="achieve-goals-slide">
+                        <p class="slide-header">Achieve goals</p>
+                        <div class="slide-background-image" id="achieve-goals-background">
+                            <img src="resources/achieve-goals-character.svg" alt="achieve-goals-character" class="slide-character" id="achieve-goals-character">
+                        </div>
+                        <div class="slide-description">
+                            <p id="achieve-goals-description">Stay motivated with goal reminders on your mirror to reach heights you've never imagined!</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

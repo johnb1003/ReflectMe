@@ -3,15 +3,642 @@ body {
     background-image: url("resources/green-metal-background.png");
 }
 
-/* PC format */
-@media screen and (min-width: 600px) {
+.main {
+    padding: 1em 5px 0 5px;
+    background-color: transparent;
+    margin-top: -1em;
+}
 
-    .main {
-        background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
-        margin: 0 1% 1% 1%;
-        border-radius: 8px;
-        padding: 20%;
-        height: 80vh;
+.main-panel {
+    background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
+    border-radius: 8px;
+    height: 70vh;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 1em;
+}
+
+.welcome-container {
+    width: 50%;
+    min-height: 100%;
+    height: fit-content;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em 0 1em 4%;
+}
+
+#welcome-logo {
+    width: 90%;
+}
+
+#welcome-image {
+    background-image: url('resources/welcome-man.svg'), url('resources/welcome-woman.svg'), url('resources/welcome-girl.svg'), url('resources/welcome-boy.svg');
+    background-position: 40% 40%, 51% 40%, 23% 40%, 71% 40%;
+    background-repeat: no-repeat;
+    background-size: 14%, 17%, 17%, 17%;
+    display: none;
+}
+
+.scheduled-events-container {
+    width: 50%;
+    min-height: 100%;
+}
+
+#scheduled-events-header {
+    color: black;
+}
+
+#scheduled-events-list {
+    width: 90%;
+    height: 70%;
+    max-height: 70%;
+    margin: 0 auto;
+    background-color: white;
+    overflow: scroll;
+    filter: drop-shadow(0 0 2px black);
+}
+
+#welcome-message {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#hello-message {
+    text-align: left;
+    margin-bottom: 0;
+}
+
+#glad-message {
+    text-align: left;
+    margin-top: 0;
+}
+
+#mirror-ad-pc {
+    text-align: left;
+    width: 100%;
+    color: black;
+}
+
+#mirror-ad-mobile {
+    text-align: left;
+    width: 100%;
+    color: black;
+}
+
+#mirror-ad-header {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#mirror-ad-message {
+    margin-top: 0;
+    color: black;
+}
+
+
+#mirror-tutorial {
+    color: #8BDD96;
+}
+
+#coming-soon-container-pc {
+    text-align: left;
+    width: 100%;
+    color: black;
+}
+
+#coming-soon-container-mobile {
+    text-align: left;
+    width: 100%;
+    color: black;
+}
+
+#coming-soon-header {
+    margin: 0;
+    color: white;
+}
+
+#coming-soon-message {
+    margin-top: 0;
+}
+
+#space {
+
+}
+
+#add-events-line {
+    color: black;
+}
+
+#planner-link {
+    color: #8BDD96;
+}
+
+.day-view {
+    width: 100%;
+    overflow: scroll;
+}
+
+.day-view-row {
+    width: 90%;
+    max-width: 90%;
+    overflow: hidden;
+    margin: 1em auto 2em auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day-view-row-top {
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(0deg, #6693f3 0%, #4F77CE 50%, #6693f3 100%);
+    background: none;
+    background-color: rgb(175, 175, 175);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    font-size: 1.5em;
+}
+
+.day-view-row-dropdown {
+    position: relative;
+    width: 100%;
+    background-color: rgb(228, 228, 228);
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    display: none;
+}
+
+.day-view-type {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0;
+    margin-left: 4%;
+}
+
+.day-view-title {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0;
+}
+
+.day-view-dropdown-button {
+    margin: 1rem 4% 1rem 0;
+    padding: 0 .3em;
+}
+
+.day-view-details {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin: .3em;
+    font-size: 1.2em;
+}
+
+.day-view-details div{
+    margin: 0 2em;
+}
+
+.day-view-distance-container {
+    font-size: 1em;
+    text-align: center;
+    display: flex;
+    align-items: baseline;
+    justify-content: left;
+}
+
+.day-view-distance {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0;
+}
+
+.day-view-distance-miles {
+    font-size: 1em;
+    text-align: center;
+    margin: 0;
+}
+
+.day-view-distance-label {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0;
+}
+
+.day-view-duration {
+    font-size: 1em;
+    text-align: center;
+    display: flex;
+    align-items: baseline;
+    justify-content: left;
+    margin: 0;
+    margin-top: .5em;
+}
+
+.day-view-duration-num {
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+}
+
+.day-view-duration-label {
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+}
+
+.day-view-duration-unit {
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+}
+
+.day-view-lifts {
+    font-size: 1em;
+    text-align: center;
+    margin: 0;
+}
+
+#full-cardio-row {
+
+}
+
+#full-strength-row {
+    
+}
+
+/* PC format */
+@media screen and (min-width: 801px) {
+
+    .welcome-container {
+
+    }
+
+    #mirror-ad-pc {
+        display: block;
+    }
+    
+    #coming-soon-container-pc {
+        display: block;
+    }
+
+    #mirror-ad-mobile {
+        display: none;
+    }
+    
+    #coming-soon-container-mobile {
+        display: none;
+    }
+
+    .scheduled-events-container {
+        
+    }
+
+    #no-events-container {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        background-image: url('resources/no-events-man.svg'), url('resources/no-events-woman.svg');
+        background-position: 54% 50%, 46% 50%;
+        background-repeat: no-repeat;
+        background-size: 10%, 9%;
+    }
+    
+    .no-events-message-pc {
+        display: block;
         text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+        margin: 1em;
+    }
+
+    .no-events-message-mobile {
+        display: none;
+    }
+
+
+    .slideshow {
+        height: auto;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin: 1em 0;
+        width: 100%;
+    }
+
+    .slide {
+        margin: 0;
+        width: 32%;
+        min-width: 200px;
+        height: 440px;
+        background-color: rgb(54, 54, 54);
+        text-align: center;
+        position: relative;
+    }
+
+    .picture {
+        width: 50%;
+        height: 400px;
+    }
+
+    .slide-header {
+        font-size: 2.5em;
+        height: 60px;
+        width: 100%;
+        color: white;
+    }
+
+    .slide-background-image {
+        max-height: 240px;
+    }
+
+    .slide-character {
+        height: 180px;
+        max-height: 240px;
+    }
+
+    .slide-description {
+        color: white;
+        max-width: 100%;
+        margin: 0;
+        padding: 0 .2em;
+        text-align: center;
+        height: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #set-goals-slide {
+        filter: drop-shadow(0 0 2px black);
+    }
+
+    #set-goals-background {
+        background-image: url("resources/set-goals-background.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #set-goals-character {
+        width: auto;
+        height: auto;
+        position: 50% 50%;
+    }
+
+    #set-goals-description {
+        font-size: 1.3em;
+        margin: 0;
+    }
+
+    #see-goals-slide {
+        filter: drop-shadow(0 0 2px black);
+    }
+
+    #see-goals-background {
+        background-image: url("resources/see-goals-background.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #see-goals-character {
+        width: auto;
+        height: auto;
+        position: center;
+    }
+
+    #see-goals-description {
+        font-size: 1.3em;
+        margin: 0;
+    }
+
+    #achieve-goals-slide {
+        filter: drop-shadow(0 0 2px black);
+    }
+
+    #achieve-goals-background {
+        background-image: url("resources/achieve-goals-background.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #achieve-goals-character {
+        width: auto;
+        height: auto;
+        position: 50% 50%;
+    }
+
+    #achieve-goals-description {
+        font-size: 1.3em;
+        margin: 0;
+    }
+}
+
+
+/* Mobile format */
+@media screen and (max-width: 800px) {
+
+    .main-panel {
+        background-image: linear-gradient(to top right, #4B45BE, #56B4E3);
+        border-radius: 8px;
+        height: fit-content;
+        min-height: 40vh;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .welcome-container {
+        width: 100%;
+    }
+
+    #mirror-ad-pc {
+        display: none;
+    }
+    
+    #coming-soon-container-pc {
+        display: none;
+    }
+
+    #mirror-ad-mobile {
+        display: block;
+        margin: 1rem 0;
+    }
+    
+    #coming-soon-container-mobile {
+        display: block;
+        margin: 1rem 0;
+    }
+
+    #hello-message {
+        text-align: left;
+    }
+
+    .scheduled-events-container {
+        width: 100%;
+    }
+
+    #scheduled-events-header {
+        margin-top: 0;
+    }
+
+    #scheduled-events-list {
+        height: 30vh;
+    }
+
+    #no-events-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background-image: none;
+    }
+    
+    .no-events-message-mobile {
+        display: block;
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+        margin: 1em;
+    }
+
+    .no-events-message-pc {
+        display: none;
+    }
+
+    .slideshow {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: baseline;
+        flex-wrap: wrap;
+    }
+
+    .slide {
+        margin:  1em 0;
+        padding: 0;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        height: 440px;
+        background-color: white;
+        text-align: center;
+        position: relative;
+    }
+
+    .picture {
+        width: 50%;
+        height: 400px;
+    }
+
+    .slide-header {
+        font-size: 2.5em;
+        height: 60px;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .slide-background-image {
+        max-height: 240px;
+    }
+
+    .slide-character {
+        height: 180px;
+        max-height: 240px;
+    }
+
+    .slide-description {
+        color: rgb(8, 8, 8);
+        background-color: rgb(255, 255, 255);
+        max-width: 100%;
+        margin: 0;
+        text-align: center;
+        height: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #set-goals-slide {
+        filter: drop-shadow(0 0 2px black);
+    }
+
+    #set-goals-background {
+        background-image: url("resources/set-goals-background.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #set-goals-character {
+        width: auto;
+        height: auto;
+        position: 50% 50%;
+    }
+
+    #set-goals-description {
+        font-size: 1.3em;
+        margin: 0;
+    }
+
+    #see-goals-slide {
+        filter: drop-shadow(0 0 2px black);
+    }
+
+    #see-goals-background {
+        background-image: url("resources/see-goals-background.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #see-goals-character {
+        width: auto;
+        height: auto;
+        position: center;
+    }
+
+    #see-goals-description {
+        font-size: 1.3em;
+        margin: 0;
+    }
+
+    #achieve-goals-slide {
+        filter: drop-shadow(0 0 2px black);
+    }
+
+    #achieve-goals-background {
+        background-image: url("resources/achieve-goals-background.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #achieve-goals-character {
+        width: auto;
+        height: auto;
+        position: 50% 50%;
+    }
+
+    #achieve-goals-description {
+        font-size: 1.3em;
+        margin: 0;
     }
 }
