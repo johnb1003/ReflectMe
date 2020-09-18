@@ -7,7 +7,7 @@ import java.net.URLEncoder;
 
 public class WeatherAPI {
     static String apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
-    static String appKey = "5eafdd5f0c3dbb8413d831acc9122bb1";
+    static String appKey = "";
     public static void main(String[] args) {
         try {
             weatherRequest("02703");
@@ -37,10 +37,11 @@ public class WeatherAPI {
 				response.append(inputLine);
 			}
             in.close();
-            System.out.println(response.toString());
+            //System.out.println(response.toString());
+            return response.toString();
         } 
         else {
 			System.out.println("GET request ERROR");
-		}
+        }
     }
 }

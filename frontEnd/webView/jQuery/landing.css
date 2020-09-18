@@ -101,6 +101,14 @@ body {
 
 }
 
+.left-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #afafaf;
+    background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png");
+}
+
 .slide {
     background-color: rgb(53, 53, 53);
 }
@@ -137,6 +145,7 @@ body {
     }
 
     .reflectme-vision-container {
+        display: block;
         margin-top: -1em;
     }
 
@@ -144,16 +153,22 @@ body {
         font-size: 5em;
     }
 
+    #reflectme-vision-description-mobile {
+        display: none;
+    }
+
     .advertisement-1 {
         font-size: 2em;
         color: #94DF93;
         text-shadow: 1px 1px 2px black;
+        margin: .3em 0;
     }
 
     .advertisement-2 {
         font-size: 1.7em;
         color: #8BDD96;
         text-shadow: 1px 1px 2px black;
+        margin: .3em 0;
     }
 
     .input-bar {
@@ -190,6 +205,11 @@ body {
     .left-panel {
         width: 50%;
         height: auto;
+    }
+
+    .reflectme-logo {
+        width: 90%;
+        margin: auto auto;
     }
 
     .right-panel {
@@ -335,10 +355,11 @@ body {
 
 /* Mobile format */
 @media screen and (max-width: 800px) {
-    
 
     body {
         height: 100%;
+        background-color: rgb(230, 230, 230);
+        background-image: none;
     }
 
     .nav-bar {
@@ -353,18 +374,6 @@ body {
 
     .nav-dropdown {
         margin-top: 0 !important;
-    }
-
-    .advertisement-1 {
-        font-size: 2em;
-        color: #94DF93;
-        text-shadow: 1px 1px 2px black;
-    }
-
-    .advertisement-2 {
-        font-size: 1.7em;
-        color: #8BDD96;
-        text-shadow: 1px 1px 2px black;
     }
 
     .input-bar {
@@ -390,6 +399,15 @@ body {
         max-width: 100vw;
     }
 
+    .reflectme-vision-container {
+        display: none;
+    }
+
+    #reflectme-vision-description-mobile {
+        display: block;
+        text-align: center;
+    }
+
     .left-panel {
         width: 100vw;
         height: auto;
@@ -397,14 +415,36 @@ body {
         filter: drop-shadow(0 0 2px black);
     }
 
-    .right-panel {
-        width: 100%;
-        height: 20em;
-        text-align: center;
-        filter: drop-shadow(0 0 2px black);
-        margin-top: 1em;
+    .reflectme-logo {
+        width: 90%;
+        margin: auto auto;
     }
 
+    .right-panel {
+        width: 100%;
+        height: fit-content;
+        text-align: center;
+        padding: 1rem .2rem;
+        background-image: none;
+    }
+
+    .enter-email-container {
+        padding: .1em;
+    }
+
+    .advertisement-1 {
+        font-size: 2em;
+        color: #5180D1;
+        text-shadow: 1px 1px 1px black;
+        margin: .3em 0;
+    }
+
+    .advertisement-2 {
+        font-size: 1.5em;
+        color: #5180D1;
+        text-shadow: 1px 1px 1px black;
+        margin: .3em 0;
+    }
 
     .slideshow {
         width: 100%;
@@ -422,7 +462,6 @@ body {
         width: 100%;
         min-width: 100%;
         max-width: 100%;
-        height: 440px;
         background-color: white;
         text-align: center;
         position: relative;
@@ -435,10 +474,10 @@ body {
 
     .slide-header {
         font-size: 2.5em;
-        height: 60px;
         width: 100%;
         background-color: rgb(255, 255, 255);
         color: black;
+        margin: 0;
     }
 
     .slide-background-image {
@@ -456,7 +495,6 @@ body {
         max-width: 100%;
         margin: 0;
         text-align: center;
-        height: 140px;
         display: flex;
         justify-content: center;
         align-items: center;

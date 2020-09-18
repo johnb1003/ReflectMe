@@ -1,6 +1,3 @@
-//const inquirer = require('inquirer');
-//const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-
 // Regular expression to check valid emails. Source: http://emailregex.com/
 const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -24,6 +21,14 @@ let scheduleData = {
     'cardio': [],
     'strength': []
 };
+
+let cardioHTMLArray = [];
+let strengthHTMLArray = [];
+
+let updatescheduleContainerInterval = null;
+
+let cardioHTMLArrayIndex = 0;
+let strengthHTMLArrayIndex = 0;
 
 function devSetup() {
     JWToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2NCJ9.7Iak7NNb5S4fkpJDvXLnIfJy1a7_hMfSUZ46iOMGL5-J8s-O-_rsCIVPmxArjaaCw3IvJO4AX__bkYuTVqygBQ'
@@ -149,11 +154,13 @@ function displaySchedule() {
     let cardioEvents = scheduleData.cardio;
     let strengthEvents = scheduleData.strength;
 
-    let cardioHTML = '';
-    let strengthHTML = '';
+    cardioHTMLArray = [];
+    strengthHTMLArray = [];
 
     cardioEvents.forEach( event => {
+        let cardioHTML = '';
         let iconName = '';
+
         if(event.cardiotype == 'run') {
             iconName = 'run.svg';
         }
@@ -172,10 +179,13 @@ function displaySchedule() {
         cardioHTML += `<p class='event-distance'>${event.distance} ${mileString}</p>`;
         cardioHTML += `</div>`;
         cardioHTML += `</div>`;
+        cardioHTMLArray.push(cardioHTML);
     });
 
     strengthEvents.forEach( event => {
+        let strengthHTML = '';
         let iconName = '';
+
         if(event.strengthtype == 'yoga') {
             iconName = 'yoga.svg';
         }
@@ -191,9 +201,46 @@ function displaySchedule() {
         }
         strengthHTML += `</div>`;
         strengthHTML += `</div>`;
+        strengthHTMLArray.push(strengthHTML);
     });
-    $('#cardio-container').html(cardioHTML);
-    $('#strength-container').html(strengthHTML);
+
+    if(updatescheduleContainerInterval != null && updatescheduleContainer != undefined) {
+        clearInterval(updatescheduleContainerInterval);
+        cardioHTMLArrayIndex = 0;
+        strengthHTMLArrayIndex = 0;
+    }
+
+    if(cardioHTMLArray.length > 0) {
+        $('#cardio-container').html(cardioHTMLArray[0]);
+    }
+
+    if(strengthHTMLArray.length > 0) {
+        $('#strength-container').html(strengthHTMLArray[0]);
+    }
+
+    updatescheduleContainerInterval = setInterval(updateScheduleContainer, 5 * 1000);
+}
+
+function updateScheduleContainer() {
+    if(cardioHTMLArray.length > 1) {
+        if(cardioHTMLArrayIndex+1 < cardioHTMLArray.length) {
+            cardioHTMLArrayIndex = cardioHTMLArrayIndex+1;
+        }
+        else {
+            cardioHTMLArrayIndex = 0;
+        }
+        $('#cardio-container').html(cardioHTMLArray[cardioHTMLArrayIndex]);
+    }
+
+    if(strengthHTMLArray.length > 1) {
+        if(strengthHTMLArrayIndex+1 < strengthHTMLArray.length) {
+            strengthHTMLArrayIndex = strengthHTMLArrayIndex+1;
+        }
+        else {
+            strengthHTMLArrayIndex = 0;
+        }
+        $('#strength-container').html(strengthHTMLArray[strengthHTMLArrayIndex]);
+    }
 }
 
 
@@ -214,7 +261,7 @@ async function updateDateTime() {
     $('#time-string').text(timeString);
 
     if(currDate != currDateTime.getDate()) {
-        let dateString = `${weekDays[currDateTime.getDay()]}, ${months[currDateTime.getMonth()]} ${currDateTime.getDate(), currDateTime.getFullYear()}`;
+        let dateString = `${weekDays[currDateTime.getDay()]}, ${months[currDateTime.getMonth()]} ${currDateTime.getDate()}, ${currDateTime.getFullYear()}`;
         console.log(dateString);
         $('#date-string').text(dateString);
         currDate = currDateTime.getDate();
@@ -261,7 +308,7 @@ $(document).ready(function() {
 
 
     // Only use for development purposes
-    //devSetup();
+    devSetup();
 
 
     //////////////////////////////////

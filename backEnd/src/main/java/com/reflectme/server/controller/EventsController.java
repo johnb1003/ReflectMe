@@ -206,4 +206,10 @@ public class EventsController {
 
         return eventsService.getScheduledDayEvents(Long.parseLong(principal.getName()), LocalDate.parse(date));
     }
+
+    @GetMapping("/weather/{zip}")
+    public ResponseEntity getWeather(@PathVariable(value = "zip")String zipCode, Principal principal) {
+
+        return eventsService.getWeather(zipCode);
+    }
 }

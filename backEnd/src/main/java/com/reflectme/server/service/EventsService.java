@@ -19,6 +19,13 @@ import java.time.temporal.ChronoField;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import java.net.URL;
+import java.net.HttpURLConnection;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.lang.Exception;
+import java.net.URLEncoder;
+
 
 @Service
 public class EventsService {
@@ -260,5 +267,51 @@ public class EventsService {
         catch (Exception e){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Day events not found.");
         }
+    }
+
+    public ResponseEntity getWeather(String zip) {
+        String apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
+        String openWeathMapAPIKey = System.getenv("OPEN_WEATHER_MAP_API_KEY");
+        String weatherJSONString = null;
+        if (zip.length() == 5 && zip.matches("[0-9]+")) {
+            try {
+                String reqURL = apiURL + zip + "&appid=" + openWeathMapAPIKey;
+                System.out.println(reqURL.toString());
+                URL url = new URL(reqURL);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+
+
+                int responseCode = con.getResponseCode();
+                System.out.println("GET Response Code: " + responseCode);
+                if (responseCode == HttpURLConnection.HTTP_OK) { // success
+                    BufferedReader in = new BufferedReader(new InputStreamReader(
+                            con.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    //System.out.println(response.toString());
+                    weatherJSONString = response.toString();
+                } else {
+                    System.out.println("GET request ERROR");
+                }
+            } catch (Exception e) {
+                System.out.println(e.toString());
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Could not retrieve weather");
+            }
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error: Invalid zip code format");
+        }
+
+
+        return Optional
+                .ofNullable(weatherJSONString)
+                .map(weather -> ResponseEntity.ok().body(weather))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
