@@ -35,6 +35,11 @@
                         </div>
                     </div>
 
+                    <p class="zip-error-message">Invalid US zipcode</p>
+                    <div class="zip-group">
+                        <label for="zip">US Zip Code:</label><br>
+                        <input type="text" id="zip" name="zip" placeholder="01234"><br>
+                    </div>
                 </div>
                 <input class="submit-button" type="submit" value="Submit" id="login-submit-button">
                 <div class="signup-line">
@@ -53,7 +58,11 @@
                 </div>
     
                 <div class="weather-container">
-                    <p>Weather</p>
+                    <img src="" alt="Weather symbol" id="weather-icon">
+                    <div id="temperature-container">
+                        <h1 id="temperature"></h1>
+                        <img src="weather-icons/f-symbol.svg" alt="Fahrenheit symbol" id="temperature-f-symbol">
+                    </div>
                 </div>
             </div>
 

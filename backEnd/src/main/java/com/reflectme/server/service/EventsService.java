@@ -276,14 +276,14 @@ public class EventsService {
         if (zip.length() == 5 && zip.matches("[0-9]+")) {
             try {
                 String reqURL = apiURL + zip + "&appid=" + openWeathMapAPIKey;
-                System.out.println(reqURL.toString());
+                //System.out.println(reqURL.toString());
                 URL url = new URL(reqURL);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("GET");
 
 
                 int responseCode = con.getResponseCode();
-                System.out.println("GET Response Code: " + responseCode);
+                //System.out.println("GET Response Code: " + responseCode);
                 if (responseCode == HttpURLConnection.HTTP_OK) { // success
                     BufferedReader in = new BufferedReader(new InputStreamReader(
                             con.getInputStream()));

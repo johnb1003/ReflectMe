@@ -4,15 +4,21 @@ const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+")
 // Regular expression to check password is only alphanumeric values and length is between 5-20 inclusive. Source: https://stackoverflow.com/questions/4745112/javascript-regex-for-alphanumeric-string-with-length-of-3-5-chars
 const passwordRegEx = /^([a-zA-Z0-9]){5,20}$/;
 
+// Regular expression to check valid zip code
+const zipCodeRegEx = /(^\d{5}$)/
+
 const loginURL = 'https://reflectme.tech/api/v1/accounts/login';
-const dayDataURL = 'https://reflectme.tech/api/v1/events/day/'
+const dayDataURL = 'https://reflectme.tech/api/v1/events/day/';
+const weatherDataURL = 'https://reflectme.tech/api/v1/events/weather/';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November', 'December'];
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+
 let JWToken = null;
 var email = null;
 var pw = null;
+var zipCode = null;
 let loginObject = {};
 
 let currDate = 0;
@@ -22,16 +28,19 @@ let scheduleData = {
     'strength': []
 };
 
+let weatherData = {};
+
 let cardioHTMLArray = [];
 let strengthHTMLArray = [];
 
-let updatescheduleContainerInterval = null;
+let updatescheduleContainerInterval = undefined;
 
 let cardioHTMLArrayIndex = 0;
 let strengthHTMLArrayIndex = 0;
 
 function devSetup() {
     JWToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2NCJ9.7Iak7NNb5S4fkpJDvXLnIfJy1a7_hMfSUZ46iOMGL5-J8s-O-_rsCIVPmxArjaaCw3IvJO4AX__bkYuTVqygBQ'
+    zipCode = '02703';
     displayLoops();
     $('.login-view').css('display', 'none');
     $('.mirror-view').css('display', 'flex');
@@ -93,6 +102,17 @@ function authenticateLogin() {
         $('.login-error-message').css('display', 'none');
     }
 
+    const zip = $('#zip');
+    if(!validZipCode(zip.val())) {
+        $('.zip-error-message').css('display', 'block');
+        valid = false;
+    }
+    else {
+        console.log("zip");
+        zipCode = $('#zip').val();
+        $('.zip-error-message').css('display', 'none');
+    }
+
     return valid;
 }
 
@@ -105,6 +125,13 @@ function validEmail(email) {
 
 function validPassword(password) {
     if(password == '' || !passwordRegEx.test(password)) {
+        return false;
+    }
+    return true;
+}
+
+function validZipCode(zip) {
+    if(zip == '' || !zipCodeRegEx.test(zip)) {
         return false;
     }
     return true;
@@ -204,7 +231,7 @@ function displaySchedule() {
         strengthHTMLArray.push(strengthHTML);
     });
 
-    if(updatescheduleContainerInterval != null && updatescheduleContainer != undefined) {
+    if(updatescheduleContainerInterval != undefined) {
         clearInterval(updatescheduleContainerInterval);
         cardioHTMLArrayIndex = 0;
         strengthHTMLArrayIndex = 0;
@@ -218,7 +245,7 @@ function displaySchedule() {
         $('#strength-container').html(strengthHTMLArray[0]);
     }
 
-    updatescheduleContainerInterval = setInterval(updateScheduleContainer, 5 * 1000);
+    updatescheduleContainerInterval = setInterval(updateScheduleContainer, 8 * 1000);
 }
 
 function updateScheduleContainer() {
@@ -245,7 +272,85 @@ function updateScheduleContainer() {
 
 
 async function updateWeather() {
+    $.ajax({
+        type: "GET",
+        url: weatherDataURL+zipCode,
+        contentType: "application/json",
+        headers: {
+            'Authorization': 'Bearer ' + JWToken
+        },
+        success: function(data, status, xhr)    {
+            // Display schedule data
+            weatherData = JSON.parse(data);
+            displayWeather();
+        },
+        failure: function(errMsg) {
+            console.log(errMsg);
+        }
+    });
+}
 
+function displayWeather() {
+    console.log(weatherData);
+
+    let temperatureK = weatherData['main']['temp'];
+    let code = weatherData['weather']['0']['id'];
+
+    let dayOrNight = '';
+    let sunriseTime = weatherData['sys']['sunrise'];
+    let sunsetTime = weatherData['sys']['sunset'];
+    let currTime = weatherData['dt'];
+
+    if(currTime > sunriseTime && currTime < sunsetTime) {
+        dayOrNight = 'day';
+    }
+    else {
+        dayOrNight = 'night';
+    }
+
+    let icon = getWeatherIcon(code, dayOrNight)
+
+    let temperatureF = Math.floor(((parseFloat(temperatureK) - 273.15) * (9/5)) + 32);
+    $('#temperature').text(temperatureF);
+    $('#weather-icon').attr('src', icon);
+}
+
+function getWeatherIcon(weatherCode, dayOrNight) {
+    let icon = 'weather-icons/';
+    if(weatherCode < 300) {
+        // Thunder
+        icon += 'thunder';
+    }
+    else if(weatherCode < 400) {
+        // Light rain
+        icon += 'light-rain';
+    }
+    else if(weatherCode < 600) {
+        // Rain
+        icon += 'rain';
+    }
+    else if(weatherCode < 700) {
+        // Snow
+        icon += 'snow';
+    }
+    else if(weatherCode < 800) {
+        // "Atmosphere" (wind symbol)
+        icon += 'atmosphere';
+    }
+    else if(weatherCode == 800) {
+        // Clear (sunny)
+        icon += 'clear';
+    }
+    else if(weatherCode < 803) {
+        // Partly cloudy
+        icon += 'partly-cloudy';
+    }
+    else if(weatherCode >= 803) {
+        // Cloudy
+        icon += 'cloudy';
+    }
+    icon += '-' + dayOrNight + '.svg';
+    return icon;
 }
 
 async function updateDateTime() {
@@ -297,23 +402,21 @@ $(document).ready(function() {
         let valid = authenticateLogin();
 
         if(valid) {
-            $('.login-error-message').css('display', 'none');
             loginAJAX();
-        }
-        else {
-            $('.login-error-message').css('display', 'block');
         }
     })
 
 
 
     // Only use for development purposes
-    devSetup();
+    //devSetup();
 
 
     //////////////////////////////////
     ///////// Mirror Functions ///////
     //////////////////////////////////
+
+
 
 });
 

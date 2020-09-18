@@ -16,7 +16,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: .3vh .3vw;
+    padding: 2rem;
     display: none;
 }
 
@@ -47,9 +47,36 @@ body {
 #time-string {
     font-size: 6rem;
     margin-top: -.5rem;
+    margin-bottom: 0;
 }
 
+.weather-container {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+#weather-icon {
+    width: 8em;
+    height: 8em;
+}
+
+#temperature-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+#temperature {
+    font-size: 6rem;
+    font-weight: 350;
+}
+
+#temperature-f-symbol {
+    height: 5rem;
+}
 
 .schedule-container {
     font-family: 'Montserrat', sans-serif;
@@ -149,9 +176,13 @@ body {
     width: 50%;
 }
 
-.login-form {
+.zip-group input {
     width: 50%;
-    height: 33em;
+}
+
+.login-form {
+    width: 70%;
+    min-height: fit-content;
     background-color: #000000;
     border-radius: 8px;
     box-shadow: 0em 0em 8px 3px black;
@@ -187,6 +218,15 @@ body {
     display: none;
     text-align: center;
     margin: 0;
+    padding: 0;
+}
+
+.zip-error-message {
+    font-size: 1em;
+    color: rgb(255, 0, 0);
+    display: none;
+    text-align: center;
+    margin: 1em 0 0 0;
     padding: 0;
 }
 
