@@ -22,7 +22,7 @@ $(document).ready(function() {
 
         if(validEmail(landingEmail)) {
 
-            $('.landing-error-message').css('display', 'none');
+            $('.landing-error-message').css('visibility', 'hidden');
 
             let exists = false;
 
@@ -47,7 +47,7 @@ $(document).ready(function() {
         }
         else {
             console.log("Here3")
-            $('.landing-error-message').css('display', 'block');
+            $('.landing-error-message').css('visibility', 'visible');
         }
     })
 

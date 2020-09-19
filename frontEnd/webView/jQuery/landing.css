@@ -33,7 +33,7 @@ body {
 }
 
 .landing-error-message {
-    display: none;
+    visibility: hidden;
 }
 
 .enter-email-container {
