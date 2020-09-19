@@ -1410,7 +1410,7 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        align-items: baseline;
+        align-items: center;
         overflow: scroll;
         height: 100%;
         min-height: fit-content;
@@ -1434,7 +1434,6 @@ body {
         justify-content: space-evenly;
         align-items: baseline;
         overflow: scroll;
-        display: none;
         height: 100%;
         min-height: fit-content;
     }
@@ -1508,7 +1507,6 @@ body {
         align-items: center;
         margin: auto;
         min-height: fit-content;
-        height: 100%;
     }
 
     .input-container {
