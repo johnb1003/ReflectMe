@@ -3,6 +3,10 @@ body {
     background-image: url("resources/green-metal-background.png");
 }
 
+#create-week-name {
+    padding: .3em;
+}
+
 /* PC format */
 @media screen and (min-width: 801px) {
 
