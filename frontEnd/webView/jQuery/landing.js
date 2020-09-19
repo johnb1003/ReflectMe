@@ -22,6 +22,8 @@ $(document).ready(function() {
 
         if(validEmail(landingEmail)) {
 
+            $('.landing-error-message').css('display', 'none');
+
             let exists = false;
 
             setCookie("email", landingEmail)
