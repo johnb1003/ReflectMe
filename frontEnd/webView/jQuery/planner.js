@@ -1154,6 +1154,8 @@ function clearFormData() {
 
     $('#create-week-name').val('');
 
+    toCalendar = false;
+
     setClickedType('cardio');
 
     processDayView();
@@ -2496,6 +2498,8 @@ function backToCalendar() {
 
 function createWeekEvent(weekID) {
     
+    toCalendar = true;
+
     // individual day event, or week event?
     createScope = 'week';
     createWeekID = weekID;
@@ -2569,11 +2573,11 @@ function editCardioEvent(event) {
     // individual day event, or week event?
     updateScope = 'day';
 
-    toCalendar = false;
+    //toCalendar = false;
     // If pop-up is not already visible
-    if($('.pop-up').css('display') == 'none') {
-        toCalendar = true;
-    }
+    //if($('.pop-up').css('display') == 'none') {
+    //    toCalendar = true;
+    //}
     if(event.weekid != null && event.weekid != undefined) {
         updateScope = 'week';
         updateWeekID = event.weekid;
@@ -2701,11 +2705,11 @@ function editStrengthEvent(event) {
     // individual day event, or week event?
     updateScope = 'day';
 
-    toCalendar = false;
+    //toCalendar = false;
     // If pop-up is not already visible
-    if($('.pop-up').css('display') == 'none') {
-        toCalendar = true;
-    }
+    //if($('.pop-up').css('display') == 'none') {
+    //    toCalendar = true;
+    //}
     if(event.weekid != null && event.weekid != undefined) {
         updateScope = 'week';
         updateWeekID = event.weekid;
