@@ -2563,6 +2563,7 @@ function createWeekEvent(weekID) {
     $('.pop-up-next').css('display', 'none');
 
     requestType = 'create';
+    $(window).resize();
 }
 
 
