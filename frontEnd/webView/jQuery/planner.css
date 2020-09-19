@@ -359,6 +359,7 @@ body {
         margin: auto;
         padding: 2em 0;
         height: 100%;
+        min-height: fit-content;
     }
 
     .input-container {
@@ -1484,7 +1485,8 @@ body {
         justify-content: space-evenly;
         align-items: center;
         margin: auto;
-        min-height: 100%;
+        min-height: fit-content;
+        height: 100%;
     }
 
     .input-container {
