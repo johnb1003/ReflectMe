@@ -1988,7 +1988,7 @@ $(document).ready(function() {
     //////////////////////////////////////////////////
     calendar.init();
 
-    $( window ).resize( () => {
+    $(window).resize( () => {
         if($(window).width() > 800) {
             $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
             $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
@@ -1998,6 +1998,14 @@ $(document).ready(function() {
             $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
             $('.input-container').css('height', `fit-content`);
             $('.summary').css('height', `fit-content`);
+        }
+        if($(window).width() <= 800) {
+            if($('.input-container').outerHeight(true) + $('.event-summary-container').outerHeight(true) > $('.day-input-container').outerHeight(true)) {
+                $('.top-panel').css('min-height', 'fit-content');
+            }
+            else {
+                $('.top-panel').css('min-height', '100%');
+            }
         }
 
         $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
