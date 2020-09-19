@@ -7,6 +7,14 @@ body {
     padding: .3em;
 }
 
+.create-week-container {
+    background-color: white;
+    color: black;
+    padding: 1em 0;
+    border-radius: 3px;
+    display: none;
+}
+
 /* PC format */
 @media screen and (min-width: 801px) {
 
@@ -748,16 +756,12 @@ body {
     }
 
     .create-week-container {
-        background-color: #36495F;
         width: 50%;
         height: 16em;
         min-height: fit-content;
         cursor: default;
         position: relative;
         padding: 1em 0;
-        border: 2px solid rgb(170, 170, 170);
-        border-radius: 2em;
-        box-shadow: .2em .2em 0px rgb(155, 155, 155);
         display: none;
     }
 
@@ -1886,15 +1890,11 @@ body {
     }
 
     .create-week-container {
-        background-color: #36495F;
         width: 90%;
         min-height: fit-content;
         cursor: default;
         position: relative;
         padding: 1em 0;
-        border: 2px solid rgb(170, 170, 170);
-        border-radius: 2em;
-        box-shadow: .2em .2em 0px rgb(155, 155, 155);
         display: none;
     }
 
