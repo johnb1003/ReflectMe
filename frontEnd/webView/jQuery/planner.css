@@ -756,8 +756,8 @@ body {
     }
 
     .create-week-container {
-        width: 50%;
-        height: 16em;
+        width: 65%;
+        min-width: fit-content;
         min-height: fit-content;
         cursor: default;
         position: relative;
@@ -1892,6 +1892,7 @@ body {
 
     .create-week-container {
         width: 90%;
+        min-width: fit-content;
         min-height: fit-content;
         cursor: default;
         position: relative;
