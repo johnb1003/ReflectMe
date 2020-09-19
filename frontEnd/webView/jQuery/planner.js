@@ -2147,6 +2147,7 @@ $(document).ready(function() {
 
             requestType = 'create';
             createScope = 'day';
+            $(window).resize();
         }
     });
 
@@ -2699,6 +2700,7 @@ function editCardioEvent(event) {
 
     updateID = event.cardioid;
     requestType = 'update';
+    $(window).resize();
 }
 
 function editStrengthEvent(event) {
@@ -2813,6 +2815,7 @@ function editStrengthEvent(event) {
 
     updateID = event.strengthid;
     requestType = 'update';
+    $(window).resize();
 }
 
 function validateNewWeekName(newWeekName) {
