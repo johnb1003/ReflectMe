@@ -1614,6 +1614,7 @@ body {
         border: 2px solid black;
         background-color: #36495F;
         box-shadow: .2em .2em 4px black;
+        margin-bottom: 1rem;
     }
 
     .event-summary {
