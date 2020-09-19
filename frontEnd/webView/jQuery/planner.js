@@ -2110,7 +2110,7 @@ $(document).ready(function() {
             $('.back-to-day-schedule').css('display', 'block');
             $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
 
-            if($(window).height() > 800) {
+            if($(window).width() > 800) {
                 $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
                 $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
             }
@@ -2521,7 +2521,7 @@ function createWeekEvent(weekID) {
 
     displayCardio();
 
-    if($(window).height() > 800) {
+    if($(window).width() > 800) {
         $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
         $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
     }
@@ -2643,7 +2643,7 @@ function editCardioEvent(event) {
     displayCardio();
     $('.day-scheduler').css('display', 'block');
     
-    if($(window).height() > 800) {
+    if($(window).width() > 800) {
         $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
         $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
     }
@@ -2757,7 +2757,7 @@ function editStrengthEvent(event) {
     processStrengthView();
     $('.day-scheduler').css('display', 'block');
 
-    if($(window).height() > 800) {
+    if($(window).width() > 800) {
         $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
         $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
     }
