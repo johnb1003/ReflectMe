@@ -8,7 +8,7 @@ body {
 }
 
 .create-week-container {
-    background-color: white;
+    background-color: rgb(199, 199, 199);
     color: black;
     padding: 1em 0;
     border-radius: 3px;
@@ -792,6 +792,7 @@ body {
         width: 100%;
         height: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: auto 0;
