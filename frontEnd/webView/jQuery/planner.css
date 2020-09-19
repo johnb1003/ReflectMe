@@ -751,6 +751,7 @@ body {
         background-color: #36495F;
         width: 50%;
         height: 16em;
+        min-height: fit-content;
         cursor: default;
         position: relative;
         padding: 1em 0;
@@ -1887,6 +1888,7 @@ body {
         background-color: #36495F;
         width: 90%;
         height: 16em;
+        min-height: fit-content;
         cursor: default;
         position: relative;
         padding: 1em 0;
