@@ -1888,7 +1888,6 @@ body {
     .create-week-container {
         background-color: #36495F;
         width: 90%;
-        height: 16em;
         min-height: fit-content;
         cursor: default;
         position: relative;
