@@ -2272,6 +2272,11 @@ body {
     .input-section{
         margin-top: 1em;
         min-height: fit-content;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-content: center;
     }
 
     .input-grouping {
