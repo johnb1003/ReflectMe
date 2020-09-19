@@ -1412,7 +1412,6 @@ body {
         justify-content: space-evenly;
         align-items: baseline;
         overflow: scroll;
-        display: none;
         height: 100%;
         min-height: fit-content;
     }
@@ -1424,7 +1423,6 @@ body {
         justify-content: space-evenly;
         align-items: baseline;
         overflow: scroll;
-        display: none;
         height: 100%;
         min-height: fit-content;
     }
@@ -2310,7 +2308,6 @@ body {
         justify-content: space-evenly;
         align-items: baseline;
         overflow: scroll;
-        display: none;
         height: 100%;
         min-height: fit-content;
     }
@@ -2322,7 +2319,6 @@ body {
         justify-content: space-evenly;
         align-items: baseline;
         overflow: scroll;
-        display: none;
         height: 100%;
         min-height: fit-content;
     }
