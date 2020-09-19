@@ -1993,17 +1993,11 @@ $(document).ready(function() {
             $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
             $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
         }
-        else if($(window).height() < 600){
+        else {
             $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
             $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
             $('.input-container').css('height', `fit-content`);
             $('.summary').css('height', `fit-content`);
-        }
-        else {
-            $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
-            $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
-            $('.input-container').css('height', `${$('.top-panel').height() / 2}px`);
-            $('.summary').css('height', `${$('.top-panel').height() / 2}px`);
         }
 
         $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
@@ -2080,17 +2074,11 @@ $(document).ready(function() {
                 $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
                 $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 10)}px`);
             }
-            else if($(window).height() < 600){
+            else {
                 $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
                 $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
                 $('.input-container').css('height', `fit-content`);
                 $('.summary').css('height', `fit-content`);
-            }
-            else {
-                $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height() - 5}px`);
-                $('.day-input-container').css('height', `${$('.existing-events-container').height() - ($('.day-view-header').height() + $('.day-scheduler-header').height() + $('.event-type-selector').outerHeight() + 5)}px`);
-                $('.input-container').css('height', `${$('.top-panel').height() / 2}px`);
-                $('.summary').css('height', `${$('.top-panel').height() / 2}px`);
             }
 
             $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
@@ -2101,6 +2089,7 @@ $(document).ready(function() {
 
             requestType = 'create';
             createScope = 'day';
+            $(window).resize();
         }
     });
 
