@@ -1521,7 +1521,6 @@ body {
         justify-content: space-evenly;
         align-items: center;
         margin: auto;
-        height: 100%;
         min-height: fit-content;
     }
 
