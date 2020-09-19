@@ -45,7 +45,7 @@ $(document).ready(function() {
         }
         else {
             console.log("Here3")
-            $('#landing-error-message').css('display', 'block');
+            $('.landing-error-message').css('display', 'block');
         }
     })
 
