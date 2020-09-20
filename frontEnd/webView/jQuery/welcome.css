@@ -107,6 +107,14 @@ body {
     color: #8BDD96;
 }
 
+#mirror-add-mirrorapp {
+    color: white;
+}
+
+#mirror-view {
+    color: white;
+}
+
 #coming-soon-container-pc {
     text-align: left;
     width: 100%;
