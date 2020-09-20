@@ -157,8 +157,28 @@ function displayLoops() {
     let updateWeatherDataInterval = setInterval(updateWeather, 10 * 60 * 1000);
 }
 
+function getCurrDateString() {
+    let now = new Date();
+    let year = ''+now.getFullYear;
+    let month = ''+(now.getMonth + 1);
+    let day = ''+now.getDate();
+
+    if(month.length < 2) {
+        month = '0' + month;
+    }
+
+    if(day.length < 2) {
+        day = '0' + day;
+    }
+
+    let stringDate = [year, month, day].join('-');
+
+    return stringDate;
+}
+
 async function updateSchedule() {
-    let dateString = new Date().toISOString().slice(0,10);
+    //let dateString = new Date().toISOString().slice(0,10);
+    let dateString = getCurrDateString();
     $.ajax({
         type: "GET",
         url: dayDataURL+dateString,
