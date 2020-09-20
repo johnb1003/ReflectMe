@@ -59,6 +59,6 @@ $(document).ready(function() {
     }
 
     $('#mirror-button').click( (e) => {
-        window.location.href = "mirror.html";
+        window.location.href = "diy-mirror.html";
     });
 });
