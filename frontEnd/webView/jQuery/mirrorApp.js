@@ -159,8 +159,8 @@ function displayLoops() {
 
 function getCurrDateString() {
     let now = new Date();
-    let year = ''+now.getFullYear;
-    let month = ''+(now.getMonth + 1);
+    let year = ''+now.getFullYear();
+    let month = ''+(now.getMonth() + 1);
     let day = ''+now.getDate();
 
     if(month.length < 2) {
