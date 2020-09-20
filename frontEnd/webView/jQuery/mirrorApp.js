@@ -316,7 +316,7 @@ function displayWeather() {
 }
 
 function getWeatherIcon(weatherCode, dayOrNight) {
-    let icon = 'weather-icons/';
+    let icon = 'resources/weather-icons/';
     if(weatherCode < 300) {
         // Thunder
         icon += 'thunder';
