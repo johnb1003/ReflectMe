@@ -201,7 +201,7 @@ function displaySchedule() {
         let mileString = event.distance > 1 ? 'miles' : 'mile';
         cardioHTML += `<div class='event-container'>`;
         cardioHTML += `<p class='event-name'>${event.cardiotype.charAt(0).toUpperCase()+event.cardiotype.slice(1)}</p>`;
-        cardioHTML += `<img class="event-icon" src="event-icons/${iconName}"></img>`;
+        cardioHTML += `<img class="event-icon" src="resources/event-icons/${iconName}"></img>`;
         cardioHTML += `<div class='event-description'>`;
         cardioHTML += `<p class='event-distance'>${event.distance} ${mileString}</p>`;
         cardioHTML += `</div>`;
@@ -221,7 +221,7 @@ function displaySchedule() {
         }
         strengthHTML += `<div class='event-container'>`;
         strengthHTML += `<p class='event-name'>${event.strengthtype.charAt(0).toUpperCase()+event.strengthtype.slice(1)}</p>`;
-        strengthHTML += `<img class="event-icon" src="event-icons/${iconName}"></img>`;
+        strengthHTML += `<img class="event-icon" src="resources/event-icons/${iconName}"></img>`;
         strengthHTML += `<div class='event-description'>`;
         if(event.strengthtype == 'lift') {
             strengthHTML += `<p class='event-lifts'>${event.lifts.charAt(0).toUpperCase()+event.lifts.slice(1)}</p>`;
