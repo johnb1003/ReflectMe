@@ -1,0 +1,262 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.mirror-view {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    display: none;
+}
+
+.top-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.bottom-row {
+    width: 100%;
+}
+
+.date-time-container {
+    font-family: 'Montserrat', sans-serif;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#date-string {
+    font-size: 3rem;
+    margin-top: -.2rem;
+}
+#time-string {
+    font-size: 6rem;
+    margin-top: -.5rem;
+    margin-bottom: 0;
+}
+
+.weather-container {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#weather-icon {
+    width: 8em;
+    height: 8em;
+}
+
+#temperature-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+#temperature {
+    font-size: 6rem;
+    font-weight: 350;
+}
+
+#temperature-f-symbol {
+    height: 5rem;
+}
+
+.schedule-container {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#cardio-container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    max-height: 60rem;
+}
+
+#strength-container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    max-height: 60rem;
+}
+
+.event-container {
+    max-width: 20rem;
+
+}
+
+.event-icon {
+    width: 100%;
+    height: 8em;
+    padding: 0;
+    margin: 0;
+}
+
+.event-name {
+    font-size: 3rem;
+    text-align: center;
+    margin: 1rem 0 .1rem 0;
+}
+
+.event-distance {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.event-lifts {
+    text-align: center;
+}
+
+/********************/
+/* Login Formatting */
+/********************/
+
+.nav-bar {
+    display: none !important;
+}
+
+.content {
+    text-align: center;
+}
+
+.login-view {
+    border-radius: 8px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    width: 98%;
+    min-width: 30em;
+    height: 100vh;
+    min-height: 33em;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-pic{
+    height: 13em;
+    width: 18em;
+}
+
+.email-group input{
+    width: 50%;
+}
+
+.pass-group input {
+    width: 50%;
+}
+
+.zip-group input {
+    width: 50%;
+}
+
+.login-form {
+    width: 70%;
+    min-height: fit-content;
+    background-color: #000000;
+    border-radius: 8px;
+    box-shadow: 0em 0em 8px 3px black;
+    border: 4px solid rgb(255, 255, 255);
+    align-items: center;
+    text-align: center;
+}
+
+.form-input {
+    margin: 0;
+    align-items: center;
+    text-align: center;
+}
+
+.form-input label {
+    color: white;
+    margin-top: 2%;
+    text-align: left;
+}
+
+.form-input input{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 10px;
+    border: none;
+    height: 2em;
+    padding: 1em;
+}
+
+.login-error-message {
+    font-size: 1em;
+    color: rgb(255, 0, 0);
+    display: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.zip-error-message {
+    font-size: 1em;
+    color: rgb(255, 0, 0);
+    display: none;
+    text-align: center;
+    margin: 1em 0 0 0;
+    padding: 0;
+}
+
+#invalid-email {
+    margin-right: 16%;
+}
+
+.submit-button {
+    margin-top: 2em;
+    border-radius: 10px;
+    width: 50%;
+    height: 2.4em;
+    background-color: black;
+    border: 2px solid white;
+    color: white;
+}
+
+.submit-button:hover {
+    background-color: white;
+    color: black;
+}
+
+.signup-line {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 2em;
+} 
+
+.signup-line p{
+    margin-right: 1%;
+    color: #ffffff;
+}

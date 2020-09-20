@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html> 
+    <head>
+        <title>ReflectMe App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <!-- Corresponding js and css files -->
+        <link rel="stylesheet" type="text/css" href="mirrorApp.css">
+        <script type="text/javascript" src="mirrorApp.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="login-view">
+            <form class="login-form">
+                <div class="logo">
+                    <img class="logo-pic" src="reflectme-logo-wide.svg"></img>
+                </div>
+                <div class="form-input">
+                    <p class="login-error-message">Email and password do not match</p>
+                    <div class="email-group">
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email" placeholder="Email"><br>
+                    </div>
+
+                    <div class="password-group">
+                        <div class="pass-group">
+                            <label for="password">Password:</label><br>        
+                            <input type="password" id="password" name="password" placeholder="Password"><br>
+                        </div>
+                    </div>
+
+                    <p class="zip-error-message">Invalid US zipcode</p>
+                    <div class="zip-group">
+                        <label for="zip">US Zip Code:</label><br>
+                        <input type="text" id="zip" name="zip" placeholder="01234"><br>
+                    </div>
+                </div>
+                <input class="submit-button" type="submit" value="Submit" id="login-submit-button">
+                <div class="signup-line">
+                    <p> Don't have an account? Signup at https://ReflectMe.tech/signup.html</p>
+                </div>
+            </form>
+        </div>
+
+
+
+        <div class="mirror-view">
+            <div class="top-row">
+                <div class="date-time-container">
+                    <h2 id="date-string"></h2>
+                    <h1 id="time-string"></h1>
+                </div>
+    
+                <div class="weather-container">
+                    <img src="" alt="Weather symbol" id="weather-icon">
+                    <div id="temperature-container">
+                        <h1 id="temperature"></h1>
+                        <img src="weather-icons/f-symbol.svg" alt="Fahrenheit symbol" id="temperature-f-symbol">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-row">
+                <div class="schedule-container">
+                    <div id="cardio-container">
+                        <!-- Filled by displaySchedule() function -->
+                    </div>
+                    <div id="strength-container">
+                        <!-- Filled by displaySchedule() function -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
