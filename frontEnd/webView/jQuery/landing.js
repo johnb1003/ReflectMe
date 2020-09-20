@@ -46,7 +46,6 @@ $(document).ready(function() {
             });
         }
         else {
-            console.log("Here3")
             $('.landing-error-message').css('visibility', 'visible');
         }
     })
