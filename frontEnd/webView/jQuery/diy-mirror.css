@@ -14,7 +14,6 @@ body {
     height: 100%;
     min-height: 100%;
     text-align: center;
-    padding: .5rem;
 }
 
 .setup-mirror-header {
@@ -44,7 +43,7 @@ body {
 
 #mirror-app-example {
     height: 70vh;
-    width: 95vw;
+    width: 100%;
 }
 
 #mirror-caption {
@@ -89,12 +88,26 @@ body {
 }
 
 .component-description {
+    text-align: left;
+    font-size: 1.3em;
+}
 
+#integration-container {
+
+}
+
+#integration-message {
+    text-align: left;
+    font-size: 1.3em;
 }
 
 
 /* PC format */
 @media screen and (min-width: 801px) {
+    .setup-mirror-container {
+        padding: 0 4%;
+    }
+
     #setup-mirror-header-title {
         font-size: 4em;
     }
@@ -108,7 +121,7 @@ body {
     }
 
     .setup-mirror-overview {
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
     }
 
@@ -119,6 +132,9 @@ body {
 
 /* Mobile format */
 @media screen and (max-width: 800px) {
+    .setup-mirror-container {
+        padding: 0 3%;
+    }
     #setup-mirror-header-title {
         font-size: 3em;
         padding: 0;
@@ -133,7 +149,7 @@ body {
     }
 
     .setup-mirror-overview {
-        width: 99%;
+        width: 100%;
         margin: 0 auto;
     }
 

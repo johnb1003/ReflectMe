@@ -178,18 +178,6 @@ body {
     width: 18em;
 }
 
-.email-group input{
-    width: 50%;
-}
-
-.pass-group input {
-    width: 50%;
-}
-
-.zip-group input {
-    width: 50%;
-}
-
 .login-form {
     width: 70%;
     min-height: fit-content;
@@ -220,6 +208,7 @@ body {
     border: none;
     height: 2em;
     padding: 1em;
+    width: 50%;
 }
 
 .login-error-message {
@@ -247,11 +236,11 @@ body {
 .submit-button {
     margin-top: 2em;
     border-radius: 10px;
-    width: 50%;
     height: 2.4em;
     background-color: black;
     border: 2px solid white;
     color: white;
+    width: 50%;
 }
 
 .submit-button:hover {
@@ -274,6 +263,19 @@ body {
 
 /* Mobile format */
 @media screen and (max-width: 800px) {
+
+    .login-form {
+        width: 95%;
+    }
+
+    .form-input input{
+        width: 90%;
+    }
+
+    .submit-button {
+        width: 90%;
+    }
+
     #date-string {
         font-size: 2rem;
         margin-top: -.2rem;

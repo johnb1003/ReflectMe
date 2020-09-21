@@ -39,8 +39,8 @@ let cardioHTMLArrayIndex = 0;
 let strengthHTMLArrayIndex = 0;
 
 function devSetup() {
-    JWToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2NCJ9.7Iak7NNb5S4fkpJDvXLnIfJy1a7_hMfSUZ46iOMGL5-J8s-O-_rsCIVPmxArjaaCw3IvJO4AX__bkYuTVqygBQ'
-    zipCode = '02703';
+    JWToken = ''
+    zipCode = '';
     displayLoops();
     $('.login-view').css('display', 'none');
     $('.mirror-view').css('display', 'flex');
@@ -333,6 +333,15 @@ function displayWeather() {
     let temperatureF = Math.floor(((parseFloat(temperatureK) - 273.15) * (9/5)) + 32);
     $('#temperature-num').text(temperatureF);
     $('#weather-icon').attr('src', icon);
+
+    let height = $('.date-time-container').outerHeight() * .85;
+
+    $('#weather-icon').css('height', `${height}px`);
+
+    $('.temperature').css({
+        'font-size': ((height) * 1.1) + 'px'
+        //, 'line-height': height + 'px'
+    });
 }
 
 function getWeatherIcon(weatherCode, dayOrNight) {
@@ -407,7 +416,7 @@ function formatMinutes(minute) {
 }
 
 
-
+$(window).resize();
 
 
 $(document).ready(function() {
@@ -427,15 +436,13 @@ $(document).ready(function() {
     })
 
 
-
     // Only use for development purposes
-    devSetup();
+    //devSetup();
 
 
     //////////////////////////////////
     ///////// Mirror Functions ///////
     //////////////////////////////////
-
 
     $(window).resize( () => {
         let height = $('.date-time-container').outerHeight() * .85;
@@ -448,7 +455,6 @@ $(document).ready(function() {
         });
 
     });
-    $(window).resize();
 });
 
 

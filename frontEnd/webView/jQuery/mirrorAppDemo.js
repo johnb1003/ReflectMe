@@ -19,32 +19,32 @@ let currDate = 0;
 let scheduleData = {
     "cardio": [
         {
-            "cardioid": 15,
-            "userid": 64,
-            "date": "2020-08-23",
-            "dayofweek": 1,
+            "cardioid": 0,
+            "userid": 0,
+            "date": "2020-01-01",
+            "dayofweek": 0,
             "cardiotype": "run",
             "distance": 2.0,
             "time": null,
             "status": "scheduled",
-            "weekid": 5
+            "weekid": null
         }
     ],
     "strength": [
         {
-            "strengthid": 29,
-            "userid": 64,
-            "date": "2020-08-30",
-            "dayofweek": 1,
+            "strengthid": 1,
+            "userid": 0,
+            "date": "2020-01-01",
+            "dayofweek": 0,
             "strengthtype": "lift",
             "lifts": "chest, triceps",
             "status": "scheduled",
-            "weekid": 21
+            "weekid": null
         },
         {
-            "strengthid": 41,
-            "userid": 64,
-            "date": "2020-09-21",
+            "strengthid": 0,
+            "userid": 0,
+            "date": "2020-01-01",
             "dayofweek": 0,
             "strengthtype": "yoga",
             "lifts": null,
@@ -356,8 +356,8 @@ $(document).ready(function() {
     //////////////////////////////////
 
     var video = document.querySelector("#mirror-video-layer");
-    video.style.width = $('.mirror-view').width() + 'px';
-    video.style.height = $('.mirror-view').height() + 'px';
+    //video.style.width = $('.mirror-view').width() + 'px';
+    //video.style.height = $('.mirror-view').height() + 'px';
     video.setAttribute('autoplay', '');
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
