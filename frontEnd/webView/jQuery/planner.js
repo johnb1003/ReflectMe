@@ -12,7 +12,11 @@ const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 
 const shortWeekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-const daySuffix = ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
+const daySuffix = ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 
+                    'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 
+                    'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th',
+                    'th', 'st'
+                ];
 
 let showCardio = true;
 let showStrength = true;
@@ -559,7 +563,7 @@ class Calendar {
 
             this.newSelectedDate(this.shownDate[0], this.shownDate[1], idNum);
             let weekDay = new Date(this.shownDate[0], this.shownDate[1], idNum).getDay();
-            let suffix = daySuffix[idNum % 10];
+            let suffix = daySuffix[idNum];
             this.dayClickFunction(weekDays[weekDay], this.shownDate[1], idNum, suffix, this.shownDate[0]);
         });
     }
@@ -833,7 +837,7 @@ function processDayView() {
 
     let weekDay = new Date(calendar.selectedDate[0], calendar.selectedDate[1], calendar.selectedDate[2]).getDay();
     $('#corner-week-day').text(weekDays[weekDay]+',');
-    $('#corner-month-date').text(months[calendar.selectedDate[1]]+' '+calendar.selectedDate[2]+daySuffix[calendar.selectedDate[2]%10]);
+    $('#corner-month-date').text(months[calendar.selectedDate[1]]+' '+calendar.selectedDate[2]+daySuffix[calendar.selectedDate[2]]);
 
     let futureMonth = false;
     let currentMonth = false;
@@ -2182,14 +2186,14 @@ $(document).ready(function() {
     $('.pop-up-next').click( () => {
         let date = calendar.nextDay();
         $('#corner-week-day').text(weekDays[date[0]]+',');
-        $('#corner-month-date').text(months[date[1]]+' '+date[2]+daySuffix[date[2]%10]);
+        $('#corner-month-date').text(months[date[1]]+' '+date[2]+daySuffix[date[2]]);
         processDayView();
     });
 
     $('.pop-up-previous').click( () => {
         let date = calendar.prevDay();
         $('#corner-week-day').text(weekDays[date[0]]+',');
-        $('#corner-month-date').text(months[date[1]]+' '+date[2]+daySuffix[date[2]%10]);
+        $('#corner-month-date').text(months[date[1]]+' '+date[2]+daySuffix[date[2]]);
         processDayView();
     });
 
