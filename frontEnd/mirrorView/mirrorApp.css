@@ -53,14 +53,12 @@ body {
 .weather-container {
     font-family: 'Montserrat', sans-serif;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 #weather-icon {
-    width: 8em;
-    height: 8em;
+    width: auto;
 }
 
 #temperature-container {

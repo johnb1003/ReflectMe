@@ -331,7 +331,7 @@ function displayWeather() {
     let icon = getWeatherIcon(code, dayOrNight)
 
     let temperatureF = Math.floor(((parseFloat(temperatureK) - 273.15) * (9/5)) + 32);
-    $('#temperature').text(temperatureF);
+    $('#temperature-num').text(temperatureF);
     $('#weather-icon').attr('src', icon);
 }
 
@@ -429,15 +429,25 @@ $(document).ready(function() {
 
 
     // Only use for development purposes
-    //devSetup();
+    devSetup();
 
 
     //////////////////////////////////
     ///////// Mirror Functions ///////
     //////////////////////////////////
 
+    $(window).resize( () => {
+        let height = $('.date-time-container').outerHeight() * .85;
 
+        $('#weather-icon').css('height', `${height}px`);
 
+        $('.temperature').css({
+            'font-size': ((height) * 1.1) + 'px'
+            //, 'line-height': height + 'px'
+        });
+
+    });
+    $(window).resize();
 });
 
 

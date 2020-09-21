@@ -1,39 +1,143 @@
 body {
     background-color: #dddddd;
     background-image: url("resources/green-metal-background.png");
+
 }
 
 .main {
-    padding: 1em 5px 0 5px;
     background-color: transparent;
     margin-top: -1em;
 }
 
 .setup-mirror-container {
     width: 100%;
-    background-color: white;
-    border-radius: 8px;
-    height: 60vh;
+    height: 100%;
+    min-height: 100%;
     text-align: center;
+    padding: .5rem;
 }
 
+.setup-mirror-header {
 
-.setup-mirror-header h1,h2{
-    margin: 0;
-    padding: 0;
 }
 
-.setup-mirror-description {
+#setup-mirror-header-title {
+    color: white;
     color: #5180D1;
+    text-shadow: 1px 1px 2px black;
+    margin: 0;
+    padding: 1rem;
 }
+
+#setup-mirror-header-subtitle {
+    color: black;
+    margin: 0 auto 10px;
+    width: 96%;
+    margin-bottom: 1em;
+    display: none;
+}
+
+.mirror-header {
+    color: #5180D1;
+    text-shadow: 1px 1px 2px black;
+}
+
+#mirror-app-example {
+    height: 70vh;
+    width: 95vw;
+}
+
+#mirror-caption {
+
+}
+
+#overview-container {
+
+}
+
+#overview-message {
+    text-align: left;
+    font-size: 1.3em;
+}
+
+#components-container {
+
+}
+
+#components-message {
+    text-align: left;
+    font-size: 1.3em;
+}
+
+#components-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.component-container {
+    width: 50%;
+    text-align: left;
+}
+
+.component-header {
+    color: #4bbb67;
+    text-shadow: 1px 1px 2px black;
+
+}
+
+.component-description {
+
+}
+
 
 /* PC format */
 @media screen and (min-width: 801px) {
+    #setup-mirror-header-title {
+        font-size: 4em;
+    }
 
+    #mirror-caption-app-link-pc {
+        display: block;
+    }
 
+    #mirror-caption-app-link-mobile {
+        display: none;
+    }
+
+    .setup-mirror-overview {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .component-container {
+        width: 50%;
+    }
 }
 
 /* Mobile format */
 @media screen and (max-width: 800px) {
+    #setup-mirror-header-title {
+        font-size: 3em;
+        padding: 0;
+    }
 
+    #mirror-caption-app-link-pc {
+        display: none;
+    }
+
+    #mirror-caption-app-link-mobile {
+        display: block;
+    }
+
+    .setup-mirror-overview {
+        width: 99%;
+        margin: 0 auto;
+    }
+
+    .component-container {
+        width: 100%;
+    }
 }
