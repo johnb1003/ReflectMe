@@ -356,8 +356,21 @@ $(document).ready(function() {
     //////////////////////////////////
 
     var video = document.querySelector("#mirror-video-layer");
+    video.style.width = $('.mirror-view').width() + 'px';
+    video.style.height = $('.mirror-view').height() + 'px';
+    video.setAttribute('autoplay', '');
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+
+    var constraints = {
+        audio: false,
+        video: {
+         facingMode: 'user'
+        }
+    }
+
     if(navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true })
+        navigator.mediaDevices.getUserMedia(constraints)
         .then( (stream) => {
             //console.log("Stream retrieved");
             video.srcObject = stream;
