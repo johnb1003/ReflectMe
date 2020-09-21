@@ -98,7 +98,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
 }
 
 #cardio-container {
