@@ -7,28 +7,54 @@ const passwordRegEx = /^([a-zA-Z0-9]){5,20}$/;
 // Regular expression to check valid zip code
 const zipCodeRegEx = /(^\d{5}$)/
 
-const loginURL = 'https://reflectme.tech/api/v1/accounts/login';
-const dayDataURL = 'https://reflectme.tech/api/v1/events/day/';
+//const loginURL = 'https://reflectme.tech/api/v1/accounts/login';
+//const dayDataURL = 'https://reflectme.tech/api/v1/events/day/';
 const weatherDataURL = 'https://reflectme.tech/api/v1/events/weather/';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November', 'December'];
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-
-let JWToken = null;
-var email = null;
-var pw = null;
-var zipCode = null;
-let loginObject = {};
-
 let currDate = 0;
 
-let scheduleData = { 
-    'cardio': [],
-    'strength': []
+let scheduleData = {
+    "cardio": [
+        {
+            "cardioid": 15,
+            "userid": 64,
+            "date": "2020-08-23",
+            "dayofweek": 1,
+            "cardiotype": "run",
+            "distance": 2.0,
+            "time": null,
+            "status": "scheduled",
+            "weekid": 5
+        }
+    ],
+    "strength": [
+        {
+            "strengthid": 29,
+            "userid": 64,
+            "date": "2020-08-30",
+            "dayofweek": 1,
+            "strengthtype": "lift",
+            "lifts": "chest, triceps",
+            "status": "scheduled",
+            "weekid": 21
+        },
+        {
+            "strengthid": 41,
+            "userid": 64,
+            "date": "2020-09-21",
+            "dayofweek": 0,
+            "strengthtype": "yoga",
+            "lifts": null,
+            "status": "scheduled",
+            "weekid": null
+        }
+    ]
 };
 
-let weatherData = {};
+let weatherData = JSON.parse('{"coord":{"lon":-71.3,"lat":41.93},"weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],"base":"stations","main":{"temp":286.31,"feels_like":281.91,"temp_min":283.71,"temp_max":288.15,"pressure":1035,"humidity":59},"visibility":10000,"wind":{"speed":4.78,"deg":32},"clouds":{"all":0},"dt":1600697661,"sys":{"type":3,"id":2006275,"country":"US","sunrise":1600684323,"sunset":1600728253},"timezone":-14400,"id":0,"name":"Attleboro","cod":200}');
 
 let cardioHTMLArray = [];
 let strengthHTMLArray = [];
@@ -39,102 +65,10 @@ let cardioHTMLArrayIndex = 0;
 let strengthHTMLArrayIndex = 0;
 
 function devSetup() {
-    JWToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2NCJ9.7Iak7NNb5S4fkpJDvXLnIfJy1a7_hMfSUZ46iOMGL5-J8s-O-_rsCIVPmxArjaaCw3IvJO4AX__bkYuTVqygBQ'
     zipCode = '02703';
     displayLoops();
     $('.login-view').css('display', 'none');
     $('.mirror-view').css('display', 'flex');
-}
-
-///////////////////////////////////////
-///////////////////////////////////////
-///////// Login View Functions ////////
-///////////////////////////////////////
-///////////////////////////////////////
-
-async function loginAJAX() {
-    return loginReq = $.ajax({
-        type: "POST",
-        url: loginURL,
-        crossDomain: true,
-        contentType: "application/json",
-        data: JSON.stringify({
-            email: $('#email').val(),
-            password: $('#password').val()
-        }),
-        success: function(data, status, xhr)    {
-            // ERROR HERE, CANT GET TOKEN
-            console.log(data);
-            console.log(status);
-            console.log(xhr.getAllResponseHeaders());
-            JWToken = xhr.getResponseHeader('Authorization');
-            displayLoops();
-            $('.login-view').css('display', 'none');
-            $('.mirror-view').css('display', 'flex');
-        },
-        failure: function(errMsg) {
-            $('.login-error-message').css('display', 'block');
-            console.log(errMsg);
-        }
-    });
-}
-
-function authenticateLogin() {
-    let valid = true;
-
-    const email = $('#email');
-    if(!validEmail(email.val())) {
-        $('.login-error-message').css('display', 'block');
-        valid = false;
-    }
-    else {
-        console.log("email");
-        $('.login-error-message').css('display', 'none');
-    }
-
-    const password = $('#password');
-    if(!validPassword(password.val())) {
-        $('.login-error-message').css('display', 'block');
-        valid = false;
-    }
-    else {
-        console.log("password");
-        $('.login-error-message').css('display', 'none');
-    }
-
-    const zip = $('#zip');
-    if(!validZipCode(zip.val())) {
-        $('.zip-error-message').css('display', 'block');
-        valid = false;
-    }
-    else {
-        console.log("zip");
-        zipCode = $('#zip').val();
-        $('.zip-error-message').css('display', 'none');
-    }
-
-    return valid;
-}
-
-function validEmail(email) {
-    if(email == '' || !emailRegEx.test(email)) {
-        return false;
-    }
-    return true;
-}
-
-function validPassword(password) {
-    if(password == '' || !passwordRegEx.test(password)) {
-        return false;
-    }
-    return true;
-}
-
-function validZipCode(zip) {
-    if(zip == '' || !zipCodeRegEx.test(zip)) {
-        return false;
-    }
-    return true;
 }
 
 
@@ -149,9 +83,11 @@ function displayLoops() {
     //let updateDataInterval = setInterval(updateAllData, 10 * 60 * 1000);
 
     // Update display every 10 seconds
-    updateSchedule();
+    //updateSchedule();
+    displaySchedule();
     updateDateTime();
-    updateWeather();
+    //updateWeather();
+    displayWeather();
     let updateUserDataInterval = setInterval(updateSchedule, 10 * 60 * 1000);
     let timeUpdateInterval = setInterval(updateDateTime, 10 * 1000);
     let updateWeatherDataInterval = setInterval(updateWeather, 10 * 60 * 1000);
@@ -411,30 +347,25 @@ function formatMinutes(minute) {
 
 
 $(document).ready(function() {
-    //////////////////////////////////
-    ///////// Login Functions ////////
-    //////////////////////////////////
-
-    // Take in login form information
-    $('#login-submit-button').click( () => {
-        event.preventDefault();
-
-        let valid = authenticateLogin();
-
-        if(valid) {
-            loginAJAX();
-        }
-    })
-
-
-
+    
     // Only use for development purposes
     devSetup();
-
 
     //////////////////////////////////
     ///////// Mirror Functions ///////
     //////////////////////////////////
+
+    var video = document.querySelector("#mirror-video-layer");
+    if(navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+        .then( (stream) => {
+            //console.log("Stream retrieved");
+            video.srcObject = stream;
+        })
+        .catch( (error) => {
+            //console.log("Video error");
+        });
+    }
 
 
     $(window).resize( () => {
@@ -444,7 +375,6 @@ $(document).ready(function() {
 
         $('.temperature').css({
             'font-size': ((height) * 1.1) + 'px'
-            //, 'line-height': height + 'px'
         });
 
     });

@@ -10,47 +10,18 @@
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <!-- Corresponding js and css files -->
-        <link rel="stylesheet" type="text/css" href="mirrorApp.css">
-        <script type="text/javascript" src="mirrorApp.js"></script>
+        <link rel="stylesheet" type="text/css" href="mirrorAppDemo.css">
+        <script type="text/javascript" src="mirrorAppDemo.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
     </head>
 
     <body>
-        <div class="login-view">
-            <form class="login-form">
-                <div class="logo">
-                    <img class="logo-pic" src="resources/reflectme-logo-wide.svg"></img>
-                </div>
-                <div class="form-input">
-                    <p class="login-error-message">Email and password do not match</p>
-                    <div class="email-group">
-                        <label for="email">Email:</label><br>
-                        <input type="email" id="email" name="email" placeholder="Email"><br>
-                    </div>
-
-                    <div class="password-group">
-                        <div class="pass-group">
-                            <label for="password">Password:</label><br>        
-                            <input type="password" id="password" name="password" placeholder="Password"><br>
-                        </div>
-                    </div>
-
-                    <p class="zip-error-message">Invalid US zipcode</p>
-                    <div class="zip-group">
-                        <label for="zip">US Zip Code:</label><br>
-                        <input type="text" id="zip" name="zip" placeholder="01234"><br>
-                    </div>
-                </div>
-                <input class="submit-button" type="submit" value="Submit" id="login-submit-button">
-                <div class="signup-line">
-                    <p> Don't have an account? Signup at https://ReflectMe.tech/signup.html</p>
-                </div>
-            </form>
-        </div>
-
-
-
         <div class="mirror-view">
+            <video autoplay="true" id="mirror-video-layer">
+	
+            </video>
+
+            
             <div id="mirror-data-layer">
                 <div class="top-row">
                     <div class="date-time-container">
