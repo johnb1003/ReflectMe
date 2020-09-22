@@ -16,14 +16,11 @@ import java.util.Optional;
 public class AccountService {
 
     private AccountRepository accountRepo;
-    private MirrorRepository mirrorRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public AccountService(AccountRepository accountRepo, MirrorRepository mirrorRepository,
-                          BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public AccountService(AccountRepository accountRepo, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.accountRepo = accountRepo;
-        this.mirrorRepository = mirrorRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
