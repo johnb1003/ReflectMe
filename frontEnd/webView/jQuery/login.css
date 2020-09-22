@@ -13,6 +13,10 @@ body {
     padding: 1em;
 }
 
+.submit-button {
+    border: none;
+}
+
 /* PC format */
 @media screen and (min-width: 800px) {
     .nav-bar {
