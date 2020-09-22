@@ -1,25 +1,14 @@
 package com.reflectme.server.service;
 
-import com.reflectme.server.exception.ResourceNotFoundException;
 import com.reflectme.server.model.Account;
 import com.reflectme.server.repository.AccountRepository;
-import com.reflectme.server.repository.MirrorRepository;
-import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.keygen.KeyGenerators;
-import org.springframework.security.crypto.keygen.StringKeyGenerator;
 import org.springframework.stereotype.Service;
 
-import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.util.Optional;
 

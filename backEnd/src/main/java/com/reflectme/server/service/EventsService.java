@@ -212,19 +212,6 @@ public class EventsService {
                 }
             }
 
-            /*
-            String month = "";
-            int monthVal = date.getMonthValue();
-            if(monthVal >= 10) {
-                month = ""+monthVal;
-            }
-            else {
-                month = "0"+monthVal;
-            }
-            monthsNode.set(date.getYear()+"-"+month+"-01", monthNode);
-
-            */
-
             return Optional
                     .ofNullable(monthNode)
                     .map(list -> ResponseEntity.ok().body(monthNode))
