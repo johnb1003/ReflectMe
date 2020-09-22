@@ -65,39 +65,6 @@ body {
     font-size: 1.3em;
 }
 
-#components-container {
-    display: none;
-}
-
-#components-message {
-    text-align: left;
-    font-size: 1.3em;
-}
-
-#components-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.component-container {
-    width: 50%;
-    text-align: left;
-}
-
-.component-header {
-    color: #4bbb67;
-    text-shadow: 1px 1px 2px black;
-
-}
-
-.component-description {
-    text-align: left;
-    font-size: 1.3em;
-}
-
 #integration-container {
 
 }
@@ -144,10 +111,6 @@ body {
         text-align: left;
         font-size: 1.3em;
     }
-
-    .component-container {
-        width: 50%;
-    }
 }
 
 /* Mobile format */
@@ -184,10 +147,6 @@ body {
     .mirror-message {
         text-align: left;
         font-size: 1.3em;
-    }
-
-    .component-container {
-        width: 100%;
     }
 }
 
