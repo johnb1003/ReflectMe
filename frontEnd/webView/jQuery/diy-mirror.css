@@ -41,8 +41,13 @@ body {
     width: 100%;
 }
 
+.setup-mirror-overview {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 0 3rem 0;
+}
+
 .mirror-header {
-    color: #4bbb67;
     color: #5180D1;
     text-shadow: 1px 1px 2px black;
 }
@@ -97,12 +102,6 @@ body {
         height: 70vh;
     }
 
-    .setup-mirror-overview {
-        width: 100%;
-        margin: 0 auto;
-        padding: 0 0 3rem 0;
-    }
-
     .mirror-header {
         font-size: 3em;
     }
@@ -133,11 +132,6 @@ body {
 
     #mirror-app-example {
         height: 50vh;
-    }
-
-    .setup-mirror-overview {
-        width: 100%;
-        margin: 0 auto;
     }
 
     .mirror-header {
