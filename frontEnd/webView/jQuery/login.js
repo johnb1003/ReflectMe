@@ -37,7 +37,7 @@ function getCookie(key) {
 $(document).ready(function() {
 
 
-    let setEmail = getCookie('email');
+    let setEmail = getCookie('reflectme-email');
     if(setEmail != "") {
         $('#email').val(setEmail);
     }
@@ -45,7 +45,6 @@ $(document).ready(function() {
     // Take in login form information
     $('#login-submit-button').click( () => {
 
-        console.log("here!!!!!!!!!!!");
         event.preventDefault();
 
         let valid = authenticateLogin();
@@ -77,7 +76,7 @@ $(document).ready(function() {
             }),
             success: function(data, status, xhr)    {
                 JWTToken = xhr.getResponseHeader('Authorization');
-                setCookie("token", JWTToken);
+                setCookie("reflectme-token", JWTToken);
             },
             failure: function(errMsg) {alert(errMsg);}
         });
@@ -92,7 +91,6 @@ $(document).ready(function() {
             valid = false;
         }
         else {
-            console.log("email");
             $('.login-error-message').css('display', 'none');
         }
 
@@ -102,7 +100,6 @@ $(document).ready(function() {
             valid = false;
         }
         else {
-            console.log("password");
             $('.login-error-message').css('display', 'none');
         }
 

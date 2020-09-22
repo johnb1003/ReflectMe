@@ -18,7 +18,6 @@ $(document).ready(function() {
         event.preventDefault();
         
         let landingEmail = $('#landing-email').val();
-        //console.log(email);
 
         if(validEmail(landingEmail)) {
 
@@ -26,7 +25,7 @@ $(document).ready(function() {
 
             let exists = false;
 
-            setCookie("email", landingEmail)
+            setCookie("reflectme-email", landingEmail)
 
             emailReq = $.get({
                 url: baseAPIURL+"/accounts/email",

@@ -63,10 +63,6 @@ async function loginAJAX() {
             password: $('#password').val()
         }),
         success: function(data, status, xhr)    {
-            // ERROR HERE, CANT GET TOKEN
-            console.log(data);
-            console.log(status);
-            console.log(xhr.getAllResponseHeaders());
             JWToken = xhr.getResponseHeader('Authorization');
             displayLoops();
             $('.login-view').css('display', 'none');
@@ -88,7 +84,6 @@ function authenticateLogin() {
         valid = false;
     }
     else {
-        console.log("email");
         $('.login-error-message').css('display', 'none');
     }
 
@@ -98,7 +93,6 @@ function authenticateLogin() {
         valid = false;
     }
     else {
-        console.log("password");
         $('.login-error-message').css('display', 'none');
     }
 
@@ -108,7 +102,6 @@ function authenticateLogin() {
         valid = false;
     }
     else {
-        console.log("zip");
         zipCode = $('#zip').val();
         $('.zip-error-message').css('display', 'none');
     }
@@ -145,10 +138,6 @@ function validZipCode(zip) {
 ////////////////////////////////////////
 
 function displayLoops() {
-    // Update display every 10 minutes
-    //let updateDataInterval = setInterval(updateAllData, 10 * 60 * 1000);
-
-    // Update display every 10 seconds
     updateSchedule();
     updateDateTime();
     updateWeather();
@@ -177,7 +166,6 @@ function getCurrDateString() {
 }
 
 async function updateSchedule() {
-    //let dateString = new Date().toISOString().slice(0,10);
     let dateString = getCurrDateString();
     $.ajax({
         type: "GET",
@@ -311,7 +299,6 @@ async function updateWeather() {
 }
 
 function displayWeather() {
-    console.log(weatherData);
 
     let temperatureK = weatherData['main']['temp'];
     let code = weatherData['weather']['0']['id'];
@@ -340,7 +327,6 @@ function displayWeather() {
 
     $('.temperature').css({
         'font-size': ((height) * 1.1) + 'px'
-        //, 'line-height': height + 'px'
     });
 }
 
@@ -391,12 +377,10 @@ async function updateDateTime() {
     h = formatHour(h);
     m = formatMinutes(m);
     let timeString = `${h}:${m} ${ampm}`;
-    console.log(timeString);
     $('#time-string').text(timeString);
 
     if(currDate != currDateTime.getDate()) {
         let dateString = `${weekDays[currDateTime.getDay()]}, ${months[currDateTime.getMonth()]} ${currDateTime.getDate()}, ${currDateTime.getFullYear()}`;
-        console.log(dateString);
         $('#date-string').text(dateString);
         currDate = currDateTime.getDate();
     }
@@ -451,7 +435,6 @@ $(document).ready(function() {
 
         $('.temperature').css({
             'font-size': ((height) * 1.1) + 'px'
-            //, 'line-height': height + 'px'
         });
 
     });

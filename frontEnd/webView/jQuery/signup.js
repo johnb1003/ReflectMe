@@ -38,13 +38,9 @@ function getCookie(key) {
 $(document).ready(function() {
 
 
-    let setEmail = getCookie('email');
+    let setEmail = getCookie('reflectme-email');
     if(setEmail != "") {
-        console.log("Eail found")
         $('#signup-email').val(setEmail);
-    }
-    else {
-        console.log("No email found")
     }
 
     $('#signup-submit-button').click( () => {
@@ -53,7 +49,6 @@ $(document).ready(function() {
 
         if(authenticateSignup()) {
             // Send AJAX POST request to create new user
-            console.log("Authenticated");
             $.ajax({
                 type: "POST",
                 url: baseAPIURL+"/accounts/signup",
@@ -72,7 +67,7 @@ $(document).ready(function() {
                     }
                 },
                 success: function(data){
-                    setCookie('email', data.email);
+                    setCookie('reflectme-email', data.email);
                     window.location.href = "login.html";
                 },
                 failure: function(errMsg) {
@@ -80,12 +75,7 @@ $(document).ready(function() {
                 }
             });           
         }
-        else {
-            // Error message is shown
-            //alert("Error");
-        }
-        
-    })
+    });
 
 
     function authenticateSignup() {

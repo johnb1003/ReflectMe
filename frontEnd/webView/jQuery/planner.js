@@ -12,11 +12,12 @@ const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 
 const shortWeekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-const daySuffix = ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 
-                    'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 
-                    'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th',
-                    'th', 'st'
-                ];
+const daySuffix = [
+    'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 
+    'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 
+    'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th',
+    'th', 'st'
+];
 
 let showCardio = true;
 let showStrength = true;
@@ -399,7 +400,6 @@ class Calendar {
     }
     
     nextMonth() {
-        //console.log("NEXT");
         if(this.shownDate[1] < 11) {
             this.shownDate[1]++;
         }
@@ -539,9 +539,6 @@ class Calendar {
                 }
                 calendarHTML += '</div></div>';
             }
-            else {
-                //calendarHTML += '<div class="noclick">&nbsp;</div>';
-            }
         }
         $('.grid-container').html(calendarHTML);
         
@@ -552,14 +549,12 @@ class Calendar {
             while(idNum == null) {
                 classes = element.attr('class').split(' ');
                 for(let i=0; i<classes.length; i++) {
-                    console.log(classes[i]);
                     if(classes[i].includes('number-')) {
                         idNum = classes[i].substring(7);
                     }
                 }
                 element = element.parent();
             }
-            console.log(idNum);
 
             this.newSelectedDate(this.shownDate[0], this.shownDate[1], idNum);
             let weekDay = new Date(this.shownDate[0], this.shownDate[1], idNum).getDay();
@@ -700,7 +695,7 @@ function getCookie(key) {
 	return "";
 }
 
-let JWToken = getCookie("token");
+let JWToken = getCookie("reflectme-token");
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -774,12 +769,10 @@ function getDurationHTML(dur) {
         duration = duration % 3600;
     }
 
-    console.log(Math.floor(duration / 60));
     if(Math.floor(duration / 60) > 0) {
         durHTML += '<p class="day-view-duration-num">'+Math.floor(duration / 60)+'</p>';
         durHTML += '<p class="day-view-duration-unit">m&nbsp;</p>';
         duration = duration % 60;
-        console.log(duration);
     }
 
     if(duration > 0) {
@@ -861,7 +854,7 @@ function processDayView() {
     viewIDs.strength = {}; 
 
     let dateNum = calendar.selectedDate[2];
-    //console.log(dateNum);
+
     dayViewHTML += '<div class="day-view" id="day-'+dateNum+'">';
 
     if((currMonthData != undefined) && ((""+dateNum) in currMonthData)) {
@@ -890,12 +883,6 @@ function processDayView() {
             dayViewHTML += getDistanceHTML(element.distance);
             if(durationExists) {
                 dayViewHTML += getDurationHTML(element.time);
-                //viewIDs.cardio[element.cardioid] = '1.3fr 1fr 1fr 1fr 1.2fr';
-                //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 1fr 1fr 1fr');
-            }
-            else {
-                //viewIDs.cardio[element.cardioid] = '1.3fr 1fr 2fr 1.2fr';
-                //$('#full-week-strength-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
             }
             dayViewHTML += '</div></div></div>';
         });
@@ -922,8 +909,6 @@ function processDayView() {
                 dayViewHTML += '<p class="day-view-placeholder"> </p>';
             }
             dayViewHTML += '</div></div></div>';
-            //viewIDs.strength[element.strengthid] = '1.3fr 1fr 2fr 1.2fr';
-            //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
         });
         
     }
@@ -951,8 +936,6 @@ function processDayView() {
                         dayViewHTML += '<div class="day-view-details">';
                         dayViewHTML += getDistanceHTML(element.distance);
                         dayViewHTML += '</div></div></div>';
-                        //viewIDs.cardio[element.cardioid] = '1.3fr 1fr 2fr 1.2fr';
-                        //$('#full-week-cardio-'+element.cardioid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
             
@@ -977,8 +960,6 @@ function processDayView() {
                             dayViewHTML += '<p class="day-view-placeholder"> </p>';
                         }
                         dayViewHTML += '</div></div></div>';
-                        //viewIDs.strength[element.strengthid] = '1.3fr 1fr 2fr 1.2fr';
-                        //$('#full-week-strength-'+element.strengthid).css('grid-template-columns', '1fr 1fr 2fr 1fr');
                     }
                 });
             }
@@ -993,16 +974,6 @@ function processDayView() {
 
     let cardioIDs = Object.keys(viewIDs.cardio);
     let strengthIDs = Object.keys(viewIDs.strength);
-    /*
-    while(cardioIDs.length > 0) {
-        let cardioKey = cardioIDs.pop();
-        $('#full-week-cardio-'+cardioKey).css('grid-template-columns', viewIDs.cardio[cardioKey]);
-    }
-    while(strengthIDs.length > 0) {
-        let strengthKey = strengthIDs.pop();
-        $('#full-week-strength-'+strengthKey).css('grid-template-columns', viewIDs.strength[strengthKey]);
-    }
-    */
 
     $('.day-view-dropdown-button').click( (e) => {
         // id="cardio-view-dropdown-#" or id="strength-view-dropdown-#"
@@ -1044,8 +1015,6 @@ function processDayView() {
                     event = element;
                 }
             });
-            console.log("Edit Cardio: ");
-            console.log(event);
             editCardioEvent(event);
         }
         else if(id.includes('strength')) {
@@ -1056,8 +1025,6 @@ function processDayView() {
                     event = element;
                 }
             });
-            console.log("Edit Strength: ");
-            console.log(event);
             editStrengthEvent(event);
         }
     });
@@ -1073,19 +1040,16 @@ function processDayView() {
             if(window.confirm("Are you sure you want to delete this event?")) {
                 event = await deleteCardioObject(idNum);
             }
-            console.log("Delete Cardio: "+idNum);
         }
         else if(id.includes('strength')) {
             idNum = parseInt(id.substring(21));
             if(window.confirm("Are you sure you want to delete this event?")) {
                 event = await deleteStrengthObject(idNum);
             }
-            console.log("Delete Strength: "+idNum);
         }
 
         if(event) {
             await getAllMonthData();
-            console.log(allMonthData);
             processDayView();
             if(deleteScope == 'day') {
                 backToDaySchedule();
@@ -1095,31 +1059,21 @@ function processDayView() {
             }
         }
         else {
-            console.log("Could not delete event")
+            alert("Could not delete event")
         }
     });
 
     $('.day-view-edit-cardio-week-button').click( async (e) => {
         let cardioID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
-        console.log(cardioID);
-        console.log(cardioEventsObject);
         if(cardioID in cardioEventsObject) {
             editCardioEvent(cardioEventsObject[cardioID]);
-        }
-        else {
-            console.log(cardioEventsObject);
         }
     });
 
     $('.day-view-edit-strength-week-button').click( async (e) => {
         let strengthID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
-        console.log(strengthID);
-        console.log(strengthEventsObject);
         if(strengthID in strengthEventsObject) {
             editStrengthEvent(strengthEventsObject[strengthID]);
-        }
-        else {
-            console.log(strengthEventsObject);
         }
     });
 }
@@ -1146,7 +1100,6 @@ function clearFormData() {
     // Clear strength data
     $('#strength-type').val('Lift');
     let checkedLifts = $('.lift-type-pair input[type=checkbox]:checked');
-    console.log(checkedLifts);
     for(let i=0; i<checkedLifts.length; i++) {
         $('#'+checkedLifts[i].value.toLowerCase()).prop('checked', false);
     }
@@ -1194,9 +1147,6 @@ function setClickedType(typeString) {
         $('#'+selectedDayType+'-input').css('display', 'none');
         $('#'+clickedType+'-input').css('display', 'flex');
         
-
-        //('#type-name').text(eventType+' Event');
-        
         selectedDayType = clickedType;
     }
     processType();
@@ -1227,7 +1177,7 @@ function displayCardio() {
     }
     let durationString = durationHString + durationMString + durationSString;
     let eventSummaryHTML = '';
-    //console.log('Value: '+cardioType);
+
     if(cardioType != 'Other') {
         $('.cardio-other-group').css('display', 'none');
         $('.event-title').text(cardioType);
@@ -1248,7 +1198,6 @@ function displayCardio() {
     }
 
     if(collectPastInput) {
-        //console.log('Here: '+calendar.dateTense);
         eventSummaryHTML += '<p class="event-duration">'+durationString+'</p>';
     }
 
@@ -1279,7 +1228,7 @@ function displayStrengthLifts() {
 
     $('.event-title').text('Lift');
     let liftSchedule = getLiftSchedule();
-    console.log('liftSchedule length: '+liftSchedule.length);
+
     if(liftSchedule.length == 0) {
         disableSubmitButton();
         eventSummaryHTML += '<p>No lifts selected</p>';
@@ -1319,7 +1268,6 @@ function displayStrengthYoga() {
     let strengthType = $('#strength-type').val();
     let eventSummaryHTML = '';
 
-    //eventSummaryHTML += '<p class="event-title">Yoga</p>';
     $('.event-title').text('Yoga');
 
     $('.event-summary').html(eventSummaryHTML);
@@ -1329,7 +1277,6 @@ function displayStrengthOther() {
     $('.strength-other-group').css('display', 'block');
     let eventSummaryHTML = '';
 
-    //$('.event-title').text($('#strength-other-name').val().trim());
     $('.event-title').text($('#strength-other-name').val());
 
     if(validateOtherEventName($('#strength-other-name').val().trim())) {
@@ -1416,7 +1363,6 @@ async function getAllMonthData() {
     await allMonthDataAJAX()
         .then(data => {
             allMonthData = data;
-            console.log(allMonthData);
             displayWeeks(allMonthData.weeks);
             calendar.render();
         })
@@ -1424,23 +1370,6 @@ async function getAllMonthData() {
             console.log(error);
         }
     );
-    
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-    // ONLY FOR DEVELOPMENT & TESTING PURPOSES !!!!!!!
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-    //displayWeeks(allMonthData.weeks);
-    //calendar.render();
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-    // ONLY FOR DEVELOPMENT & TESTING PURPOSES !!!!!!!
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
 }
 
 getAllMonthData();
@@ -1457,8 +1386,7 @@ async function getCurrentMonthData() {
         },
         success: function(data, status, xhr)    {
             addToAllMonthData(dateString, data);
-            calendar.render()
-            //console.log(allMonthData);
+            calendar.render();
             return data;
         },
         failure: function(errMsg) {alert(errMsg);}
@@ -1567,7 +1495,6 @@ async function updateWeekObject(weekObject) {
         data: JSON.stringify(weekData),
         success: function(data, status, xhr)    {
             if(data.updated == true) {
-                //console.log("Update Successful");
                 updateWeeks();
                 return true;
             }
@@ -1590,7 +1517,6 @@ async function updateCardioObject(cardioObject) {
         data: JSON.stringify(cardioObject),
         success: function(data, status, xhr)    {
             if(data.updated == true) {
-                //console.log("Update Successful");
                 getAllMonthData();
                 return true;
             }
@@ -1613,7 +1539,6 @@ async function updateStrengthObject(strengthObject) {
         data: JSON.stringify(strengthObject),
         success: function(data, status, xhr)    {
             if(data.updated == true) {
-                //console.log("Update Successful");
                 getAllMonthData();
                 return true;
             }
@@ -1642,7 +1567,6 @@ async function deleteWeekObject(weekid) {
         },
         success: function(data, status, xhr)    {
             if(data.deleted == true) {
-                //console.log("Delete Successful");
                 updateWeeks();
                 return true;
             }
@@ -1755,14 +1679,8 @@ function displayWeeks(weeks) {
 
     $('.week-dropdown-cardio-event-edit').click( (e) => {
         let cardioID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
-        console.log(cardioID);
-        console.log(cardioEventsObject);
         if(cardioID in cardioEventsObject) {
-            console.log("Key in cardioEventsObject");
             editCardioEvent(cardioEventsObject[cardioID]);
-        }
-        else {
-            console.log(cardioEventsObject);
         }
     });
 
@@ -1770,22 +1688,14 @@ function displayWeeks(weeks) {
         let event = null;
         let cardioID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
         deleteScope = 'week';
-        console.log(cardioID);
-        console.log(cardioEventsObject);
         if(cardioID in cardioEventsObject) {
-            console.log("Key in cardioEventsObject");
             if(window.confirm("Are you sure you want to delete this event?")) {
                 event = await deleteCardioObject(parseInt(cardioID));
             }
-            console.log("Delete Cardio: "+cardioID);
-        }
-        else {
-            console.log(cardioEventsObject);
         }
 
         if(event) {
             await getAllMonthData();
-            console.log(allMonthData);
             processDayView();
             if(deleteScope == 'day') {
                 backToDaySchedule();
@@ -1801,14 +1711,8 @@ function displayWeeks(weeks) {
 
     $('.week-dropdown-strength-event-edit').click( (e) => {
         let strengthID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
-        console.log(strengthID);
-        console.log(strengthEventsObject);
         if(strengthID in strengthEventsObject) {
-            console.log("Key in strengthEventsObject");
             editStrengthEvent(strengthEventsObject[strengthID]);
-        }
-        else {
-            console.log(strengthEventsObject);
         }
     });
 
@@ -1816,22 +1720,14 @@ function displayWeeks(weeks) {
         let strengthID = $(e.target).parent().parent().attr('id').replace( /[^\d.]/g, '' );
         let event = null;
         deleteScope = 'week';
-        console.log(strengthID);
-        console.log(strengthEventsObject);
         if(strengthID in strengthEventsObject) {
-            console.log("Key in strengthEventsObject");
             if(window.confirm("Are you sure you want to delete this event?")) {
                 event = await deleteStrengthObject(parseInt(strengthID));
             }
-            console.log("Delete Strength: "+strengthID);
-        }
-        else {
-            console.log(strengthEventsObject);
         }
 
         if(event) {
             await getAllMonthData();
-            console.log(allMonthData);
             processDayView();
             if(deleteScope == 'day') {
                 backToDaySchedule();
@@ -1847,7 +1743,6 @@ function displayWeeks(weeks) {
 
     $('.add-week-event-button').click( (e) => {
         let currWeekID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
-        console.log(currWeekID);
         createWeekEvent(currWeekID);
     });
 
@@ -1857,11 +1752,9 @@ function displayWeeks(weeks) {
         if(window.confirm("Are you sure you want to delete this week and its corresponding events?")) {
             event = await deleteWeekObject(parseInt(currWeekID));
         }
-        console.log("Delete Week: "+currWeekID);
 
         if(event) {
             await getAllMonthData();
-            console.log(allMonthData);
             processDayView();
             if(createScope == 'day') {
                 backToDaySchedule();
@@ -1877,7 +1770,6 @@ function displayWeeks(weeks) {
 
     $('.dropdown-week-button').click( (e) => {
         let currWeekID = $(e.target).attr('id').replace( /[^\d.]/g, '' );
-        console.log(currWeekID);
 
         if($(e.target).hasClass('up-arrow')) {
             $(e.target).removeClass('up-arrow');
@@ -1894,16 +1786,12 @@ function displayWeeks(weeks) {
     });
 
     $('.week-checkbox').change( (e) => {
-        //console.log("Here");
-        //console.log("Here: "+$(e.target).attr('id'));
         let currWeekID = $(e.target).attr('id');
         let weeksArr = allMonthData.weeks;
         weeksArr.forEach(element => {
             if(element.weekID == parseInt(currWeekID.substring(11))) {
                 if(updateWeekObject(element)) {
-                    //console.log($('#'+currWeekID).is(':checked'));
                     element.active = $('#'+currWeekID).is(':checked');
-                    //console.log('active: '+element.active);
                 }
                 else {
                     $('#'+currWeekID).prop( "checked", !$('#'+currWeekID).is(':checked'));
@@ -1913,7 +1801,6 @@ function displayWeeks(weeks) {
     });
 
     $('#new-week-button').click( () => { 
-        console.log("NEW WEEK BUTTON");
         $('.pop-up-planner').css('display', 'none');
         $('.create-week-container').css('display', 'block');
         $('.pop-up-previous').css('display', 'none');
@@ -2074,13 +1961,6 @@ $(document).ready(function() {
             $('.day-scheduler').css('display', 'block');
             $('.back-to-day-schedule').css('display', 'block');
             $('.existing-events-container').css('background-image', 'linear-gradient(to bottom right, #56B4E3, #4B45BE)');
-
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            // HERE - day-scheduler width / format 
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
             if($(window).width() > 800) {
                 $('.day-scheduler').css('height', `${$('.existing-events-container').height() - $('.day-view-header').height()}px`);
@@ -2209,9 +2089,6 @@ $(document).ready(function() {
 
             
             processType();
-            
-
-            //('#type-name').text(eventType+' Event');
           
             selectedDayType = clickedType;
         }
@@ -2299,7 +2176,6 @@ $(document).ready(function() {
     // Submit past("Completed") or future("Scheduled") day event
     $('.day-submit-button').click( (e) => {
         if($(e.target).hasClass('active-submit-button')) {
-            //console.log("Active submit button");
             submitEvent();
         }
     });
@@ -2309,12 +2185,10 @@ $(document).ready(function() {
         let newWeekName = $('#create-week-name').val().trim();
         if(validateNewWeekName(newWeekName)) {
             let event = null;
-            console.log(newWeekName);
             event = await createWeekObject(newWeekName);
 
             if(event) {
                 await getAllMonthData();
-                console.log(allMonthData);
                 processDayView();
                 backToCalendar();
             }
@@ -2325,7 +2199,6 @@ $(document).ready(function() {
     });
 
     $('#create-week-name').keyup( () => {
-        //console.log($('#create-week-name').val());
         if(validateNewWeekName($('#create-week-name').val().trim())) {
             $('#invalid-create-week-name').css('display', 'none');
         }
@@ -2357,38 +2230,32 @@ async function submitEvent() {
         }
 
         let event = null;
-        // BUFFER WHILE SENDING AJAX
+        
         if(requestType == 'create') {
             if(createScope == 'week') {
                 dayEvent.dayofweek = parseInt($('#dow-selector-cardio').val());
                 dayEvent.weekid = createWeekID;
             }
-            console.log('Event: '+dayEvent);
             event = await createCardioObject(dayEvent);
         }
         else if(requestType == 'update') {
             dayEvent.cardioid = updateID;
 
             if(updateScope == 'day') {
-                console.log('scope = day');
                 dayEvent.dayofweek = parseInt(new Date(calendar.selectedDate[0], calendar.selectedDate[1], calendar.selectedDate[2]).getDay());
             }
             else if(updateScope == 'week'){
-                console.log('scope = week');
                 dayEvent.dayofweek = parseInt($('#dow-selector-cardio').val());
                 dayEvent.weekid = updateWeekID;
             }
 
-            console.log(dayEvent);
             if(window.confirm("Are you sure you want to update this event?")) {
-                console.log('Event: '+dayEvent);
                 event = await updateCardioObject(dayEvent);
             }
         }
 
         if(event) {
             await getAllMonthData();
-            console.log(allMonthData);
             processDayView();
             if(!toCalendar) {
                 backToDaySchedule();
@@ -2418,31 +2285,26 @@ async function submitEvent() {
         }
 
         let event = null;
-        // BUFFER WHILE SENDING AJAX
+        
         if(requestType == 'create') {
             if(createScope == 'week') {
                 dayEvent.dayofweek = parseInt($('#dow-selector-strength').val());
                 dayEvent.weekid = createWeekID;
             }
-            console.log('Event: '+dayEvent);
             event = await createStrengthObject(dayEvent);
         }
         else if(requestType == 'update') {
             dayEvent.strengthid = updateID;
 
             if(updateScope == 'day') {
-                console.log('scope = day');
                 dayEvent.dayofweek = parseInt(new Date(calendar.selectedDate[0], calendar.selectedDate[1], calendar.selectedDate[2]).getDay());
             }
             else if(updateScope == 'week'){
-                console.log('scope = week');
                 dayEvent.dayofweek = parseInt($('#dow-selector-strength').val());
                 dayEvent.weekid = updateWeekID;
             }
 
-            console.log(dayEvent);
             if(window.confirm("Are you sure you want to update this event?")) {
-                console.log('Event: '+dayEvent);
                 event = await updateStrengthObject(dayEvent);
             }
         }
@@ -2559,16 +2421,9 @@ function createWeekEvent(weekID) {
 
 function editCardioEvent(event) {
 
-    console.log('editCardioEvent: '+JSON.stringify(event));
-
     // individual day event, or week event?
     updateScope = 'day';
 
-    //toCalendar = false;
-    // If pop-up is not already visible
-    //if($('.pop-up').css('display') == 'none') {
-    //    toCalendar = true;
-    //}
     if(event.weekid != null && event.weekid != undefined) {
         updateScope = 'week';
         updateWeekID = event.weekid;
@@ -2582,7 +2437,7 @@ function editCardioEvent(event) {
             }
         });
 
-        // dayClickFunction(weekDay, month, dateNum, suffix, year)
+        
         $('.pop-up-background').css('height', `${$('.content').outerHeight()}px`);
         $('.pop-up-background').css('display', 'block');
         $('.pop-up').css('display', 'flex');
@@ -2669,7 +2524,7 @@ function editCardioEvent(event) {
     $('.existing-events').css('max-height', `${$('.existing-events-container').height() - $('.day-view-header').outerHeight() - 2}px`);
 
 
-    //if(updateScope == 'day') {
+    
     if(!toCalendar) {
         $('.back-to-day-schedule').css('display', 'block');
     }
@@ -2691,27 +2546,20 @@ function editStrengthEvent(event) {
     // individual day event, or week event?
     updateScope = 'day';
 
-    //toCalendar = false;
-    // If pop-up is not already visible
-    //if($('.pop-up').css('display') == 'none') {
-    //    toCalendar = true;
-    //}
     if(event.weekid != null && event.weekid != undefined) {
         updateScope = 'week';
         updateWeekID = event.weekid;
 
         let weeksArr = allMonthData.weeks;
         let weekName = 'Week Event';
-                    
-        console.log('Week id: '+ event.weekid);
+        
         weeksArr.forEach(currWeek => { 
             if(currWeek.weekID == event.weekid) {
                 weekName = currWeek.weekName.charAt(0).toUpperCase()+currWeek.weekName.slice(1);
-                console.log('Week Name: '+ weekName);
             }
         });
 
-        // dayClickFunction(weekDay, month, dateNum, suffix, year)
+        
         $('.pop-up-background').css('height', `${$('.content').outerHeight()}px`);
         $('.pop-up-background').css('display', 'block');
         $('.pop-up').css('display', 'flex');

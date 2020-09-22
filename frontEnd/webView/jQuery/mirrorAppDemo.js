@@ -7,8 +7,6 @@ const passwordRegEx = /^([a-zA-Z0-9]){5,20}$/;
 // Regular expression to check valid zip code
 const zipCodeRegEx = /(^\d{5}$)/
 
-//const loginURL = 'https://reflectme.tech/api/v1/accounts/login';
-//const dayDataURL = 'https://reflectme.tech/api/v1/events/day/';
 const weatherDataURL = 'https://reflectme.tech/api/v1/events/weather/';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November', 'December'];
@@ -64,7 +62,7 @@ let updatescheduleContainerInterval = undefined;
 let cardioHTMLArrayIndex = 0;
 let strengthHTMLArrayIndex = 0;
 
-function devSetup() {
+function demoSetup() {
     zipCode = '02703';
     displayLoops();
     $('.login-view').css('display', 'none');
@@ -79,14 +77,8 @@ function devSetup() {
 ////////////////////////////////////////
 
 function displayLoops() {
-    // Update display every 10 minutes
-    //let updateDataInterval = setInterval(updateAllData, 10 * 60 * 1000);
-
-    // Update display every 10 seconds
-    //updateSchedule();
     displaySchedule();
     updateDateTime();
-    //updateWeather();
     displayWeather();
     let updateUserDataInterval = setInterval(updateSchedule, 10 * 60 * 1000);
     let timeUpdateInterval = setInterval(updateDateTime, 10 * 1000);
@@ -113,7 +105,6 @@ function getCurrDateString() {
 }
 
 async function updateSchedule() {
-    //let dateString = new Date().toISOString().slice(0,10);
     let dateString = getCurrDateString();
     $.ajax({
         type: "GET",
@@ -247,7 +238,6 @@ async function updateWeather() {
 }
 
 function displayWeather() {
-    console.log(weatherData);
 
     let temperatureK = weatherData['main']['temp'];
     let code = weatherData['weather']['0']['id'];
@@ -318,12 +308,10 @@ async function updateDateTime() {
     h = formatHour(h);
     m = formatMinutes(m);
     let timeString = `${h}:${m} ${ampm}`;
-    console.log(timeString);
     $('#time-string').text(timeString);
 
     if(currDate != currDateTime.getDate()) {
         let dateString = `${weekDays[currDateTime.getDay()]}, ${months[currDateTime.getMonth()]} ${currDateTime.getDate()}, ${currDateTime.getFullYear()}`;
-        console.log(dateString);
         $('#date-string').text(dateString);
         currDate = currDateTime.getDate();
     }
@@ -348,16 +336,14 @@ function formatMinutes(minute) {
 
 $(document).ready(function() {
     
-    // Only use for development purposes
-    devSetup();
+    // Only use for demo purposes
+    demoSetup();
 
     //////////////////////////////////
     ///////// Mirror Functions ///////
     //////////////////////////////////
 
     var video = document.querySelector("#mirror-video-layer");
-    //video.style.width = $('.mirror-view').width() + 'px';
-    //video.style.height = $('.mirror-view').height() + 'px';
     video.setAttribute('autoplay', '');
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
@@ -372,11 +358,9 @@ $(document).ready(function() {
     if(navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia(constraints)
         .then( (stream) => {
-            //console.log("Stream retrieved");
             video.srcObject = stream;
         })
         .catch( (error) => {
-            //console.log("Video error");
         });
     }
 
@@ -393,9 +377,3 @@ $(document).ready(function() {
     });
     $(window).resize();
 });
-
-
-
-
-
-

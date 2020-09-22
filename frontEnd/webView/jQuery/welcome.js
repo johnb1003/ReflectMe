@@ -24,20 +24,13 @@ function getCookie(key) {
     return "";
 }
 
-//////////////////////////////////////////////////
-////////// FOR DEV PURPOSES ONLY
-//////////////////////////////////////////////////
-//let JWToken = '';
-
-
 // Check for token cookie
-let JWToken = getCookie("token");
+let JWToken = getCookie("reflectme-token");
 
 if(JWToken == "") {
     alert("Must be logged in to access this page.")
-    window.location.href = "login.html";
+    window.location.href = "landing.html";
 }
-
 
 getAccountData();
 
@@ -153,7 +146,6 @@ function displayScheduledEvents(data) {
         scheduledEventsHTML += '</div>';
         $('#scheduled-events-list').html(scheduledEventsHTML);
 
-        console.log($('#scheduled-events-list').height());
         $('#no-events-container').css('height', `${$('#scheduled-events-list').height()}px`);
         $('#no-events-container').css('display', 'flex');
     }
@@ -163,7 +155,6 @@ function displayScheduledEvents(data) {
     }
 
     $('.day-view-dropdown-button').click( (e) => {
-        console.log("HERE");
         // id="cardio-view-dropdown-#" or id="strength-view-dropdown-#"
         let id = $(e.target).attr('id');
         let idNum = $(e.target).attr('id').replace( /[^\d.]/g, '' );
@@ -215,12 +206,10 @@ function getDurationHTML(dur) {
         duration = duration % 3600;
     }
 
-    console.log(Math.floor(duration / 60));
     if(Math.floor(duration / 60) > 0) {
         durHTML += '<p class="day-view-duration-num">'+Math.floor(duration / 60)+'</p>';
         durHTML += '<p class="day-view-duration-unit">m&nbsp;</p>';
         duration = duration % 60;
-        console.log(duration);
     }
 
     if(duration > 0) {
